@@ -4,12 +4,26 @@
 !.gitignore
 !README.md
 
+!/etc
+/etc/*
+
+!/etc/zsh
+/etc/zsh/*
+
+!/etc/zsh/zshrc
+
+!/root
+/root/*
+
+!/root/.zshrc
+
 !/home
 /home/*
 
 !/home/semyon
 /home/semyon/*
 
+!/home/semyon/.zshrc
 !/home/semyon/.config
 /home/semyon/.config/*
 
