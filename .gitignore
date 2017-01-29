@@ -5,3 +5,27 @@
 
 !/home
 /home/*
+
+!/home/yonigger
+/home/yonigger/*
+
+!/home/yonigger/.config
+/home/yonigger/.config/*
+
+!/home/yonigger/.config/openbox
+!/home/yonigger/.config/compton.conf
+!/home/yonigger/.config/fontconfig
+
+!/home/yonigger/.config/puddletag
+/home/yonigger/.config/puddletag/*
+!/home/yonigger/.config/puddletag/gensettings
+!/home/yonigger/.config/puddletag/puddletag.conf
+!/home/yonigger/.local
+/home/yonigger/.local/*
+!/home/yonigger/.local/share
+/home/yonigger/.local/share/*
+!/home/yonigger/.local/share/puddletag
+/home/yonigger/.local/share/puddletag/*
+!/home/yonigger/.local/share/puddletag/actions
+/home/yonigger/.local/share/puddletag/actions/*
+!/home/yonigger/.local/share/puddletag/actions/my_own.action

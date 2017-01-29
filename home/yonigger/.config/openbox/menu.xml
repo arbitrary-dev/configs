@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+
+<menu id="root-menu" label="Openbox 3">
+  <item label="internet">
+    <action name="Execute">
+      <command>firefox</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+        <wmclass>Firefox</wmclass>
+      </startupnotify>
+    </action>
+  </item>
+  <menu id="misc" label="misc">
+  	<item label="puddletag">
+		<action name="Execute">
+			<command>puddletag</command>
+		</action>
+	</item>
+  	<item label="fontmatrix">
+		<action name="Execute">
+			<command>fontmatrix</command>
+		</action>
+	</item>
+  	<item label="ibus">
+		<action name="Execute">
+			<command>ibus-setup</command>
+		</action>
+	</item>
+  </menu>
+  <separator />
+  <menu id="graphics" label="graphics">
+    <item label="blender">
+      <action name="Execute">
+        <command>blender</command>
+      </action>
+    </item>
+    <item label="gimp">
+      <action name="Execute">
+        <command>gimp</command>
+      </action>
+    </item>
+    <item label="inkscape">
+      <action name="Execute">
+        <command>inkscape</command>
+      </action>
+    </item>
+  </menu>
+  <menu id="dev" label="dev">
+  	<item label="eclipse">
+      <action name="Execute">
+        <command>eclipse</command>
+      </action>
+    </item>
+  	<item label="qt-creator">
+      <action name="Execute">
+        <command>qtcreator</command>
+      </action>
+    </item>
+  	<item label="sqlite-browser">
+      <action name="Execute">
+        <command>sqlitebrowser</command>
+      </action>
+    </item>
+  	<separator />
+  	<item label="android-sdk-manager">
+		<action name="Execute">
+			<command>android</command>
+		</action>
+	</item>
+  	<item label="android-studio">
+		<action name="Execute">
+			<command>android-studio</command>
+		</action>
+	</item>
+  </menu>
+  <separator />
+  <item label="logout">
+    <action name="Exit">
+      <prompt>yes</prompt>
+    </action>
+  </item>
+</menu>
+
+</openbox_menu>

@@ -1,0 +1,16 @@
+numlockx &
+urxvtd --quiet --opendisplay --fork
+compton --config ~/.config/compton.conf &
+
+feh --bg-scale ~/.config/conky/wallpaper.jpg
+~/.scripts/main-console &
+
+sleep 1
+conky -d -c ~/.config/conky/clock/clock.conf
+conky -d -c ~/.config/conky/weather/weather.conf
+conky -d -c ~/.config/conky/cpu/cpu.conf
+conky -d -c ~/.config/conky/ram/ram.conf
+conky -d -c ~/.config/conky/mpd/mpd.conf
+
+pcmanfm -d &
+sleep 4 && screen -dmS rtorrent rtorrent
