@@ -1,0 +1,55 @@
+html, body, .gdarticle {
+	background: #ededed;
+}
+
+.gddictname {
+	border: none;
+}
+
+.gdarticle:nth-child(3) .gddictname {
+	margin-top: 0;
+}
+
+.gddictname {
+	margin-bottom: 0;
+	background: #f9f9f9;
+}
+
+.gdarticlebody > h3 {
+	margin: 6px 0 3px;
+}
+
+.gdexpandicon {
+	background-image: url("file:///usr/share/themes/Adwaita/qt/assets/checkbox-unchecked.png");
+	margin-left: 10px;
+}
+
+.gdcollapseicon {
+	background-image: url("file:///usr/share/themes/Adwaita/qt/assets/checkbox-checked.png");
+	margin-left: 10px;
+}
+
+.mwiki .noprint {
+	display: none;
+}
+
+.mwiki h2 {
+	padding-top: 0;
+	border: none;
+}
+
+.mwiki h3 {
+	padding-top: 0;
+}
+
+:lang(zh) .dsl_m1,
+:lang(zh) .dsl_trn {
+	font-family: "M+ 1p regular";
+	font-size: 15px;
+	font-weight: normal;
+}
+
+:lang(zh) .dsl_headwords p {
+	font-family: "M+ 1p medium";
+	font-size: 21px;
+}

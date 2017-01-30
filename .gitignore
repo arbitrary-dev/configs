@@ -42,6 +42,11 @@
 !/home/yonigger/.irssi/config
 !/home/yonigger/.irssi/default.theme
 
+!/home/yonigger/.goldendict
+/home/yonigger/.goldendict/*
+!/home/yonigger/.goldendict/config
+!/home/yonigger/.goldendict/*.css
+
 !/home/yonigger/.xinitrc
 !/home/yonigger/.Xcompose
 !/home/yonigger/.screenrc
