@@ -1,0 +1,124 @@
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _complete _ignored _files _approximate
+zstyle ':completion:*' expand prefix suffix
+zstyle ':completion:*' list-suffixes true
+zstyle ':completion:*' matcher-list 'r:|[._-]=** r:|=**'
+zstyle ':completion:*' max-errors 1
+zstyle ':completion:*' original false
+zstyle ':completion:*' preserve-prefix '//[^/]##/'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.zhistory
+HISTSIZE=1000
+SAVEHIST=1000
+setopt appendhistory autocd
+unsetopt beep extendedglob nomatch notify
+bindkey -v
+# End of lines configured by zsh-newuser-install
+
+stty -ixon
+
+# Prevent Wine from adding menu entries and desktop links.
+export WINEDLLOVERRIDES='winemenubuilder.exe=d'
+
+# history lookup using prefixes
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+
+export EDITOR=vim
+export APULSE_CAPTURE_DEVICE=hw:4,0
+
+# man colors
+
+export LESS_TERMCAP_md=$'\e[31m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[97;43m'
+export LESS_TERMCAP_se=$'\e[0m'
+
+# aliases
+
+alias xss-on='xset +dpms s on'
+alias xss-off='xset -dpms s off'
+
+alias xci='xclip -i -selection clipboard'
+alias xco='xclip -o -selection clipboard'
+
+alias vr='vim ~/.zshrc'
+alias sr='source ~/.zshrc'
+
+alias pr=perl-rename
+alias cl=clear
+alias scr='screen -dR'
+alias less='less -iSXF'
+alias sed='sed -br'
+alias cuetag='/usr/share/doc/cuetools-1.3.1/extras/cuetag.sh'
+
+# aliases for files
+
+alias -s txt=$EDITOR
+alias -s md=$EDITOR
+alias -s tex=$EDITOR
+alias -s cls=$EDITOR
+alias -s cpp=$EDITOR
+alias -s c=$EDITOR
+alias -s h=$EDITOR
+alias -s pdf=mupdf
+
+# misc
+
+ylwf=$'\e[33m'
+redf=$'\e[31m'
+redb=$'\e[44m'
+rst=$'\e[0m'
+
+_param() {
+  local out="$redb$ylwf $1 $rst"
+  shift
+  (( $# > 1 )) && out+=" $redf$1$rst" && shift
+  out+=" $1"
+
+  echo "$out"
+}
+
+# utilities
+
+x() {
+  sed -n $1p $2
+}
+
+uc() {
+  urxvtc -e $* 2> /dev/null &
+  (( $? )) && urxvt -e $* 2> /dev/null &
+}
+
+find-inodes() {
+  find $1 -xdev -printf '%h\n' | sort | uniq -c | sort -k1 -n | less
+}
+
+# logging
+
+log() {
+  printf "\e[0;32m►\e[0m $1"
+  shift
+
+  local std=$("$@" 2>err.log)
+
+  local err
+  if [[ -f err.log ]]; then
+    err=$(< err.log)
+    rm err.log
+  fi
+
+  if [ -z "$err" -o "$IGNORE_ERRORS" ]; then
+    printf "\e7\e[1G\e[0;90m►\e[0m\e8\n${VERBOSE:+${std:+$std\n}}"
+  else
+    printf "\e7\e[1G\e[0;31m►\e[0m\e8\n${VERBOSE:+${std:+$std\n}}$err\n"
+  fi
+}
+
+logi() { IGNORE_ERRORS=1 log "$@"; }
+logv() { VERBOSE=1 log "$@"; }

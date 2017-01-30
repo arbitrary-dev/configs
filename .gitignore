@@ -6,6 +6,9 @@
 !/home
 /home/*
 
+!/etc
+/etc/*
+
 !/home/yonigger
 /home/yonigger/*
 
@@ -36,6 +39,12 @@
 
 !/home/yonigger/.zprofile
 !/home/yonigger/.zshrc
+!/root
+/root/*
+!/root/.zshrc
+!/etc/zsh
+/etc/zsh/*
+!/etc/zsh/zshrc
 
 !/home/yonigger/.irssi
 /home/yonigger/.irssi/*
