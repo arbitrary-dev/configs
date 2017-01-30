@@ -1,0 +1,4 @@
+sorendition "= bk"
+layout save default
+caption splitonly "%?%F%{= yk}%:%{= bk}%?%n %t"
+
