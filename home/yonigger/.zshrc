@@ -13,7 +13,7 @@ alias vm-git='scr vm-git ~/vm/vm-git'
 
 alias fm-hanako='scr fm-hanako mplayer mms://hdv4.nkansai.tv/hanako'
 alias fm-hanako1='fm-hanako -ao alsa:device=mono'
-alias limbikfreq='scr limbikfreq mplayer http://74.208.145.88:8000/96.aac'
+alias limbikfreq='scr limbikfreq mplayer http://23.254.217.103:8000/96.aac'
 alias limbikfreq1='limbikfreq -ao alsa:device=mono'
 
 alias ffmpeg='ffmpeg -hide_banner'
