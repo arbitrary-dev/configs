@@ -9,6 +9,19 @@
 !/etc
 /etc/*
 
+!/usr
+/usr/*
+
+!/usr/local
+/usr/local/*
+
+!/usr/local/portage
+
+!/etc/portage
+/etc/portage/*
+
+!/etc/portage/repos.conf
+
 !/home/yonigger
 /home/yonigger/*
 
