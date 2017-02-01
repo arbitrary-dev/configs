@@ -1,0 +1,77 @@
+URxvt.font: xft:Liberation Mono:pixelsize=12
+URxvt.boldFont:
+URxvt.scrollBar: false
+
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheSpot
+
+URxvt.perl-ext-common: selection-to-clipboard
+
+! --- ~/.Xresources ------------------------------------------------------------
+! ------------------------------------------------------------------------------
+! --- generated with 4bit Terminal Color Scheme Designer -----------------------
+! ------------------------------------------------------------------------------
+! --- http://ciembor.github.com/4bit -------------------------------------------
+! ------------------------------------------------------------------------------
+
+URxvt*cursorColor2: 8
+
+! --- special colors ---
+
+URxvt*background: 7
+URxvt*foreground: 3
+
+! --- standard colors ---
+
+! black
+URxvt*color0: #696973
+! bright_black
+URxvt*color8: #696973
+
+! light_black (white)
+URxvt*color7: #7a7a86
+! bright_white
+URxvt*color15: #7a7a86
+
+! red
+URxvt*color1: #e6947e
+! bright_red #d9836c
+URxvt*color9: #e6947e
+
+! sat_red (cyan)
+URxvt*color6: #d9836c
+! bright_cyan
+URxvt*color14: #d9836c
+
+! dim_red (blue) [00]#ffc366
+main-console*color4: [40]#cc8d7a
+! bright_blue
+main-console*color12: [40]#cc8d7a
+! dim_red (blue) [00]#ffc366
+URxvt*color4: #9b827f
+! bright_blue
+URxvt*color12: #9b827f
+
+! yellow
+URxvt*color3: #ffc366
+! bright_yellow
+URxvt*color11: #ffc366
+
+! dim_yellow (magenta)
+main-console*color5: [5]#ffe1b3
+! bright_magenta
+main-console*color13: [5]#ffe1b3
+! dim_yellow (magenta)
+URxvt*color5: #82818a
+! bright_magenta
+URxvt*color13: #82818a
+
+! green
+URxvt*color2: #66cc88
+! bright_green
+URxvt*color10: #66cc88
+
+! ------------------------------------------------------------------------------
+! --- end of terminal colors section -------------------------------------------
+! ------------------------------------------------------------------------------
+

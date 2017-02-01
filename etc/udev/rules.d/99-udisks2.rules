@@ -1,0 +1,2 @@
+ENV{ID_FS_USAGE}=="filesystem|other|crypto", ENV{UDISKS_FILESYSTEM_SHARED}="1"
+KERNEL=="sda2", ENV{UDISKS_IGNORE}="1"

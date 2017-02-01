@@ -1,0 +1,5 @@
+#!/bin/sh
+
+vim_view=/tmp/vim_view
+mkdir $vim_view
+chmod a+rw $vim_view

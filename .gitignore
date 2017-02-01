@@ -22,6 +22,25 @@
 
 !/etc/portage/repos.conf
 
+!/etc/mpdscribble.conf
+!/etc/rc.local
+!/etc/X11
+/etc/X11/*
+!/etc/X11/Xresources
+!/etc/X11/xorg.conf
+!/etc/X11/xorg.conf.d
+!/etc/samba
+/etc/samba/*
+!/etc/samba/smb.conf
+!/etc/local.d
+/etc/local.d/*
+!/etc/local.d/vim_view.start
+!/etc/udev
+/etc/udev/*
+!/etc/udev/rules.d
+!/etc/fstab
+!/etc/ntp.conf
+
 !/home/yonigger
 /home/yonigger/*
 
