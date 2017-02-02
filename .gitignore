@@ -41,6 +41,15 @@
 !/etc/fstab
 !/etc/ntp.conf
 
+!/etc/conf.d
+/etc/conf.d/*
+!/etc/conf.d/net
+!/etc/wpa_supplicant
+/etc/wpa_supplicant/*
+!/etc/wpa_supplicant/wpa_supplicant.conf
+!/etc/dhcpcd.conf
+!/etc/dhcpcd.enter-hook
+
 !/home/yonigger
 /home/yonigger/*
 

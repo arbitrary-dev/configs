@@ -1,0 +1,11 @@
+main() {
+  # save external ip
+  curl ipinfo.io/ip -o /tmp/ip --retry 30 --retry-delay 1
+
+  rc-service ntp-client start
+  date > /tmp/ntp-started
+
+  rc-service distccd start
+}
+
+[[ $if_up = true ]] && main&
