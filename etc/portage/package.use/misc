@@ -1,0 +1,131 @@
+net-im/skype -pulseaudio apulse
+dev-lang/scala doc source
+dev-libs/boost icu
+dev-java/oracle-jdk-bin source javafx doc
+mail-client/mutt imap smtp
+app-i18n/mozc linguas_de linguas_ja
+media-fonts/mplus-outline-fonts ipafont
+net-dialup/ppp eap-tls
+net-im/bitlbee oscar otr -yahoo
+media-video/ffmpeg vpx opus
+app-editors/vim python
+www-client/firefox gstreamer system-libvpx
+app-admin/conky curl hddtemp iostats lua-cairo imlib lua-imlib math mpd rss vim-syntax weather-metar
+media-gfx/blender cycles ffmpeg fftw openal player
+app-emulation/wine staging
+net-p2p/rtorrent daemon
+media-sound/ncmpcpp outputs taglib
+app-arch/p7zip rar
+sys-fs/ntfs3g xattr
+sys-kernel/linux-firmware savedconfig
+net-misc/iputils -caps -filecaps
+x11-wm/openbox imlib
+x11-terms/rxvt-unicode iso14755 -focused-urgency -font-styles mousewheel -vanilla alt-font-width xft
+
+# -lua
+sci-visualization/gnuplot latex
+
+# required by sub-pixel rendering
+media-libs/freetype -bindist
+# required by www-client/firefox-31.7.0::gentoo
+# required by firefox (argument)
+>=dev-lang/python-2.7.9-r1:2.7 sqlite
+# required by sys-devel/prelink-20130503::gentoo
+# required by app-emulation/wine-1.7.45::gentoo[prelink]
+# required by wine (argument)
+>=dev-libs/elfutils-0.158 static-libs
+# required by www-client/firefox-39.0::gentoo[system-libvpx]
+# required by firefox (argument)
+>=media-libs/libvpx-1.4.0 postproc
+# required by dev-ruby/rdoc-4.0.1-r2::gentoo[ruby_targets_ruby21]
+# required by dev-lang/ruby-2.1.6-r1::gentoo[rdoc]
+# required by dev-ruby/rubygems-2.2.5-r1::gentoo[ruby_targets_ruby21]
+# required by virtual/rubygems-10::gentoo[ruby_targets_ruby19]
+# required by dev-ruby/json-1.8.2-r1::gentoo[-test,ruby_targets_ruby21]
+# required by dev-lang/ruby-2.0.0_p645::gentoo
+# required by dev-ruby/rake-0.9.6-r1::gentoo[ruby_targets_ruby20]
+>=dev-ruby/racc-1.4.11 ruby_targets_ruby21
+# required by dev-lang/ruby-2.1.6-r1::gentoo
+# required by dev-ruby/rubygems-2.2.5-r1::gentoo[ruby_targets_ruby21]
+# required by virtual/rubygems-10::gentoo[ruby_targets_ruby19]
+# required by dev-ruby/rdoc-4.0.1-r2::gentoo[-test,ruby_targets_ruby20]
+# required by dev-lang/ruby-2.0.0_p645::gentoo[rdoc]
+# required by dev-ruby/json-1.8.2-r1::gentoo[ruby_targets_ruby20]
+>=dev-ruby/rake-0.9.6-r1 ruby_targets_ruby21
+# required by dev-ruby/racc-1.4.11::gentoo[-test,ruby_targets_ruby21]
+# required by dev-ruby/rdoc-4.0.1-r2::gentoo[ruby_targets_ruby19]
+# required by dev-lang/ruby-2.1.6-r1::gentoo[rdoc]
+# required by dev-ruby/rubygems-2.2.5-r1::gentoo[ruby_targets_ruby21]
+>=virtual/rubygems-10 ruby_targets_ruby21
+# required by dev-lang/ruby-2.1.6-r1::gentoo[rdoc]
+# required by dev-ruby/rubygems-2.2.5-r1::gentoo[ruby_targets_ruby21]
+# required by virtual/rubygems-10::gentoo[ruby_targets_ruby19]
+# required by dev-ruby/json-1.8.2-r1::gentoo[-test,ruby_targets_ruby21]
+# required by dev-lang/ruby-2.0.0_p645::gentoo
+# required by dev-ruby/rake-0.9.6-r1::gentoo[ruby_targets_ruby20]
+# required by dev-ruby/racc-1.4.11::gentoo[-test,ruby_targets_ruby20]
+>=dev-ruby/rdoc-4.0.1-r2 ruby_targets_ruby21
+# required by dev-ruby/rdoc-4.0.1-r2::gentoo[ruby_targets_ruby21]
+# required by dev-lang/ruby-2.1.6-r1::gentoo[rdoc]
+# required by dev-ruby/rubygems-2.2.5-r1::gentoo[ruby_targets_ruby21]
+# required by virtual/rubygems-10::gentoo[ruby_targets_ruby19]
+# required by dev-ruby/rake-0.9.6-r1::gentoo[-test,ruby_targets_ruby21]
+# required by dev-ruby/racc-1.4.11::gentoo[-test,ruby_targets_ruby20]
+>=dev-ruby/json-1.8.2-r1 ruby_targets_ruby21
+# required by virtual/rubygems-10::gentoo[ruby_targets_ruby21]
+# required by dev-lang/ruby-2.1.6-r1::gentoo
+# required by dev-ruby/json-1.8.2-r1::gentoo[ruby_targets_ruby21]
+# required by dev-ruby/rdoc-4.0.1-r2::gentoo[ruby_targets_ruby19]
+# required by dev-lang/ruby-2.0.0_p645::gentoo[rdoc]
+# required by dev-ruby/rake-0.9.6-r1::gentoo[ruby_targets_ruby20]
+# required by dev-ruby/racc-1.4.11::gentoo[-test,ruby_targets_ruby20]
+>=dev-ruby/rubygems-2.2.5-r1 ruby_targets_ruby21
+# required by app-emulation/qemu-2.4.0-r1::gentoo[opengl,-qemu_softmmu_targets_unicore32,-qemu_softmmu_targets_or32,-qemu_softmmu_targets_lm32,-qemu_softmmu_targets_mipsel,-qemu_softmmu_targets_arm,-qemu_softmmu_targets_aarch64,-qemu_softmmu_targets_mips64,-qemu_softmmu_targets_moxie,-qemu_softmmu_targets_microblazeel,-qemu_softmmu_targets_microblaze,-qemu_softmmu_targets_ppcemb,-qemu_softmmu_targets_sh4,-qemu_softmmu_targets_i386,-qemu_softmmu_targets_tricore,-static-softmmu,-qemu_softmmu_targets_alpha,-qemu_softmmu_targets_ppc,qemu_softmmu_targets_x86_64,-qemu_softmmu_targets_m68k,-qemu_softmmu_targets_cris,-qemu_softmmu_targets_xtensa,-qemu_softmmu_targets_sparc,-qemu_softmmu_targets_xtensaeb,-qemu_softmmu_targets_mips64el,-qemu_softmmu_targets_s390x,-qemu_softmmu_targets_mips,-qemu_softmmu_targets_sh4eb,-qemu_softmmu_targets_ppc64,-qemu_softmmu_targets_sparc64]
+# required by @selected
+# required by @world (argument)
+>=media-libs/mesa-11.0.0 gles2
+# required by sys-power/suspend-1.0_p20150810::gentoo[crypt]
+# required by sys-power/suspend (argument)
+>=dev-libs/libgcrypt-1.6.5 static-libs
+# required by sys-power/suspend-1.0_p20150810::gentoo[crypt]
+# required by sys-power/suspend (argument)
+>=dev-libs/libgpg-error-1.19 static-libs
+# required by sys-power/suspend-1.0_p20150810::gentoo[lzo]
+# required by sys-power/suspend (argument)
+>=dev-libs/lzo-2.08 static-libs
+# required by dev-util/android-studio-2.2.3.0.145.3537739::gentoo
+# required by @selected
+# required by @world (argument)
+=sys-libs/ncurses-5.9-r101 tinfo
+# required by net-fs/samba-4.2.11::gentoo
+# required by media-sound/mpd-0.19.10::gentoo[samba]
+# required by @selected
+# required by @world (argument)
+>=sys-libs/ntdb-1.0-r1 python
+# required by dev-db/sqlitebrowser-3.9.1::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/qcustomplot-1.3.2 qt5
+x11-libs/qscintilla -qt4 qt5
+# required by sys-libs/ldb-1.1.26::gentoo
+# required by net-fs/samba-4.2.11::gentoo
+# required by media-sound/mpd-0.19.10::gentoo[samba]
+# required by @selected
+# required by @world (argument)
+>=sys-libs/tdb-1.3.8 python
+# required by gnome-base/gvfs-1.28.3-r1::gentoo[samba]
+# required by x11-libs/libfm-1.2.3-r1::gentoo[automount,udisks]
+# required by x11-misc/pcmanfm-1.2.3::gentoo
+# required by @selected
+# required by @world (argument)
+>=net-fs/samba-4.2.11 winbind client
+# required by sys-libs/ldb-1.1.26::gentoo
+# required by net-fs/samba-4.2.11::gentoo
+# required by media-sound/mpd-0.19.10::gentoo[samba]
+# required by @selected
+# required by @world (argument)
+>=sys-libs/tevent-0.9.28 python
+# required by app-text/goldendict-9999::qt
+# required by @selected
+# required by @world (argument)
+>=dev-qt/qtsingleapplication-2.6.1_p20150629 qt5

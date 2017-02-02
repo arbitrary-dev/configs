@@ -1,0 +1,10 @@
+net-im/skype skype-4.0.0.7-copyright
+www-plugins/google-talkplugin Google-TOS
+
+# required by media-video/ffmpeg-2.6.3::gentoo[fdk]
+# required by media-sound/mpd-0.19.9-r1::gentoo[-libav,ffmpeg]
+# required by @selected
+# required by @world (argument)
+=media-libs/fdk-aac-0.1.3 FraunhoferFDK
+# required by dev-java/oracle-jdk-bin (argument)
+>=dev-java/oracle-jdk-bin-1.8.0.66 Oracle-BCLA-JavaSE

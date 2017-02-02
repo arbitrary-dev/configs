@@ -1,0 +1,88 @@
+dev-texlive/texlive-xetex ~amd64
+app-text/texlive ~amd64
+
+# bug #606772
+dev-libs/ptexenc ~amd64
+
+# bug #606786
+app-text/dvipsk ~amd64
+
+# required by app-text/texlive-2016::gentoo[graphics]
+# required by @selected
+# required by @world (argument)
+=dev-texlive/texlive-pictures-2016 ~amd64
+# required by dev-texlive/texlive-langjapanese-2016::gentoo
+# required by app-text/texlive-2016::gentoo[l10n_ja]
+# required by @selected
+# required by @world (argument)
+=app-text/texlive-core-2016 ~amd64
+# required by app-text/texlive-2016::gentoo[l10n_de]
+# required by @selected
+# required by @world (argument)
+=dev-texlive/texlive-langgerman-2016 ~amd64
+# required by app-text/texlive-2016::gentoo[-l10n_mn,-l10n_sr,l10n_ru,-l10n_bg,-l10n_uk]
+# required by @selected
+# required by @world (argument)
+=dev-texlive/texlive-langcyrillic-2016 ~amd64
+# required by app-text/texlive-2016::gentoo[l10n_ja]
+# required by @selected
+# required by @world (argument)
+=dev-texlive/texlive-langjapanese-2016 ~amd64
+# required by dev-texlive/texlive-latex-2016::gentoo
+# required by dev-texlive/texlive-latexrecommended-2016::gentoo
+# required by app-text/texlive-2016::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-texlive/texlive-basic-2016 ~amd64
+# required by app-text/texlive-2016::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-texlive/texlive-latexrecommended-2016 ~amd64
+# required by dev-texlive/texlive-latexrecommended-2016::gentoo
+# required by app-text/texlive-2016::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-texlive/texlive-latex-2016 ~amd64
+# required by app-text/texlive-2016::gentoo[luatex]
+# required by @selected
+# required by @world (argument)
+=dev-texlive/texlive-luatex-2016 ~amd64
+# required by app-text/texlive-2016::gentoo[science]
+# required by @selected
+# required by @world (argument)
+=dev-texlive/texlive-mathscience-2016 ~amd64
+# required by app-text/texlive-2016::gentoo[l10n_en,-l10n_en-GB]
+# required by @selected
+# required by @world (argument)
+=dev-texlive/texlive-langenglish-2016 ~amd64
+# required by app-text/texlive-2016::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-texlive/texlive-fontutils-2016 ~amd64
+# required by dev-texlive/texlive-langjapanese-2016::gentoo
+# required by app-text/texlive-2016::gentoo[l10n_ja]
+# required by @selected
+# required by @world (argument)
+=dev-texlive/texlive-langcjk-2016 ~amd64
+# required by app-text/texlive-2016::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-texlive/texlive-genericrecommended-2016 ~amd64
+# required by app-text/texlive-2016::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-texlive/texlive-fontsrecommended-2016 ~amd64
+# required by app-text/texlive-core-2016::gentoo
+# required by dev-texlive/texlive-fontutils-2016::gentoo
+# required by virtual/latex-base-1.0::gentoo
+# required by sci-visualization/gnuplot-5.0.1-r1::gentoo[latex]
+# required by @selected
+# required by @world (argument)
+=app-text/ps2pkm-1.8_p20160523 ~amd64
+# required by app-text/texlive-core-2016::gentoo
+# required by dev-texlive/texlive-fontutils-2016::gentoo
+# required by virtual/latex-base-1.0::gentoo
+# required by sci-visualization/gnuplot-5.0.1-r1::gentoo[latex]
+# required by @selected
+# required by @world (argument)
+=dev-tex/bibtexu-3.71_p20160523 ~amd64

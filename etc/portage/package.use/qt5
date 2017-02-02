@@ -1,0 +1,42 @@
+dev-qt/qt-creator autotools clangcodemodel clangstaticanalyser clearcase cmake glsl doc git
+
+# required by dev-qt/qtcore-5.5.0::qt
+# required by dev-qt/qtquickcontrols-5.5.0::qt
+# required by @qt5-essentials (argument)
+>=dev-libs/libpcre-8.36 pcre16
+# required by dev-qt/qtwebkit-5.5.0::qt
+# required by @qt5-addons (argument)
+>=dev-qt/qtcore-5.5.0 icu debug
+# required by dev-qt/qt-creator-4.1.0::gentoo
+# required by qt-creator (argument)
+>=dev-libs/botan-1.10.13 threads
+# required by sys-devel/clang-3.9.0-r100::gentoo
+# required by dev-qt/qt-creator-4.1.0::gentoo[clangcodemodel]
+# required by qt-creator (argument)
+>=sys-devel/llvm-3.9.0-r1 clang
+# required by dev-qt/qtsingleapplication-2.6.1_p20150629::gentoo
+# required by app-text/goldendict-9999::qt
+# required by @selected
+# required by @world (argument)
+>=dev-qt/qtlockedfile-2.4.1_p20150629 qt5
+
+# required by dev-qt/qt-creator-4.2.0::gentoo[webengine]
+# required by @selected
+# required by @world (argument)
+>=dev-qt/qtwebengine-5.7.1 widgets
+# required by dev-qt/qtwebengine-5.7.1::gentoo
+# required by dev-qt/qt-creator-4.2.0::gentoo[webengine]
+# required by @selected
+# required by @world (argument)
+>=dev-qt/qtwebchannel-5.7.1 qml
+# required by dev-qt/qtwebengine-5.7.1::gentoo
+# required by dev-qt/qt-creator-4.2.0::gentoo[webengine]
+# required by @selected
+# required by @world (argument)
+>=sys-libs/zlib-1.2.8-r1 minizip
+# required by dev-qt/qtwebengine-5.7.1::gentoo
+# required by dev-qt/qt-creator-4.2.0::gentoo[webengine]
+# required by @selected
+# required by @world (argument)
+>=media-libs/libvpx-1.6.0-r1 svc
+

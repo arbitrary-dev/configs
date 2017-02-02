@@ -1,0 +1,11 @@
+=app-text/goldendict-9999 **
+# required by dev-qt/qtcore-4.8.7-r1::gentoo
+# required by app-text/goldendict-9999::qt
+# required by @selected
+# required by @world (argument)
+=dev-qt/qttranslations-4.8.7 ~amd64
+# required by dev-qt/qtgui-4.8.7::gentoo[qt3support]
+# required by app-text/goldendict-9999::qt
+# required by @selected
+# required by @world (argument)
+=dev-qt/qt3support-4.8.7 ~amd64

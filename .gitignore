@@ -19,8 +19,10 @@
 
 !/etc/portage
 /etc/portage/*
-
+!/etc/portage/savedconfig
 !/etc/portage/repos.conf
+!/etc/portage/make.conf
+!/etc/portage/package.*
 
 !/etc/mpdscribble.conf
 !/etc/rc.local

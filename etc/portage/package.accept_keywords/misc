@@ -1,0 +1,208 @@
+media-libs/libvpx ~amd64
+media-sound/mpd ~amd64
+dev-qt/qt-creator ~amd64
+=games-roguelike/dwarf-fortress-0.40.24 ~amd64
+media-fonts/ubuntu-font-family ~amd64
+dev-lua/luarocks ~amd64
+media-fonts/mplus-outline-fonts ~amd64
+app-admin/conky ~amd64
+dev-util/android-studio **
+dev-util/android-sdk-update-manager ~amd64
+=x11-misc/compton-9999 **
+x11-drivers/xf86-input-evdev ~amd64
+x11-drivers/xf86-input-wacom ~amd64
+www-client/firefox ~amd64
+app-emulation/wine ~amd64
+app-misc/screenfetch ~amd64
+media-libs/mesa ~amd64
+x11-base/xorg-server ~amd64
+x11-drivers/nvidia-drivers ~amd64
+
+dev-lang/scala ~amd64
+dev-java/sbt ~amd64
+
+dev-db/sqlitebrowser ~amd64
+x11-libs/qscintilla ~amd64
+
+# sys-kernel/gentoo-sources ~amd64
+# required by media-libs/mesa-10.5.6::gentoo
+# required by www-client/firefox-31.7.0::gentoo
+# required by @selected
+# required by @world (argument)
+=app-eselect/eselect-opengl-1.3.1-r4 ~amd64
+# required by media-libs/mesa-10.5.6::gentoo
+# required by www-client/firefox-31.7.0::gentoo
+# required by @selected
+# required by @world (argument)
+=x11-proto/glproto-1.4.17-r1 ~amd64
+# required by x11-base/xorg-server-1.17.1-r1::gentoo[xorg]
+# required by x11-drivers/xf86-input-wacom-0.24.0::gentoo
+# required by @__auto_slot_operator_replace_installed__ (argument)
+x11-base/xorg-drivers ~amd64
+# required by fontmatrix (argument)
+=media-gfx/fontmatrix-0.6.0 ~amd64
+# required by media-libs/mesa-10.6.1::gentoo
+# required by x11-apps/mesa-progs-8.2.0::gentoo
+# required by @selected
+# required by @world (argument)
+=x11-libs/libdrm-2.4.62 ~amd64
+# required by blender::media-overlay (argument)
+=media-gfx/blender-2.75 ~amd64
+# required by media-gfx/blender-2.75::media-overlay
+# required by blender::media-overlay (argument)
+=dev-cpp/eigen-3.2.5 ~amd64
+# required by media-gfx/blender-2.75::media-overlay
+# required by blender::media-overlay (argument)
+=sci-libs/ldl-2.1.0 ~amd64
+# required by puddletag (argument)
+=media-sound/puddletag-1.0.5 ~amd64
+# required by x11-libs/pango-1.36.8::gentoo
+# required by x11-wm/openbox-3.5.2-r1::gentoo
+# required by @selected
+# required by @world (argument)
+=media-libs/harfbuzz-0.9.41 ~amd64
+# required by x11-libs/gdk-pixbuf-2.30.8-r2::gentoo
+# required by dev-cpp/gtkmm-2.24.4-r2::gentoo
+# required by media-gfx/inkscape-0.48.5-r1::gentoo
+# required by @selected
+# required by @world (argument)
+=media-libs/libpng-1.6.18 ~amd64
+# required by media-libs/mesa-11.0.0::gentoo
+# required by media-video/nvidia-settings-340.58::gentoo
+# required by app-admin/conky-1.9.0-r3::gentoo[nvidia,X]
+# required by @selected
+# required by @world (argument)
+=x11-libs/libdrm-2.4.65 ~amd64
+# required by gbdfed (argument)
+=x11-misc/gbdfed-1.6 ~amd64
+# required by lrexlib (argument)
+=dev-lua/lrexlib-2.4.0 ~amd64
+# required by lua-gd (argument)
+=dev-libs/lua-gd-2.0.33.2 ~amd64
+# required by app-i18n/mozc-2.16.2037.102::gentoo
+# required by mozc (argument)
+=app-i18n/tegaki-zinnia-japanese-0.3 ~amd64
+# required by mozc (argument)
+=app-i18n/mozc-2.16.2037.102 ~amd64
+# required by www-client/firefox-43.0::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-libs/nspr-4.11 ~amd64
+# required by dev-db/sqlitebrowser-3.8.0::gentoo
+# required by sqlitebrowser (argument)
+=dev-libs/qcustomplot-1.3.1 ~amd64
+
+# required by dev-qt/qtprintsupport::qt
+# required by @qt5-addons (argument)
+dev-qt/qtwidgets ~amd64
+# required by dev-qt/qtprintsupport::qt
+# required by @qt5-addons (argument)
+dev-qt/qtgui ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtscript ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtsensors ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtwebsockets ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtserialport ~amd64
+# required by @qt5-essentials (argument)
+dev-qt/qtnetwork ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtsvg ~amd64
+# required by dev-qt/qtsql::qt
+# required by dev-qt/qtwebkit::qt
+# required by @qt5-addons (argument)
+dev-qt/qtcore ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtprintsupport ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtxml ~amd64
+# required by @qt5-essentials (argument)
+dev-qt/qtmultimedia ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtx11extras ~amd64
+# required by dev-qt/qtgui::qt[dbus]
+# required by dev-qt/qtquickcontrols::qt
+# required by @qt5-essentials (argument)
+dev-qt/qtdbus ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtgraphicaleffects ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtopengl ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtquick1 ~amd64
+# required by dev-qt/qtquickcontrols::qt
+# required by @qt5-essentials (argument)
+dev-qt/qtdeclarative ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtpositioning ~amd64
+# required by dev-qt/qtdeclarative::qt[-test]
+# required by dev-qt/qtgraphicaleffects::qt
+# required by @qt5-addons (argument)
+dev-qt/qttest ~amd64
+# required by @qt5-essentials (argument)
+dev-qt/qtsql ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtxmlpatterns ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtimageformats ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtconcurrent ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtwebkit ~amd64
+# required by @qt5-essentials (argument)
+dev-qt/qtquickcontrols ~amd64
+# required by sys-devel/llvm-3.9.0-r1::gentoo[clang]
+=sys-devel/clang-3.9.0-r100 ~amd64
+# required by sys-devel/clang-runtime-3.9.0::gentoo[openmp]
+# required by sys-devel/llvm-3.9.0-r1::gentoo[clang]
+# required by sys-devel/clang-3.9.0-r100::gentoo
+# required by dev-qt/qt-creator-4.1.0::gentoo[clangcodemodel]
+# required by qt-creator (argument)
+=sys-libs/libomp-3.9.0 ~amd64
+# required by sys-devel/llvm-3.9.0-r1::gentoo[clang]
+# required by sys-devel/clang-3.9.0-r100::gentoo
+# required by dev-qt/qt-creator-4.1.0::gentoo[clangcodemodel]
+# required by qt-creator (argument)
+=sys-devel/clang-runtime-3.9.0 ~amd64
+# required by sys-devel/llvm-3.9.0-r1::gentoo
+# required by sys-devel/clang-3.9.0-r100::gentoo
+# required by dev-qt/qt-creator-4.1.0::gentoo[clangcodemodel]
+# required by qt-creator (argument)
+=dev-util/cmake-3.7.1 ~amd64
+# required by sys-devel/clang-3.9.0-r100::gentoo
+# required by dev-qt/qt-creator-4.1.0::gentoo[clangcodemodel]
+# required by qt-creator (argument)
+=sys-devel/llvm-3.9.0-r1 ~amd64
+
+# required by www-client/firefox-50.0.2::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-libs/nss-3.27.2 ~amd64
+# required by media-libs/mesa-13.0.2::gentoo
+# required by www-client/firefox-50.0.2::gentoo
+# required by @selected
+# required by @world (argument)
+=x11-libs/libdrm-2.4.74 ~amd64
+# required by @qt5-addons
+# required by @selected
+# required by @world (argument)
+=dev-qt/qtlocation-5.6.2 ~amd64
+# required by skype (argument)
+net-im/skype ~amd64
+
+# required by x11-base/xorg-server-1.19.1::gentoo
+# required by x11-drivers/xf86-input-wacom-0.34.0::gentoo
+# required by x11-base/xorg-drivers-1.19::gentoo[input_devices_wacom]
+# required by @selected
+# required by @world (argument)
+=x11-libs/libXfont2-2.0.1 ~amd64
+# required by x11-libs/xcb-util-cursor-0.1.3-r1::gentoo
+# required by x11-libs/xcb-util-0.4.0::gentoo
+# required by x11-libs/xcb-util-image-0.4.0::gentoo
+# required by dev-qt/qtgui-5.7.1::gentoo[xcb]
+# required by @qt5-essentials
+# required by @selected
+# required by @world (argument)
+=x11-proto/xproto-7.0.31 ~amd64

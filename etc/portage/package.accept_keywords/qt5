@@ -1,0 +1,69 @@
+dev-qt/qtwebengine ~amd64
+dev-qt/linguist-tools ~amd64
+dev-qt/qdoc ~amd64
+app-i18n/ibus-qt ~amd64
+dev-qt/qtwebchannel ~amd64
+dev-qt/qthelp ~amd64
+
+# required by dev-qt/qtprintsupport::qt
+# required by @qt5-addons (argument)
+dev-qt/qtwidgets ~amd64
+# required by dev-qt/qtprintsupport::qt
+# required by @qt5-addons (argument)
+dev-qt/qtgui ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtscript ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtsensors ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtwebsockets ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtserialport ~amd64
+# required by @qt5-essentials (argument)
+dev-qt/qtnetwork ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtsvg ~amd64
+# required by dev-qt/qtsql::qt
+# required by dev-qt/qtwebkit::qt
+# required by @qt5-addons (argument)
+dev-qt/qtcore ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtprintsupport ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtxml ~amd64
+# required by @qt5-essentials (argument)
+dev-qt/qtmultimedia ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtx11extras ~amd64
+# required by dev-qt/qtgui::qt[dbus]
+# required by dev-qt/qtquickcontrols::qt
+# required by @qt5-essentials (argument)
+dev-qt/qtdbus ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtgraphicaleffects ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtopengl ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtquick1 ~amd64
+# required by dev-qt/qtquickcontrols::qt
+# required by @qt5-essentials (argument)
+dev-qt/qtdeclarative ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtpositioning ~amd64
+# required by dev-qt/qtdeclarative::qt[-test]
+# required by dev-qt/qtgraphicaleffects::qt
+# required by @qt5-addons (argument)
+dev-qt/qttest ~amd64
+# required by @qt5-essentials (argument)
+dev-qt/qtsql ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtxmlpatterns ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtimageformats ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtconcurrent ~amd64
+# required by @qt5-addons (argument)
+dev-qt/qtwebkit ~amd64
+# required by @qt5-essentials (argument)
+dev-qt/qtquickcontrols ~amd64
+dev-qt/designer ~amd64
