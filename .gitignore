@@ -44,11 +44,27 @@
 !/etc/conf.d
 /etc/conf.d/*
 !/etc/conf.d/net
+!/etc/conf.d/distccd
+
 !/etc/wpa_supplicant
 /etc/wpa_supplicant/*
 !/etc/wpa_supplicant/wpa_supplicant.conf
 !/etc/dhcpcd.conf
 !/etc/dhcpcd.enter-hook
+
+!/etc/vim
+/etc/vim/*
+!/etc/vim/vimrc.local
+!/etc/vim/syntax.local
+
+!/etc/acpi
+/etc/acpi/*
+!/etc/acpi/actions
+!/etc/acpi/default.sh
+
+!/etc/distcc
+/etc/distcc/*
+!/etc/distcc/hosts
 
 !/home/yonigger
 /home/yonigger/*

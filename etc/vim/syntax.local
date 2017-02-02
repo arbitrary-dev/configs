@@ -1,0 +1,86 @@
+" 0 8  black
+" 7 15 light black
+" 1 9  red
+" 6 14 sat red
+" 4 12 dim red
+" 3 11 yellow
+" 5 13 dim yellow
+" 2 10 green
+
+hi clear Directory
+hi SignColumn ctermbg=none
+hi Visual term=reverse cterm=reverse ctermbg=8
+hi ColorColumn ctermbg=12 ctermfg=15
+hi Constant ctermfg=9
+hi Special ctermfg=1
+hi SpecialKey ctermfg=0 ctermbg=3
+hi Identifier ctermfg=1
+hi PreProc ctermfg=6
+hi Title ctermfg=3
+hi link GentooBug GentooPackageKeywordsComment
+
+hi link htmlLink none
+hi clear HtmlBold
+
+hi PMenu ctermfg=3 ctermbg=4
+hi PMenuSel ctermfg=0 ctermbg=3
+hi PmenuSbar ctermbg=none
+
+hi Statement ctermfg=6
+hi clear Type
+hi link Type Statement
+hi clear PreProc
+hi link PreProc Statement
+hi Comment ctermfg=6
+
+hi StatusLine cterm=none ctermfg=15 ctermbg=3
+hi clear StatusLineNC
+hi StatusLineNC ctermfg=3 ctermbg=12
+set fillchars+=vert:\ 
+hi clear VertSplit
+hi link VertSplit StatusLineNC
+
+hi clear MoreMsg
+hi link MoreMsg ModeMsg
+hi clear Question
+hi link Question ModeMsg
+
+hi Folded ctermfg=6 ctermbg=none
+hi FoldColumn ctermfg=6 ctermbg=none
+
+hi SpellBad cterm=none ctermbg=9 ctermfg=0
+hi Error ctermfg=8 ctermbg=1
+
+hi Search ctermfg=11 ctermbg=6
+hi MatchParen ctermfg=7 ctermbg=1
+hi clear IncSearch
+hi IncSearch ctermfg=0 ctermbg=3
+
+set cursorline
+hi LineNr ctermfg=6
+hi CursorLine cterm=none ctermbg=13
+hi CursorLineNr ctermfg=3 ctermbg=13
+
+hi diffAdded ctermfg=2
+hi diffFile ctermfg=7 ctermbg=3
+hi DiffAdd ctermfg=2 ctermbg=4
+hi DiffDelete ctermfg=1 ctermbg=4
+hi DiffText ctermfg=3 ctermbg=6
+hi DiffChange ctermfg=3 ctermbg=6
+hi clear diffIndexLine
+hi link diffIndexLine diffFile
+
+hi gitrebaseSummary ctermfg=3
+hi gitrebaseHash ctermfg=6
+hi gitrebasePick ctermfg=2
+hi clear gitrebaseReword
+hi link gitrebaseReword gitrebasePick
+hi clear gitrebaseEdit
+hi link gitrebaseEdit gitrebasePick
+hi clear gitrebaseSquash
+hi link gitrebaseSquash gitrebasePick
+hi clear gitrebaseFixup
+hi link gitrebaseFixup gitrebasePick
+hi clear gitrebaseExec
+hi link gitrebaseExec gitrebasePick
+
