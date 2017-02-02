@@ -12,6 +12,12 @@
 !/usr
 /usr/*
 
+!/var
+/var/*
+!/var/kernel-bak
+/var/kernel-bak/*
+!/var/kernel-bak/.config
+
 !/usr/local
 /usr/local/*
 
