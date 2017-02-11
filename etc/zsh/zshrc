@@ -31,8 +31,10 @@ bindkey "^[[B" history-beginning-search-forward
 alias vr="vim ~/.zshrc"
 alias sr="source ~/.zshrc"
 
+alias pr=perl-rename
 alias cl=clear
-alias sed="sed -r"
+alias sed="sed -br"
+alias less="less -iSXF"
 
 # utilities
 
