@@ -13,6 +13,9 @@ set ic scs " smart case-insensitive search
 
 set sw=2 ts=2 sts=2 et
 
+au FileType java setlocal sw=4 ts=4 sts=4
+au FileType java,scala,cpp,h setlocal colorcolumn=80
+
 filetype plugin indent on
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
@@ -50,4 +53,3 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_server_use_vim_stdout = 1
 let g:ycm_server_log_level = 'debug'
-

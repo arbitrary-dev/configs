@@ -206,3 +206,12 @@ net-im/skype ~amd64
 # required by @selected
 # required by @world (argument)
 =x11-proto/xproto-7.0.31 ~amd64
+# required by dev-qt/qtcore-5.7.1-r2::gentoo
+# required by @qt5-essentials
+# required by @selected
+# required by @world (argument)
+=dev-libs/double-conversion-2.0.1 ~amd64
+# required by www-client/firefox-52.0.1-r1::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-libs/nss-3.29.3 ~amd64

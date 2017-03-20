@@ -261,6 +261,16 @@
     <keybind key="W-d">
       <action name="ToggleShowDesktop"/>
     </keybind>
+    <keybind key="W-s">
+      <action name="Execute">
+        <command>gksudo -S s2ram</command>
+      </action>
+    </keybind>
+    <keybind key="W-h">
+      <action name="Execute">
+        <command>gksudo -S s2disk</command>
+      </action>
+    </keybind>
     <!-- Keybindings for windows -->
 	<keybind key="W-Up">
 		<action name="Maximize" />

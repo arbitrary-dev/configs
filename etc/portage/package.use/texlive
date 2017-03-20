@@ -1,4 +1,4 @@
-app-text/texlive cjk graphics science xetex l10n_de l10n_en l10n_ja l10n_ru
+app-text/texlive cjk graphics science xetex luatex l10n_de l10n_en l10n_ja l10n_ru
 
 # required by app-text/texlive-core-2014-r4::gentoo[xetex]
 # required by dev-texlive/texlive-luatex-2014::gentoo

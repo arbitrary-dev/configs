@@ -19,6 +19,9 @@ alias limbikfreq1='limbikfreq -ao alsa:device=mono'
 alias ffmpeg='ffmpeg -hide_banner'
 alias ffprobe='ffprobe -hide_banner'
 
+alias cnv-photos='find -iname "*.jpg" | xargs -d "\n" cnv photos'
+alias cnv-videos='find -iname "*.mov" -o -iname "*.avi" -o -iname "*.3gp" | xargs -d "\n" cnv videos'
+
 alias sf='screenfetch -N'
 alias nc=ncmpcpp
 
@@ -85,4 +88,34 @@ EOF
   [[ -z $out_fmt ]] && out_fmt=${file##*.}
 
   shnsplit -f $cue $file -o $out_fmt -t $title_fmt ${out_dir:+-d} $out_dir
+}
+
+lookup() {
+  local cnt=0
+
+  for i in $@; do
+    if [[ -n "$(find /misc/media -not -path '/misc/media/_unsorted/*' -iname "$i")" ]]; then
+      mkdir -p _found
+      mv $i _found/
+      cnt=$[$cnt + 1]
+    fi
+  done
+
+  (( $cnt )) && echo "$cnt files found!" \
+             || echo "All is clear."
+}
+
+bak() {
+  7z a -mhe=on -mx=1 -p $2/$1-$(date +%Y-%m-%d).7z $1
+}
+
+par-cnv() {
+  local code='
+    cd {//}
+    cnv film --preset veryslow -map 0:0 -map 0:1 -map 0:2 \
+             --log quiet -b 420k -w 1024 -dn 4:3:6:4.5 -t 5 {/}
+    rm *.log*
+  '
+
+  find -iname '*.mkv' -not -path '*-out.mkv' | parallel --will-cite "$code"
 }

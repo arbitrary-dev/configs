@@ -9,7 +9,7 @@
 
 hi clear Directory
 hi SignColumn ctermbg=none
-hi Visual term=reverse cterm=reverse ctermbg=8
+hi Visual ctermfg=15 ctermbg=3
 hi ColorColumn ctermbg=12 ctermfg=15
 hi Constant ctermfg=9
 hi Special ctermfg=1

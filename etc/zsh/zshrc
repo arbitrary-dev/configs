@@ -66,6 +66,7 @@ alias -s cls=$EDITOR
 alias -s cpp=$EDITOR
 alias -s c=$EDITOR
 alias -s h=$EDITOR
+alias -s hs=$EDITOR
 alias -s pdf=mupdf
 
 # misc

@@ -53,6 +53,7 @@
 /etc/conf.d/*
 !/etc/conf.d/net
 !/etc/conf.d/distccd
+!/etc/conf.d/docker
 
 !/etc/wpa_supplicant
 /etc/wpa_supplicant/*
@@ -76,6 +77,8 @@
 
 !/home/yonigger
 /home/yonigger/*
+
+!/home/yonigger/.ghci
 
 !/home/yonigger/.config
 /home/yonigger/.config/*

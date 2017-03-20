@@ -31,11 +31,11 @@
   </menu>
   <separator />
   <menu id="graphics" label="graphics">
-    <item label="blender">
+<!--<item label="blender">
       <action name="Execute">
         <command>blender</command>
       </action>
-    </item>
+    </item> -->
     <item label="gimp">
       <action name="Execute">
         <command>gimp</command>
@@ -76,6 +76,16 @@
 	</item>
   </menu>
   <separator />
+  <item label="hibernate">
+    <action name="Execute">
+			<command>gksudo -S s2disk</command>
+    </action>
+  </item>
+  <item label="restart">
+    <action name="Execute">
+			<command>gksudo -S reboot</command>
+    </action>
+  </item>
   <item label="logout">
     <action name="Exit">
       <prompt>yes</prompt>

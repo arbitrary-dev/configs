@@ -1,5 +1,7 @@
-dev-texlive/texlive-xetex ~amd64
 app-text/texlive ~amd64
+
+dev-texlive/texlive-xetex ~amd64
+dev-texlive/texlive-latexextra ~amd64
 
 # bug #606772
 dev-libs/ptexenc ~amd64

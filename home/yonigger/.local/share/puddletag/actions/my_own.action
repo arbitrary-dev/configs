@@ -143,6 +143,36 @@
     "module": "puddlestuff.functions", 
     "func_name": "replaceWithReg"
   }, 
+  "Func39": {
+    "fields": [
+      "artist", 
+      "title", 
+      "album", 
+      "album artist"
+    ], 
+    "arguments": [
+      "(\\w+)'m\\b", 
+      "$1'm", 
+      false
+    ], 
+    "module": "puddlestuff.functions", 
+    "func_name": "replaceWithReg"
+  }, 
+  "Func38": {
+    "fields": [
+      "artist", 
+      "title", 
+      "album", 
+      "album artist"
+    ], 
+    "arguments": [
+      "(\\w+)'re\\b", 
+      "$1're", 
+      false
+    ], 
+    "module": "puddlestuff.functions", 
+    "func_name": "replaceWithReg"
+  }, 
   "Func31": {
     "fields": [
       "title"
@@ -175,8 +205,8 @@
       "album artist"
     ], 
     "arguments": [
-      "(\\w+)'s\\b", 
-      "$1's", 
+      "\\s*/\\s*", 
+      " / ", 
       false
     ], 
     "module": "puddlestuff.functions", 
@@ -197,6 +227,21 @@
     "module": "puddlestuff.functions", 
     "func_name": "replaceWithReg"
   }, 
+  "Func35": {
+    "fields": [
+      "artist", 
+      "title", 
+      "album", 
+      "album artist"
+    ], 
+    "arguments": [
+      "(\\w+)'ll\\b", 
+      "$1'll", 
+      false
+    ], 
+    "module": "puddlestuff.functions", 
+    "func_name": "replaceWithReg"
+  }, 
   "Func34": {
     "fields": [
       "artist", 
@@ -205,8 +250,38 @@
       "album artist"
     ], 
     "arguments": [
-      "\\s*/\\s*", 
-      " / ", 
+      "(\\w+)'s\\b", 
+      "$1's", 
+      false
+    ], 
+    "module": "puddlestuff.functions", 
+    "func_name": "replaceWithReg"
+  }, 
+  "Func37": {
+    "fields": [
+      "artist", 
+      "title", 
+      "album", 
+      "album artist"
+    ], 
+    "arguments": [
+      "(\\w+)'t\\b", 
+      "$1't", 
+      false
+    ], 
+    "module": "puddlestuff.functions", 
+    "func_name": "replaceWithReg"
+  }, 
+  "Func36": {
+    "fields": [
+      "artist", 
+      "title", 
+      "album", 
+      "album artist"
+    ], 
+    "arguments": [
+      "(\\w+)'ve\\b", 
+      "$1've", 
       false
     ], 
     "module": "puddlestuff.functions", 
@@ -214,10 +289,8 @@
   }, 
   "Func3": {
     "fields": [
-      "artist", 
       "title", 
-      "album", 
-      "album artist"
+      "album"
     ], 
     "arguments": [
       " The ", 
@@ -356,6 +429,31 @@
     ], 
     "module": "puddlestuff.functions", 
     "func_name": "replace"
+  }, 
+  "Func40": {
+    "fields": [
+      "album"
+    ], 
+    "arguments": [
+      "\\bep$", 
+      "EP", 
+      false
+    ], 
+    "module": "puddlestuff.functions", 
+    "func_name": "replaceWithReg"
+  }, 
+  "Func41": {
+    "fields": [
+      "album", 
+      "title"
+    ], 
+    "arguments": [
+      "\\bii\\b", 
+      "II", 
+      false
+    ], 
+    "module": "puddlestuff.functions", 
+    "func_name": "replaceWithReg"
   }, 
   "Func28": {
     "fields": [
@@ -498,5 +596,30 @@
   }, 
   "info": {
     "name": "my_own"
+  }, 
+  "Func42": {
+    "fields": [
+      "album", 
+      "title"
+    ], 
+    "arguments": [
+      "\\biii\\b", 
+      "III", 
+      false
+    ], 
+    "module": "puddlestuff.functions", 
+    "func_name": "replaceWithReg"
+  }, 
+  "Func43": {
+    "fields": [
+      "title"
+    ], 
+    "arguments": [
+      "\\bremix\\b", 
+      "remix", 
+      false
+    ], 
+    "module": "puddlestuff.functions", 
+    "func_name": "replaceWithReg"
   }
 }
