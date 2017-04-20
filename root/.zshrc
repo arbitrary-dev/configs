@@ -32,7 +32,7 @@ sync() {
 
   if [[ -n $emerge ]]; then
     echo "Emerging..."
-    emerge -qauDN @world
+    emerge -qauDN --keep-going @world
   fi
 }
 
@@ -110,8 +110,11 @@ bkrn() {
   local cfg=$src/.config
   local bdir=/tmp/kernel-build
 
-  mkdir -p $bdir
-  cp $cfg $bdir &> /dev/null
+  if [[ ! -f $bdir/.config && -f $cfg ]]; then
+    mkdir -p $bdir
+    echo "Copying $cfg to $bdir ..."
+    cp $cfg $bdir &> /dev/null
+  fi
   cfg=$bdir/${cfg##*/}
 
   cd $src
@@ -120,7 +123,7 @@ bkrn() {
   # .config
 
   if [[ ! -f $cfg ]]; then
-    echo "Enter path to previous ${cfg##*/} (if any):"
+    echo "Enter path to previous ${cfg##*/} (/root/backup/.config-*):"
 
     local prev
     vared prev
@@ -131,12 +134,16 @@ bkrn() {
       echo "$prev has been copied to $cfg"
     elif [[ -n $prev ]]; then
       echo "$prev is not found!"
+      echo
+      _press_space
     fi
   fi
 
   # make silentoldconfig
 
   local wo_distcc=${PATH//\/usr\/lib\/distcc\/bin:/}
+  echo $PATH
+  echo $wo_distcc
   if [[ -f $cfg ]]; then
     echo "Update previous ${cfg##*/}"
     PATH=$wo_distcc make O=$bdir silentoldconfig
@@ -147,7 +154,7 @@ bkrn() {
   local r=y
   echo
   if [[ -f $cfg ]]; then
-    read -q r?"make menuconfig? "
+    read -q r?"Make menuconfig? "
     echo
   fi
   [[ $r = y ]] && PATH=$wo_distcc make O=$bdir menuconfig
@@ -157,10 +164,11 @@ bkrn() {
   # make
 
   echo
-  echo "About to build kernel..."
-  local args="-j21 -l4"
-  vared -p "Args to make: " args
-  time make O=$bdir $args
+  if [[ -f $cfg ]]; then
+    read -q r?"Build kernel? "
+    echo
+  fi
+  [[ $r = y ]] && time pump make O=$bdir -j21 -l4
   [[ $? != 0 ]] && return
 
   # initramfs

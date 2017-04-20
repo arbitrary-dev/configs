@@ -28,6 +28,9 @@ bindkey "^[[B" history-beginning-search-forward
 
 # aliases
 
+alias xci='xclip -i -selection clipboard'
+alias xco='xclip -o -selection clipboard'
+
 alias vr="vim ~/.zshrc"
 alias sr="source ~/.zshrc"
 

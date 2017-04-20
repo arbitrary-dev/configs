@@ -9,8 +9,8 @@ stty -ixon
 alias todo="vim ~/todo"
 alias vd=vimdiff
 
-PATH="/home/semyon/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/semyon/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/semyon/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/semyon/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/semyon/perl5"; export PERL_MM_OPT;
+#PATH="/home/semyon/perl5/bin${PATH:+:${PATH}}"; export PATH;
+#PERL5LIB="/home/semyon/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+#PERL_LOCAL_LIB_ROOT="/home/semyon/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+#PERL_MB_OPT="--install_base \"/home/semyon/perl5\""; export PERL_MB_OPT;
+#PERL_MM_OPT="INSTALL_BASE=/home/semyon/perl5"; export PERL_MM_OPT;
