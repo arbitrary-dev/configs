@@ -127,3 +127,11 @@
 !/home/yonigger/.xinitrc
 !/home/yonigger/.Xcompose
 !/home/yonigger/.screenrc
+
+!/media
+/media/*
+!/media/music
+/media/music/*
+!/media/music/_other
+/media/music/_other/*
+!/media/music/_other/playlist
