@@ -1,3 +1,4 @@
+=sys-kernel/linux-headers-4.9 ~amd64
 media-libs/libvpx ~amd64
 media-sound/mpd ~amd64
 dev-qt/qt-creator ~amd64
@@ -215,3 +216,13 @@ net-im/skype ~amd64
 # required by @selected
 # required by @world (argument)
 =dev-libs/nss-3.29.3 ~amd64
+# required by x11-libs/cairo-1.14.8::gentoo
+# required by www-client/firefox-53.0::gentoo
+# required by @selected
+# required by @world (argument)
+=media-libs/libpng-1.6.29 ~amd64
+# required by media-libs/mesa-17.1.0_rc4::gentoo
+# required by www-client/firefox-53.0::gentoo
+# required by @selected
+# required by @world (argument)
+=x11-libs/libdrm-2.4.80 ~amd64

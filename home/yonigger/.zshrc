@@ -11,7 +11,7 @@ alias ir='scr irssi irssi'
 alias nh='scr nethack ssh nethack@alt.org'
 alias vm-git='scr vm-git ~/vm/vm-git'
 
-alias fm-hanako='scr fm-hanako mplayer mms://hdv4.nkansai.tv/hanako'
+alias fm-hanako='scr fm-hanako mplayer http://web-cache.stream.ne.jp/web/live/hls-live/jcbasimul094-live/jcbasimul094-live.m3u8'
 alias fm-hanako1='fm-hanako -ao alsa:device=mono'
 alias limbikfreq='scr limbikfreq mplayer http://23.254.217.103:8000/96.aac'
 alias limbikfreq1='limbikfreq -ao alsa:device=mono'
@@ -106,7 +106,11 @@ lookup() {
 }
 
 bak() {
-  7z a -mhe=on -mx=1 -p $2/$1-$(date +%Y-%m-%d).7z $1
+  local file=$1
+  local dir=${2:-.}
+
+  7z a -mhc=on -mhe=on -ms=50f64m -v2g -mx=1 -p \
+    $dir/${file##*/}-$(date +%Y-%m-%d).7z $file
 }
 
 par-cnv() {
@@ -118,4 +122,16 @@ par-cnv() {
   '
 
   find -iname '*.mkv' -not -path '*-out.mkv' | parallel --will-cite "$code"
+}
+
+webm-image() {
+  local image=$1
+  local audio=$2
+
+  ffmpeg -y -hide_banner -loop 1 -i $image -i $audio \
+    -map 0:v -map 1:a \
+    -c:v libvpx-vp9 -r:v 1 -crf 4 \
+    -pix_fmt yuv420p -shortest \
+    -c:a libopus -b:a 64k -ac 2 \
+    out.webm
 }

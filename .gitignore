@@ -127,6 +127,7 @@
 !/home/yonigger/.xinitrc
 !/home/yonigger/.Xcompose
 !/home/yonigger/.screenrc
+!/home/yonigger/.muttrc
 
 !/media
 /media/*

@@ -13,4 +13,4 @@ conky -d -c ~/.config/conky/ram/ram.conf
 conky -d -c ~/.config/conky/mpd/mpd.conf
 
 pcmanfm -d &
-sleep 4 && screen -dmS rtorrent rtorrent
+# sleep 4 && screen -dmS rtorrent rtorrent

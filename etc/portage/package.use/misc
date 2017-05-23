@@ -1,7 +1,7 @@
 dev-lang/scala doc source
 dev-libs/boost icu
 dev-java/oracle-jdk-bin source javafx doc
-mail-client/mutt imap smtp
+mail-client/mutt imap smtp sasl gpg
 app-i18n/mozc linguas_de linguas_ja
 media-fonts/mplus-outline-fonts ipafont
 net-dialup/ppp eap-tls
