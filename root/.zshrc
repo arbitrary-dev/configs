@@ -142,8 +142,6 @@ bkrn() {
   # make silentoldconfig
 
   local wo_distcc=${PATH//\/usr\/lib\/distcc\/bin:/}
-  echo $PATH
-  echo $wo_distcc
   if [[ -f $cfg ]]; then
     echo "Update previous ${cfg##*/}"
     PATH=$wo_distcc make O=$bdir silentoldconfig
@@ -168,7 +166,8 @@ bkrn() {
     read -q r?"Build kernel? "
     echo
   fi
-  [[ $r = y ]] && time pump make O=$bdir -j21 -l4
+  # [[ $r = y ]] && time pump make O=$bdir -j21 -l4
+  [[ $r = y ]] && time make O=$bdir -j4
   [[ $? != 0 ]] && return
 
   # initramfs

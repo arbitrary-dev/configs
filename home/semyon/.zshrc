@@ -7,6 +7,7 @@ stty -ixon
 # aliases
 
 alias todo="vim ~/todo"
+alias qmarks="vim ~/.config/qutebrowser/quickmarks"
 alias vd=vimdiff
 
 #PATH="/home/semyon/perl5/bin${PATH:+:${PATH}}"; export PATH;
