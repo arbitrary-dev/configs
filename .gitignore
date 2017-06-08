@@ -42,3 +42,10 @@
 !/home/semyon/.config/qutebrowser
 /home/semyon/.config/qutebrowser/qsettings
 /home/semyon/.config/qutebrowser/keys.conf
+
+!/home/semyon/.mpd
+/home/semyon/.mpd/*
+!/home/semyon/.mpd/mpd.conf
+!/home/semyon/.mpdscribble
+/home/semyon/.mpdscribble/*
+!/home/semyon/.mpdscribble/mpdscribble.conf
