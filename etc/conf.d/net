@@ -1,0 +1,7 @@
+modules="wpa_supplicant"
+wpa_supplicant_wlp5s0b1="-Dwext -dd"
+config_wlp5s0b1="dhcp"
+routes_wlp5s0b1="default via 192.168.1.1"
+
+config_enp9s0="dhcp"
+routes_enp9s0="default via 192.168.1.1"

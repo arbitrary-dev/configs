@@ -13,6 +13,10 @@
 
 !/etc/gitconfig
 
+!/etc/conf.d
+/etc/conf.d/*
+!/etc/conf.d/net
+
 !/etc/zsh
 /etc/zsh/*
 
