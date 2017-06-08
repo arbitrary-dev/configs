@@ -7,6 +7,10 @@
 !/etc
 /etc/*
 
+!/etc/acpi
+/etc/acpi/*
+!/etc/acpi/default.sh
+
 !/etc/zsh
 /etc/zsh/*
 
