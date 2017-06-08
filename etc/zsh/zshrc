@@ -37,7 +37,7 @@ alias sr="source ~/.zshrc"
 alias pr=perl-rename
 alias cl=clear
 alias sed="sed -br"
-alias less="less -iSXF"
+alias less="less -iSXFR"
 
 # utilities
 
