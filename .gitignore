@@ -11,6 +11,8 @@
 /etc/acpi/*
 !/etc/acpi/default.sh
 
+!/etc/gitconfig
+
 !/etc/zsh
 /etc/zsh/*
 
