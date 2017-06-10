@@ -6,6 +6,8 @@ stty -ixon
 
 # aliases
 
+alias mp="mpd && mpdscribble"
+alias nc=ncmpcpp
 alias todo="vim ~/todo"
 alias qmarks="vim ~/.config/qutebrowser/quickmarks"
 alias vd=vimdiff
