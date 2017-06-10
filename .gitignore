@@ -17,9 +17,11 @@
 /etc/conf.d/*
 !/etc/conf.d/net
 
+!/etc/fstab
+!/etc/fuse.conf
+
 !/etc/zsh
 /etc/zsh/*
-
 !/etc/zsh/zshrc
 
 !/root
