@@ -7,6 +7,12 @@ alias sws="swapon --show=name,size,used"
 
 # utilities
 
+upd-time() {
+  echo "Before: " $(date) && \
+  rc-service ntp-client start && \
+  echo "After: " $(date)
+}
+
 sync() {
   local emerge
 
