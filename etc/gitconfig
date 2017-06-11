@@ -1,4 +1,6 @@
 [alias]
+  ls = "!f() { git ls-tree --full-tree -r HEAD | cut -d'	' -f2; }; f"
+
   lg = log --graph --abbrev-commit --decorate --date=format:'%m-%d-%Y %H:%M' --format=format:'%C(cyan)%h%C(reset) %C(red)%ad (%ar)%C(reset)%C(green)%d%C(reset)%n'\
 '        %C(reset)%s %C(dim yellow)%an%+N%C(reset)' --exclude refs/stash --all
   lcm = log --decorate --graph --oneline --cherry-mark --boundary
