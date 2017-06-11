@@ -51,3 +51,5 @@
 !/home/semyon/.mpdscribble
 /home/semyon/.mpdscribble/*
 !/home/semyon/.mpdscribble/mpdscribble.conf
+
+!/home/semyon/.irssi
