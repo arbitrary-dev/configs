@@ -37,6 +37,8 @@
 !/etc/portage/env
 !/etc/portage/package.mask
 
+!/etc/suspend.conf
+
 !/etc/zsh
 /etc/zsh/*
 !/etc/zsh/zshrc
