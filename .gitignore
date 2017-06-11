@@ -50,6 +50,10 @@
 /etc/vim/files/*
 !/etc/vim/files/colors
 
+!/etc/X11
+/etc/X11/*
+!/etc/X11/xorg.conf.d
+
 !/etc/zsh
 /etc/zsh/*
 !/etc/zsh/zshrc
