@@ -39,6 +39,10 @@
 
 !/etc/suspend.conf
 
+!/etc/udev
+/etc/udev/*
+!/etc/udev/rules.d
+
 !/etc/zsh
 /etc/zsh/*
 !/etc/zsh/zshrc
