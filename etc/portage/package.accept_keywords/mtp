@@ -1,0 +1,6 @@
+dev-libs/go-fuse **
+sys-fs/go-mtpfs **
+
+# required by sys-fs/go-mtpfs-9999::gentoo
+# required by go-mtpfs (argument)
+dev-libs/go-usb **

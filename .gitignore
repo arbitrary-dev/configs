@@ -20,6 +20,23 @@
 !/etc/fstab
 !/etc/fuse.conf
 
+!/etc/portage
+/etc/portage/*
+!/etc/portage/package.env
+!/etc/portage/repos.conf
+!/etc/portage/make.conf
+!/etc/portage/package.accept_keywords
+!/etc/portage/package.unmask
+!/etc/portage/package.use
+!/etc/portage/package.license
+!/etc/portage/savedconfig
+/etc/portage/savedconfig/*
+!/etc/portage/savedconfig/sys-kernel
+/etc/portage/savedconfig/sys-kernel/*
+!/etc/portage/savedconfig/sys-kernel/linux-firmware
+!/etc/portage/env
+!/etc/portage/package.mask
+
 !/etc/zsh
 /etc/zsh/*
 !/etc/zsh/zshrc
