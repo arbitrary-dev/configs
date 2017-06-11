@@ -1,0 +1,58 @@
+set runtimepath+=/etc/vim/files
+colorscheme myown
+
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
+autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+
+set viewdir=/tmp/vim_view
+au BufWritePost,BufLeave,WinLeave ?* mkview
+au BufReadPre ?* silent loadview
+
+set nu
+set nowrap
+set textwidth=0
+set ic scs " smart case-insensitive search
+
+set sw=2 ts=2 sts=2 et
+set modeline
+
+filetype plugin indent on
+set fdc=0
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
+au FileType perl setlocal sw=4 ts=4 sts=4 et
+
+set path+=~/,/etc/vim,/etc/vim/files/colors,/etc/portage,/home/semyon/scripts
+
+set exrc
+set hidden
+set secure
+
+execute pathogen#infect()
+
+let g:ycm_error_symbol = 'EE'
+let g:ycm_warning_symbol = 'WW'
+
+map K i<CR><Esc>
+command! -nargs=1 -complete=file F find <args>
+
+command FTS %s/^\(+.\{-}\)\s\+$/\1/
+command FTSA %s/\s\+$//
+
+" trailing spaces highlighting
+au FileType *
+  \ if &ft == 'diff' |
+    \ match Error /\(+.\{-}\)\@<=\s\+$/ |
+  \ else |
+    \  match Error /\s\+$/ |
+  \ endif
+
+" Find syntax highlight group under cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_server_use_vim_stdout = 1
+let g:ycm_server_log_level = 'debug'

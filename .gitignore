@@ -43,6 +43,13 @@
 /etc/udev/*
 !/etc/udev/rules.d
 
+!/etc/vim
+/etc/vim/*
+!/etc/vim/vimrc.local
+!/etc/vim/files
+/etc/vim/files/*
+!/etc/vim/files/colors
+
 !/etc/zsh
 /etc/zsh/*
 !/etc/zsh/zshrc
