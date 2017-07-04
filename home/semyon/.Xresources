@@ -1,0 +1,78 @@
+URxvt.font: -benis-lemon-mono-medium-R-normal--10-110-75-75-P-50-ISO10646-1
+URxvt.boldFont: -benis-lemon-mono-medium-R-normal--10-110-75-75-P-50-ISO10646-1
+URxvt.italicFont: -benis-lemon-mono-medium-R-normal--10-110-75-75-P-50-ISO10646-1
+URxvt.boldItalicFont: -benis-lemon-mono-medium-R-normal--10-110-75-75-P-50-ISO10646-1
+URxvt.skipBuiltinGlyphs: true
+URxvt.scrollBar: false
+URxvt.borderColor: #000000
+URxvt.internalBorder: 7
+
+! --- ~/.Xresources ------------------------------------------------------------
+! ------------------------------------------------------------------------------
+! --- generated with 4bit Terminal Color Scheme Designer -----------------------
+! ------------------------------------------------------------------------------
+! --- http://ciembor.github.com/4bit -------------------------------------------
+! ------------------------------------------------------------------------------
+
+! --- special colors ---
+
+! black
+*background: #000000
+! bright_yellow
+*foreground: #f7bc7a
+
+! --- standard colors ---
+
+! black
+*color0: #000000
+
+! bright_black
+*color8: #444444
+
+! red
+*color1: #d93737
+
+! bright_red
+*color9: #ff5959
+
+! green
+*color2: #57b22d
+
+! bright_green
+*color10: #70e63a
+
+! yellow
+*color3: #d9964c
+
+! bright_yellow
+*color11: #f7bc7a
+
+! blue
+*color4: #3b6ad0
+
+! bright_blue
+*color12: #9fb6e8
+
+! magenta
+*color5: #a13bd0
+
+! bright_magenta
+*color13: #d19fe8
+
+! cyan
+*color6: #3bd0a1
+
+! bright_cyan
+*color14: #9fe8d1
+
+! white
+*color7: #aaaaaa
+
+! bright_white
+*color15: #ffffff
+
+
+! ------------------------------------------------------------------------------
+! --- end of terminal colors section -------------------------------------------
+! ------------------------------------------------------------------------------
+

@@ -11,6 +11,10 @@
 /etc/acpi/*
 !/etc/acpi/default.sh
 
+!/etc/default
+/etc/default/*
+!/etc/default/grub
+
 !/etc/gitconfig
 
 !/etc/conf.d
@@ -67,6 +71,10 @@
 
 !/root/.zshrc
 
+!/root/backup
+/root/backup/*
+!/root/backup/.config-4.9.34-gentoo
+
 !/home
 /home/*
 
@@ -97,8 +105,14 @@
 
 !/home/semyon/.mpv
 !/home/semyon/.irssi
+!/home/semyon/.xinitrc
+!/home/semyon/.Xresources
 
 !/home/semyon/.mutt
 /home/semyon/.mutt/*
 !/home/semyon/.mutt/muttrc
 !/home/semyon/.mutt/mailcap
+
+!/home/semyon/.ncmpcpp
+/home/semyon/.ncmpcpp/*
+!/home/semyon/.ncmpcpp/config
