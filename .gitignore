@@ -103,6 +103,7 @@
 /home/semyon/.mpdscribble/*
 !/home/semyon/.mpdscribble/mpdscribble.conf
 
+!/home/semyon/.gnuplot
 !/home/semyon/.mpv
 !/home/semyon/.irssi
 !/home/semyon/.xinitrc
