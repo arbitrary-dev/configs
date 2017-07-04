@@ -53,6 +53,10 @@
 !/etc/X11
 /etc/X11/*
 !/etc/X11/xorg.conf.d
+/etc/X11/xorg.conf.d/*
+!/etc/X11/xorg.conf.d/01-mouse.conf
+!/etc/X11/xorg.conf.d/02-keyboard.conf
+!/etc/X11/xorg.conf.d/03-intel.conf
 
 !/etc/zsh
 /etc/zsh/*
@@ -91,4 +95,10 @@
 /home/semyon/.mpdscribble/*
 !/home/semyon/.mpdscribble/mpdscribble.conf
 
+!/home/semyon/.mpv
 !/home/semyon/.irssi
+
+!/home/semyon/.mutt
+/home/semyon/.mutt/*
+!/home/semyon/.mutt/muttrc
+!/home/semyon/.mutt/mailcap

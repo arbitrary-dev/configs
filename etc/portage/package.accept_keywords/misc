@@ -1,3 +1,4 @@
+media-gfx/wkhtmltopdf ~x86
 x11-drivers/xf86-input-evdev ~x86
 dev-lang/scala ~x86
 =app-vim/youcompleteme-99999999 **
@@ -160,4 +161,3 @@ app-shells/zsh-completions ~x86
 # required by @selected
 # required by @world (argument)
 =x11-libs/libdrm-2.4.80 ~x86
-

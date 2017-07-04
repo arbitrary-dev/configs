@@ -1,4 +1,4 @@
-export PATH="${PATH}:~/scripts"
+export PATH="${PATH}:/home/semyon/scripts"
 export PS1=$'%{\e[0;30m\e[42m%} %n %{\e[0m\e[0;32m%} %1d %{\e[0m%}'
 
 stty -ixon
@@ -6,8 +6,16 @@ stty -ixon
 
 # aliases
 
+alias -s mp4=mpv
+alias -s avi=mpv
+alias -s flv=mpv
+alias -s webm="mpv -loop=inf"
+alias -s pdf=mupdf
+alias -s txt=vim
+
 alias mp="mpd && mpdscribble"
 alias nc=ncmpcpp
+
 alias todo="vim ~/todo"
 alias qmarks="vim ~/.config/qutebrowser/quickmarks"
 alias vd=vimdiff

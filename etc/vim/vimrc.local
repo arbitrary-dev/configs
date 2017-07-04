@@ -12,7 +12,9 @@ au BufReadPre ?* silent loadview
 set nu
 set nowrap
 set textwidth=0
-set ic scs " smart case-insensitive search
+
+" smart case-insensitive search
+set ic scs
 
 set sw=2 ts=2 sts=2 et
 set modeline

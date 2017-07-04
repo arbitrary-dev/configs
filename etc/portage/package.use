@@ -1,3 +1,4 @@
+mail-client/mutt gpg imap pop sasl smtp tokyocabinet -berkdb -gdbm
 dev-util/cmake -qt5 -ncurses
 media-fonts/mplus-outline-fonts ipafont
 x11-terms/rxvt-unicode iso14755 -vanilla alt-font-width -mousewheel wcwidth xft unicode3

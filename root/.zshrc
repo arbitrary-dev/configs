@@ -1,9 +1,10 @@
-[[ $PATH != *distcc* ]] && export PATH="/usr/lib/distcc/bin:${PATH}"
+#[[ $PATH != *distcc* ]] && export PATH="/usr/lib/distcc/bin:${PATH}"
 export PS1=$'%{\e[0;30m\e[41m%} %n %{\e[0m\e[0;31m%} %1d %{\e[0m%}'
 
 # aliases
 
 alias sws="swapon --show=name,size,used"
+alias eclean-dist="eclean-dist --deep --fetch-restricted"
 
 # utilities
 
@@ -116,8 +117,9 @@ bkrn() {
   local cfg=$src/.config
   local bdir=/tmp/kernel-build
 
+  mkdir -p $bdir
+
   if [[ ! -f $bdir/.config && -f $cfg ]]; then
-    mkdir -p $bdir
     echo "Copying $cfg to $bdir ..."
     cp $cfg $bdir &> /dev/null
   fi
