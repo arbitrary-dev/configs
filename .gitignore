@@ -75,6 +75,14 @@
 /root/backup/*
 !/root/backup/.config-4.9.34-gentoo
 
+!/var
+/var/*
+!/var/lib
+/var/lib/*
+!/var/lib/portage
+/var/lib/portage/*
+!/var/lib/portage/world
+
 !/home
 /home/*
 
