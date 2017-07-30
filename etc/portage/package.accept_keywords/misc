@@ -1,3 +1,4 @@
+media-video/ffmpeg ~x86
 media-gfx/wkhtmltopdf ~x86
 x11-drivers/xf86-input-evdev ~x86
 dev-lang/scala ~x86
@@ -117,9 +118,6 @@ media-video/mpv ~x86
 # required by @selected
 # required by @world (argument)
 =dev-python/pygments-2.1.3 ~x86
-# required by media-sound/mpd-0.19.10::gentoo[-libav,ffmpeg]
-# required by @__auto_slot_operator_replace_installed__ (argument)
-=media-video/ffmpeg-3.2.2 ~x86
 # required by www-client/qutebrowser-0.8.4::gentoo
 # required by @selected
 # required by @world (argument)

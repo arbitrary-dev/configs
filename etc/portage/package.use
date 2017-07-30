@@ -1,3 +1,5 @@
+dev-qt/qtwebkit gstreamer printsupport
+media-video/ffmpeg x264 x265 vpx fdk
 mail-client/mutt gpg imap pop sasl smtp tokyocabinet -berkdb -gdbm
 dev-util/cmake -qt5 -ncurses
 media-fonts/mplus-outline-fonts ipafont
@@ -58,10 +60,6 @@ x11-wm/awesome dbus
 # required by @world (argument)
 >=media-libs/mesa-10.5.0_rc3 osmesa
 x11-themes/qtcurve gtk
-# required by dev-python/PyQt5-5.4.1[webkit]
-# required by www-client/qutebrowser-0.1.3::qutebrowser
-# required by qutebrowser (argument)
->=dev-qt/qtwebkit-5.4.1 printsupport
 # required by www-client/qutebrowser-0.1.3::qutebrowser
 # required by qutebrowser (argument)
 >=dev-python/PyQt5-5.4.1 gui python_targets_python3_4 webkit widgets printsupport network
@@ -235,7 +233,3 @@ x11-themes/qtcurve gtk
 # required by @selected
 # required by @world (argument)
 >=dev-libs/lzo-2.09 static-libs
-# required by www-client/qutebrowser-0.9.1::gentoo[gstreamer]
-# required by @selected
-# required by @world (argument)
->=dev-qt/qtwebkit-5.7.1 gstreamer

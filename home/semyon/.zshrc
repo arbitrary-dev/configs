@@ -7,18 +7,34 @@ stty -ixon
 # aliases
 
 alias -s mp4=mpv
+alias -s MPG=mpv
 alias -s avi=mpv
+alias -s mkv=mpv
 alias -s flv=mpv
-alias -s webm="mpv -loop=inf"
+alias -s webm="mpv -loop-playlist=inf"
 alias -s pdf=mupdf
 alias -s txt=vim
+alias -s png="feh -F"
+alias -s jpg="feh -F"
 
 alias mp="mpd && mpdscribble"
 alias nc=ncmpcpp
 
-alias todo="vim ~/todo"
 alias qmarks="vim ~/.config/qutebrowser/quickmarks"
 alias vd=vimdiff
+
+export DOCS=/home/semyon/docs
+
+doc() { vim $DOCS/$1; }
+
+join_by() { local IFS="$1"; shift; echo "$*"; }
+
+todo() {
+	local t=$(join_by - $0 $*)
+  doc _misc/"$t"
+}
+
+alias notes="doc _misc/notes"
 
 #PATH="/home/semyon/perl5/bin${PATH:+:${PATH}}"; export PATH;
 #PERL5LIB="/home/semyon/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;

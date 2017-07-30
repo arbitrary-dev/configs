@@ -1,2 +1,5 @@
+# required by media-video/ffmpeg-3.2.4::gentoo[fdk]
+# required by ffmpeg (argument)
+>=media-libs/fdk-aac-0.1.5 FraunhoferFDK
 # required by dev-java/oracle-jdk-bin (argument)
 >=dev-java/oracle-jdk-bin-1.8.0.112 Oracle-BCLA-JavaSE
