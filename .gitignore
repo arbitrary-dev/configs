@@ -4,3 +4,21 @@
 !.gitignore
 !README.md
 
+!/private
+/private/*
+
+!/private/etc
+/private/etc/*
+!/private/etc/vimrc
+
+!/Users
+/Users/*
+!/Users/gay
+/Users/gay/*
+!/Users/gay/.vimrc
+
+!/private/var
+/private/var/*
+!/private/var/root
+/private/var/root/*
+!/private/var/root/.vimrc
