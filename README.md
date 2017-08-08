@@ -1,4 +1,4 @@
 config
 ======
 
-System configs are separated in two branches – `pc` and `netbook`.
+System configs that separated in several branches – `netbook`, `work` and `pc`.
