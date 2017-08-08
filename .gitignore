@@ -4,13 +4,3 @@
 !.gitignore
 !README.md
 
-!/home
-/home/*
-
-!/home/semyon
-/home/semyon/*
-
-!/home/semyon/.config
-/home/semyon/.config/*
-
-!/home/semyon/.config/awesome
