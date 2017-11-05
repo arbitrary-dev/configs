@@ -10,12 +10,14 @@
 !/private/etc
 /private/etc/*
 !/private/etc/vimrc
+!/private/etc/zshrc
 
 !/Users
 /Users/*
 !/Users/gay
 /Users/gay/*
 !/Users/gay/.vimrc
+!/Users/gay/.zshrc
 
 !/usr
 /usr/*

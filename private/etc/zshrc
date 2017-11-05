@@ -1,0 +1,130 @@
+# Correctly display UTF-8 with combining characters.
+if [ "$TERM_PROGRAM" = "Apple_Terminal" ]; then
+	setopt combiningchars
+fi
+
+disable log
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _complete _ignored
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
+# zstyle :compinstall filename '/Users/gay/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt appendhistory autocd notify
+unsetopt beep nomatch
+bindkey -v
+# End of lines configured by zsh-newuser-install
+
+[[ -f /etc/.profile ]] && source /etc/.profile
+
+source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+
+export PS1='%1~ %(!.#.$) '
+export EDITOR=vim
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home
+
+export PATH="\
+/usr/local/Cellar/vim/8.0.0627/bin:\
+$PATH"
+
+alias vr="vim /etc/zshrc"
+alias sr="source /etc/zshrc"
+alias xc=pbcopy
+alias xp=pbpaste
+alias less="less -iSXFR"
+alias mupdf=mupdf-gl
+alias sed="sed -E"
+alias shorten-paths='sed -Ee "s|/.+/([^/]+/)|/**/\1|"'
+
+esc=$(printf '\033')
+my-grep() { /usr/bin/grep -Irn $1 .; }
+
+alias -s scala=$EDITOR
+alias -s md=$EDITOR
+alias -s MD=$EDITOR
+alias -s conf=$EDITOR
+alias -s properties=$EDITOR
+alias -s pdf=mupdf
+alias -s mp4=mpv
+
+# GIT shortcuts
+
+gst() {
+  git status --short | \
+  shorten-paths | \
+  sed -Ee "s/^(.)(.)/${esc}[32m\1${esc}[0m${esc}[31m\2${esc}[0m/"
+}
+
+grr() {
+  git branch -r | \
+  sed -Ee "/$MY_NAME|((master|develop)$)/d" | \
+  xargs -L1 git branch -rd
+}
+
+gbl() {
+  git blame --abbrev=6 -s -L ${@:1} | \
+  sed -e "s_^([^ ]+)( [^)]*)( [0-9]+)\)_${esc}[32m\1${esc}[37m\3${esc}[0m_" | \
+  less -iSXFR
+}
+
+alias ga="git add"
+alias gb="git branch"
+alias gco="git co"
+alias gcp="git cp"
+alias grst="git reset"
+alias gt="git tag"
+alias gbs="git bisect"
+alias gls="git ls"
+
+alias gp="git push"
+alias gf="git fetch"
+alias gpl="git pull"
+
+alias gs="git show"
+gsno() { git show-no $1 | shorten-paths; }
+
+alias gsh="git stash save"
+alias gsha="git stash apply"
+alias gshs="git stash show -p"
+alias gshl="git stash list"
+alias gshp="git stash pop"
+alias gshd="git stash drop"
+
+alias gdf="git df"
+gdfno() { git df --name-only $1 $2 | shorten-paths; }
+gdfno1() { git df --name-only $1{^,} | shorten-paths; }
+alias gdfc="git dfc"
+
+alias glg="git lg"
+alias glgo="git lgo"
+alias glg10="git lg -10"
+alias glgo10="git lgo -10"
+
+alias gc="git commit"
+alias gcf="git cf"
+alias gcaf="git caf"
+alias gcm="git cm"
+alias gcam="git cam"
+
+alias gr="git rebase"
+alias gri="git ri"
+alias grc="git rc"
+alias gra="git rebase --abort"
+
+alias gm="git merge"
+alias gmff="git merge --ff-only"
+alias gma="git merge --abort"
+alias gmt="git mergetool"
+
+# Fixes bug with Mac Terminal producing ^M in `git add -p .` and similar
+stty sane
