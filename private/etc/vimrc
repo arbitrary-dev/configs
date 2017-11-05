@@ -8,10 +8,23 @@ set clipboard=unnamed
 set backspace=indent,eol,start
 set hls
 
-set textwidth=110 colorcolumn=110
+augroup filetypedetect
+  au BufRead,BufNewFile *.hamlet setfiletype haskell
+augroup END
+
+set textwidth=80 colorcolumn=80
+au FileType scala set tw=110 cc=110
 
 map K r<CR>
 map =j :%!python -m json.tool<CR>
+
+" trailing spaces highlighting
+au FileType *
+  \ if &ft == 'diff' |
+    \ match Error /\(+.\{-}\)\@<=\s\+$/ |
+  \ else |
+    \ match Error /\s\+$/ |
+  \ endif
 
 execute pathogen#infect()
 
