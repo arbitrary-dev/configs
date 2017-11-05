@@ -17,6 +17,16 @@
 /Users/gay/*
 !/Users/gay/.vimrc
 
+!/usr
+/usr/*
+!/usr/local
+/usr/local/*
+!/usr/local/git
+/usr/local/git/*
+!/usr/local/git/etc
+/usr/local/git/etc/*
+!/usr/local/git/etc/gitconfig
+
 !/private/var
 /private/var/*
 !/private/var/root
