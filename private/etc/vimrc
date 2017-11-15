@@ -26,8 +26,29 @@ au FileType *
     \ match Error /\s\+$/ |
   \ endif
 
+" Find syntax highlight group under cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 execute pathogen#infect()
 
 syntax on
 filetype plugin indent on
-"autocmd FileType scala setlocal shiftwidth=2 tabstop=2
+
+" Colors
+hi Search ctermfg=yellow ctermbg=yellow
+hi Visual ctermfg=white ctermbg=white
+hi Todo ctermfg=blue ctermbg=blue
+hi FoldColumn cterm=none ctermfg=darkcyan ctermbg=cyan
+hi Folded cterm=none ctermfg=darkcyan ctermbg=cyan
+hi StatusLine cterm=none ctermfg=white ctermbg=blue
+hi StatusLineNC cterm=none ctermfg=darkblue ctermbg=blue
+hi VertSplit cterm=none ctermfg=darkblue ctermbg=blue
+hi LineNr ctermfg=darkblue
+hi ModeMsg cterm=none ctermfg=white ctermbg=blue
+hi ErrorMsg ctermfg=white ctermbg=red
+hi DiffChange ctermfg=darkred ctermbg=darkred
+hi DiffText ctermfg=red ctermbg=red
+hi DiffDelete ctermfg=darkgreen ctermbg=darkgreen
+hi DiffAdd ctermfg=green ctermbg=darkgreen

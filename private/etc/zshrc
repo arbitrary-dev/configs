@@ -72,8 +72,17 @@ grr() {
 }
 
 gbl() {
-  git blame --abbrev=6 -s -L ${@:1} | \
-  sed -e "s_^([^ ]+)( [^)]*)( [0-9]+)\)_${esc}[32m\1${esc}[37m\3${esc}[0m_" | \
+  local out=$(git blame --abbrev=6 -s -L ${@:1})
+  local n=$( \
+    echo $out | \
+    sed -nEe "s/[^)]*) ( *)[^ ].*/\1/p" | \
+    awk '{print length}' | \
+    sort -g | \
+    head -n1
+  )
+
+  echo $out | \
+  sed -Ee "s_^([0-9a-z]+) ([0-9]+)) ( {0,$n})_${esc}[32m\1 ${esc}[34m\2${esc}[0m _" | \
   less -iSXFR
 }
 
@@ -83,7 +92,8 @@ alias gco="git co"
 alias gcp="git cp"
 alias grst="git reset"
 alias gt="git tag"
-alias gbs="git bisect"
+alias gbs="git branch -a --format='%(refname:short) %(color:red)%(authordate:relative)' --list *$MY_NAME*"
+alias gbi="git bisect"
 alias gls="git ls"
 
 alias gp="git push"
