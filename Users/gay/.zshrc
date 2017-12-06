@@ -21,7 +21,28 @@ issues() {
 }
 
 export MY_DOCS=~/Documents
-doc() { mupdf $MY_DOCS/**/$1*.pdf &; disown; }
+doc() {
+  local str=$MY_DOCS
+  for i in $@; do str+=/**/*$i*; done
+
+  local files=($(eval "ls $str 2> /dev/null"))
+
+  if (( $#files > 1 )); then
+    echo "Which one?"
+    for f in $files; do echo $f; done
+    return 1
+  elif (( !$#files )); then
+    echo "No such document!"
+    return 1
+  fi
+
+  if [[ $files = *.pdf ]]; then
+    mupdf $files &
+    disown
+  else
+    vim $files
+  fi
+}
 docs() { ls $MY_DOCS | sed s/.pdf//; }
 
 export MY_SCRIPTS=~/work/.scripts
