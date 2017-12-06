@@ -5,8 +5,8 @@ export MAVEN_OPTS="-Xmx1g"
 
 alias sf=screenfetch
 
-alias todo="vim ~/todo"
-alias notes="vim ~/notes"
+alias todo="vim ~/Documents/_misc/todo"
+alias notes="vim ~/Documents/_misc/notes"
 alias vr="vim ~/.zshrc"
 alias sr="source ~/.zshrc"
 
