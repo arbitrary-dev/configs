@@ -154,9 +154,11 @@ vicious.register(
 	vicious.widgets.bat,
 	function (widget, args)
 		local i = { '⮒', '⮏', '⮐', '⮑', '⮍', '⮎' }
+        local is_discharging = args[1] == "-"
+        local is_charging = args[1] == "+"
 		local ico =
-			args[1] == "−" and i[ math.ceil(args[2]/25) + 1 ]
-			or args[1] == "+" and "<span color='#0f0'>" .. i[1] .. "</span>"
+			is_discharging and i[ math.ceil(args[2]/25) + 1 ]
+			or is_charging and "<span color='#0f0'>" .. i[1] .. "</span>"
 			or i[6]
 
 		if ico == i[6] then
@@ -164,7 +166,7 @@ vicious.register(
 		end
 
 		local status =
-			args[1] == "+" and "#0f0"
+			is_charging and "#0f0"
 			or args[2] > 75 and beautiful.fg_normal
 			or args[2] > 25 and "yellow"
 			or "red"
