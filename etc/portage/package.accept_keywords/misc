@@ -6,7 +6,9 @@ dev-lang/scala ~x86
 media-fonts/mplus-outline-fonts ~x86
 x11-drivers/xf86-input-synaptics ~x86
 dev-qt/* ~x86
+
 x11-wm/awesome ~x86
+x11-plugins/vicious ~x86
 
 # required by gbdfed (argument)
 =x11-misc/gbdfed-1.6 ~x86

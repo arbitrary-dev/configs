@@ -16,7 +16,7 @@ theme.fg_normal     = "#aaaaaa"
 theme.fg_focus      = theme.bg_normal
 theme.fg_urgent     = theme.fg_normal
 theme.fg_minimize   = "#ffffff"
-theme.fg_separator	= "#222222"
+theme.fg_separator  = "#222222"
 
 theme.border_width  = 2
 theme.border_normal = theme.bg_normal
