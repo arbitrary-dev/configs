@@ -18,6 +18,16 @@
 /Users/gay/*
 !/Users/gay/.vimrc
 !/Users/gay/.zshrc
+!/Users/gay/.mpd
+/Users/gay/.mpd/*
+!/Users/gay/.mpd/mpd.conf
+!/Users/gay/.mpdscribble
+/Users/gay/.mpdscribble/*
+!/Users/gay/.mpdscribble/mpdscribble.conf
+!/Users/gay/.ncmpcpp
+/Users/gay/.ncmpcpp/*
+!/Users/gay/.ncmpcpp/bindings
+!/Users/gay/.ncmpcpp/config
 
 !/usr
 /usr/*

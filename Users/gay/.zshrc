@@ -4,6 +4,7 @@ export M2_HOME=~/work/apache-maven-3.2.5
 export MAVEN_OPTS="-Xmx1g"
 
 alias sf=screenfetch
+alias nc=ncmpcpp
 
 alias todo="vim ~/Documents/_misc/todo"
 alias notes="vim ~/Documents/_misc/notes"
