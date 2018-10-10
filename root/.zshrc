@@ -5,6 +5,7 @@ export PS1=$'%{\e[0;30m\e[41m%} %n %{\e[0m\e[0;31m%} %1d %{\e[0m%}'
 
 alias sws="swapon --show=name,size,used"
 alias eclean-dist="eclean-dist --deep --fetch-restricted"
+alias bt="for s in bluetooth bluealsa; do rc-service \$s start; done"
 
 # utilities
 

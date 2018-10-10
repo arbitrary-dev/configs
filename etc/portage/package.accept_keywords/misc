@@ -1,3 +1,5 @@
+media-sound/bluez-alsa ~x86
+net-wireless/bluez ~x86
 media-video/ffmpeg ~x86
 media-gfx/wkhtmltopdf ~x86
 x11-drivers/xf86-input-evdev ~x86

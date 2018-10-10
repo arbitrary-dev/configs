@@ -31,6 +31,7 @@ media-gfx/gimp
 media-gfx/gphoto2
 media-gfx/scrot
 media-gfx/wkhtmltopdf
+media-sound/bluez-alsa
 media-sound/mpd
 media-sound/mpdscribble
 media-sound/ncmpcpp
@@ -46,6 +47,7 @@ net-misc/ntp
 net-misc/openssh
 net-misc/youtube-viewer
 net-p2p/rtorrent
+net-wireless/bluez
 net-wireless/wireless-tools
 net-wireless/wpa_supplicant
 sci-visualization/gnuplot

@@ -1,5 +1,6 @@
 dev-qt/qtwebkit gstreamer printsupport
 media-video/ffmpeg x264 x265 vpx fdk
+media-sound/bluez-alsa hcitop
 mail-client/mutt gpg imap pop sasl smtp tokyocabinet -berkdb -gdbm
 dev-util/cmake -qt5 -ncurses
 media-fonts/mplus-outline-fonts ipafont
