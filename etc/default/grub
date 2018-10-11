@@ -11,7 +11,7 @@
 GRUB_DISTRIBUTOR="Gentoo"
 
 # Default menu entry
-#GRUB_DEFAULT=0
+GRUB_DEFAULT="Advanced options for Gentoo GNU/Linux>Gentoo GNU/Linux, with Linux 4.9.34-gentoo"
 
 # Boot the default entry this many seconds after the menu is displayed
 GRUB_HIDDEN_TIMEOUT=0

@@ -1,6 +1,5 @@
-dev-qt/qtwebkit gstreamer printsupport
-media-video/ffmpeg x264 x265 vpx fdk
 media-sound/bluez-alsa hcitop
+media-sound/ncmpcpp taglib outputs
 mail-client/mutt gpg imap pop sasl smtp tokyocabinet -berkdb -gdbm
 dev-util/cmake -qt5 -ncurses
 media-fonts/mplus-outline-fonts ipafont
@@ -15,20 +14,23 @@ x11-base/xorg-server udev
 app-arch/p7zip rar
 sys-kernel/linux-firmware savedconfig
 media-video/mplayer aalib fbcon libcaca mad samba theora faad x264 xvid -dvd -dvdnav
-app-emulation/wine -run-exes -realtime -perl -nls -mp3 -mono -ncurses s3tc osmesa v4l xcomposite staging
+#app-emulation/wine -run-exes -realtime -perl -nls -mp3 -mono -ncurses s3tc osmesa v4l xcomposite staging
 media-video/mpv -luajit -quvi libcaca
 
-dev-java/oracle-jdk-bin source -alsa -fontconfig doc
-dev-lang/scala binary doc source
+# Fixes emerge hang
+dev-util/boost-build python
+
+dev-qt/qtwebkit gstreamer
+# required by media-gfx/wkhtmltopdf-0.12.4-r1::gentoo
+dev-qt/qtwebkit printsupport
+
+media-video/ffmpeg x264 x265 vpx fdk
+# required by net-misc/youtube-viewer-3.2.8::gentoo
+media-video/ffmpeg openssl
 
 # dbus needed to receive keyboard events on volume up and down
 x11-wm/awesome dbus
 
-# required by media-libs/mesa-10.0.4
-# required by x11-base/xorg-server-1.15.0[-minimal]
-# required by x11-drivers/xf86-video-intel-2.21.15
-# required by x11-base/xorg-drivers-1.15[video_cards_intel]
->=dev-libs/libxml2-2.9.2 python
 # required by x11-wm/awesome-3.4.15
 # required by awesome (argument)
 =media-libs/imlib2-1.4.6-r2 png
@@ -48,29 +50,16 @@ x11-wm/awesome dbus
 # required by sys-power/suspend (argument)
 =dev-libs/libgcrypt-1.5.4-r1 static-libs
 # required by sys-devel/prelink-20130503
-# required by app-emulation/wine-1.7.33[prelink]
-# required by wine (argument)
 =dev-libs/elfutils-0.158 static-libs
 # required by sys-auth/polkit-0.112-r2[-systemd]
-# required by sys-fs/udisks-2.1.3
-# required by app-emulation/wine-1.7.33[udisks]
-# required by wine (argument)
 =sys-auth/consolekit-0.4.6 policykit
-# required by app-emulation/wine-1.7.33[osmesa]
 # required by @selected
 # required by @world (argument)
 >=media-libs/mesa-10.5.0_rc3 osmesa
 x11-themes/qtcurve gtk
 # required by www-client/qutebrowser-0.1.3::qutebrowser
 # required by qutebrowser (argument)
->=dev-python/PyQt5-5.4.1 gui python_targets_python3_4 webkit widgets printsupport network
-# required by dev-qt/qtcore-5.4.1
-# required by dev-qt/qtnetwork-5.4.1
-# required by dev-qt/qtwebkit-5.4.1
-# required by dev-python/PyQt5-5.4.1[webkit]
-# required by www-client/qutebrowser-0.1.3::qutebrowser
-# required by qutebrowser (argument)
-=dev-libs/libpcre-8.35 pcre16
+>=dev-python/PyQt5-5.4.1 declarative gui network opengl printsupport sql webengine widgets webchannel
 # required by dev-qt/qtwebkit-5.4.1
 # required by dev-python/PyQt5-5.4.1[webkit]
 # required by www-client/qutebrowser-0.1.3::qutebrowser
@@ -83,10 +72,6 @@ x11-themes/qtcurve gtk
 # required by www-client/qutebrowser-0.1.3::qutebrowser
 # required by qutebrowser (argument)
 >=x11-libs/libxcb-1.11-r1 xkb
-# required by dev-python/pypeg2-2.15.1::qutebrowser
-# required by www-client/qutebrowser-0.1.3::qutebrowser
-# required by qutebrowser (argument)
-=dev-python/lxml-3.3.5 python_targets_python3_4
 # required by www-client/qutebrowser-0.1.3::qutebrowser
 # required by qutebrowser (argument)
 >=dev-python/pypeg2-2.15.1 python_targets_python3_4
@@ -96,11 +81,6 @@ x11-themes/qtcurve gtk
 # required by www-client/qutebrowser-0.1.3::qutebrowser
 # required by qutebrowser (argument)
 =dev-python/pygments-2.0.1 python_targets_python3_4
-# required by dev-python/lxml-3.3.5
-# required by dev-python/pypeg2-2.15.1::qutebrowser
-# required by www-client/qutebrowser-0.1.3::qutebrowser
-# required by qutebrowser (argument)
-=dev-python/setuptools-12.0.1 python_targets_python3_4
 # required by dev-python/jinja-2.7.3
 # required by www-client/qutebrowser-0.1.3::qutebrowser
 # required by qutebrowser (argument)
@@ -111,13 +91,6 @@ x11-themes/qtcurve gtk
 # required by media-video/mpv-0.3.10
 # required by mpv (argument)
 =media-video/libav-9.17 threads
-# required by dev-qt/qtcore-5.5.0::qt
-# required by dev-qt/qtwidgets-5.5.0::qt
-# required by dev-qt/qtwebkit-5.5.0::qt
-# required by dev-python/PyQt5-5.4.1
-# required by @selected
-# required by @world (argument)
-=dev-libs/libpcre-8.36 pcre16
 # required by dev-ruby/rdoc-4.0.1-r2[ruby_targets_ruby21]
 # required by dev-lang/ruby-2.0.0_p645[rdoc]
 # required by dev-ruby/rubygems-2.2.5-r1[ruby_targets_ruby20]
@@ -166,7 +139,6 @@ x11-themes/qtcurve gtk
 # required by dev-ruby/racc-1.4.11[-test,ruby_targets_ruby21]
 =dev-ruby/rubygems-2.2.5-r1 ruby_targets_ruby21
 # required by sys-devel/prelink-20130503::gentoo
-# required by app-emulation/wine-1.7.51::gentoo[prelink]
 # required by @selected
 # required by @world (argument)
 >=dev-libs/elfutils-0.163 static-libs
@@ -183,40 +155,19 @@ x11-themes/qtcurve gtk
 >=dev-libs/boost-1.56.0-r1 python
 # required by app-vim/youcompleteme-99999999::gentoo
 # required by app-vim/youcompleteme (argument)
->=app-editors/vim-7.4.769 python
-# required by dev-qt/qtcore-5.5.1::gentoo
-# required by media-gfx/graphite2-1.3.5::gentoo
-# required by media-libs/harfbuzz-0.9.41::gentoo
-# required by x11-libs/pango-1.36.8-r1::gentoo
-# required by x11-libs/goffice-0.10.24::gentoo
-# required by app-office/gnumeric-1.12.24::gentoo
-# required by @selected
-# required by @world (argument)
->=dev-libs/libpcre-8.39 pcre16
+app-editors/vim python -python_single_target_python3_5 python_single_target_python2_7
 # required by sys-libs/ldb-1.1.26::gentoo
 # required by net-fs/samba-4.2.11::gentoo
-# required by app-emulation/wine-1.9.20::gentoo[netapi]
-# required by app-emulation/wine (argument)
 >=sys-libs/tevent-0.9.28 python
 # required by sys-auth/consolekit-1.1.0-r1::gentoo
 # required by sys-auth/polkit-0.113::gentoo[-systemd]
-# required by sys-fs/udisks-2.1.7::gentoo
-# required by app-emulation/wine-1.9.20::gentoo[udisks]
-# required by app-emulation/wine (argument)
 >=dev-libs/glib-2.48.2 dbus
 # required by sys-auth/polkit-0.113::gentoo[-systemd]
-# required by sys-fs/udisks-2.1.7::gentoo
-# required by app-emulation/wine-1.9.20::gentoo[udisks]
-# required by app-emulation/wine (argument)
 >=sys-auth/consolekit-1.1.0-r1 policykit
 # required by sys-libs/ldb-1.1.26::gentoo
 # required by net-fs/samba-4.2.11::gentoo
-# required by app-emulation/wine-1.9.20::gentoo[netapi]
-# required by app-emulation/wine (argument)
 >=sys-libs/tdb-1.3.8 python
 # required by net-fs/samba-4.2.11::gentoo
-# required by app-emulation/wine-1.9.20::gentoo[netapi]
-# required by app-emulation/wine (argument)
 >=sys-libs/ntdb-1.0-r1 python
 # required by sys-power/suspend-1.0_p20150810::gentoo[crypt]
 # required by @selected
@@ -234,3 +185,93 @@ x11-themes/qtcurve gtk
 # required by @selected
 # required by @world (argument)
 >=dev-libs/lzo-2.09 static-libs
+# required by dev-qt/qtcore-5.7.1-r4::gentoo
+# required by sci-visualization/gnuplot-5.0.7::gentoo[qt5]
+# required by @__auto_slot_operator_replace_installed__ (argument)
+>=dev-libs/libpcre-8.41-r1 pcre16
+# required by dev-qt/qtcore-5.9.4-r2::gentoo
+# required by dev-qt/qtsql-5.9.4-r1::gentoo
+# required by dev-qt/qtwebkit-5.9.1::gentoo
+# required by media-gfx/wkhtmltopdf-0.12.4-r1::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libpcre2-10.30 pcre16
+
+# required by dev-python/setuptools-34.0.2-r1::gentoo
+# required by dev-python/certifi-2017.4.17::gentoo
+# required by dev-python/requests-2.18.2-r1::gentoo
+# required by app-vim/youcompleteme-99999999::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/packaging-16.8 python_targets_python3_4
+# required by dev-qt/qtwebengine-5.9.4::gentoo
+# required by dev-python/PyQt5-5.9.2::gentoo[webengine]
+# required by www-client/qutebrowser-1.2.1::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-libs/libvpx-1.5.0 svc
+# required by dev-python/pypeg2-2.15.2::gentoo
+# required by www-client/qutebrowser-1.2.1::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/lxml-4.1.1 python_targets_python3_4
+# required by dev-qt/qtwebengine-5.9.4::gentoo
+# required by dev-python/PyQt5-5.9.2::gentoo[webengine]
+# required by www-client/qutebrowser-1.2.1::gentoo
+# required by @selected
+# required by @world (argument)
+>=sys-libs/zlib-1.2.11-r1 minizip
+# required by dev-python/setuptools-34.0.2-r1::gentoo
+# required by dev-python/certifi-2017.4.17::gentoo
+# required by dev-python/requests-2.18.2-r1::gentoo
+# required by app-vim/youcompleteme-99999999::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/six-1.11.0 python_targets_python3_4
+# required by dev-python/PyQt5-5.9.2::gentoo[webengine]
+# required by www-client/qutebrowser-1.2.1::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-qt/qtwebengine-5.9.4 widgets
+# required by dev-qt/qtwebengine-5.9.4::gentoo
+# required by dev-python/PyQt5-5.9.2::gentoo[webengine]
+# required by www-client/qutebrowser-1.2.1::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-qt/qtwebchannel-5.9.4 qml
+# required by dev-qt/qtwebengine-5.9.4::gentoo
+# required by dev-python/PyQt5-5.9.2::gentoo[webengine]
+# required by www-client/qutebrowser-1.2.1::gentoo
+# required by @selected
+# required by @world (argument)
+# required by media-libs/mesa-10.0.4
+# required by x11-base/xorg-server-1.15.0[-minimal]
+# required by x11-drivers/xf86-video-intel-2.21.15
+# required by x11-base/xorg-drivers-1.15[video_cards_intel]
+>=dev-libs/libxml2-2.9.7 python icu
+# required by dev-python/cryptography-2.0.2::gentoo
+# required by dev-python/requests-2.18.2-r1::gentoo[ssl]
+# required by app-vim/youcompleteme-99999999::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/setuptools-34.0.2-r1 python_targets_python3_4
+# required by dev-python/packaging-16.8::gentoo
+# required by dev-python/setuptools-34.0.2-r1::gentoo
+# required by dev-python/certifi-2017.4.17::gentoo
+# required by dev-python/requests-2.18.2-r1::gentoo
+# required by app-vim/youcompleteme-99999999::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/pyparsing-2.2.0 python_targets_python3_4
+# required by dev-python/setuptools-34.0.2-r1::gentoo
+# required by dev-python/certifi-2017.4.17::gentoo
+# required by dev-python/requests-2.18.2-r1::gentoo
+# required by app-vim/youcompleteme-99999999::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/appdirs-1.4.3 python_targets_python3_4
+# required by dev-python/requests-2.18.2-r1::gentoo
+# required by app-vim/youcompleteme-99999999::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/certifi-2017.4.17 python_targets_python3_4

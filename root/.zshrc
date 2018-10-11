@@ -44,6 +44,8 @@ sync() {
   fi
 }
 
+alias emrg="emerge -quDN --keep-going @world"
+
 backup() {
   local user=/home/semyon
   local files="
@@ -236,4 +238,112 @@ bkrn() {
   echo "Done!"
 
   cd $wd
+}
+
+_log() { printf "$1... "; }
+_done() {
+  local res=$?
+  (( $res )) && echo "fail!" || echo "done."
+  return $res
+}
+
+_count() {
+  local t=$1
+  local c=$2
+
+  if (( $c == 0 )); then
+    printf "no ${t}s"
+  else
+    printf "$c $t"
+    (( $c > 1 )) && printf s
+  fi
+
+  echo
+}
+
+_mount_device() {
+  local err
+
+  _log "Mounting device"
+  err=$(mount -t auto /dev/sdb1 /mnt/usb 2>&1 >/dev/null)
+  _done
+
+  if [[ -n $err ]]; then
+    echo $err
+    return 1
+  fi
+}
+
+_umount_device() {
+  _log "Unmounting device"
+  umount /mnt/usb
+  _done
+}
+
+get-photos() {
+  echo "Get photos into $(pwd)"
+  _press_space
+
+  _mount_device
+
+  (( $? )) && return 1
+
+  if [[ ! -d /mnt/usb/DCIM ]]; then
+    echo "No DCIM directory on device!"
+    _umount_device
+    return 1
+  fi
+
+  local fs
+  local pc=0
+  local vc=0
+
+  _log "Scanning device"
+
+  for f in $(find /mnt/usb/DCIM -iname '*JPG'); do
+    [[ -n $fs ]] && fs+=" "
+    fs+=$f
+    pc=$(($pc+1))
+  done
+
+  for f in $(find /mnt/usb/DCIM -iname '*MP4'); do
+    [[ -n $fs ]] && fs+=" "
+    fs+=$f
+    vc=$(($vc+1))
+  done
+
+  _done
+
+  echo "Found: $(_count photo $pc) and $(_count video $vc)"
+
+  if (( $pc == 0 && $vc == 0 )); then
+    _umount_device
+    return
+  fi
+
+  local action
+  local r
+  setopt -s nocasematch
+
+  read r?"[move], copy or abort? "
+
+  if [[ $r =~ "^(q|quit|a|abort)$" ]]; then
+    _umount_device
+    return
+  elif [[ $r =~ "^(|m|move)$" ]]; then
+    action=mv
+    _log "Moving to $(pwd)"
+  elif [[ $r =~ "^(c|copy)$" ]]; then
+    action=cp
+    _log "Copying to $(pwd)"
+  fi
+
+  printf $fs | xargs -d\  -I% $action % ./
+  _done
+
+  _log "Changing rights"
+  chown -R semyon:semyon .
+  _done
+
+  _umount_device
 }

@@ -398,9 +398,11 @@ root.buttons(gears.table.join(
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
 	awful.key({}, "Print", function() awful.spawn(
-		"scrot -q 80 /home/semyon/misc/screenshot_%Y-%m-%d.png" ) end),
+		"scrot -q 80 /home/semyon/misc/screen_%Y-%m-%d.png" ) end),
+	awful.key({ "Mod4"}, "Print", function() awful.spawn(
+		"scrot -u -q 80 /home/semyon/misc/client_%Y-%m-%d.png" ) end),
 	awful.key({ "Mod1"}, "Print", function() awful.spawn(
-		"scrot -u -q 80 /home/semyon/misc/clientshot_%Y-%m-%d.png" ) end),
+		"scrot -s -q 80 /home/semyon/misc/area_%Y-%m-%d.png" ) end),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,

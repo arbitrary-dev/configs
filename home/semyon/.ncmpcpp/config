@@ -271,7 +271,7 @@ selected_item_suffix = "$9"
 #
 #playlist_shorten_total_times = "no"
 #
-playlist_separate_albums = "yes"
+#playlist_separate_albums = "no"
 #
 playlist_display_mode = "classic"
 #
@@ -295,7 +295,7 @@ playlist_display_mode = "classic"
 ## Note: You can specify third character which will
 ## be used to build 'empty' part of progressbar.
 ##
-progressbar_look = "߂߀߂"
+progressbar_look = "߀߀߂"
 #
 #default_place_to_search_in = "database" (database/playlist)
 #

@@ -30,3 +30,4 @@ tmpfs			/tmp		tmpfs		size=1G,noatime,exec 0 0
 
 #/dev/sda9		/tmp		ext4		noatime		0 2
 #//192.168.0.2/share	/mnt/share	cifs		user=yonigger,file_mode=0666,dir_mode=0777,defaults,noperm 0 0
+/dev/sdb1 /mnt/usb  auto  user  0 0

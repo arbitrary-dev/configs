@@ -6,26 +6,15 @@ stty -ixon
 
 # aliases
 
-alias -s mp4=mpv
-alias -s MPG=mpv
-alias -s avi=mpv
-alias -s mkv=mpv
-alias -s flv=mpv
-alias -s webm="mpv -loop-playlist=inf"
-alias -s pdf=mupdf
-alias -s txt=vim
-alias -s png="feh -F"
-alias -s jpg="feh -F"
-
 alias mp="mpd && mpdscribble"
 alias nc=ncmpcpp
-
 alias qmarks="vim ~/.config/qutebrowser/quickmarks"
 alias vd=vimdiff
+alias yta="youtube-dl -f 'bestaudio[ext=m4a]'"
 
-export DOCS=/home/semyon/docs
+export MY_DOCS=/home/semyon/docs
 
-doc() { vim $DOCS/$1; }
+doc() { vim $MY_DOCS/$1; }
 
 join_by() { local IFS="$1"; shift; echo "$*"; }
 

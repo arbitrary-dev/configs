@@ -1,7 +1,6 @@
 app-admin/testdisk
 app-arch/p7zip
 app-benchmarks/stress
-app-emulation/wine
 app-misc/screenfetch
 app-office/gnumeric
 app-portage/eix
@@ -14,8 +13,6 @@ app-text/djview
 app-text/goldendict
 app-text/mupdf
 app-vim/youcompleteme
-dev-java/oracle-jdk-bin
-dev-lang/scala
 dev-perl/rename
 games-emulation/dosbox
 games-roguelike/dwarf-fortress
@@ -32,6 +29,7 @@ media-gfx/gphoto2
 media-gfx/scrot
 media-gfx/wkhtmltopdf
 media-sound/bluez-alsa
+media-sound/lilypond
 media-sound/mpd
 media-sound/mpdscribble
 media-sound/ncmpcpp
@@ -45,7 +43,7 @@ net-misc/freerdp
 net-misc/netifrc
 net-misc/ntp
 net-misc/openssh
-net-misc/youtube-viewer
+net-misc/youtube-dl
 net-p2p/rtorrent
 net-wireless/bluez
 net-wireless/wireless-tools
@@ -57,8 +55,6 @@ sys-boot/grub
 sys-devel/crossdev
 sys-devel/distcc
 sys-fs/go-mtpfs
-sys-fs/udiskie
-sys-fs/udisks
 sys-kernel/genkernel
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware

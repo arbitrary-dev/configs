@@ -9,6 +9,9 @@ media-fonts/mplus-outline-fonts ~x86
 x11-drivers/xf86-input-synaptics ~x86
 dev-qt/* ~x86
 
+# To resolve circular dependencies with dev-python/six
+dev-python/setuptools ~x86
+
 x11-wm/awesome ~x86
 x11-plugins/vicious ~x86
 
@@ -68,7 +71,7 @@ app-emulation/wine ~x86
 # required by x11-drivers/xf86-video-intel-2.99.917-r2
 # required by @selected
 # required by @world (argument)
-=x11-libs/libdrm-2.4.64 ~x86
+x11-libs/libdrm ~x86
 # required by mpv (argument)
 media-video/mpv ~x86
 # required by media-libs/mesa-11.1.0::gentoo[vaapi]
@@ -140,3 +143,7 @@ app-shells/zsh-completions ~x86
 # required by @selected
 # required by @world (argument)
 =x11-libs/libdrm-2.4.80 ~x86
+
+# required by sci-visualization/gnuplot-5.0.7::gentoo[qt5]
+# required by @__auto_slot_operator_replace_installed__ (argument)
+=dev-qt/qtcore-5.9.9999 **
