@@ -18,7 +18,7 @@
 ## MPD clients (eg. ncmpc) also use that location.
 ##
 #
-lyrics_directory = ~/Music/_hdd/_lyrics
+lyrics_directory = ~/Music/_lyrics
 
 ##### connection settings #####
 #
@@ -192,7 +192,7 @@ song_status_format = {{%A - }{%b {(%y)}}}|{{%a - }{%t}}|{%f}
 #
 #alternative_header_second_line_format = {{$4$b%a$/b$9}{ - $7%b$9}{ ($4%y$9)}}|{%D}
 #
-current_item_prefix = $6$r
+current_item_prefix = $2$r
 
 current_item_suffix = $/r$9
 
@@ -200,14 +200,14 @@ current_item_suffix = $/r$9
 #
 #current_item_inactive_column_suffix = $/r$(end)
 #
-now_playing_prefix = "$6$r ▶ $/r$9"
+now_playing_prefix = "$2$r ▶ $/r$9"
 
 #now_playing_suffix = $9
 #
 #browser_playlist_prefix = "$2playlist$9 "
 #
-#selected_item_prefix = $6
-#
+selected_item_prefix = $2
+
 #selected_item_suffix = $9
 #
 #modified_item_prefix = $3> $9
@@ -286,7 +286,7 @@ now_playing_prefix = "$6$r ▶ $/r$9"
 #
 #playlist_shorten_total_times = no
 #
-playlist_separate_albums = yes
+#playlist_separate_albums = no
 #
 ##
 ## Note: Possible display modes: classic, columns.
@@ -363,8 +363,8 @@ lines_scrolled = 1
 #
 #generate_win32_compatible_filenames = yes
 #
-#allow_for_physical_item_deletion = no
-#
+allow_for_physical_item_deletion = yes
+
 ##
 ## Note: If you set this variable, ncmpcpp will try to get info from last.fm in
 ## language you set and if it fails, it will fall back to english. Otherwise it
@@ -510,8 +510,8 @@ mouse_support = no
 #
 #colors_enabled = yes
 #
-#empty_tag_color = cyan
-#
+empty_tag_color = yellow
+
 header_window_color = default
 
 volume_color = black
@@ -526,9 +526,9 @@ main_window_color = default
 #
 #color2 = green
 #
-progressbar_color = white
+progressbar_color = yellow
 
-progressbar_elapsed_color = magenta
+progressbar_elapsed_color = red
 
 statusbar_color = black
 
