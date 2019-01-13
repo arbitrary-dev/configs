@@ -12,13 +12,14 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 # zstyle :compinstall filename '/Users/gay/.zshrc'
 
 autoload -Uz compinit
-compinit
+compinit -u
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory autocd notify
+setopt histignorespace
 unsetopt beep nomatch
 bindkey -v
 # End of lines configured by zsh-newuser-install
@@ -37,25 +38,91 @@ export PATH="\
 /usr/local/Cellar/vim/8.0.0627/bin:\
 $PATH"
 
-alias vr="vim /etc/zshrc"
-alias sr="source /etc/zshrc"
+# [Cmd+R] on boot
+# csrutil disable
+alias fix-itunes-media-keys-hijack="\
+launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist"
+# csrutil enable
+
+alias svr="sudo vim /etc/zshrc"
+alias vr="vim ~/.zshrc"
+sr() { source /etc/zshrc; source ~/.zshrc; }
+
 alias xc=pbcopy
 alias xp=pbpaste
 alias less="less -iSXFR"
 alias mupdf=mupdf-gl
-alias sed="sed -E"
-alias shorten-paths='sed -Ee "s|/.+/([^/]+/)|/**/\1|"'
+alias sed="gsed -E"
+alias shorten-paths="perl -pE 's/(?<!\.\.)\/.+\/([^\/]+\/)/\/**\/\1/'"
+alias bc="bc -l"
+alias my-grep="grep -EIrn --color"
+alias sleep-on="sudo pmset disablesleep 0"
+alias sleep-off="sudo pmset disablesleep 1"
+
+okta() {
+  printf $OKTA_PASS | xc
+  echo OKTA password copied to the clipboard!
+}
+
+brew-fix-links() {
+  for x in $(brew list -1); do
+    brew unlink $x
+    brew link $x
+  done
+}
+
+my-sdiff() {
+  sdiff -w `tput cols` $@ \
+  | sed -Ee "s/^(.+ \| .*)$/${esc}[32m\1${esc}[0m/" \
+  | less
+}
 
 esc=$(printf '\033')
-my-grep() { /usr/bin/grep -Irn $1 .; }
+md5() { [[ $(/sbin/md5 -q $2) = $1 ]] && echo SAME || echo WRONG! }
+
+sbt-t() {
+  sbt test \
+  | \grep -E "${esc}\[32m|${esc}\[31m"
+}
+
+sbt-to() {
+  sbt "testOnly *$1* ${2:+-- -z \"$2\"}" \
+  | \grep -E "${esc}\[32m|${esc}\[31m"
+}
+
+sbt-it() {
+  sbt it:test \
+  | \grep -E "${esc}\[32m|${esc}\[31m"
+}
+
+sbt-ito() {
+  sbt "it:testOnly *$1* ${2:+-- -z \"$2\"}" \
+  | \grep -E "${esc}\[32m|${esc}\[31m"
+}
+
+mp3cue() {
+  if (( ! $# )); then
+    echo "Usage: $0 <playlist.cue>"
+    return 1
+  fi
+  local cue=$1
+  local mp3=`sed -En 's/^.*FILE "(.+)" MP3.*$/\1/p' $cue`
+  mp3splt -d out -c $cue -o "@n2 @p - @t" "$mp3"
+}
 
 alias -s scala=$EDITOR
+alias -s json=$EDITOR
 alias -s md=$EDITOR
 alias -s MD=$EDITOR
 alias -s conf=$EDITOR
 alias -s properties=$EDITOR
-alias -s pdf=mupdf
+
 alias -s mp4=mpv
+alias -s avi=mpv
+alias -s mkv=mpv
+alias -s webm=mpv
+
+alias -s pdf=mupdf
 
 # GIT shortcuts
 
@@ -72,18 +139,18 @@ grr() {
 }
 
 gbl() {
-  local out=$(git blame --abbrev=6 -s -L ${@:1})
+  local out=$(git blame HEAD --abbrev=6 -s -L ${@:1})
   local n=$( \
     echo $out | \
-    sed -nEe "s/[^)]*) ( *)[^ ].*/\1/p" | \
+    \sed -nEe "s/[^)]*) ( *)[^ ].*/\1/p" | \
     awk '{print length}' | \
     sort -g | \
     head -n1
   )
 
   echo $out | \
-  sed -Ee "s_^([0-9a-z]+) ([0-9]+)) ( {0,$n})_${esc}[32m\1 ${esc}[34m\2${esc}[0m _" | \
-  less -iSXFR
+  \sed -Ee "s_^([0-9a-z]+) ( *[0-9]+)\) ( {0,$n})_${esc}[32m\1 ${esc}[34m\2${esc}[0m _" | \
+  \less -iSXFR
 }
 
 alias ga="git add"
@@ -91,10 +158,18 @@ alias gb="git branch"
 alias gco="git co"
 alias gcp="git cp"
 alias grst="git reset"
-alias gt="git tag"
 alias gbs="git branch -a --format='%(refname:short) %(color:red)%(authordate:relative)' --list *$MY_NAME*"
 alias gbi="git bisect"
 alias gls="git ls"
+
+alias gt="git tag"
+gtr() { git ls-remote --tags ${1:-origin}; }
+gtf() { git fetch --tags ${1:-origin} ${2:-develop}; }
+
+git-config-user() {
+  git config user.name $GITHUB_USER
+  git config user.email $GITHUB_EMAIL
+}
 
 alias gp="git push"
 alias gf="git fetch"
@@ -103,7 +178,7 @@ alias gpl="git pull"
 alias gs="git show"
 gsno() { git show-no $1 | shorten-paths; }
 
-alias gsh="git stash save"
+alias gsh="git stash save --include-untracked --keep-index"
 alias gsha="git stash apply"
 alias gshs="git stash show -p"
 alias gshl="git stash list"
@@ -119,6 +194,7 @@ alias glg="git lg"
 alias glgo="git lgo"
 alias glg10="git lg -10"
 alias glgo10="git lgo -10"
+alias gl-all="git log --reflog"
 
 alias gc="git commit"
 alias gcf="git cf"

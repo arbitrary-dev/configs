@@ -2,7 +2,7 @@
   lh = log --pretty=format:"%h"
   lg = log --graph --abbrev-commit --decorate --date=format:'%m-%d-%Y %H:%M' \
 --format=format:'%C(cyan)%h%C(reset) %C(red)%ad (%ar)%C(reset)%C(green)%d%C(reset)%n'\
-'         %C(reset)%s %C(white)%an%+N' --exclude refs/stash --all
+'         %C(reset)%s %C(dim black)%an%+N' --exclude refs/stash --all
   lgo = log --graph --abbrev-commit --decorate --date=format:'%m-%d-%Y %H:%M' \
 --format=format:'%C(cyan)%h%C(reset) %C(red)%ad (%ar)%C(reset)%C(green)%d%C(reset)%n'\
 '         %C(black)%s %C(dim black)%an%+N' --exclude refs/stash --first-parent

@@ -14,14 +14,18 @@ augroup END
 
 set textwidth=80 colorcolumn=80
 au FileType scala set tw=110 cc=110
+" disable auto-wrapping on typing
+set formatoptions-=t
 
 map K r<CR>
-map =j :%!python -m json.tool<CR>
+map =jt :%!python -m json.tool<CR>
+map =jd :%!python -c 'import json,sys; print(json.dumps(sys.stdin.read()))'<CR>
+map =jl :%!python -c 'import json,sys; print(json.loads(sys.stdin.read()))'<CR>
 
 " trailing spaces highlighting
 au FileType *
   \ if &ft == 'diff' |
-    \ match Error /\(+.\{-}\)\@<=\s\+$/ |
+    \ match Error /\(^+.\{-}\)\@<=\s\+$/ |
   \ else |
     \ match Error /\s\+$/ |
   \ endif
@@ -31,24 +35,54 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-execute pathogen#infect()
+
+" fix trailing space in diff additions only
+command FTS %s/^\(+.\{-}\)\s\+$/\1/
+" fix trailing space anywhere
+command FTSA %s/\s\+$//
+
+" 1. Install vim-plug
+" curl -fLo /usr/local/share/vim/vimfiles/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" 2. Install plugins
+" :PlugInstall
+call plug#begin('/usr/local/share/vim/vimfiles/vim-plug')
+Plug 'Valloric/YouCompleteMe', {
+  \ 'do': './install.sh'
+  \ }
+Plug 'godlygeek/tabular'
+Plug 'autozimu/LanguageClient-neovim', {
+  \ 'branch': 'next',
+  \ 'do': './install.sh',
+  \ 'for': 'haskell'
+  \ }
+call plug#end()
+
+" autozimu/LanguageClient-neovim
+nnoremap <silent> <F1> :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+let g:LanguageClient_serverCommands = {
+  \ 'haskell': ['hie', '--lsp'],
+  \ }
 
 syntax on
 filetype plugin indent on
 
 " Colors
-hi Search ctermfg=yellow ctermbg=yellow
-hi Visual ctermfg=white ctermbg=white
-hi Todo ctermfg=blue ctermbg=blue
-hi FoldColumn cterm=none ctermfg=darkcyan ctermbg=cyan
-hi Folded cterm=none ctermfg=darkcyan ctermbg=cyan
-hi StatusLine cterm=none ctermfg=white ctermbg=blue
-hi StatusLineNC cterm=none ctermfg=darkblue ctermbg=blue
-hi VertSplit cterm=none ctermfg=darkblue ctermbg=blue
-hi LineNr ctermfg=darkblue
-hi ModeMsg cterm=none ctermfg=white ctermbg=blue
-hi ErrorMsg ctermfg=white ctermbg=red
-hi DiffChange ctermfg=darkred ctermbg=darkred
-hi DiffText ctermfg=red ctermbg=red
-hi DiffDelete ctermfg=darkgreen ctermbg=darkgreen
-hi DiffAdd ctermfg=green ctermbg=darkgreen
+hi ColorColumn ctermbg=178
+hi Search ctermbg=yellow ctermfg=brown
+hi Visual ctermfg=229 ctermbg=brown
+hi Todo ctermfg=brown ctermbg=178
+hi Comment ctermfg=brown
+hi FoldColumn ctermfg=136 ctermbg=none
+hi Folded ctermfg=136 ctermbg=none
+hi StatusLine cterm=none ctermfg=223 ctermbg=136
+hi StatusLineNC cterm=none ctermfg=136 ctermbg=136
+hi VertSplit cterm=none ctermfg=136 ctermbg=136
+hi LineNr ctermfg=136
+hi ModeMsg cterm=none ctermfg=223 ctermbg=brown
+hi ErrorMsg ctermfg=yellow ctermbg=red
+hi DiffChange ctermfg=lightred ctermbg=red
+hi DiffText ctermfg=lightred ctermbg=202 cterm=none
+hi DiffDelete ctermfg=red ctermbg=darkred
+hi DiffAdd ctermbg=darkgreen ctermfg=lightgreen

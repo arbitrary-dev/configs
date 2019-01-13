@@ -3,30 +3,123 @@
 export M2_HOME=~/work/apache-maven-3.2.5
 export MAVEN_OPTS="-Xmx1g"
 
+export PATH="\
+"~"/Library/Android/sdk/platform-tools:\
+"~"/.local/bin:\
+$M2_HOME/bin:\
+$PATH"
+
 alias sf=screenfetch
 alias nc=ncmpcpp
+alias yta="youtube-dl -f bestaudio[ext=m4a]"
+alias ytv="youtube-dl -f bestvideo+bestaudio"
+alias docker-tty="screen ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/tty"
 
 alias todo="vim ~/Documents/_misc/todo"
 alias notes="vim ~/Documents/_misc/notes"
-alias vr="vim ~/.zshrc"
-alias sr="source ~/.zshrc"
+
+eval "$(jenv init -)"
+
+remind() {
+  if [[ ! $DEEPVOICE ]]; then
+    echo "Define DEEPVOICE env variable with path to deepvoice3_pytorch"
+    return 1
+  fi
+
+  if (( ! $# )); then
+    echo "Usage: $0 5[smh] <of_what>"
+    return 1
+  fi
+
+  local stime
+  if [[ ${1[-1]} =~ "[0-9s]" ]]; then
+    stime=${1%s}
+  elif [[ ${1[-1]} = m ]]; then
+    stime=`bc <<< "${1%m} * 60"`
+  elif [[ ${1[-1]} = h ]]; then
+    stime=`bc <<< "${1%h} * 60 * 60"`
+  else
+    echo "What is this '$1'? Only seconds, minutes & hours supported."
+    return 1
+  fi
+
+  local what=$2
+  if [[ ! $what ]]; then
+    [[ -t 0 ]] && echo "Type a reminder and press [Ctrl+D] on a newline..."
+    what=`cat -`
+  fi
+
+  local tmp=/tmp/remind-`whoami`-`date +%s`
+  rm -rf $tmp
+  mkdir $tmp
+  echo $what > $tmp/text
+  local params="preset=deepvoice3_vctk,builder=deepvoice3_multispeaker"
+  if ! ( cd $DEEPVOICE; python3 synthesis.py --hparams=$params --speaker_id=5 \
+    checkpoint.pth $tmp/text $tmp > /dev/null )
+  then
+    return 1
+  fi
+  echo "OK!"
+
+  _reminder $stime $tmp > /dev/null 2>&1 &
+  disown
+}
+
+_reminder() {
+  local tmp=$2
+
+  sleep $1
+
+  mpc volume 5
+  local vol=`osascript -e "get Volume settings" \
+    | sed 's/.*output volume:([0-9]+).*/\1/'`
+  vol=`bc -l <<< "scale=1; $vol / 14"`
+  sleep 0.5
+  osascript -e "set Volume `bc <<< "$vol + 1"`"
+  mpc volume 1
+  for a in $tmp/*.wav; do
+    ffplay -nodisp -autoexit -hide_banner $a
+    sleep 0.25
+  done
+  osascript -e "set Volume $vol"
+  mpc volume 5
+  sleep 0.5
+  mpc volume 100
+
+  rm -rf $tmp
+}
 
 export MY_ISSUES=~/Documents/issue
-issue() { vim $MY_ISSUES/$1; }
-issue-del() { rm $MY_ISSUES/$1; }
-issue-show() { [[ $1 =~ "^[A-Z]+-[0-9]+$" ]] && { printf "$1 "; head -1 $MY_ISSUES/$1; } || echo $1; }
-issues() {
+i() {
+  [[ $1 =~ "^[A-Z]+-[0-9]+$" ]] && vim +'set ft=markdown' $MY_ISSUES/$1 \
+                                || cat $MY_ISSUES/$1
+}
+id() { rm $MY_ISSUES/$1; }
+_issue-show() {
+  if [[ $1 =~ "^[A-Z]+-[0-9]+$" ]]; then
+    printf "$1 "
+    head -1 $MY_ISSUES/$1 | sed 's/^[ #]+//'
+  else
+    echo $1
+  fi
+}
+is() {
   ls $MY_ISSUES | \
+  sort -r | \
   xargs -n1 -I% \
-  zsh -c "$(declare -f issue-show); issue-show %;"
+    zsh -c "$(declare -f _issue-show); _issue-show %;" | \
+  less
 }
 
 export MY_DOCS=~/Documents
-doc() {
+d() {
   local str=$MY_DOCS
   for i in $@; do str+=/**/*$i*; done
 
+  local _ifs=$IFS
+  IFS=$'\n'
   local files=($(eval "ls $str 2> /dev/null"))
+  IFS=$_ifs
 
   if (( $#files > 1 )); then
     echo "Which one?"
@@ -37,17 +130,18 @@ doc() {
     return 1
   fi
 
-  if [[ $files = *.pdf ]]; then
-    mupdf $files &
+  if [[ $files =~ \\.(pdf|doc|xls|jpe?g)$ ]]; then
+    open $files &
     disown
   else
     vim $files
   fi
 }
-docs() { ls $MY_DOCS | sed s/.pdf//; }
+ds() { ls $MY_DOCS | sed s/.pdf//; }
 
 export MY_SCRIPTS=~/work/.scripts
-ss() { vim $MY_SCRIPTS/$1; }
+export PATH=$MY_SCRIPTS:$PATH
+ss() { vim $MY_SCRIPTS/$1-source.sh; }
 
 if [[ -d $MY_SCRIPTS ]]; then
   for s in $(ls $MY_SCRIPTS/*-source.sh); do
@@ -56,9 +150,9 @@ if [[ -d $MY_SCRIPTS ]]; then
 fi
 
 post-json() { curl -k -X POST -H "Content-Type: application/json" -d $2 $1; }
-sbt-to() { sbt "testOnly *$1* ${2:+-- -z \"$2\"}"; }
 
-export PATH="\
-$MY_SCRIPTS:\
-$M2_HOME/bin:\
-$PATH"
+# JIRA
+j() { jira show $* | \less -iXFR; }
+js() { jira list | less; }
+alias jw="jira work"
+alias jc="jira comment"
