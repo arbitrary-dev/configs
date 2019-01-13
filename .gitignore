@@ -18,6 +18,9 @@
 /Users/gay/*
 !/Users/gay/.vimrc
 !/Users/gay/.zshrc
+!/Users/gay/.ssh
+/Users/gay/.ssh/*
+!/Users/gay/.ssh/config
 !/Users/gay/.mpd
 /Users/gay/.mpd/*
 !/Users/gay/.mpd/mpd.conf
