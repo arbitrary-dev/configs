@@ -4,6 +4,7 @@ export M2_HOME=~/work/apache-maven-3.2.5
 export MAVEN_OPTS="-Xmx1g"
 
 export PATH="\
+"~"/projects/scripts:\
 "~"/Library/Android/sdk/platform-tools:\
 "~"/.local/bin:\
 $M2_HOME/bin:\
@@ -152,7 +153,7 @@ fi
 post-json() { curl -k -X POST -H "Content-Type: application/json" -d $2 $1; }
 
 # JIRA
+
 j() { jira show $* | \less -iXFR; }
 js() { jira list | less; }
 alias jw="jira work"
-alias jc="jira comment"
