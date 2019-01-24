@@ -59,6 +59,12 @@ alias my-grep="grep -EIrn --color"
 alias sleep-on="sudo pmset disablesleep 0"
 alias sleep-off="sudo pmset disablesleep 1"
 
+join() {
+  local IFS="$1"
+  shift
+  echo "$*"
+}
+
 okta() {
   printf $OKTA_PASS | xc
   echo OKTA password copied to the clipboard!
