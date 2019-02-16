@@ -1,3 +1,4 @@
+x11-misc/compton -drm -opengl -pcre
 media-sound/bluez-alsa hcitop
 media-sound/ncmpcpp taglib outputs
 mail-client/mutt gpg imap pop sasl smtp tokyocabinet -berkdb -gdbm

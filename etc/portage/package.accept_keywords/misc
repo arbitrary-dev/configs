@@ -1,3 +1,4 @@
+=x11-misc/compton-9999 **
 media-sound/bluez-alsa ~x86
 net-wireless/bluez ~x86
 media-video/ffmpeg ~x86

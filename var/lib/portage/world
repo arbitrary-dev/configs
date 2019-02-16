@@ -9,6 +9,7 @@ app-portage/gentoolkit
 app-portage/layman
 app-shells/zsh
 app-shells/zsh-completions
+app-text/antiword
 app-text/djview
 app-text/goldendict
 app-text/mupdf
@@ -49,6 +50,7 @@ net-wireless/bluez
 net-wireless/wireless-tools
 net-wireless/wpa_supplicant
 sci-visualization/gnuplot
+sys-apps/hdparm
 sys-apps/smartmontools
 sys-apps/usbutils
 sys-boot/grub
@@ -70,6 +72,7 @@ x11-apps/mesa-progs
 x11-apps/xfontsel
 x11-base/xorg-x11
 x11-drivers/xf86-video-intel
+x11-misc/compton
 x11-misc/gbdfed
 x11-misc/xclip
 x11-plugins/vicious
