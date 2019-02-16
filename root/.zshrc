@@ -1,5 +1,6 @@
 #[[ $PATH != *distcc* ]] && export PATH="/usr/lib/distcc/bin:${PATH}"
 export PS1=$'%{\e[0;30m\e[41m%} %n %{\e[0m\e[0;31m%} %1d %{\e[0m%}'
+export PATH=$PATH:/home/semyon/scripts
 
 # aliases
 
@@ -8,6 +9,8 @@ alias eclean-dist="eclean-dist --deep --fetch-restricted"
 alias bt="for s in bluetooth bluealsa; do rc-service \$s start; done"
 
 # utilities
+
+reset-ownership() { chown -R $1:$1 /home/$1; }
 
 upd-time() {
   echo "Before: " $(date) && \

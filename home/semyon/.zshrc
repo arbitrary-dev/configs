@@ -6,11 +6,17 @@ stty -ixon
 
 # aliases
 
-alias mp="mpd && mpdscribble"
-alias nc=ncmpcpp
 alias qmarks="vim ~/.config/qutebrowser/quickmarks"
 alias vd=vimdiff
 alias yta="youtube-dl -f 'bestaudio[ext=m4a]'"
+
+alias mount-phone="go-mtpfs /mnt/phone &"
+alias mount-usb="mount /mnt/usb"
+
+nc() {
+  mpd 2>/dev/null && mpdscribble
+  ncmpcpp
+}
 
 export MY_DOCS=/home/semyon/docs
 
