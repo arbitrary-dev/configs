@@ -397,6 +397,7 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
+	awful.key({ modkey }, "i", function() awful.spawn("invert") end),
 	awful.key({}, "Print", function() awful.spawn(
 		"scrot -q 80 /home/semyon/misc/screen_%Y-%m-%d.png" ) end),
 	awful.key({ "Mod4"}, "Print", function() awful.spawn(
