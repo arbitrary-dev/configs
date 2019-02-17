@@ -60,7 +60,8 @@ alias shorten-paths='sed -e "s|/.+/([^/]+/)|/**/\1|"'
 # GIT shortcuts
 
 alias git-reset-tree="git read-tree --reset -u HEAD"
-alias git-fix-owner="cd /; git ls-tree -r HEAD home/semyon --name-only | xargs chown semyon"
+alias git-fix-owner="cd /; git ls-tree -r HEAD home/semyon --name-only \
+  | xargs chown semyon:semyon"
 
 gst() {
   git status --short | \

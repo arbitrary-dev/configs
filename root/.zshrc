@@ -10,8 +10,6 @@ alias bt="for s in bluetooth bluealsa; do rc-service \$s start; done"
 
 # utilities
 
-reset-ownership() { chown -R $1:$1 /home/$1; }
-
 upd-time() {
   echo "Before: " $(date) && \
   rc-service ntp-client start && \
