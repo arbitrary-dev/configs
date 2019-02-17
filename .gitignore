@@ -102,8 +102,10 @@
 /home/semyon/.config/qutebrowser/keys.conf
 
 !/home/semyon/.config/DjVuLibre
-!/home/semyon/.config/gtk-3.0
 !/home/semyon/.config/fontconfig
+
+!/home/semyon/.gtkrc-2.0
+!/home/semyon/.config/gtk-3.0
 
 !/home/semyon/.mpd
 /home/semyon/.mpd/*

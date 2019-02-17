@@ -4,7 +4,7 @@
 
 theme = {}
 
-theme.font          = "uushi 11"
+theme.font          = "benis uushi"
 
 theme.bg_normal     = "#444444"
 theme.bg_focus      = "#f7bc7a"
