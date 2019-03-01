@@ -170,7 +170,7 @@ alias gls="git ls"
 
 alias gt="git tag"
 gtr() { git ls-remote --tags ${1:-origin}; }
-gtf() { git fetch --tags ${1:-origin} ${2:-develop}; }
+gtf() { git fetch --tags ${1:-origin} ${2:-master}; }
 
 git-config-user() {
   git config user.name $GITHUB_USER
@@ -191,10 +191,10 @@ alias gshl="git stash list"
 alias gshp="git stash pop"
 alias gshd="git stash drop"
 
-alias gdf="git df"
-gdfno() { git df --name-only $1 $2 | shorten-paths; }
-gdfno1() { git df --name-only $1{^,} | shorten-paths; }
-alias gdfc="git dfc"
+alias gdf="git diff"
+gdfno() { gdf --name-only $1 $2 | shorten-paths; }
+gdfno1() { gdf --name-only $1{^,} | shorten-paths; }
+alias gdfc="gdf --cached"
 
 alias glg="git lg"
 alias glgo="git lgo"
