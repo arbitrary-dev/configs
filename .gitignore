@@ -98,8 +98,10 @@
 !/home/semyon/.config/awesome
 
 !/home/semyon/.config/qutebrowser
-/home/semyon/.config/qutebrowser/qsettings
-/home/semyon/.config/qutebrowser/keys.conf
+/home/semyon/.config/qutebrowser/*
+!/home/semyon/.config/qutebrowser/bookmarks
+!/home/semyon/.config/qutebrowser/quickmarks
+!/home/semyon/.config/qutebrowser/qutebrowser.conf
 
 !/home/semyon/.config/DjVuLibre
 !/home/semyon/.config/fontconfig
