@@ -18,9 +18,15 @@ au FileType scala set tw=110 cc=110
 set formatoptions-=t
 
 map K r<CR>
+
 map =jt :%!python -m json.tool<CR>
 map =jd :%!python -c 'import json,sys; print(json.dumps(sys.stdin.read()))'<CR>
 map =jl :%!python -c 'import json,sys; print(json.loads(sys.stdin.read()))'<CR>
+
+nnoremap <silent> <leader>. /^[<\|=>]\{7}.*$<CR>
+nnoremap <silent> <leader>/ :nohlsearch<CR>
+nnoremap <leader>d :diffthis<CR>
+nnoremap <leader>D :diffoff<CR>
 
 " trailing spaces highlighting
 au FileType *
@@ -85,4 +91,6 @@ hi ErrorMsg ctermfg=yellow ctermbg=red
 hi DiffChange ctermfg=lightred ctermbg=red
 hi DiffText ctermfg=lightred ctermbg=202 cterm=none
 hi DiffDelete ctermfg=red ctermbg=darkred
+hi diffRemoved ctermfg=red
 hi DiffAdd ctermbg=darkgreen ctermfg=lightgreen
+hi diffAdded ctermfg=darkgreen
