@@ -16,6 +16,9 @@
 /Users/*
 !/Users/gay
 /Users/gay/*
+!/Users/gay/.config
+!/Users/gay/.config/mpv
+!/Users/gay/.config/mpv/input.conf
 !/Users/gay/.vimrc
 !/Users/gay/.zshrc
 !/Users/gay/.ssh
