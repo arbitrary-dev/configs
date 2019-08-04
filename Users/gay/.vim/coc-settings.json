@@ -1,0 +1,11 @@
+{
+  "languageserver": {
+    "metals": {
+      "command": "metals-vim",
+      "rootPatterns": ["build.sbt"],
+      "filetypes": ["scala", "sbt"]
+    }
+  },
+  "list.source.grep.command": "ag",
+  "list.source.grep.args": ["-i"]
+}

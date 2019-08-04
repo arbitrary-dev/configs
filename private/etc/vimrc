@@ -2,7 +2,7 @@ set number
 set smartindent
 set ignorecase smartcase
 set nowrap
-set et sw=2 ts=2
+set et sw=2 ts=2 sts=2
 set hidden
 set clipboard=unnamed
 set backspace=indent,eol,start
@@ -14,19 +14,26 @@ augroup END
 
 set textwidth=80 colorcolumn=80
 au FileType scala set tw=110 cc=110
+" nosmartindent for python, cause it messes up with shifting #* lines
+au FileType python set fdm=indent nosi
 " disable auto-wrapping on typing
 set formatoptions-=t
 
 map K r<CR>
 
-map =jt :%!python -m json.tool<CR>
-map =jd :%!python -c 'import json,sys; print(json.dumps(sys.stdin.read()))'<CR>
-map =jl :%!python -c 'import json,sys; print(json.loads(sys.stdin.read()))'<CR>
+map =jt :%!python3 -m json.tool<CR>
+map =jd :%!python3 -c '
+\import json,sys;
+\obj = json.loads(sys.stdin.read());
+\print(json.dumps(json.dumps(obj, separators=(",", ":"))))
+\'<CR>
+map =jl :%!python3 -c 'import json,sys; print(json.loads(sys.stdin.read()))'<CR>
 
 nnoremap <silent> <leader>. /^[<\|=>]\{7}.*$<CR>
-nnoremap <silent> <leader>/ :nohlsearch<CR>
+nnoremap <silent> <leader><leader> :nohlsearch<CR>
 nnoremap <leader>d :diffthis<CR>
 nnoremap <leader>D :diffoff<CR>
+nnoremap <leader>w :set wrap!<CR>
 
 " trailing spaces highlighting
 au FileType *
@@ -52,24 +59,69 @@ command FTSA %s/\s\+$//
 " 2. Install plugins
 " :PlugInstall
 call plug#begin('/usr/local/share/vim/vimfiles/vim-plug')
-Plug 'Valloric/YouCompleteMe', {
-  \ 'do': './install.sh'
-  \ }
 Plug 'godlygeek/tabular'
-Plug 'autozimu/LanguageClient-neovim', {
-  \ 'branch': 'next',
-  \ 'do': './install.sh',
-  \ 'for': 'haskell'
-  \ }
+
+Plug 'scrooloose/nerdtree'
+map <leader>t :NERDTreeFind<CR>
+let NERDTreeIgnore=['^target$[[dir]]']
+
+" coc.nvim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+set updatetime=300
+set nobackup nowritebackup
+" Trigger completion
+inoremap <silent><expr> <c-space> coc#refresh()
+" Confirm completion
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+" Goto's
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Show documentation
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+" Highlight symbol
+autocmd CursorHold * silent call CocActionAsync('highlight')
+" Rename current word
+nmap <leader>rn <Plug>(coc-rename)
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Search CWD files
+nnoremap <silent> <space>f  :<C-u>CocList files<cr>
+" Search MRU (most recently used) files
+nnoremap <silent> <space>r  :<C-u>CocList mru<cr>
+" Grep workspace
+nnoremap <silent> <space>g  :<C-u>CocList grep<cr>
+cabbrev gr <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'CocList<space>grep' : 'gr')<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+inoremap <silent><expr> <TAB>
+\ pumvisible() ? "\<C-n>" :
+\ <SID>check_back_space() ? "\<TAB>" :
+\ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Scala
+Plug 'derekwyatt/vim-scala'
+au BufRead,BufNewFile *.sbt set filetype=scala
+
 call plug#end()
-
-" autozimu/LanguageClient-neovim
-nnoremap <silent> <F1> :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-
-let g:LanguageClient_serverCommands = {
-  \ 'haskell': ['hie', '--lsp'],
-  \ }
 
 syntax on
 filetype plugin indent on

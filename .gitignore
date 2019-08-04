@@ -1,5 +1,4 @@
-/*
-*.swp
+*
 
 !.gitignore
 !README.md
@@ -20,6 +19,8 @@
 !/Users/gay/.config/mpv
 !/Users/gay/.config/mpv/input.conf
 !/Users/gay/.vimrc
+!/Users/gay/.vim
+!/Users/gay/.vim/coc-settings.json
 !/Users/gay/.zshrc
 !/Users/gay/.ssh
 /Users/gay/.ssh/*

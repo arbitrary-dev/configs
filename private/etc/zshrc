@@ -65,6 +65,14 @@ join() {
   echo "$*"
 }
 
+alias project-files="find . -type d \( -name target -o -path ./.idea -o -path ./.git -o -path ./.bloop \) -prune -o -type f -print"
+cat-files() {
+  for f in $*; do
+    echo -e "\n`tput setaf 1; tput rev`$f`tput sgr0`\n"
+    cat $f
+  done
+}
+
 okta() {
   printf $OKTA_PASS | xc
   echo OKTA password copied to the clipboard!
@@ -78,7 +86,7 @@ brew-fix-links() {
 }
 
 my-sdiff() {
-  sdiff -w `tput cols` $@ \
+  sdiff -tw `tput cols` $@ \
   | sed -Ee "s/^(.+ \| .*)$/${esc}[32m\1${esc}[0m/" \
   | less
 }
@@ -164,9 +172,9 @@ alias gb="git branch"
 alias gco="git co"
 alias gcp="git cp"
 alias grst="git reset"
-alias grvrt="git revert"
-alias grvrtc="grvrt --continue"
-alias grvrta="grvrt --abort"
+alias grvt="git revert"
+alias grvtc="grvt --continue"
+alias grvta="grvt --abort"
 alias gbs="git branch -a --format='%(refname:short) %(color:red)%(authordate:relative)' --list *$MY_NAME*"
 alias gbi="git bisect"
 alias gls="git ls"
@@ -175,13 +183,16 @@ alias gt="git tag"
 gtr() { git ls-remote --tags ${1:-origin}; }
 gtf() { git fetch --tags ${1:-origin} ${2:-master}; }
 
-git-config-user() {
+git-config-github-user() {
   git config user.name $GITHUB_USER
   git config user.email $GITHUB_EMAIL
 }
 
+alias git-update-tree="git read-tree -m -u HEAD"
+
 alias gp="git push"
 alias gf="git fetch"
+gfco() { gf origin $1 && gco origin/$1; }
 alias gpl="git pull"
 
 alias gs="git show"

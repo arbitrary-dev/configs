@@ -10,11 +10,20 @@ export PATH="\
 $M2_HOME/bin:\
 $PATH"
 
+alias m=memo
 alias sf=screenfetch
 alias nc=ncmpcpp
 alias yta="youtube-dl -f bestaudio[ext=m4a]"
 alias ytv="youtube-dl -f bestvideo+bestaudio"
 alias docker-tty="screen ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/tty"
+
+alias nc-ext="ncmpcpp -c /Users/gay/.ncmpcpp/config-ext"
+mpd-ext() {
+  mpd ~/.mpd/mpd-ext.conf
+  mpdscribble --port 6601 --pidfile ~/.mpdscribble/pid-ext
+  mpdkeys --port 6601 &
+  disown
+}
 
 alias todo="vim ~/Documents/_misc/todo"
 alias notes="vim ~/Documents/_misc/notes"
@@ -90,16 +99,21 @@ _reminder() {
   rm -rf $tmp
 }
 
-export MY_ISSUES=~/Documents/issue
+export MY_ISSUES=~/work/_issues
 i() {
-  [[ $1 =~ "^[A-Z]+-[0-9]+$" ]] && vim +'set ft=markdown' $MY_ISSUES/$1 \
-                                || cat $MY_ISSUES/$1
+  local dir=$MY_ISSUES/$1
+  local summary=$dir/SUMMARY.md
+  if [[ ! -f $summary ]]; then
+    mkdir -p $dir
+    echo -e "# "`j $1 -f "%id %summary"`"\n\n" > $summary
+  fi
+  vim +3 $summary
 }
-id() { rm $MY_ISSUES/$1; }
+icd() { cd $MY_ISSUES/$1; }
 _issue-show() {
   if [[ $1 =~ "^[A-Z]+-[0-9]+$" ]]; then
     printf "$1 "
-    head -1 $MY_ISSUES/$1 | sed 's/^[ #]+//'
+    head -1 $MY_ISSUES/$1/SUMMARY.md | sed -E 's/^[ #]+(INT-[0-9]+ |)//'
   else
     echo $1
   fi
