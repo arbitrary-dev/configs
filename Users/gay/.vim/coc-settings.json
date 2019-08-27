@@ -6,6 +6,9 @@
       "filetypes": ["scala", "sbt"]
     }
   },
+
   "list.source.grep.command": "ag",
-  "list.source.grep.args": ["-i"]
+  "list.source.grep.args": ["-i"],
+
+  "java.home": "/Users/gay/.jenv/versions/oracle64-1.8.0.131"
 }
