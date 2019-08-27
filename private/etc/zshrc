@@ -177,7 +177,7 @@ alias grvtc="grvt --continue"
 alias grvta="grvt --abort"
 alias gbs="git branch -a --format='%(refname:short) %(color:red)%(authordate:relative)' --list *$MY_NAME*"
 alias gbi="git bisect"
-alias gls="git ls"
+gls() { git ls-tree --full-tree -r HEAD | cut -f2; }
 
 alias gt="git tag"
 gtr() { git ls-remote --tags ${1:-origin}; }
