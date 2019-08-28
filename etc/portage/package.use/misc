@@ -1,3 +1,6 @@
 x11-terms/rxvt-unicode xft -font-styles
 media-gfx/imagemagick jpeg webp png
 x11-wm/awesome luajit
+
+# Required for Chromium
+net-libs/nodejs icu
