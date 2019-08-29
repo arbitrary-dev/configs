@@ -4,6 +4,9 @@ app-emulation/docker
 app-misc/screen
 app-portage/gentoolkit
 app-portage/mirrorselect
+app-shells/gentoo-zsh-completions
+app-shells/zsh
+app-shells/zsh-completions
 dev-lua/luarocks
 dev-perl/rename
 dev-vcs/git

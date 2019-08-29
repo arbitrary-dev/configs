@@ -1,0 +1,22 @@
+autoload -Uz compinit
+compinit -u
+zstyle ':completion::complete:*' use-cache 1
+
+HISTFILE=~/.zhistory
+HISTSIZE=2000
+SAVEHIST=$HISTSIZE
+setopt appendhistory histignorespace histignorealldups
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+
+setopt autocd notify
+unsetopt beep nomatch
+bindkey -v
+
+export PS1='%1~ %(!.#.$)%b%f '
+
+if [ -d /etc/zsh/zshrc.d ]; then
+  for f in /etc/zsh/zshrc.d/*; do
+    source $f
+  done
+fi

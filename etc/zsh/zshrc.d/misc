@@ -1,0 +1,10 @@
+EDITOR=vim
+
+alias vr="$EDITOR /etc/zsh/zshrc.d/misc"
+alias sr=". /etc/zsh/zshrc.d/misc"
+
+alias todo="$EDITOR ~/docs/_misc/todo"
+
+alias less="less -iSXFR"
+alias rename=perl-rename
+alias mc="make menuconfig"
