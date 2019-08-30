@@ -13,6 +13,7 @@ dev-perl/rename
 dev-util/idea-community
 dev-vcs/git
 net-misc/dhcpcd
+net-vpn/openconnect
 net-wireless/wpa_supplicant
 sys-apps/lm_sensors
 sys-kernel/buildkernel
