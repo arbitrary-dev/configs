@@ -5,3 +5,6 @@ x11-wm/awesome luajit
 
 # Required for Chromium
 net-libs/nodejs icu
+
+# For clipboard support in X
+app-editors/vim X

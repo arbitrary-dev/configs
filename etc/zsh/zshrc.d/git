@@ -47,7 +47,7 @@ gtf() { git fetch --tags ${1:-origin} ${2:-master}; }
 
 git-config-github-user() {
   git config user.name $GITHUB_USER
-    git config user.email $GITHUB_EMAIL
+  git config user.email $GITHUB_EMAIL
 }
 
 alias git-update-tree="git read-tree -m -u HEAD"
@@ -72,9 +72,12 @@ gdfno() { gdf --name-only $1 $2 | shorten-paths; }
 gdfno1() { gdf --name-only $1{^,} | shorten-paths; }
 alias gdfc="gdf --cached"
 
-alias glg="git log --graph --abbrev-commit --decorate --date=format:'%m-%d-%Y %H:%M' \
+glg() {
+  git lg $* 2>/dev/null
+  [[ $? == 1 ]] && git log --graph --abbrev-commit --decorate --date=format:'%m-%d-%Y %H:%M' \
 --format=format:'%C(cyan)%h%C(reset) %C(red)%ad (%ar)%C(reset)%C(green)%d%C(reset)%n'\
-'        %C(reset)%s %C(dim black)%an%+N' --exclude refs/stash --all"
+'        %C(reset)%s %C(dim black)%an%+N' --exclude refs/stash --all $*
+}
 alias glg10="glg -10"
 alias gl-all="git log --reflog"
 
