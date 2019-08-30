@@ -22,6 +22,7 @@ www-client/chromium
 x11-apps/xrandr
 x11-base/xorg-server
 x11-drivers/nvidia-drivers
+x11-misc/slim
 x11-misc/xclip
 x11-terms/rxvt-unicode
 x11-wm/awesome
