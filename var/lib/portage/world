@@ -7,8 +7,10 @@ app-portage/mirrorselect
 app-shells/gentoo-zsh-completions
 app-shells/zsh
 app-shells/zsh-completions
+dev-java/openjdk
 dev-lua/luarocks
 dev-perl/rename
+dev-util/idea-community
 dev-vcs/git
 net-misc/dhcpcd
 net-wireless/wpa_supplicant
