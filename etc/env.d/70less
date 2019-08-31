@@ -1,0 +1,2 @@
+LESSOPEN="|lesspipe %s"
+LESS="-iSXFR"
