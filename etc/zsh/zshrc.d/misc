@@ -1,7 +1,9 @@
 EDITOR=vim
 
 alias vr="$EDITOR /etc/zsh/zshrc.d/misc"
+alias svr="$EDITOR /etc/zsh/zshrc"
 sr() {
+  . /etc/profile
   . /etc/zsh/zshrc
   . ~/.zshrc
 }
