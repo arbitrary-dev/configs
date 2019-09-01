@@ -1,0 +1,76 @@
+set number
+set smartindent
+set ignorecase smartcase
+set nowrap
+set et sw=2 ts=2 sts=2
+set hidden
+set clipboard=unnamed
+set backspace=indent,eol,start
+set hls
+
+" disable auto-wrapping on typing
+set formatoptions-=t
+
+set textwidth=80 colorcolumn=80
+au FileType scala set tw=110 cc=110
+" nosmartindent for python, cause it messes up with shifting #* lines
+au FileType python set fdm=indent nosi
+
+map K r<CR>
+
+map =jt :%!python3 -m json.tool<CR>
+map =jd :%!python3 -c '
+\import json,sys;
+\obj = json.loads(sys.stdin.read());
+\print(json.dumps(json.dumps(obj, separators=(",", ":"))))
+\'<CR>
+map =jl :%!python3 -c 'import json,sys; print(json.loads(sys.stdin.read()))'<CR>
+
+nnoremap <silent> <leader>. /^[<\|=>]\{7}.*$<CR>
+nnoremap <silent> <leader><leader> :nohlsearch<CR>
+nnoremap <leader>d :diffthis<CR>
+nnoremap <leader>D :diffoff<CR>
+nnoremap <leader>w :set wrap!<CR>
+
+" trailing spaces highlighting
+au FileType *
+  \ if &ft == 'diff' |
+    \ match Error /\(^+.\{-}\)\@<=\s\+$/ |
+  \ else |
+    \ match Error /\s\+$/ |
+  \ endif
+
+" Find syntax highlight group under cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+
+" fix trailing space in diff additions only
+command FTS %s/^\(+.\{-}\)\s\+$/\1/
+" fix trailing space anywhere
+command FTSA %s/\s\+$//
+
+syntax on
+filetype plugin indent on
+
+" Colors
+hi ColorColumn ctermbg=178
+hi Search ctermbg=yellow ctermfg=brown
+hi Visual ctermfg=229 ctermbg=brown
+hi Todo ctermfg=brown ctermbg=178
+hi Comment ctermfg=brown
+hi FoldColumn ctermfg=136 ctermbg=none
+hi Folded ctermfg=136 ctermbg=none
+hi StatusLine cterm=none ctermfg=223 ctermbg=136
+hi StatusLineNC cterm=none ctermfg=136 ctermbg=136
+hi VertSplit cterm=none ctermfg=136 ctermbg=136
+hi LineNr ctermfg=136
+hi ModeMsg cterm=none ctermfg=223 ctermbg=brown
+hi ErrorMsg ctermfg=yellow ctermbg=red
+hi DiffChange ctermfg=lightred ctermbg=red
+hi DiffText ctermfg=lightred ctermbg=202 cterm=none
+hi DiffDelete ctermfg=red ctermbg=darkred
+hi diffRemoved ctermfg=red
+hi DiffAdd ctermbg=darkgreen ctermfg=lightgreen
+hi diffAdded ctermfg=darkgreen
