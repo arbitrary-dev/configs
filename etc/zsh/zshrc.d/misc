@@ -13,14 +13,5 @@ alias xv="xclip -selection clipboard -o"
 
 alias todo="$EDITOR ~/docs/_misc/todo"
 
-alias less="less -iSXFR"
 alias rename=perl-rename
 alias mc="make menuconfig"
-
-okta() {
-  if [[ $1 != -r ]] && printf "$OKTA_PASS" | xc; then
-    echo "Okta password copied to clipboard!"
-  else
-    echo "$OKTA_PASS"
-  fi
-}
