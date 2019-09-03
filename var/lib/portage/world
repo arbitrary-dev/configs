@@ -10,6 +10,7 @@ app-shells/zsh-completions
 dev-java/openjdk
 dev-lua/luarocks
 dev-perl/rename
+dev-python/pip
 dev-util/idea-community
 dev-vcs/git
 net-misc/dhcpcd
