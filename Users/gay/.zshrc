@@ -1,13 +1,11 @@
 [[ -f /etc/.profile ]] && source /etc/.profile
 
-export M2_HOME=~/work/apache-maven-3.2.5
 export MAVEN_OPTS="-Xmx1g"
 
 export PATH="\
 "~"/projects/scripts:\
 "~"/Library/Android/sdk/platform-tools:\
 "~"/.local/bin:\
-$M2_HOME/bin:\
 $PATH"
 
 alias m=memo
@@ -27,6 +25,11 @@ mpd-ext() {
 
 alias todo="vim ~/Documents/_misc/todo"
 alias notes="vim ~/Documents/_misc/notes"
+
+find-music() {
+  local dir=/Volumes/music
+  find $dir -type f | sed -E "s|^$dir/||" | less
+}
 
 eval "$(jenv init -)"
 
