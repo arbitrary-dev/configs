@@ -1,0 +1,2 @@
+man ALL=(root) NOPASSWD: /sbin/reboot
+man ALL=(root) NOPASSWD: /sbin/poweroff

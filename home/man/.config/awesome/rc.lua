@@ -287,8 +287,12 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey, "Control" }, "r", awesome.restart,
-              {description = "reload awesome", group = "awesome"}),
+    awful.key({ modkey, "Control" }, "r", function () awful.spawn('sudo reboot') end,
+              {description = "reboot the system", group = "awesome"}),
+    awful.key({ modkey, "Control" }, "l", function () awful.spawn('slimlock') end,
+              {description = "lock screen", group = "awesome"}),
+    awful.key({ modkey, "Control" }, "s", function () awful.spawn('sudo poweroff') end,
+              {description = "shutdown the system", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 

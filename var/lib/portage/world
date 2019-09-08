@@ -1,3 +1,4 @@
+app-admin/sudo
 app-crypt/efitools
 app-editors/vim
 app-emulation/docker
@@ -21,6 +22,7 @@ sys-kernel/buildkernel
 sys-kernel/linux-firmware
 sys-power/upower
 www-client/chromium
+x11-apps/xev
 x11-apps/xrandr
 x11-base/xorg-server
 x11-drivers/nvidia-drivers
