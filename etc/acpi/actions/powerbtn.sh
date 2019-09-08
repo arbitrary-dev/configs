@@ -1,3 +1,3 @@
 #!/bin/sh
 
-echo mem > /sys/power/state
+shutdown -h now
