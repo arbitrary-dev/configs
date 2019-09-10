@@ -10,6 +10,10 @@ Plug 'scrooloose/nerdtree'
 map <leader>t :NERDTreeFind<CR>
 let NERDTreeIgnore=['^target$[[dir]]']
 
+" Scala
+Plug 'derekwyatt/vim-scala'
+au BufRead,BufNewFile *.sbt set filetype=scala
+
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': 'scala'}
 
@@ -66,9 +70,4 @@ function InitCoc()
 endfunction
 autocmd! User coc.nvim call InitCoc()
 
-" Scala
-Plug 'derekwyatt/vim-scala'
-au BufRead,BufNewFile *.sbt set filetype=scala
-
 call plug#end()
-

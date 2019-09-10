@@ -8,12 +8,6 @@ gst() {
     sed -Ee "s/^(.)(.)/${esc}[32m\1${esc}[0m${esc}[31m\2${esc}[0m/"
 }
 
-grr() {
-  git branch -r | \
-    sed -Ee "/$MY_NAME|((master|develop)$)/d" | \
-    xargs -L1 git branch -rd
-}
-
 gbl() {
   local out=$(git blame HEAD --abbrev=6 -s -L ${@:1})
     local n=$( \

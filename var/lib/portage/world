@@ -15,9 +15,11 @@ dev-python/pip
 dev-util/idea-community
 dev-vcs/git
 net-misc/dhcpcd
+net-misc/ntp
 net-vpn/openconnect
 net-wireless/wpa_supplicant
 sys-apps/lm_sensors
+sys-apps/the_silver_searcher
 sys-kernel/buildkernel
 sys-kernel/linux-firmware
 sys-power/upower
