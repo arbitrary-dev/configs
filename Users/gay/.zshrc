@@ -102,32 +102,7 @@ _reminder() {
   rm -rf $tmp
 }
 
-export MY_ISSUES=~/work/_issues
-i() {
-  local dir=$MY_ISSUES/$1
-  local summary=$dir/SUMMARY.md
-  if [[ ! -f $summary ]]; then
-    mkdir -p $dir
-    echo -e "# "`j $1 -f "%id %summary"`"\n\n" > $summary
-  fi
-  vim +3 $summary
-}
-icd() { cd $MY_ISSUES/$1; }
-_issue-show() {
-  if [[ $1 =~ "^[A-Z]+-[0-9]+$" ]]; then
-    printf "$1 "
-    head -1 $MY_ISSUES/$1/SUMMARY.md | sed -E 's/^[ #]+(INT-[0-9]+ |)//'
-  else
-    echo $1
-  fi
-}
-is() {
-  ls $MY_ISSUES | \
-  sort -r | \
-  xargs -n1 -I% \
-    zsh -c "$(declare -f _issue-show); _issue-show %;" | \
-  less
-}
+source ~/work/_issues/source-me.sh
 
 export MY_DOCS=~/Documents
 d() {

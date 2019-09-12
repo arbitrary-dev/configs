@@ -10,5 +10,7 @@
   "list.source.grep.command": "ag",
   "list.source.grep.args": ["-i"],
 
+  "tsserver.npm": "/usr/local/bin/npm",
+
   "java.home": "/Users/gay/.jenv/versions/oracle64-1.8.0.131"
 }
