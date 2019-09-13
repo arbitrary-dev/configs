@@ -240,6 +240,35 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+
+    awful.key({}, "Print",
+      function()
+        awful.spawn.easy_async(
+          "date +%F-%H%M%S",
+          function(stdout, stderr, reason, exit_code)
+            local timestamp = stdout:gsub("\n", "")
+            local path = os.getenv("HOME")
+            path = path .. "/Downloads/areashot-" .. timestamp .. ".jpg"
+            awful.spawn({"import", path}) -- media-gfx/imagemagick
+            naughty.notify({text = path, timeout = 1})
+          end)
+      end,
+      {description="Area screenshot", group="awesome"}),
+
+    awful.key({ "Shift" }, "Print",
+      function()
+        awful.spawn.easy_async(
+          "date +%F-%H%M%S",
+          function(stdout, stderr, reason, exit_code)
+            local timestamp = stdout:gsub("\n", "")
+            local path = os.getenv("HOME")
+            path = path .. "/Downloads/screenshot-" .. timestamp .. ".jpg"
+            awful.spawn({"import", "-window", "root", path}) -- media-gfx/imagemagick
+            naughty.notify({text = path, timeout = 1})
+          end)
+      end,
+      {description="Screenshot", group="awesome"}),
+
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,

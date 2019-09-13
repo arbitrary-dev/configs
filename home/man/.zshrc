@@ -11,7 +11,9 @@ eval "$(jenv init -)"
 
 # Work
 
-export MY_SCRIPTS=~/work/.scripts
+source ~/work/_issues/source-me.sh
+
+export MY_SCRIPTS=~/work/_scripts
 export PATH=$PATH:$MY_SCRIPTS
 ss() { vim $MY_SCRIPTS/${1:-misc}-source.sh; }
 
