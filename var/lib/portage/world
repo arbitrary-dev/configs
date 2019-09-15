@@ -16,11 +16,12 @@ dev-util/idea-community
 dev-vcs/git
 media-gfx/feh
 media-gfx/imagemagick
+net-irc/irssi
 net-misc/dhcpcd
 net-misc/ntp
 net-vpn/openconnect
 net-wireless/wpa_supplicant
-sys-apps/lm_sensors
+sys-apps/lm-sensors
 sys-apps/the_silver_searcher
 sys-kernel/buildkernel
 sys-kernel/linux-firmware

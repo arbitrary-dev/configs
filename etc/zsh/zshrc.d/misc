@@ -15,3 +15,13 @@ alias todo="$EDITOR ~/docs/_misc/todo"
 
 alias rename=perl-rename
 alias mc="make menuconfig"
+
+my-sdiff() {
+  local S
+  for i in "$@"; do
+    [ "$i" = -s ] && S=1
+  done
+  sdiff -tw `tput cols` $@ \
+  | ([ $S ] && cat || sed -Ee "s/^(.+ \| .*|.+<| +> .*)$/${esc}[32m\1${esc}[0m/") \
+  | less
+}
