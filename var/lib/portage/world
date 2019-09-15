@@ -3,6 +3,7 @@ app-crypt/efitools
 app-editors/vim
 app-emulation/docker
 app-misc/screen
+app-portage/genlop
 app-portage/gentoolkit
 app-portage/mirrorselect
 app-shells/gentoo-zsh-completions
