@@ -26,6 +26,7 @@ sys-apps/lm-sensors
 sys-apps/the_silver_searcher
 sys-kernel/buildkernel
 sys-kernel/linux-firmware
+sys-power/powertop
 sys-power/upower
 www-client/chromium
 x11-apps/xev
