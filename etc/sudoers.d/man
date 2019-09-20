@@ -1,3 +1,5 @@
+man ALL = ALL
+
 man ALL=(root) NOPASSWD: /sbin/reboot
 man ALL=(root) NOPASSWD: /sbin/poweroff
 man ALL=(root) NOPASSWD: /bin/sleep-ram

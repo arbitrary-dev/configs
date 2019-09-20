@@ -16,6 +16,7 @@ dev-python/pip
 dev-util/idea-community
 dev-vcs/git
 media-gfx/feh
+media-gfx/gimp
 media-gfx/imagemagick
 net-irc/irssi
 net-misc/dhcpcd
@@ -29,6 +30,7 @@ sys-kernel/linux-firmware
 sys-power/powertop
 sys-power/upower
 www-client/chromium
+x11-apps/mesa-progs
 x11-apps/xev
 x11-apps/xrandr
 x11-base/xorg-server

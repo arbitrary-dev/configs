@@ -4,6 +4,8 @@ export PATH="\
 "~"/.local/bin:\
 $PATH"
 
+export MY_DOCS=~/docs
+
 alias vr="vim ~/.zshrc"
 
 export PATH=$PATH:~/.jenv/bin
