@@ -26,9 +26,12 @@ mpd-ext() {
 alias todo="vim ~/Documents/_misc/todo"
 alias notes="vim ~/Documents/_misc/notes"
 
-find-music() {
-  local dir=/Volumes/music
-  find $dir -type f | sed -E "s|^$dir/||" | less
+_find-files() {
+  find $1 -name ".git*" -prune -o -type f -print | sed -E "s|^$1/||" | sort
+}
+
+compare-dirs() {
+  my-sdiff <(_find-files $1) <(_find-files $2)
 }
 
 eval "$(jenv init -)"
@@ -102,7 +105,8 @@ _reminder() {
   rm -rf $tmp
 }
 
-source ~/work/_issues/source-me.sh
+[ -f ~/work/_issues/source-me.sh ] \
+&& source ~/work/_issues/source-me.sh
 
 export MY_DOCS=~/Documents
 d() {

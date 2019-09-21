@@ -86,8 +86,12 @@ brew-fix-links() {
 }
 
 my-sdiff() {
+  local S
+  for i in "$@"; do
+    [ "$i" = -s ] && S=1
+  done
   sdiff -tw `tput cols` $@ \
-  | sed -Ee "s/^(.+ \| .*)$/${esc}[32m\1${esc}[0m/" \
+  | ([ $S ] && cat || sed -Ee "s/^(.+ \| .*|.+<| +> .*)$/${esc}[32m\1${esc}[0m/") \
   | less
 }
 
