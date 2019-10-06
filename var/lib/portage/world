@@ -15,8 +15,10 @@ dev-java/openjdk
 dev-lua/luarocks
 dev-perl/rename
 dev-python/pip
+dev-qt/qtwebkit
 dev-util/idea-community
 dev-vcs/git
+gnome-base/libgnome-keyring
 media-gfx/feh
 media-gfx/gimp
 media-gfx/imagemagick
@@ -24,6 +26,7 @@ media-sound/alsa-utils
 net-irc/irssi
 net-misc/dhcpcd
 net-misc/ntp
+net-print/ysoft-client
 net-vpn/openconnect
 net-wireless/wpa_supplicant
 sys-apps/lm-sensors
