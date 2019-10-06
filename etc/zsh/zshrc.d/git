@@ -1,3 +1,5 @@
+git-fix-ownership() { chown -R $1:$1 /home/$1; }
+
 esc=$(printf '\033')
 
 alias shorten-paths="perl -pE 's/(?<!\.\.)\/.+\/([^\/]+\/)/\/**\/\1/'"
