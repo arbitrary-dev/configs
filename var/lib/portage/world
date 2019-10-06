@@ -20,6 +20,7 @@ dev-vcs/git
 media-gfx/feh
 media-gfx/gimp
 media-gfx/imagemagick
+media-sound/alsa-utils
 net-irc/irssi
 net-misc/dhcpcd
 net-misc/ntp

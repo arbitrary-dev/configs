@@ -1,3 +1,4 @@
+media-gfx/gimp -alsa
 dev-java/openjdk source
 x11-terms/rxvt-unicode xft -font-styles
 media-gfx/imagemagick jpeg webp png
