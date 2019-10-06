@@ -23,6 +23,8 @@ media-gfx/feh
 media-gfx/gimp
 media-gfx/imagemagick
 media-sound/alsa-utils
+media-video/ffmpeg
+media-video/mpv
 net-irc/irssi
 net-misc/dhcpcd
 net-misc/ntp
