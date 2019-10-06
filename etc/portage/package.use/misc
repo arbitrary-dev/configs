@@ -1,7 +1,7 @@
 media-video/ffmpeg chromium fdk vaapi vdpau vorbis vpx wavpack webp x264 xvid opus
 media-gfx/gimp -alsa
 dev-java/openjdk source
-x11-terms/rxvt-unicode xft -font-styles
+x11-terms/rxvt-unicode xft 256-color
 media-gfx/imagemagick jpeg webp png
 media-gfx/feh exif
 x11-wm/awesome luajit
