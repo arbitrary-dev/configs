@@ -11,7 +11,21 @@ alias vr="vim ~/.zshrc"
 export PATH=$PATH:~/.jenv/bin
 eval "$(jenv init -)"
 
+# Phone
+
+alias mount-phone="go-mtpfs /mnt/phone &"
+alias umount-phone="fusermount -u /mnt/phone"
+
 # Work
+
+jnote() {
+  docker run -v "$PWD":/home/jovyan/work -p 8888:8888 jupyter/scipy-notebook
+}
+
+setup-ssh-terminal() {
+  ssh $1 mkdir -p .terminfo/r
+  scp /usr/share/terminfo/r/rxvt-unicode-256color $1:.terminfo/r
+}
 
 source ~/work/_issues/source-me.sh
 
@@ -35,7 +49,10 @@ alias jw="jira work"
 
 build-metals() {
   local version="$1"
-  [ -z "$version" ] && echo "No version specified!" && return 1
+  if [ -z "$version" ]; then
+    echo -e "No version specified!\nTry: https://scalameta.org/metals/docs/editors/vim.html#generating-metals-binary"
+    return 1
+  fi
   read -k1 -s "a?Build metals-vim v$version (previous will be removed)? "
   echo
   rm -f ~/.local/bin/metals-vim*

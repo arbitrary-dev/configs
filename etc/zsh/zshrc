@@ -1,3 +1,6 @@
+# Enable custom Vim mappings on <C-q> & <C-s>
+stty -ixon
+
 zstyle ':completion:*' completer _complete _ignored
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
 

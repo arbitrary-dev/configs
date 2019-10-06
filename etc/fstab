@@ -1,7 +1,10 @@
 # <fs>  <mountpoint>  <type>  <opts>  <dump/pass>
 
+/dev/nvme0n1p1 /boot/efi vfat defaults,noauto,discard 0 0
+
 /dev/mapper/vg1-root /     ext4 defaults,noatime,errors=remount-ro,discard 0 1
 /dev/mapper/vg1-home /home ext4 defaults,noatime,discard                   0 2
 
-tmpfs   /var/tmp/portage  tmpfs size=3G,uid=portage,gid=portage,mode=775,noatime 0 0
-tmpfs   /tmp              tmpfs size=3G,rw,nosuid,noatime,nodev,mode=1777        0 0
+tmpfs /var/tmp/portage    tmpfs size=3G,uid=portage,gid=portage,mode=775,noatime 0 0
+tmpfs /tmp                tmpfs size=3G,rw,nosuid,noatime,nodev,mode=1777        0 0
+tmpfs /var/lib/docker/tmp tmpfs size=3G,rw,nosuid,noatime,nodev,mode=0700        0 0

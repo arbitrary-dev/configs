@@ -18,3 +18,4 @@ _remove() {
 _remove "0000:01:00.0" "Nvidia VGA"
 _remove "0000:01:00.1" "Nvidia audio"
 _remove "0000:00:1f.6" "Ethernet"
+# TODO remove bluetooth (currently should be switched off manually with Fn+BT)

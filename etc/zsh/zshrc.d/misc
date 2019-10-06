@@ -9,7 +9,7 @@ sr() {
 }
 
 alias xc="xclip -selection clipboard"
-alias xv="xclip -selection clipboard -o"
+alias xp="xclip -selection clipboard -o"
 
 alias todo="$EDITOR ~/docs/_misc/todo"
 

@@ -2,10 +2,12 @@ app-admin/sudo
 app-crypt/efitools
 app-editors/vim
 app-emulation/docker
+app-misc/jq
 app-misc/screen
 app-portage/genlop
 app-portage/gentoolkit
 app-portage/mirrorselect
+app-portage/repoman
 app-shells/gentoo-zsh-completions
 app-shells/zsh
 app-shells/zsh-completions
@@ -25,8 +27,10 @@ net-vpn/openconnect
 net-wireless/wpa_supplicant
 sys-apps/lm-sensors
 sys-apps/the_silver_searcher
+sys-fs/fuse
 sys-kernel/buildkernel
 sys-kernel/linux-firmware
+sys-power/acpilight
 sys-power/powertop
 sys-power/upower
 www-client/chromium
