@@ -1,3 +1,4 @@
+=sys-kernel/gentoo-sources-4.9.34
 app-admin/testdisk
 app-arch/p7zip
 app-benchmarks/stress
@@ -6,15 +7,14 @@ app-office/gnumeric
 app-portage/eix
 app-portage/genlop
 app-portage/gentoolkit
-app-portage/layman
 app-shells/zsh
 app-shells/zsh-completions
 app-text/antiword
 app-text/djview
-app-text/goldendict
 app-text/mupdf
 app-vim/youcompleteme
 dev-perl/rename
+dev-vcs/git-lfs
 games-emulation/dosbox
 games-roguelike/dwarf-fortress
 games-roguelike/nethack
@@ -28,7 +28,6 @@ media-gfx/feh
 media-gfx/gimp
 media-gfx/gphoto2
 media-gfx/scrot
-media-gfx/wkhtmltopdf
 media-sound/bluez-alsa
 media-sound/lilypond
 media-sound/mpd
@@ -49,7 +48,6 @@ net-p2p/rtorrent
 net-wireless/bluez
 net-wireless/wireless-tools
 net-wireless/wpa_supplicant
-sci-visualization/gnuplot
 sys-apps/hdparm
 sys-apps/smartmontools
 sys-apps/usbutils
@@ -60,14 +58,15 @@ sys-fs/go-mtpfs
 sys-kernel/genkernel
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
+sys-libs/ncurses
 sys-libs/ncurses:5
 sys-power/acpid
+sys-power/powertop
 sys-power/suspend
 sys-process/parallel
 www-client/httrack
-www-client/qutebrowser
 www-client/w3m
-x11-apps/intel-gpu-tools
+x11-apps/igt-gpu-tools
 x11-apps/mesa-progs
 x11-apps/xfontsel
 x11-base/xorg-x11

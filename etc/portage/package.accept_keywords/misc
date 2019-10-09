@@ -1,3 +1,6 @@
+app-portage/layman ~x86
+sys-apps/portage ~x86
+net-misc/youtube-dl ~x86
 =x11-misc/compton-9999 **
 media-sound/bluez-alsa ~x86
 net-wireless/bluez ~x86
@@ -128,11 +131,13 @@ app-shells/zsh-completions ~x86
 # required by @selected
 # required by @world (argument)
 =media-video/ffmpeg-3.2.4 ~x86
+
 # required by dev-qt/qtcore-5.7.1-r2::gentoo
 # required by dev-python/PyQt5-5.7.1::gentoo
 # required by @selected
 # required by @world (argument)
-=dev-libs/double-conversion-2.0.1 ~x86
+dev-libs/double-conversion ~x86
+
 # required by nethack (argument)
 =games-roguelike/nethack-3.6.0-r3 ~x86
 # required by dwarf-fortress (argument)
@@ -145,6 +150,43 @@ app-shells/zsh-completions ~x86
 # required by @world (argument)
 =x11-libs/libdrm-2.4.80 ~x86
 
-# required by sci-visualization/gnuplot-5.0.7::gentoo[qt5]
+# required by git-lfs (argument)
+=dev-vcs/git-lfs-2.6.1 **
+
+# required by dev-python/pyopenssl-17.5.0::gentoo
+# required by dev-python/ssl-fetch-0.4::gentoo[python_targets_python2_7]
+# required by app-portage/layman-2.4.2-r1::gentoo
+# required by @selected
+# required by @world (argument)
+# required by dev-python/pyopenssl-17.5.0::gentoo
+# required by dev-python/requests-2.21.0-r1::gentoo[ssl]
+# required by dev-python/ssl-fetch-0.4::gentoo
+# required by app-portage/layman-2.4.2-r1::gentoo
+# required by @selected
+# required by @world (argument)
+dev-python/cryptography ~x86
+
+# required by dev-python/mako-1.0.6::gentoo
+# required by media-libs/mesa-19.1.0_rc1::gentoo
+# required by x11-libs/cairo-1.16.0-r3::gentoo[opengl]
+# required by media-libs/harfbuzz-1.7.2::gentoo
+# required by dev-qt/qtgui-5.9999::qt
+# required by app-crypt/pinentry-1.1.0-r2::gentoo[qt5]
+# required by app-crypt/gnupg-2.2.10::gentoo
+# required by app-portage/gemato-14.0::gentoo[gpg]
+# required by sys-apps/portage-2.3.62::gentoo[rsync-verify,-build]
+# required by app-admin/perl-cleaner-2.27::gentoo
+# required by dev-lang/perl-5.26.2::gentoo
+# required by dev-perl/IO-Socket-INET6-2.720.0-r1::gentoo
+# required by dev-perl/Net-HTTP-6.170.0::gentoo[-minimal]
+# required by dev-perl/LWP-Protocol-https-6.70.0::gentoo
+# required by dev-perl/libwww-perl-6.270.0::gentoo[ssl]
 # required by @__auto_slot_operator_replace_installed__ (argument)
-=dev-qt/qtcore-5.9.9999 **
+dev-python/markupsafe ~x86
+
+# required by dev-python/docutils-0.14::gentoo
+# required by dev-util/ctags-20190331::gentoo
+# required by app-editors/vim-8.0.1298::gentoo[-minimal]
+# required by app-vim/gentoo-syntax-20181023::gentoo
+# required by app-editors/vim-core-8.0.1298::gentoo[-minimal]
+=dev-python/pygments-2.3.1 ~x86

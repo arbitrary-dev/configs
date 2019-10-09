@@ -46,8 +46,8 @@ alias xp='xclip -o -selection clipboard'
 alias vr="vim ~/.zshrc"
 sr() { source /etc/zsh/zshrc; source ~/.zshrc; }
 
+cpv() { stdbuf -o0 cp -rnv "$@" | sed -u 's/.*->/->/'; }
 alias pr=perl-rename
-alias cl=clear
 alias sed="sed -r"
 alias less="less -iSXFR"
 

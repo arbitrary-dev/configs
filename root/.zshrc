@@ -4,11 +4,19 @@ export PATH=$PATH:/home/semyon/scripts
 
 # aliases
 
+alias mnt="mount -ouser,utf8"
 alias sws="swapon --show=name,size,used"
-alias eclean-dist="eclean-dist --deep --fetch-restricted"
 alias bt="for s in bluetooth bluealsa; do rc-service \$s start; done"
+alias ecurr="watch -ctn 30 genlop -c"
+alias ehist="genlop -it"
 
 # utilities
+
+eclean() {
+  emerge --ask --depclean \
+  && eclean-dist --deep --fetch-restricted \
+  && rm -rf /var/tmp/portage
+}
 
 upd-time() {
   echo "Before: " $(date) && \
