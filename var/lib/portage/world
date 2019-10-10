@@ -63,6 +63,7 @@ sys-libs/ncurses:5
 sys-power/acpid
 sys-power/powertop
 sys-power/suspend
+sys-power/upower
 sys-process/parallel
 www-client/httrack
 www-client/w3m
