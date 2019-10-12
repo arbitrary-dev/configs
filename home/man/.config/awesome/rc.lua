@@ -44,7 +44,7 @@ end
 beautiful.init(gears.filesystem.get_configuration_dir() .. "theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvtc"
+terminal = "urxvtc -geometry 84x24"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 

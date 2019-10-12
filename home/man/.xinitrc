@@ -7,4 +7,7 @@ urxvtd --quiet --opendisplay --fork
 
 eval `luarocks path --bin`
 
+# ~/.config/compton.conf
+compton --daemon
+
 exec awesome

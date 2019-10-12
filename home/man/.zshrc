@@ -11,6 +11,12 @@ alias vr="vim ~/.zshrc"
 export PATH=$PATH:~/.jenv/bin
 eval "$(jenv init -)"
 
+alias yta="youtube-dl -f bestaudio[ext=m4a]"
+alias ytv="youtube-dl -f bestvideo+bestaudio"
+
+alias m=memo
+alias bat="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'time to' | sed -Ee 's/  +/ /g' -e 's/^ //'"
+
 # Phone
 
 alias mount-phone="go-mtpfs /mnt/phone &"

@@ -4,6 +4,7 @@ app-editors/vim
 app-emulation/docker
 app-misc/jq
 app-misc/screen
+app-misc/screenfetch
 app-portage/genlop
 app-portage/gentoolkit
 app-portage/mirrorselect
@@ -28,6 +29,7 @@ media-video/mpv
 net-irc/irssi
 net-misc/dhcpcd
 net-misc/ntp
+net-misc/youtube-dl
 net-print/ysoft-client
 net-vpn/openconnect
 net-wireless/wpa_supplicant
@@ -45,6 +47,7 @@ x11-apps/xev
 x11-apps/xrandr
 x11-base/xorg-server
 x11-drivers/nvidia-drivers
+x11-misc/compton
 x11-misc/slim
 x11-misc/xclip
 x11-terms/rxvt-unicode
