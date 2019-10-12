@@ -1,6 +1,16 @@
 # /usr/share/X11/locale/en_US.UTF-8/Compose
 
 <Multi_key> <grave> <grave> : "≈"
+<Multi_key> <o> <o> : "°"
+<Multi_key> <t> <m> : "™"
+<Multi_key> <c> <o> : "©"
+<Multi_key> <r> <o> : "®"
+
+<Multi_key> <less> <less> : "«"
+<Multi_key> <less> <less> : "«"
+
+<Multi_key> <minus> <period> : "→"
+<Multi_key> <minus> <comma> : "←"
 
 <Multi_key> <a> <a> : "ā"
 <Multi_key> <A> <A> : "Ā"
