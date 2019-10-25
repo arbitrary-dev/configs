@@ -1,0 +1,10 @@
+# Update time on connection to the Internet
+if [[ "$reason" = BOUND* ]] && ping google.com -c4; then
+  log=/tmp/ntp-client.log
+  echo "$interface $reason" >> $log
+  echo "Current time: `date +%T`" >> $log
+  if rc-service ntp-client restart >> $log 2>&1; then
+    echo "Updated time: `date +%T`" >> $log
+    hwclock -w && echo "HW clock updated." >> $log
+  fi
+fi

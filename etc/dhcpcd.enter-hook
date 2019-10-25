@@ -1,5 +1,5 @@
 # Prevent dhcpcd from overwriting openconnect changes to /etc/resolv.conf
-[ "$reason" = RENEW* ] \
+[[ "$reason" = RENEW* ]] \
 && grep -qm1 VPNC_GENERATED /etc/resolv.conf \
 && pgrep openconnect >/dev/null \
 && exit
