@@ -1,7 +1,9 @@
 app-admin/sudo
+app-admin/testdisk
 app-crypt/efitools
 app-editors/vim
 app-emulation/docker
+app-emulation/docker-compose
 app-misc/jq
 app-misc/screen
 app-misc/screenfetch
@@ -22,6 +24,7 @@ dev-vcs/git
 gnome-base/libgnome-keyring
 media-gfx/feh
 media-gfx/gimp
+media-gfx/graphviz
 media-gfx/imagemagick
 media-sound/alsa-utils
 media-video/ffmpeg

@@ -8,6 +8,8 @@ export MY_DOCS=~/docs
 
 alias vr="vim ~/.zshrc"
 
+alias -s md="$EDITOR"
+
 mnt() {
   if [[ ! "$1" ]]; then
     sudo lsblk -lo path,label -e 259
@@ -104,6 +106,7 @@ build-metals() {
   fi
   read -k1 -s "a?Build metals-vim v$version (previous will be removed)? "
   echo
+  [[ "$a" != y ]] && return 1
   rm -f ~/.local/bin/metals-vim*
   coursier bootstrap \
     --java-opt -Xss4m \
