@@ -24,7 +24,7 @@ upd-time() {
   echo "After: " $(date)
 }
 
-sync() {
+esync() {
   local emerge
 
   printf "Sync portage... "

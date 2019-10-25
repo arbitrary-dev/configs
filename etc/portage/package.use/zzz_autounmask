@@ -25,9 +25,6 @@ sys-libs/ncurses tinfo
 # Fixes emerge hang
 dev-util/boost-build python
 
-# required by media-gfx/wkhtmltopdf-0.12.4-r1::gentoo
-dev-qt/qtwebkit printsupport
-
 media-video/ffmpeg x264 x265 vpx fdk
 # required by net-misc/youtube-viewer-3.2.8::gentoo
 media-video/ffmpeg openssl
@@ -61,19 +58,6 @@ x11-wm/awesome dbus
 # required by @world (argument)
 >=media-libs/mesa-10.5.0_rc3 osmesa
 x11-themes/qtcurve gtk
-
-# required by qutebrowser (argument)
-x11-libs/libxcb xkb
-media-libs/libvpx svc
-sys-libs/zlib minizip
-dev-libs/libxml2 python icu
-dev-python/PyQt5 declarative multimedia gui network opengl printsupport sql widgets webchannel
-dev-python/PyQtWebEngine -python_targets_python2_7
-dev-python/pyyaml libyaml
-dev-qt/qtcore icu
-dev-qt/qtwebengine widgets
-dev-qt/qtwebchannel qml
-dev-qt/qtmultimedia widgets
 
 # required by media-video/mpv-0.3.10
 # required by mpv (argument)
