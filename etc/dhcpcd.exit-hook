@@ -1,4 +1,5 @@
-if [[ "$reason" = BOUND ]] && ping google.com -c4; then
+# Update the clock on the Internet connection
+if [[ "$reason" = BOUND* ]] && ping google.com -c4; then
   log=/tmp/ntp-client.log
   echo $interface $reason >> $log
   echo "Current time: `date +%T`" >> $log
