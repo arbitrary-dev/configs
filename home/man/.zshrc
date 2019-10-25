@@ -8,6 +8,49 @@ export MY_DOCS=~/docs
 
 alias vr="vim ~/.zshrc"
 
+mnt() {
+  if [[ ! "$1" ]]; then
+    sudo lsblk -lo path,label -e 259
+    return 1
+  fi
+
+  local main_dev
+  if [[ -e "/dev/$1" ]]; then
+    main_dev="/dev/$1"
+  elif [[ "$1" = /dev/* && -e "$1" ]]; then
+    main_dev="$1"
+  else
+    main_dev=`sudo lsblk -lo path,label -e 259 | grep "$1" | cut -d\  -f1`
+  fi
+  if [[ -z "$main_dev" ]]; then
+    echo "There's no \"$1\" available!"
+    return 1
+  fi
+
+  local devs=(`ls "$main_dev"* | grep -E '[0-9]$'`)
+  local one=`(( $#devs == 1 )) && echo 1`
+
+  for dev in "${devs[@]}"; do
+    local label=""
+    [[ $one && "$2" ]] && label="$2"
+    [[ -z "$label" ]] && label="`sudo lsblk -no label $dev`"
+    [[ -z "$label" ]] && label="`sudo lsblk -no name $dev`"
+    local to="/mnt/$label"
+    sudo mkdir -p "$to"
+    if sudo mount -o umask=000 "$dev" "$to"; then
+      [[ $one ]] && cd "$to" || echo "\"$dev\" mounted to \"$to\""
+    fi
+  done
+}
+
+umnt() {
+  # TODO get from PWD
+  [[ ! "$1" ]] && echo "Specify a mount point from /mnt !" && return 1
+  local from="/mnt/$1"
+  mount | grep -q "$from" && [[ "$PWD" = "$from"* ]] && cd ~
+  sudo umount "$from" && sudo rm -d "$from"
+}
+
 export PATH=$PATH:~/.jenv/bin
 eval "$(jenv init -)"
 
