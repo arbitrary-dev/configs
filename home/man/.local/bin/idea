@@ -1,0 +1,24 @@
+#!/bin/sh
+
+CONF=`ls -d ~/.Idea* | sort | tail -1`
+
+if [ -z "$CONF" ]; then
+  echo "No Intellij Idea configuration found!"
+  exit 1
+fi
+
+echo "Setting up tmpfs for $CONF"
+
+SYS_DIR="$CONF/system"
+
+TMP_DIR="/tmp/$USER/IntellijIdea_system"
+mkdir -p "$TMP_DIR/"{tmp,caches,index}
+
+for d in "$SYS_DIR/"{tmp,caches,index}; do
+  to="$TMP_DIR/${d##*/}"
+  rm -rf "$d"
+  ln -s "$to" "$d"
+  echo "Mapped \"$d\" to \"$to\""
+done
+
+idea-community
