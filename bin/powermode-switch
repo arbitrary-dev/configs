@@ -18,6 +18,15 @@ _remove() {
 _remove "0000:01:00.0" "Nvidia VGA"
 _remove "0000:01:00.1" "Nvidia audio"
 _remove "0000:00:1f.6" "Ethernet"
-# TODO remove bluetooth (currently should be switched off manually with Fn+BT)
+
+# Bluetooth
+BT_IDX=`rfkill list | grep -i bluetooth | head -1 | cut -d: -f1`
+if [ $MODE = performance ]; then
+  rfkill unblock $BT_IDX
+  echo "Bluetooth enabled"
+else
+  rfkill unblock $BT_IDX
+  echo "Bluetooth disabled"
+fi
 
 powertop --auto-tune
