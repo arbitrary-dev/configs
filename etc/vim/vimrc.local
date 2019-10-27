@@ -56,16 +56,20 @@ filetype plugin indent on
 
 " Colors
 "hi ColorColumn ctermbg=178
-"hi Search ctermbg=yellow ctermfg=brown
+hi clear Search
+hi Search cterm=inverse
 "hi Visual ctermfg=229 ctermbg=brown
 "hi Todo ctermfg=brown ctermbg=178
-"hi Comment ctermfg=brown
+hi Comment ctermfg=darkgray
 "hi FoldColumn ctermfg=136 ctermbg=none
 "hi Folded ctermfg=136 ctermbg=none
-"hi StatusLine cterm=none ctermfg=223 ctermbg=136
-"hi StatusLineNC cterm=none ctermfg=136 ctermbg=136
-"hi VertSplit cterm=none ctermfg=136 ctermbg=136
-"hi LineNr ctermfg=136
+hi StatusLine cterm=none ctermfg=black ctermbg=red
+hi StatusLineNC cterm=none ctermfg=black ctermbg=darkred
+hi VertSplit cterm=none ctermfg=black ctermbg=darkred
+hi LineNr ctermfg=darkgray
+set cursorline
+hi CursorLine cterm=none
+hi CursorLineNr ctermfg=white
 "hi ModeMsg cterm=none ctermfg=223 ctermbg=brown
 "hi ErrorMsg ctermfg=yellow ctermbg=red
 hi DiffChange ctermfg=lightred ctermbg=red
