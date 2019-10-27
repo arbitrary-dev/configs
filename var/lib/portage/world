@@ -4,6 +4,7 @@ app-crypt/efitools
 app-editors/vim
 app-emulation/docker
 app-emulation/docker-compose
+app-i18n/mozc
 app-misc/jq
 app-misc/screen
 app-misc/screenfetch
@@ -22,6 +23,7 @@ dev-qt/qtwebkit
 dev-util/idea-community
 dev-vcs/git
 gnome-base/libgnome-keyring
+media-fonts/mplus-outline-fonts
 media-gfx/feh
 media-gfx/gimp
 media-gfx/graphviz

@@ -6,6 +6,10 @@ media-gfx/imagemagick jpeg webp png
 media-gfx/feh exif
 x11-wm/awesome luajit
 
+# Japanese
+app-i18n/mozc ibus
+media-fonts/mplus-outline-fonts ipafont
+
 # Required for Chromium
 net-libs/nodejs icu
 
