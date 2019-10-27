@@ -9,6 +9,7 @@ export MY_DOCS=~/docs
 alias vr="vim ~/.zshrc"
 
 alias -s md="$EDITOR"
+alias -s avi=mpv
 
 mnt() {
   if [[ ! "$1" ]]; then
