@@ -1,4 +1,6 @@
-git-fix-ownership() { chown -R $1:$1 /home/$1; }
+git-fix-ownership() {
+  chown -R $1:$1 /home/$1 /tmp/$1
+}
 
 esc=$(printf '\033')
 
