@@ -50,6 +50,7 @@ cpv() { stdbuf -o0 cp -rnv "$@" | sed -u 's/.*->/->/'; }
 alias pr=perl-rename
 alias sed="sed -r"
 alias less="less -iSXFR"
+alias xs="xargs -I{}"
 
 # utilities
 
