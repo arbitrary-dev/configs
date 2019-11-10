@@ -31,6 +31,7 @@ nnoremap <silent> <leader><leader> :nohlsearch<CR>
 nnoremap <leader>d :diffthis<CR>
 nnoremap <leader>D :diffoff<CR>
 nnoremap <leader>w :set wrap!<CR>
+nnoremap <leader>f :windo set foldcolumn=0<CR>
 
 " trailing spaces highlighting
 au FileType *
@@ -58,23 +59,26 @@ filetype plugin indent on
 "hi ColorColumn ctermbg=178
 hi clear Search
 hi Search cterm=inverse
-"hi Visual ctermfg=229 ctermbg=brown
+hi Visual ctermfg=black ctermbg=darkgray
 "hi Todo ctermfg=brown ctermbg=178
 hi Comment ctermfg=darkgray
-"hi FoldColumn ctermfg=136 ctermbg=none
-"hi Folded ctermfg=136 ctermbg=none
-hi StatusLine cterm=none ctermfg=black ctermbg=red
-hi StatusLineNC cterm=none ctermfg=black ctermbg=darkred
-hi VertSplit cterm=none ctermfg=black ctermbg=darkred
+hi Folded ctermfg=darkgray ctermbg=none
+hi FoldColumn ctermfg=darkgray ctermbg=none
+hi StatusLine cterm=none ctermfg=white ctermbg=darkgray
+hi StatusLineNC cterm=none ctermfg=black ctermbg=darkgray
+hi VertSplit cterm=none ctermfg=black ctermbg=darkgray
 hi LineNr ctermfg=darkgray
 set cursorline
 hi CursorLine cterm=none
 hi CursorLineNr ctermfg=white
 "hi ModeMsg cterm=none ctermfg=223 ctermbg=brown
 "hi ErrorMsg ctermfg=yellow ctermbg=red
-hi DiffChange ctermfg=lightred ctermbg=red
-hi DiffText ctermfg=lightred ctermbg=202 cterm=none
-hi DiffDelete ctermfg=red ctermbg=darkred
+hi DiffChange ctermfg=black ctermbg=darkred
+hi DiffText ctermfg=white ctermbg=red
+hi DiffDelete ctermfg=darkgray ctermbg=none
 hi diffRemoved ctermfg=red
-hi DiffAdd ctermbg=darkgreen ctermfg=lightgreen
+hi DiffAdd ctermfg=black ctermbg=darkgreen
 hi diffAdded ctermfg=darkgreen
+"syntax match DiffMerge /^[<|=>]\{7}.*$/ containedin=ALL contained
+"hi link DiffMerge Comment
+hi NonText ctermfg=darkgray

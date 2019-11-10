@@ -7,6 +7,7 @@ $PATH"
 export MY_DOCS=~/docs
 
 alias vr="vim ~/.zshrc"
+alias feh="feh --image-bg black -Z -."
 
 alias -s md="$EDITOR"
 alias -s avi=mpv
@@ -47,9 +48,17 @@ mnt() {
 }
 
 umnt() {
-  # TODO get from PWD
-  [[ ! "$1" ]] && echo "Specify a mount point from /mnt !" && return 1
-  local from="/mnt/$1"
+  local from="$1"
+  if [ -z "$from" ]; then
+    for m in `mount | grep /mnt | cut -d\  -f3`; do
+      [[ "$PWD" = "$m"* ]] && from="$m" && break
+    done
+    if [ -z "$from" ]; then
+      echo "No mount point were specified!"
+      return 1
+    fi
+  fi
+  [[ "$from" != /mnt/* ]] && from="/mnt/$from"
   mount | grep -q "$from" && [[ "$PWD" = "$from"* ]] && cd ~
   sudo umount "$from" && sudo rm -d "$from"
 }

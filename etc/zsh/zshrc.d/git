@@ -39,10 +39,6 @@ alias gbs="git branch -a --format='%(refname:short) %(color:red)%(authordate:rel
 alias gbi="git bisect"
 gls() { git ls-tree --full-tree -r HEAD | cut -f2; }
 
-alias gt="git tag"
-gtr() { git ls-remote --tags ${1:-origin}; }
-gtf() { git fetch --tags ${1:-origin} ${2:-master}; }
-
 git-config-github-user() {
   git config user.name $GITHUB_USER
   git config user.email $GITHUB_EMAIL
@@ -55,8 +51,12 @@ alias gf="git fetch"
 gfco() { gf origin $1 && gco origin/$1; }
 alias gpl="git pull"
 
+alias gt="git tag"
+gtr() { git ls-remote --tags ${1:-origin}; }
+gtf() { gf --tags ${1:-origin} ${2:-master}; }
+
 alias gs="git show"
-gsno() { git show-no $1 | shorten-paths; }
+gsno() { git show --oneline --name-only $1 | shorten-paths; }
 
 alias gsh="git stash save --include-untracked --keep-index"
 alias gsha="git stash apply"

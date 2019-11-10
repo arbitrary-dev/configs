@@ -38,8 +38,10 @@ net-misc/youtube-dl
 net-print/ysoft-client
 net-vpn/openconnect
 net-wireless/wpa_supplicant
+sys-apps/hdparm
 sys-apps/lm-sensors
 sys-apps/the_silver_searcher
+sys-fs/dosfstools
 sys-fs/fuse
 sys-kernel/buildkernel
 sys-kernel/linux-firmware

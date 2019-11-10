@@ -12,9 +12,9 @@ echo "Setting up tmpfs for $CONF"
 SYS_DIR="$CONF/system"
 
 TMP_DIR="/tmp/$USER/IntellijIdea_system"
-mkdir -p "$TMP_DIR/"{tmp,caches,index}
+mkdir -p "$TMP_DIR/"{tmp,caches,index,log}
 
-for d in "$SYS_DIR/"{tmp,caches,index}; do
+for d in "$SYS_DIR/"{tmp,caches,index,log}; do
   to="$TMP_DIR/${d##*/}"
   rm -rf "$d"
   ln -s "$to" "$d"
