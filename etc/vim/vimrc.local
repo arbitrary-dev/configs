@@ -59,7 +59,7 @@ filetype plugin indent on
 "hi ColorColumn ctermbg=178
 hi clear Search
 hi Search cterm=inverse
-hi Visual ctermfg=black ctermbg=darkgray
+hi Visual ctermfg=black ctermbg=red
 "hi Todo ctermfg=brown ctermbg=178
 hi Comment ctermfg=darkgray
 hi Folded ctermfg=darkgray ctermbg=none
@@ -70,7 +70,7 @@ hi VertSplit cterm=none ctermfg=black ctermbg=darkgray
 hi LineNr ctermfg=darkgray
 set cursorline
 hi CursorLine cterm=none
-hi CursorLineNr ctermfg=white
+hi CursorLineNr ctermfg=black ctermbg=red
 "hi ModeMsg cterm=none ctermfg=223 ctermbg=brown
 "hi ErrorMsg ctermfg=yellow ctermbg=red
 hi DiffChange ctermfg=black ctermbg=darkred
