@@ -11,6 +11,7 @@ alias feh="feh --image-bg black -Z -."
 
 alias -s md="$EDITOR"
 alias -s avi=mpv
+alias -s pdf="mupdf-x11"
 
 mnt() {
   if [[ ! "$1" ]]; then
