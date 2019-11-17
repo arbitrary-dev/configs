@@ -4,6 +4,7 @@ app-crypt/efitools
 app-editors/vim
 app-emulation/docker
 app-emulation/docker-compose
+app-emulation/qemu
 app-i18n/mozc
 app-misc/jq
 app-misc/screen
@@ -29,6 +30,7 @@ media-gfx/gimp
 media-gfx/graphviz
 media-gfx/imagemagick
 media-sound/alsa-utils
+media-sound/pulseaudio
 media-video/ffmpeg
 media-video/mpv
 net-irc/irssi

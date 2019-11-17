@@ -1,0 +1,3 @@
+#!/bin/sh
+
+QEMU_AUDIO_DRV=none `dirname $0`/emulator.orig "$@"
