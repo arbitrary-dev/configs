@@ -32,7 +32,10 @@ mnt() {
     return 1
   fi
 
-  local devs=(`ls "$main_dev"* | grep -E '[0-9]$'`)
+  local devs=("$main_dev")
+  if [[ ! "$devs" =~ '[0-9]$' ]] && ls "$devs"* | grep -q '[0-9]$'; then
+    devs=(`ls "$devs"* | grep '[0-9]$'`)
+  fi
   local one=`(( $#devs == 1 )) && echo 1`
 
   for dev in "${devs[@]}"; do
@@ -42,8 +45,10 @@ mnt() {
     [[ -z "$label" ]] && label="`sudo lsblk -no name $dev`"
     local to="/mnt/$label"
     sudo mkdir -p "$to"
-    if sudo mount -o umask=000 "$dev" "$to"; then
-      [[ $one ]] && cd "$to" || echo "\"$dev\" mounted to \"$to\""
+    if grep -q "\s$to\s" /etc/fstab && sudo mount "$to" \
+        || sudo mount -o umask=000 "$dev" "$to"; then
+      echo "\"$dev\" is mounted to \"$to\""
+      [[ $one ]] && cd "$to"
     fi
   done
 }

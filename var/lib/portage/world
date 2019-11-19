@@ -45,7 +45,9 @@ sys-apps/lm-sensors
 sys-apps/the_silver_searcher
 sys-fs/compsize
 sys-fs/dosfstools
+sys-fs/exfat-utils
 sys-fs/fuse
+sys-fs/fuse-exfat
 sys-kernel/buildkernel
 sys-kernel/linux-firmware
 sys-power/acpilight

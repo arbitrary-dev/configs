@@ -9,3 +9,5 @@
 tmpfs /var/tmp/portage tmpfs size=3G,uid=portage,gid=portage,mode=775,noatime 0 0
 tmpfs /tmp             tmpfs size=3G,rw,nosuid,noatime,nodev,mode=1777        0 0
 tmpfs /opt/docker/tmp  tmpfs size=3G,rw,nosuid,noatime,nodev,mode=0700        0 0
+
+/dev/mapper/azaza /mnt/azaza  btrfs defaults,noatime,compress-force=zlib:9 0 0
