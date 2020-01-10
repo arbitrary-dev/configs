@@ -15,7 +15,11 @@ _remove() {
   fi
 }
 
-_remove "0000:01:00.0" "Nvidia VGA"
+modprobe -r nvidia
+if ! lsmod | grep -q nvidia; then
+  _remove "0000:01:00.0" "Nvidia VGA"
+fi
+
 _remove "0000:01:00.1" "Nvidia audio"
 _remove "0000:00:1f.6" "Ethernet"
 
@@ -25,7 +29,7 @@ if [ $MODE = performance ]; then
   rfkill unblock $BT_IDX
   echo "Bluetooth enabled"
 else
-  rfkill unblock $BT_IDX
+  rfkill block $BT_IDX
   echo "Bluetooth disabled"
 fi
 

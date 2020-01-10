@@ -1,0 +1,8 @@
+pcm.bt_sennheiser {
+  type plug
+  slave.pcm {
+    type bluealsa
+    device "00:16:94:16:8B:B8"
+    profile "a2dp"
+  }
+}

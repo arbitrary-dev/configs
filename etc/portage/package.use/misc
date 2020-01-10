@@ -1,11 +1,16 @@
+media-sound/ncmpcpp outputs taglib
 app-emulation/docker btrfs
-media-video/ffmpeg chromium fdk vaapi vdpau vorbis vpx wavpack webp x264 xvid opus
+media-sound/mpd -network
+media-video/ffmpeg chromium fdk vaapi vdpau vorbis vpx webp x264 xvid
 media-gfx/gimp -alsa
 dev-java/openjdk source
 x11-terms/rxvt-unicode xft 256-color
 media-gfx/imagemagick jpeg webp png
 media-gfx/feh exif
 x11-wm/awesome luajit
+
+# RegEx support for Jq
+app-misc/jq oniguruma
 
 # Japanese
 app-i18n/mozc ibus

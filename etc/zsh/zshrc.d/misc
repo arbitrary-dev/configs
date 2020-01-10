@@ -11,10 +11,11 @@ sr() {
 alias xc="xclip -selection clipboard"
 alias xp="xclip -selection clipboard -o"
 
-alias todo="$EDITOR ~/docs/_misc/todo"
-
-alias rename=perl-rename
+alias rn=perl-rename
 alias mc="make menuconfig"
+alias xs="xargs -I{}"
+
+alias bkernel="KERNEL_DIR=/tmp/buildkernel buildkernel --rebuild-external-modules"
 
 my-sdiff() {
   local S

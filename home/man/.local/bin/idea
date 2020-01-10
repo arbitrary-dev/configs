@@ -21,4 +21,5 @@ for d in "$SYS_DIR/"{tmp,caches,index,log}; do
   echo "Mapped \"$d\" to \"$to\""
 done
 
-idea-community
+#idea-community
+/opt/idea-community/bin/idea.sh

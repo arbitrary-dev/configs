@@ -29,7 +29,12 @@ media-gfx/feh
 media-gfx/gimp
 media-gfx/graphviz
 media-gfx/imagemagick
+media-libs/mesa
 media-sound/alsa-utils
+media-sound/bluez-alsa
+media-sound/mpd
+media-sound/mpdscribble
+media-sound/ncmpcpp
 media-sound/pulseaudio
 media-video/ffmpeg
 media-video/mpv
@@ -39,6 +44,7 @@ net-misc/ntp
 net-misc/youtube-dl
 net-print/ysoft-client
 net-vpn/openconnect
+net-wireless/bluez
 net-wireless/wpa_supplicant
 sys-apps/hdparm
 sys-apps/lm-sensors
@@ -53,8 +59,10 @@ sys-kernel/linux-firmware
 sys-power/acpilight
 sys-power/powertop
 sys-power/upower
+sys-process/lsof
 www-client/chromium
 x11-apps/mesa-progs
+x11-apps/xdpyinfo
 x11-apps/xev
 x11-apps/xrandr
 x11-base/xorg-server

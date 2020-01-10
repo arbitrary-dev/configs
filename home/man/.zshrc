@@ -5,13 +5,60 @@ export PATH="\
 $PATH"
 
 export MY_DOCS=~/docs
+alias todo="$EDITOR $MY_DOCS/_misc/todo"
+alias notes="$EDITOR $MY_DOCS/_misc/notes"
 
 alias vr="vim ~/.zshrc"
 alias feh="feh --image-bg black -Z -."
 
 alias -s md="$EDITOR"
+alias -s mkv=mpv
+alias -s mp4=mpv
 alias -s avi=mpv
-alias -s pdf="mupdf-x11"
+alias -s pdf=mupdf-x11
+alias -s jpg=feh
+alias -s jpeg=feh
+alias -s png=feh
+
+export PATH=$PATH:~/.jenv/bin
+eval "$(jenv init -)"
+
+alias yta="youtube-dl -f bestaudio[ext=m4a]"
+alias ytv="youtube-dl -f bestvideo+bestaudio"
+
+alias m=memo
+alias xb=xbacklight
+alias bat="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'time to' | sed -Ee 's/  +/ /g' -e 's/^ //'"
+
+alias nc=ncmpcpp
+alias mpd-remote="sudo CFGFILE=/etc/mpd-remote.conf rc-service mpd restart"
+alias mpd-stop="sudo rc-service mpd stop"
+
+yt2cue() {
+  # RS="\r\n"
+  # match($0, "([0-9:]+) *\\( *(.+) *\\) *(.+) *", arr)
+  gawk 'BEGIN{num=1}
+  match($0, "([0-9:]+) *- *(.+) *", arr) {
+    split(arr[1],time,":")
+    time[1]=time[1]*60+time[2]
+    time[2]=time[3]
+
+    artist = "Johann Sebastian Bach" # arr[2]
+    title = arr[2]
+
+    printf "TRACK %02d AUDIO\n", num
+    printf "  TITLE \"%s, %s\"\n", prefix, title
+    printf "  PERFORMER \"%s\"\n", artist
+    printf "  INDEX 01 %02d:%02d:00\n\n", time[1], time[2]
+    num+=1
+    next
+  }
+  {
+    gsub(/^ +| +$/, "", $0)
+    ! /^\[/ && prefix=$0
+    next
+  }'
+}
 
 mnt() {
   if [[ ! "$1" ]]; then
@@ -46,7 +93,8 @@ mnt() {
     local to="/mnt/$label"
     sudo mkdir -p "$to"
     if grep -q "\s$to\s" /etc/fstab && sudo mount "$to" \
-        || sudo mount -o umask=000 "$dev" "$to"; then
+        || sudo mount -o umask=000 "$dev" "$to" 2>/dev/null \
+        || (sudo mount "$dev" "$to" && sudo chown $USER:$USER "$to"); then
       echo "\"$dev\" is mounted to \"$to\""
       [[ $one ]] && cd "$to"
     fi
@@ -69,19 +117,17 @@ umnt() {
   sudo umount "$from" && sudo rm -d "$from"
 }
 
-export PATH=$PATH:~/.jenv/bin
-eval "$(jenv init -)"
-
-alias yta="youtube-dl -f bestaudio[ext=m4a]"
-alias ytv="youtube-dl -f bestvideo+bestaudio"
-
-alias m=memo
-alias bat="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'time to' | sed -Ee 's/  +/ /g' -e 's/^ //'"
-
 # Phone
 
-alias mount-phone="go-mtpfs /mnt/phone &"
-alias umount-phone="fusermount -u /mnt/phone"
+mnt-phone() {
+  sudo mkdir -p /mnt/phone
+  sudo chown $USER:$USER /mnt/phone
+  go-mtpfs /mnt/phone &
+}
+umnt-phone() {
+  fusermount -u /mnt/phone
+  sudo rm -r /mnt/phone
+}
 
 # Work
 
