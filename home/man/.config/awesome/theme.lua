@@ -18,13 +18,13 @@ theme.font          = "M+ 1P 11"
 theme.bg_normal     = "#222222"
 theme.bg_focus      = "#CC240E"
 theme.bg_urgent     = "#E8FF73"
-theme.bg_minimize   = theme.bg_normal
+theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#aaaaaa"
 theme.fg_focus      = theme.bg_normal
 theme.fg_urgent     = theme.bg_normal
-theme.fg_minimize   = "#ffffff"
+theme.fg_minimize   = theme.fg_normal
 
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(2)
@@ -45,7 +45,7 @@ theme.border_marked = "#91231c"
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
 
-theme.tasklist_bg_normal = "#444444"
+theme.tasklist_bg_normal = theme.bg_normal
 theme.tasklist_disable_icon = true
 theme.tasklist_plain_task_name = true
 
