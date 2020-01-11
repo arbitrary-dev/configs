@@ -12,7 +12,6 @@ app-shells/zsh-completions
 app-text/antiword
 app-text/djview
 app-text/mupdf
-app-vim/youcompleteme
 dev-perl/rename
 dev-vcs/git-lfs
 games-emulation/dosbox
@@ -38,6 +37,7 @@ media-video/mpv
 net-fs/cifs-utils
 net-im/bitlbee
 net-irc/irssi
+net-libs/nodejs
 net-misc/dhcpcd
 net-misc/freerdp
 net-misc/netifrc
@@ -50,16 +50,17 @@ net-wireless/wireless-tools
 net-wireless/wpa_supplicant
 sys-apps/hdparm
 sys-apps/smartmontools
+sys-apps/the_silver_searcher
 sys-apps/usbutils
 sys-boot/grub
 sys-devel/crossdev
 sys-devel/distcc
+sys-devel/gdb
 sys-fs/go-mtpfs
 sys-kernel/genkernel
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
 sys-libs/ncurses
-sys-libs/ncurses:5
 sys-power/acpid
 sys-power/powertop
 sys-power/suspend

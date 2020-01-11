@@ -1,3 +1,5 @@
+games-roguelike/dwarf-fortress free-noncomm
+
 # required by media-video/ffmpeg-3.2.4::gentoo[fdk]
 # required by ffmpeg (argument)
 >=media-libs/fdk-aac-0.1.5 FraunhoferFDK

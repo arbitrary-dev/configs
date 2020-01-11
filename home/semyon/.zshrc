@@ -1,7 +1,11 @@
 export PATH="${PATH}:/home/semyon/scripts"
-export PS1=$'%{\e[0;30m\e[42m%} %n %{\e[0m\e[0;32m%} %1d %{\e[0m%}'
+export PS1=$'%{\e[0;30m\e[42m%} %1d %{\e[0m\e[0;32m%}%{\e[0m%} '
+
+# To reset any issues with broken newline
+stty sane
 
 stty -ixon
+
 [[ $(tty) = "/dev/tty1" ]] && exec startx
 
 # aliases
@@ -10,8 +14,8 @@ alias qmarks="vim ~/.config/qutebrowser/quickmarks"
 alias vd=vimdiff
 alias yta="youtube-dl -f 'bestaudio[ext=m4a]'"
 
-alias mount-phone="go-mtpfs /mnt/phone &"
-alias mount-usb="mount /mnt/usb"
+alias mnt-phone="go-mtpfs /mnt/phone &"
+alias mnt-usb="mount /mnt/usb"
 
 nc() {
   mpd 2>/dev/null && mpdscribble
@@ -48,7 +52,7 @@ connect ${dev[1]}
 EOF
 
   # Set volume
-  local ctl=`amixer -D bluealsa scontrols | cut -d\' -f2`
+  local ctl=`amixer -D bluealsa scontrols | cut -d\' -f2 | head -1`
   amixer -D bluealsa sset $ctl 75%
 }
 

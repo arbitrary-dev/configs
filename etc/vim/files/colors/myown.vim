@@ -22,7 +22,11 @@ let colors_name = "myown"
 " 6 14 cyan
 " 7 15 white
 
-hi Visual cterm=none ctermfg=0 ctermbg=11
+" Disable bold style
+set t_md=
+
+"hi Visual cterm=none ctermfg=0 ctermbg=11
+hi Visual cterm=none ctermfg=black ctermbg=yellow
 hi MatchParen ctermfg=0 ctermbg=3
 hi Error ctermfg=0 ctermbg=1
 hi NonText ctermfg=8

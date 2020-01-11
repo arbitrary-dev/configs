@@ -1,5 +1,5 @@
 #[[ $PATH != *distcc* ]] && export PATH="/usr/lib/distcc/bin:${PATH}"
-export PS1=$'%{\e[0;30m\e[41m%} %n %{\e[0m\e[0;31m%} %1d %{\e[0m%}'
+export PS1=$'%{\e[0;30m\e[41m%} %1d %{\e[0m\e[0;31m%}%{\e[0m%} '
 export PATH=$PATH:/home/semyon/scripts
 
 # aliases
@@ -11,6 +11,20 @@ alias ecurr="watch -ctn 30 genlop -c"
 alias ehist="genlop -it"
 
 # utilities
+
+xb() {
+  echo $((2**$1)) > /sys/class/backlight/intel_backlight/brightness
+}
+
+power-switch() {
+  echo powersave > /sys/devices/system/cpu/cpu[01]/cpufreq/scaling_governor
+  echo "CPU downscaled"
+  # Network?
+  echo 1 > /sys/bus/pci/devices/0000:09:00.0/remove
+  rfkill block 2
+  echo "Bluetooth disabled"
+  powertop --auto-tune
+}
 
 eclean() {
   emerge --ask --depclean \

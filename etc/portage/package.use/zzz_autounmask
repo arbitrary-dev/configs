@@ -1,3 +1,4 @@
+games-roguelike/nethack -X
 x11-misc/compton -drm -opengl -pcre
 media-sound/bluez-alsa hcitop
 media-sound/ncmpcpp taglib outputs

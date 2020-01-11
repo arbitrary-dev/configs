@@ -119,7 +119,7 @@ alias gpl="git pull"
 alias gs="git show"
 gsno() { git show-no $1 | shorten-paths; }
 
-alias gsh="git stash save"
+alias gsh="git stash save --keep-index"
 alias gsha="git stash apply"
 alias gshs="git stash show -p"
 alias gshl="git stash list"
