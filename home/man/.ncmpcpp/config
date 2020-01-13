@@ -200,9 +200,9 @@ current_item_suffix = $/r$9
 #
 #current_item_inactive_column_suffix = $/r$(end)
 #
-now_playing_prefix = "$2$r ▶ $/r$9"
-
-#now_playing_suffix = $9
+now_playing_prefix = "$(197) ♪ $b"
+#
+now_playing_suffix = "$/b$9"
 #
 #browser_playlist_prefix = "$2playlist$9 "
 #

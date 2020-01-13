@@ -1,3 +1,4 @@
+media-sound/pulseaudio -bluetooth
 media-sound/ncmpcpp outputs taglib
 app-emulation/docker btrfs
 media-sound/mpd -network
