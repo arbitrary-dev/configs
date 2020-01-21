@@ -31,6 +31,7 @@ alias xb=xbacklight
 alias bat="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'time to' | sed -Ee 's/  +/ /g' -e 's/^ //'"
 
 alias nc=ncmpcpp
+alias am-bt="alsamixer -D bluealsa"
 alias mpd-remote="sudo CFGFILE=/etc/mpd-remote.conf rc-service mpd restart"
 alias mpd-stop="sudo rc-service mpd stop"
 

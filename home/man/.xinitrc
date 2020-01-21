@@ -16,6 +16,6 @@ export XMODIFIERS=@im=ibus
 ibus-daemon -drx
 
 # Decreases touchpad sensitivity (was 30)
-synclient FingerHigh=45
+synclient FingerHigh=52
 
 exec awesome
