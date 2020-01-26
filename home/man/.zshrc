@@ -9,7 +9,7 @@ alias todo="$EDITOR $MY_DOCS/_misc/todo"
 alias notes="$EDITOR $MY_DOCS/_misc/notes"
 
 alias vr="vim ~/.zshrc"
-alias feh="feh --image-bg black -Z -."
+alias feh="feh --auto-rotate --image-bg black -Z -."
 
 alias -s md="$EDITOR"
 alias -s mkv=mpv
@@ -131,6 +131,10 @@ umnt-phone() {
 }
 
 # Work
+
+alias evo-gp-restart="sudo rc-service openconnect.evo_gp restart"
+alias docker-start="sudo rc-service docker start"
+alias docker-stop="sudo rc-service docker stop"
 
 jnote() {
   docker run -v "$PWD":/home/jovyan/work -p 8888:8888 jupyter/scipy-notebook
