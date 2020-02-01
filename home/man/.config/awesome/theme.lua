@@ -18,7 +18,7 @@ theme.font          = "M+ 1P 11"
 theme.bg_normal     = "#222222"
 theme.bg_focus      = "#CC240E"
 theme.bg_urgent     = "#E8FF73"
-theme.bg_minimize   = "#444444"
+theme.bg_minimize   = theme.bg_normal
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#aaaaaa"
@@ -45,9 +45,11 @@ theme.border_marked = "#91231c"
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
 
-theme.tasklist_bg_normal = theme.bg_normal
+theme.tasklist_bg_normal = "#3b3f42"
 theme.tasklist_disable_icon = true
 theme.tasklist_plain_task_name = true
+
+theme.hotkeys_modifiers_fg = theme.tasklist_bg_normal
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(5)
