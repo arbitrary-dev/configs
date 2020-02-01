@@ -30,10 +30,12 @@ alias m=memo
 alias xb=xbacklight
 alias bat="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'time to' | sed -Ee 's/  +/ /g' -e 's/^ //'"
 
+alias bt=bluetoothctl
 alias nc=ncmpcpp
+alias am=alsamixer
 alias am-bt="alsamixer -D bluealsa"
 alias mpd-remote="sudo CFGFILE=/etc/mpd-remote.conf rc-service mpd restart"
-alias mpd-stop="sudo rc-service mpd stop"
+alias mpd-restart="sudo rc-service mpd restart"
 
 yt2cue() {
   # RS="\r\n"
@@ -132,7 +134,6 @@ umnt-phone() {
 
 # Work
 
-alias evo-gp-restart="sudo rc-service openconnect.evo_gp restart"
 alias docker-start="sudo rc-service docker start"
 alias docker-stop="sudo rc-service docker stop"
 

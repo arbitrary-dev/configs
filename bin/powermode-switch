@@ -1,10 +1,16 @@
 #!/bin/sh
 
-# CPU
 CURR=`cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor`
+
+if [[ "$1" == "-i" ]]; then
+  echo $CURR
+  exit
+fi
+
+# CPU
 [ $CURR = performance ] && MODE=powersave || MODE=performance
 for c in `ls -d /sys/devices/system/cpu/cpu[0-9]*`; do
-  echo $MODE >$c/cpufreq/scaling_governor
+  echo $MODE > $c/cpufreq/scaling_governor
 done
 echo "CPU's set to $MODE mode."
 
@@ -28,6 +34,9 @@ BT_IDX=`rfkill list | grep -i bluetooth | head -1 | cut -d: -f1`
 if [ $MODE = performance ]; then
   rfkill unblock $BT_IDX
   echo "Bluetooth enabled"
+elif bluetoothctl info | grep -q "Connected: yes"; then
+  echo "Unable to disable bluetooth, following devices connected:"
+  bluetoothctl info | grep "Name:" | cut -d\  -f2-
 else
   rfkill block $BT_IDX
   echo "Bluetooth disabled"

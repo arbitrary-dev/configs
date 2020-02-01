@@ -85,6 +85,7 @@ alias gcm="gc -m"
 
 alias gr="git rebase"
 alias gri="gr --interactive"
+alias gri-na="gr --interactive --no-autosquash"
 alias grc="gr --continue"
 alias gra="gr --abort"
 

@@ -14,6 +14,8 @@ alias xp="xclip -selection clipboard -o"
 alias rn=perl-rename
 alias mc="make menuconfig"
 alias xs="xargs -I{}"
+alias ptop="sudo powertop"
+alias pswitch="sudo powermode-switch"
 
 alias bkernel="KERNEL_DIR=/tmp/buildkernel buildkernel --rebuild-external-modules"
 
