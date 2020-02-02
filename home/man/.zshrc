@@ -27,13 +27,14 @@ alias yta="youtube-dl -f bestaudio[ext=m4a]"
 alias ytv="youtube-dl -f bestvideo+bestaudio"
 
 alias m=memo
+alias sf=screenfetch
 alias xb=xbacklight
 alias bat="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'time to' | sed -Ee 's/  +/ /g' -e 's/^ //'"
 
-alias bt=bluetoothctl
-alias nc=ncmpcpp
 alias am=alsamixer
 alias am-bt="alsamixer -D bluealsa"
+alias bt=bluetoothctl
+alias nc=ncmpcpp
 alias mpd-remote="sudo CFGFILE=/etc/mpd-remote.conf rc-service mpd restart"
 alias mpd-restart="sudo rc-service mpd restart"
 

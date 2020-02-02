@@ -38,6 +38,7 @@ alias grvta="grvt --abort"
 alias gbs="git branch -a --format='%(refname:short) %(color:red)%(authordate:relative)' --list *$MY_NAME*"
 alias gbi="git bisect"
 gls() { git ls-tree --full-tree -r HEAD | cut -f2; }
+alias grm="git rm"
 
 git-config-github-user() {
   git config user.name $GITHUB_USER
