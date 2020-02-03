@@ -11,6 +11,13 @@ sr() {
 alias xc="xclip -selection clipboard"
 alias xp="xclip -selection clipboard -o"
 
+alias ecurr="watch -ctn 30 genlop -c"
+alias ehist="genlop -it"
+
+alias bdu="btrfs fi du"
+alias bdf="btrfs fi df"
+alias bcomp=compsize
+
 alias rn=perl-rename
 alias mc="make menuconfig"
 alias xs="xargs -I{}"
