@@ -19,6 +19,7 @@ alias bdf="btrfs fi df"
 alias bcomp=compsize
 
 alias rn=perl-rename
+alias cpv="rsync -ah --progress"
 alias mc="make menuconfig"
 alias xs="xargs -I{}"
 alias ptop="sudo powertop"

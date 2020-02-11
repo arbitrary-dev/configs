@@ -37,6 +37,10 @@ alias bt=bluetoothctl
 alias nc=ncmpcpp
 alias mpd-remote="sudo CFGFILE=/etc/mpd-remote.conf rc-service mpd restart"
 alias mpd-restart="sudo rc-service mpd restart"
+discogs() {
+  local s="$@"
+  w3m https://www.discogs.com/search?q=${s// /+}
+}
 
 yt2cue() {
   # RS="\r\n"
