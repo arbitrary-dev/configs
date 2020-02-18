@@ -191,3 +191,34 @@ build-metals() {
     -o ~/.local/bin/metals-vim-$version -f \
   && ln -s ~/.local/bin/metals-vim{-$version,}
 }
+
+check-tmpdir() {
+  if [[ ! -w "$TMPDIR" ]]; then
+    echo "No writable TMPDIR specified!"
+    return 1
+  fi
+}
+
+push-metals-tmpfs() {
+  check-tmpdir || return 1
+  local project=`basename $PWD`
+  local target="$TMPDIR/.bloop/$project"
+  [[ ! -d "$target" ]] && mkdir -p $target
+  ls .bloop/*.json >/dev/null 2>&1 && cp .bloop/*.json $target/
+  rm -rf .bloop
+  ln -s $target .bloop
+  sbt clean
+  echo "Pushed to $target"
+}
+
+pop-metals-tmpfs() {
+  check-tmpdir || return 1
+  local project=`basename $PWD`
+  local target="$TMPDIR/.bloop/$project"
+  [[ ! -d "$target" ]] && echo "Nothing to pop at $target" && return 1
+  rm -f .bloop
+  mkdir .bloop
+  cp $target/*.json .bloop/
+  rm -rf $target
+  echo "Popped from $target"
+}

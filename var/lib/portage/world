@@ -41,11 +41,13 @@ media-sound/ncmpcpp
 media-sound/pulseaudio
 media-video/ffmpeg
 media-video/mpv
+net-fs/samba
 net-irc/irssi
 net-misc/aria2
 net-misc/dhcpcd
 net-misc/ntp
 net-misc/youtube-dl
+net-print/cups-windows
 net-vpn/openconnect
 net-wireless/bluez
 net-wireless/wpa_supplicant

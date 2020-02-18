@@ -16,14 +16,14 @@ alias ehist="genlop -it"
 
 alias bdu="btrfs fi du"
 alias bdf="btrfs fi df"
-alias bcomp=compsize
+alias bcomp="sudo compsize"
 
 alias rn=perl-rename
 alias cpv="rsync -ah --progress"
 alias mc="make menuconfig"
 alias xs="xargs -I{}"
 alias ptop="sudo powertop"
-alias pswitch="sudo powermode-switch"
+alias psw="sudo powermode-switch"
 
 alias bkernel="KERNEL_DIR=/tmp/buildkernel buildkernel --rebuild-external-modules"
 
