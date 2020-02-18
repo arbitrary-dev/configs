@@ -5,6 +5,7 @@ app-crypt/efitools
 app-editors/vim
 app-emulation/docker
 app-emulation/docker-compose
+app-emulation/libvirt
 app-emulation/qemu
 app-i18n/mozc
 app-misc/jq
@@ -54,6 +55,8 @@ net-wireless/wpa_supplicant
 sys-apps/hdparm
 sys-apps/lm-sensors
 sys-apps/the_silver_searcher
+sys-cluster/kubectl
+sys-cluster/minikube
 sys-devel/binutils
 sys-devel/crossdev
 sys-devel/distcc
