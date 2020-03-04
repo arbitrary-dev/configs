@@ -4,12 +4,14 @@ export PATH="\
 "~"/.local/bin:\
 $PATH"
 
+export PATH=$PATH:~/.jenv/bin
+eval "$(jenv init -)"
+
 export MY_DOCS=~/docs
 alias todo="$EDITOR $MY_DOCS/_misc/todo"
 alias notes="$EDITOR $MY_DOCS/_misc/notes"
 
 alias vr="vim ~/.zshrc"
-alias feh="feh --auto-rotate --image-bg black -Z -."
 
 alias -s md="$EDITOR"
 alias -s mkv=mpv
@@ -20,9 +22,6 @@ alias -s jpg=feh
 alias -s jpeg=feh
 alias -s png=feh
 
-export PATH=$PATH:~/.jenv/bin
-eval "$(jenv init -)"
-
 alias yta="youtube-dl -f bestaudio[ext=m4a]"
 alias ytv="youtube-dl -f bestvideo+bestaudio"
 
@@ -30,6 +29,8 @@ alias m=memo
 alias sf=screenfetch
 alias xb=xbacklight
 alias bat="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'time to' | sed -Ee 's/  +/ /g' -e 's/^ //'"
+alias feh="feh --auto-rotate --image-bg black -Z -."
+alias stack=stack-bin
 
 alias am=alsamixer
 alias am-bt="alsamixer -D bluealsa"
@@ -122,7 +123,14 @@ umnt() {
   fi
   [[ "$from" != /mnt/* ]] && from="/mnt/$from"
   mount | grep -q "$from" && [[ "$PWD" = "$from"* ]] && cd ~
-  sudo umount "$from" && sudo rm -d "$from"
+  local dev=`mount | grep /mnt | cut -d\  -f1 | sed 's/[0-9]\+$//'`
+  sudo sh -c "umount '$from' && rm -d '$from' && echo '$from unmounted'"
+  if (( ! `mount | grep -c $dev` )) && whence -p eject-device >/dev/null; then
+    read -k1 -s "a?No more mounts for $dev, eject it? "
+    echo
+    [[ "$a" != y ]] && return
+    eject-device $dev
+  fi
 }
 
 # Phone
@@ -141,6 +149,27 @@ umnt-phone() {
 
 alias docker-start="sudo rc-service docker start"
 alias docker-stop="sudo rc-service docker stop"
+
+esc=$(print '\033')
+
+sbt-t() {
+  sbt testAll \
+  | \grep -E "${esc}\[32m|${esc}\[31m"
+}
+
+sbt-to() {
+  sbt -Dsbt.supershell=false "$1 / Test / testOnly *$2*"
+}
+
+sbt-it() {
+  sbt it:test \
+  | \grep -E "${esc}\[32m|${esc}\[31m"
+}
+
+sbt-ito() {
+  sbt "it:testOnly *$1* ${2:+-- -z \"$2\"}" \
+  | \grep -E "${esc}\[32m|${esc}\[31m"
+}
 
 jnote() {
   docker run -v "$PWD":/home/jovyan/work -p 8888:8888 jupyter/scipy-notebook
@@ -166,6 +195,7 @@ fi
 # JIRA
 
 j() { jira show $* | \less -iXFR; }
+jh() { jira show $1 -f "%id %summary"; }
 js() { jira list | less; }
 alias jw="jira work"
 

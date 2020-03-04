@@ -14,6 +14,7 @@ alias xp="xclip -selection clipboard -o"
 alias ecurr="watch -ctn 30 genlop -c"
 alias ehist="genlop -it"
 
+alias bfs="btrfs fi sh"
 alias bdu="btrfs fi du"
 alias bdf="btrfs fi df"
 alias bcomp="sudo compsize"
@@ -23,7 +24,7 @@ alias cpv="rsync -ah --progress"
 alias mc="make menuconfig"
 alias xs="xargs -I{}"
 alias ptop="sudo powertop"
-alias psw="sudo powermode-switch"
+alias psw=powermode-switch
 
 alias bkernel="KERNEL_DIR=/tmp/buildkernel buildkernel --rebuild-external-modules"
 

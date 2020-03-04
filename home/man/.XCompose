@@ -1,8 +1,5 @@
 # /usr/share/X11/locale/en_US.UTF-8/Compose
 
-include "%H/.XCompose.private"
-
-<Multi_key> <grave> <grave> : "≈"
 <Multi_key> <o> <o> : "°"
 <Multi_key> <t> <m> : "™"
 <Multi_key> <c> <o> : "©"

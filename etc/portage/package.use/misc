@@ -1,3 +1,7 @@
+# Wine with Gallium d3d9 patchset
+media-libs/mesa video_cards_nouveau
+app-emulation/wine-vanilla -cups -udisks
+
 # RegEx support for Jq
 app-misc/jq oniguruma
 
