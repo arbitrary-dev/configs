@@ -5,8 +5,6 @@ xrandr --auto
 
 urxvtd --quiet --opendisplay --fork
 
-eval `luarocks path --bin`
-
 # ~/.config/compton.conf
 compton --daemon
 
@@ -17,5 +15,8 @@ ibus-daemon -drx
 
 # Decreases touchpad sensitivity (was 30)
 synclient FingerHigh=52
+
+# Required for power_widget to work (Awesome WM)
+eval `luarocks path --bin`
 
 exec awesome

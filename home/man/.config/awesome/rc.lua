@@ -204,9 +204,19 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
 
-    local power = require("power_widget")
-    power.critical_percentage = 5
-    power:init()
+    local ok, power = pcall(require, "power_widget")
+    if not ok then -- fix "attempt to call field 'new' (a nil value)" error
+      local gears = require("gears")
+      local table = table
+
+      -- Reverse package.path so that our enum.lua is found before LGI's
+      local paths = gears.string.split(package.path, ';')
+      package.path = table.concat(gears.table.reverse(paths), ';')
+
+      package.loaded.enum = nil -- "Unload" LGI's enum
+
+      power = require("power_widget") -- Try again
+    end
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", height = dpi(25), screen = s })

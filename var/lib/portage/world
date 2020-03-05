@@ -29,6 +29,7 @@ dev-java/openjdk
 dev-lua/luarocks
 dev-perl/rename
 dev-python/pip
+dev-util/ccache
 dev-vcs/git
 gnome-base/libgnome-keyring
 media-fonts/mplus-outline-fonts

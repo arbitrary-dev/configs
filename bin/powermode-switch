@@ -38,4 +38,4 @@ else
   echo "Bluetooth disabled"
 fi
 
-powertop --auto-tune
+sudo powertop --auto-tune

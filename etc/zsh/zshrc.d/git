@@ -29,6 +29,8 @@ gbl() {
 
 alias ga="git add"
 alias gb="git branch"
+alias gcl="git clone"
+alias gcls="gcl --depth 1 --single-branch"
 alias gco="git checkout"
 alias gcp="git cherry-pick"
 alias grst="git reset"
