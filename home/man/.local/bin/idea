@@ -7,19 +7,29 @@ if [ -z "$CONF" ]; then
   exit 1
 fi
 
-echo "Setting up tmpfs for $CONF"
+echo "Intellij IDEA config dir: $CONF"
 
 SYS_DIR="$CONF/system"
 
 TMP_DIR="/tmp/$USER/IntellijIdea_system"
-mkdir -p "$TMP_DIR/"{tmp,caches,index,log}
+mkdir -p $TMP_DIR
 
 for d in "$SYS_DIR/"{tmp,caches,index,log}; do
   to="$TMP_DIR/${d##*/}"
-  rm -rf "$d"
-  ln -s "$to" "$d"
-  echo "Mapped \"$d\" to \"$to\""
+  if [[ "$1" == -r ]]; then
+    [[ -d "$to" ]] \
+    && rm "$d" \
+    && mv "$to" "$d" \
+    && echo "Restored \"$d\" from \"$to\""
+  else
+    [[ ! -d "$to" ]] \
+    && mv "$d" "$to" \
+    && ln -s "$to" "$d" \
+    && echo "Mapped \"$d\" to \"$to\""
+  fi
 done
 
-#idea-community
-/opt/idea-community/bin/idea.sh
+if [[ "$1" != -r ]]; then
+  /opt/idea-community/bin/idea.sh
+  idea -r
+fi

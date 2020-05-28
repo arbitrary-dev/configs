@@ -28,6 +28,7 @@ gbl() {
 }
 
 alias ga="git add"
+alias gap="git apply -p0"
 alias gb="git branch"
 alias gcl="git clone"
 alias gcls="gcl --depth 1 --single-branch"
@@ -39,8 +40,10 @@ alias grvtc="grvt --continue"
 alias grvta="grvt --abort"
 alias gbs="git branch -a --format='%(refname:short) %(color:red)%(authordate:relative)' --list *$MY_NAME*"
 alias gbi="git bisect"
-gls() { git ls-tree --full-tree -r HEAD | cut -f2; }
 alias grm="git rm"
+
+gls() { git ls-tree --full-tree -r HEAD | cut -f2; }
+alias glsr="git ls-remote --heads origin | cut -d/  -f3-"
 
 git-config-github-user() {
   git config user.name $GITHUB_USER
@@ -97,3 +100,7 @@ alias gmff="gm --ff-only"
 alias gma="gm --abort"
 alias gmc="gm --continue"
 alias gmt="git mergetool"
+
+alias git-ignore="git update-index --assume-unchanged"
+alias git-unignore="git update-index --no-assume-unchanged"
+alias git-ls-ignored='git ls-files -v `git rev-parse --show-toplevel` | grep ^[a-z]'

@@ -1,12 +1,16 @@
 EDITOR=vim
 
-alias vr="$EDITOR /etc/zsh/zshrc.d/misc"
-alias svr="$EDITOR /etc/zsh/zshrc"
+alias vr="$EDITOR ~/.zshrc"
+alias svr="sudo $EDITOR /etc/zsh/zshrc.d/misc"
+
 sr() {
   . /etc/profile
   . /etc/zsh/zshrc
   . ~/.zshrc
 }
+
+alias -s log="$EDITOR"
+alias -s conf="$EDITOR"
 
 alias xc="xclip -selection clipboard"
 alias xp="xclip -selection clipboard -o"
@@ -14,17 +18,31 @@ alias xp="xclip -selection clipboard -o"
 alias ecurr="watch -ctn 30 genlop -c"
 alias ehist="genlop -it"
 
-alias bfs="btrfs fi sh"
+alias busage="btrfs filesystem usage"
 alias bdu="btrfs fi du"
 alias bdf="btrfs fi df"
 alias bcomp="sudo compsize"
 
+alias cpv="rsync -rh --progress"
+alias mvv="rsync -rh --progress --remove-source-files"
+
 alias rn=perl-rename
-alias cpv="rsync -ah --progress"
 alias mc="make menuconfig"
 alias xs="xargs -I{}"
 alias ptop="sudo powertop"
 alias psw=powermode-switch
+alias df="df -h"
+alias du="du -h"
+
+bc() { command bc -l <<< "$*"; }
+dc() { date --date "$*"; }
+
+backup() {
+  local date=`date +%Y-%m-%d`
+  local name=`basename ${*[-1]}`
+  7z a -mhe=on -mhc=on -m0=lzma2 -mx=9 -ms=128f512m -v4g -p \
+    $name-$date.7z $*
+}
 
 alias bkernel="KERNEL_DIR=/tmp/buildkernel buildkernel --rebuild-external-modules"
 

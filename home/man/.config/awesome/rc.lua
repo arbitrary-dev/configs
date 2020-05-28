@@ -260,7 +260,7 @@ globalkeys = gears.table.join(
           function(stdout, stderr, reason, exit_code)
             local timestamp = stdout:gsub("\n", "")
             local user = os.getenv("USER")
-            local path = "/tmp/" .. user .. "/areashot-" .. timestamp .. ".jpg"
+            local path = "/tmp/" .. user .. "/areashot-" .. timestamp .. ".png"
             awful.spawn({"import", path}) -- media-gfx/imagemagick
             naughty.notify({text = path, timeout = 1})
           end)
@@ -274,7 +274,7 @@ globalkeys = gears.table.join(
           function(stdout, stderr, reason, exit_code)
             local timestamp = stdout:gsub("\n", "")
             local user = os.getenv("USER")
-            local path = "/tmp/" .. user .. "/screenshot-" .. timestamp .. ".jpg"
+            local path = "/tmp/" .. user .. "/screenshot-" .. timestamp .. ".png"
             awful.spawn({"import", "-window", "root", path}) -- media-gfx/imagemagick
             naughty.notify({text = path, timeout = 1})
           end)

@@ -1,6 +1,9 @@
-# Wine with Gallium d3d9 patchset
-media-libs/mesa video_cards_nouveau
+# Wine
 app-emulation/wine-vanilla -cups -udisks
+media-plugins/alsa-plugins abi_x86_32
+# for bluez-alsa to compile
+sys-libs/readline abi_x86_32
+media-sound/bluez-alsa abi_x86_32
 
 # RegEx support for Jq
 app-misc/jq oniguruma
@@ -20,7 +23,7 @@ media-sound/pulseaudio -bluetooth
 media-sound/ncmpcpp outputs taglib
 app-emulation/docker btrfs
 media-sound/mpd -network
-media-video/ffmpeg chromium fdk vaapi vdpau vorbis vpx webp x264 xvid
+media-video/ffmpeg chromium fdk vaapi vdpau vorbis vpx webp x264 xvid openssl
 media-gfx/gimp -alsa
 dev-java/openjdk source
 x11-terms/rxvt-unicode xft 256-color

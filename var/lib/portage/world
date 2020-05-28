@@ -34,6 +34,7 @@ dev-lua/luarocks
 dev-perl/rename
 dev-python/pip
 dev-util/ccache
+dev-util/ctags
 dev-vcs/git
 gnome-base/libgnome-keyring
 media-fonts/mplus-outline-fonts
@@ -85,6 +86,7 @@ sys-power/acpilight
 sys-power/powertop
 sys-power/upower
 sys-process/lsof
+sys-process/parallel
 virtual/wine
 www-client/chromium
 x11-apps/mesa-progs
@@ -96,5 +98,6 @@ x11-misc/compton
 x11-misc/redshift
 x11-misc/slim
 x11-misc/xclip
+x11-misc/xsel
 x11-terms/rxvt-unicode
 x11-wm/awesome

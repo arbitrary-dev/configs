@@ -1,0 +1,43 @@
+{
+  "list.source.grep.command": "ag",
+  "list.source.grep.args": ["-i"],
+
+  "metals.enable": false,
+  "metals.javaHome": "/usr/lib64/openjdk-11",
+  "metals.serverVersion": "0.8.4+62-67ef4e74-SNAPSHOT",
+
+  "languageserver": {
+    "haskell": {
+      "enable": true,
+      "command": "hie-wrapper",
+      "args": ["--lsp"],
+      "rootPatterns": [
+        "stack.yaml",
+        "cabal.config",
+        "package.yaml"
+      ],
+      "filetypes": [
+        "hs",
+        "lhs",
+        "haskell"
+      ],
+      "initializationOptions": {
+        "languageServerHaskell": {
+          "hlintOn": true
+        }
+      }
+    }
+  },
+
+  "python.jediEnabled": false,
+  "python.autoUpdateLanguageServer": false,
+  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": true,
+  "python.linting.banditEnabled": false,
+  "python.linting.flake8Enabled": false,
+  "python.linting.pylamaEnabled": false,
+
+  "eslint.run": "onSave",
+
+  "coc.preferences.extensionUpdateCheck": "never"
+}
