@@ -31,6 +31,7 @@ if [ $MODE = performance ]; then
   sudo rfkill unblock $BT_IDX || exit 1
   echo "Bluetooth enabled"
 elif bluetoothctl info | grep -q "Connected: yes"; then
+  echo
   echo "Unable to disable bluetooth, following devices connected:"
   bluetoothctl info | grep "Name:" | cut -d\  -f2-
 else
@@ -38,4 +39,7 @@ else
   echo "Bluetooth disabled"
 fi
 
-sudo powertop --auto-tune
+[[ -f /tmp/.powertop-tuned ]] \
+|| echo \
+&& sudo powertop --auto-tune \
+&& touch /tmp/.powertop-tuned
