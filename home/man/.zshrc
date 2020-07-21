@@ -11,9 +11,11 @@ export MY_DOCS=~/docs
 alias todo="$EDITOR $MY_DOCS/_misc/todo"
 alias notes="$EDITOR $MY_DOCS/_misc/notes"
 
+alias -s txt="$EDITOR"
 alias -s md="$EDITOR"
 alias -s scala="$EDITOR"
 alias -s hs="$EDITOR"
+alias -s js="$EDITOR"
 alias -s yaml="$EDITOR"
 
 alias -s mkv=mpv
@@ -22,6 +24,7 @@ alias -s avi=mpv
 alias -s webm=mpv
 
 alias -s pdf=mupdf-x11
+alias -s html=xdg-open
 
 alias -s jpg=feh
 alias -s JPG=feh
@@ -33,14 +36,45 @@ alias yta="youtube-dl -f bestaudio[ext=m4a]"
 alias ytv="youtube-dl -f bestvideo+bestaudio"
 alias ytf="youtube-dl --list-formats"
 
+yt-proxified() {
+  local proxies=(`
+    curl -s https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list.txt \
+    | grep RU \
+    | sed -E -e 's/([^ ]+) [^S]*(S?).*/\2\1/' -e 's_^S_https://_'
+  `)
+  while true; do
+    local p="${proxies[`shuf -i1-${#proxies} -n1`]}"
+    echo -n "\nTrying with $p...\n"
+    yt -f 243+249 --proxy "$p" https://www.youtube.com/watch?v=$1 \
+    && break
+  done
+}
+
+yts() {
+  echo $@ \
+  | xs -d\  youtube-dl -f 243+139 https://www.youtube.com/watch?v={}
+}
+
 alias m=memo
 alias sf=screenfetch
 alias xb=xbacklight
 alias bat="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'time to' | sed -Ee 's/  +/ /g' -e 's/^ //'"
 alias feh="feh --auto-rotate --image-bg black -Z -."
 alias lp-a4="lp -o fit-to-page -o PageSize=A4 -o PageRegion=A4 -o PaperDimension=A4 -o ImageableArea=A4"
+
+calc-music-checksums() {
+  cksfv -c *.{flac,m4a,mp3} | grep -v '^;' | tee checksums.sfv
+}
+
+_join() {
+  local IFS="$1"
+  shift
+  echo "$*"
+}
+
 ls-files() {
-  find $1 -type f | sed -E "s_$1/__" | sort
+  local joined="`_join '|' $*`"
+  find $* -type f | sed -E "s!($joined)/!!" | sort
 }
 
 alias wine32="WINEPREFIX=~/.wine-x32 wine"
@@ -49,7 +83,83 @@ alias winetricks32="WINEPREFIX=~/.wine-x32 winetricks"
 
 alias am=alsamixer
 alias am-bt="alsamixer -D bluealsa"
-alias bt=bluetoothctl
+
+weather() {
+  local data="{
+    time: (.time | tonumber / 100),
+    chanceofrain,
+    humidity,
+    precipMM,
+    tempC,
+    uvIndex,
+    wind: (.winddir16Point + \", \" + .windspeedKmph + \" Kmph\"),
+    desc: (.weatherDesc | map(.value) | join(\"; \"))
+  }"
+  curl -s wttr.in?format=j1 \
+  | jq "[
+    (.current_condition[0] |{
+      localObsDateTime,
+      humidity,
+      precipMM,
+      temp_C,
+      uvIndex,
+      wind: (.winddir16Point + \", \" + .windspeedKmph + \" Kmph\"),
+      desc: (.weatherDesc | map(.value) | join(\"; \"))
+    }),
+    (.weather[0] | {
+      date: .date,
+      hourly: .hourly
+        | map(select((.time | tonumber / 100) >= (`date +%_H` / 3 | floor) * 3 ))
+        | map($data)
+    }),
+    (.weather[1] | {
+      date: .date,
+      hourly: .hourly | map($data)
+    })
+  ]"
+}
+
+alias btc=bluetoothctl
+bt() {
+  # TODO set 75% volume for headset
+  # TODO enable BT if disabled
+  local devs=`sed -En -e 's/^pcm\.(.+) .*/\1/p' -e 's/.*device "(.+)"/\1/p' ~/.asoundrc`
+  local target=${1:+`echo $devs | grep -A1 "$1" | tail -1`}
+  if [[ -z "$target" ]]; then
+    local curr=`btc info | sed -En 's/Device (.+) .*/\1/p'`
+    if [[ -n "$curr" ]]; then
+      >&2 printf "Device connected: "
+      echo $devs | grep -B1 "$curr" | head -1
+      return 0
+    else
+      >&2 echo "Possible devices:"
+      >&2 (echo $devs | grep --invert-match ":" | xs echo - {})
+      return 1
+    fi
+  fi
+  local name=${1:+`echo $devs | grep "$1"`}
+  if btc show >/dev/null; then
+    btc connect "$target"
+  else
+    >&2 echo "No bluetooth controller available!"
+    >&2 echo "Will try to unblock bluetooth..."
+    sudo rfkill unblock bluetooth
+    for i in {1..5}; do
+      sleep 2
+      >&2 echo "#$i attempt to connect '$name'..."
+      if btc connect "$target"; then
+        >&2 echo $name
+        return 0
+      fi
+    done
+    >&2 echo "Unable to connect '$name'!"
+    # TODO
+    >&2 echo "Try $hdi rebinding/rescanning:"
+    >&2 ls -d /sys/bus/pci/drivers/?hci_hcd/0000:00:*
+    return 1
+  fi
+}
+
 alias nc=ncmpcpp
 alias nc-remote="nc -c ~/.ncmpcpp/config-remote"
 alias mpd-remote="sudo CFGFILE=/etc/mpd-remote.conf rc-service mpd restart"
@@ -229,46 +339,39 @@ if [[ -d $MY_SCRIPTS ]]; then
   done
 fi
 
-# JIRA
-
-j() { jira show $* | \less -iXFR; }
-jh() { jira show $1 -f "%id %summary"; }
-js() { jira list | less; }
-alias jw="jira work"
-
 # Scala Metals
 
-_check-tmpdir() {
-  if [[ ! -w "$TMPDIR" ]]; then
-    echo "No writable TMPDIR specified!"
-    return 1
-  fi
-}
-
-_push-metals-tmpfs() {
-  _check-tmpdir || return 1
-  local project=`basename $PWD`
-  local target="$TMPDIR/.bloop/$project"
-  [[ -d "$target" ]] && echo "$target already exists" && return 1
-  mkdir -p "$TMPDIR/.bloop"
-  [[ -d .bloop ]] && mv .bloop $target || mkdir $target
-  ln -s $target .bloop \
-  && sbt clean \
-  && echo "Pushed to $target"
-}
-
-_pop-metals-tmpfs() {
-  _check-tmpdir || return 1
-  local project=`basename $PWD`
-  local target="$TMPDIR/.bloop/$project"
-  [[ ! -d "$target" ]] && echo "Nothing to pop at $target" && return 1
-  rm .bloop \
-  && mv $target .bloop \
-  && echo "Popped from $target"
-}
-
-metals() {
-  _push-metals-tmpfs
-  vim "${@:-build.sbt}"
-  _pop-metals-tmpfs
-}
+#_check-tmpdir() {
+#  if [[ ! -w "$TMPDIR" ]]; then
+#    echo "No writable TMPDIR specified!"
+#    return 1
+#  fi
+#}
+#
+#_push-metals-tmpfs() {
+#  _check-tmpdir || return 1
+#  local project=`basename $PWD`
+#  local target="$TMPDIR/.bloop/$project"
+#  [[ -d "$target" ]] && echo "$target already exists" && return 1
+#  mkdir -p "$TMPDIR/.bloop"
+#  [[ -d .bloop ]] && mv .bloop $target || mkdir $target
+#  ln -s $target .bloop \
+#  && sbt clean \
+#  && echo "Pushed to $target"
+#}
+#
+#_pop-metals-tmpfs() {
+#  _check-tmpdir || return 1
+#  local project=`basename $PWD`
+#  local target="$TMPDIR/.bloop/$project"
+#  [[ ! -d "$target" ]] && echo "Nothing to pop at $target" && return 1
+#  rm .bloop \
+#  && mv $target .bloop \
+#  && echo "Popped from $target"
+#}
+#
+#metals() {
+#  _push-metals-tmpfs
+#  vim "${@:-build.sbt}"
+#  _pop-metals-tmpfs
+#}

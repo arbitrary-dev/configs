@@ -41,14 +41,10 @@ alias grvta="grvt --abort"
 alias gbs="git branch -a --format='%(refname:short) %(color:red)%(authordate:relative)' --list *$MY_NAME*"
 alias gbi="git bisect"
 alias grm="git rm"
+alias gsub="git submodule"
 
 gls() { git ls-tree --full-tree -r HEAD | cut -f2; }
 alias glsr="git ls-remote --heads origin | cut -d/  -f3-"
-
-git-config-github-user() {
-  git config user.name $GITHUB_USER
-  git config user.email $GITHUB_EMAIL
-}
 
 alias git-update-tree="git read-tree -m -u HEAD"
 
@@ -62,6 +58,7 @@ gtr() { git ls-remote --tags ${1:-origin}; }
 gtf() { gf --tags ${1:-origin} ${2:-master}; }
 
 alias gs="git show"
+alias gss='gs --stat --format=""'
 gsno() { git show --oneline --name-only $1 | shorten-paths; }
 
 alias gsh="git stash save --include-untracked --keep-index"

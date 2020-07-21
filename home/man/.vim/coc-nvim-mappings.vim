@@ -7,6 +7,10 @@ set nowritebackup
 
 " Give more space for displaying messages.
 set cmdheight=1
+" Allows single line messages to appear without prompt.
+" See: https://github.com/vim/vim/issues/6268
+set noruler
+
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -55,6 +59,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gu :CocCommand metals.go-to-super-method<CR>
 
 " Use Ctrl+Q to show documentation in preview window.
 nnoremap <silent> <C-q> :call <SID>show_documentation()<CR>
@@ -105,8 +110,10 @@ omap af <Plug>(coc-funcobj-a)
 " Use <TAB> for selections ranges.
 " NOTE: Requires 'textDocument/selectionRange' support from the language server.
 " coc-tsserver, coc-python are the examples of servers that support it.
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
+"nmap <silent> <TAB> <Plug>(coc-range-select)
+"xmap <silent> <TAB> <Plug>(coc-range-select)
+" Alleviates https://github.com/neoclide/coc.nvim/issues/1089
+"nnoremap <C-l> <C-i>
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -157,8 +164,8 @@ nnoremap <silent> <space>tc :<C-u>CocCommand metals.tvp metalsCompile<CR>
 " Reveal current current class (trait or object) in Tree View 'metalsBuild'
 nnoremap <silent> <space>tf :<C-u>CocCommand metals.revealInTreeView metalsBuild<CR>
 
-nnoremap <leader>bi :CocCommand metals.build-import<CR>
-nnoremap <leader>br :CocCommand metals.build-restart<CR>
+nnoremap <leader>mi :CocCommand metals.build-import<CR>
+nnoremap <leader>mr :CocCommand metals.build-restart<CR>
 
-" Alleviates https://github.com/neoclide/coc.nvim/issues/1089
-nnoremap <C-l> <C-i>
+" Remove colorcolumn from coc-lists
+au FileType list setlocal cc=

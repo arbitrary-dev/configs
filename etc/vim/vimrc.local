@@ -15,13 +15,13 @@ set modeline
 set formatoptions-=t
 
 set textwidth=80 colorcolumn=80
-au FileType scala set tw=110 cc=110
+au FileType scala setlocal tw=110 cc=110
 " nosmartindent for python, cause it messes up with shifting #* lines
-au FileType python set fdm=indent nosi
+au FileType python setlocal fdm=indent nosi
 
 map K r<CR>
 
-map =jt :%!python3 -m json.tool<CR>
+map =jq :%!jq --indent 2<CR>
 map =jd :%!python3 -c '
 \import json,sys;
 \obj = json.loads(sys.stdin.read());
@@ -36,6 +36,7 @@ nnoremap <leader>do :diffoff<CR>
 nnoremap <leader>dp :diffput<CR>
 nnoremap <leader>dg :diffget<CR>
 nnoremap <leader>w :set wrap!<CR>
+nnoremap <leader>bw :bp\|bw#<CR>
 " nnoremap <leader>f :windo set foldcolumn=0<CR>
 nnoremap <leader>fd :setl fdm=indent<CR>:let &l:fdl=indent('.')/&sw<CR>
 
@@ -63,6 +64,7 @@ syntax on
 filetype plugin indent on
 
 " Colors
+
 "hi ColorColumn ctermbg=178
 hi clear Search
 hi Search cterm=inverse
@@ -77,7 +79,7 @@ hi VertSplit cterm=none ctermfg=black ctermbg=darkgray
 hi LineNr ctermfg=darkgray
 set cursorline
 hi CursorLine cterm=none
-hi CursorLineNr ctermfg=black ctermbg=red
+hi CursorLineNr cterm=none ctermfg=black ctermbg=red
 "hi ModeMsg cterm=none ctermfg=223 ctermbg=brown
 "hi ErrorMsg ctermfg=yellow ctermbg=red
 hi DiffChange ctermfg=black ctermbg=darkred
@@ -90,3 +92,17 @@ hi diffAdded ctermfg=darkgreen
 "hi link DiffMerge Comment
 hi NonText ctermfg=darkgray
 hi SignColumn ctermbg=none
+hi Pmenu ctermfg=lightgray ctermbg=237
+hi PmenuSel ctermfg=black ctermbg=red
+
+hi scalaKeywordModifier ctermfg=yellow
+hi scalaUnimplemented ctermfg=black ctermbg=yellow
+
+hi CocErrorFloat ctermfg=lightred
+hi CocWarningFloat ctermfg=lightyellow
+hi CocHighlightText ctermbg=237
+hi CocHoverRange ctermbg=235
+hi CocCursorRange ctermbg=235
+
+hi markdownUrl ctermfg=lightblue
+hi markdownLinkText ctermfg=lightblue cterm=underline

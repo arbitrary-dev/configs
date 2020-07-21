@@ -1,6 +1,7 @@
 app-admin/cpulimit
 app-admin/sudo
 app-admin/testdisk
+app-arch/cksfv
 app-arch/p7zip
 app-crypt/efitools
 app-editors/vim
@@ -46,6 +47,7 @@ media-libs/mesa
 media-plugins/alsa-plugins
 media-sound/alsa-utils
 media-sound/bluez-alsa
+media-sound/lilypond
 media-sound/mpd
 media-sound/mpdscribble
 media-sound/ncmpcpp
@@ -53,6 +55,7 @@ media-sound/pulseaudio
 media-video/ffmpeg
 media-video/mpv
 net-fs/samba
+net-im/zoom::gentoo
 net-irc/irssi
 net-misc/aria2
 net-misc/dhcpcd
@@ -71,6 +74,7 @@ sys-apps/the_silver_searcher
 sys-cluster/kubectl
 sys-cluster/minikube
 sys-devel/binutils
+sys-devel/clang
 sys-devel/crossdev
 sys-devel/distcc
 sys-devel/gcc

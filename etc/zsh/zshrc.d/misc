@@ -23,8 +23,8 @@ alias bdu="btrfs fi du"
 alias bdf="btrfs fi df"
 alias bcomp="sudo compsize"
 
-alias cpv="rsync -rh --progress"
-alias mvv="rsync -rh --progress --remove-source-files"
+alias cpv="rsync -rh --info=progress2"
+alias mvv="rsync -rh --info=progress2 --remove-source-files"
 
 alias rn=perl-rename
 alias mc="make menuconfig"

@@ -39,7 +39,8 @@ else
   echo "Bluetooth disabled"
 fi
 
-[[ -f /tmp/.powertop-tuned ]] \
-|| echo \
-&& sudo powertop --auto-tune \
-&& touch /tmp/.powertop-tuned
+if [[ ! -f /tmp/.powertop-tuned ]]; then
+  echo
+  sudo powertop --auto-tune \
+  && touch /tmp/.powertop-tuned
+fi

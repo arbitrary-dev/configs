@@ -2,9 +2,9 @@
   "list.source.grep.command": "ag",
   "list.source.grep.args": ["-i"],
 
-  "metals.enable": false,
+  "metals.enable": true,
   "metals.javaHome": "/usr/lib64/openjdk-11",
-  "metals.serverVersion": "0.8.4+62-67ef4e74-SNAPSHOT",
+  "metals.serverVersion": "0.9.2",
 
   "languageserver": {
     "haskell": {
@@ -38,6 +38,11 @@
   "python.linting.pylamaEnabled": false,
 
   "eslint.run": "onSave",
+
+  "diagnostic.errorSign":   "E",
+  "diagnostic.warningSign": "W",
+  "diagnostic.infoSign":    "I",
+  "diagnostic.hintSign":    "H",
 
   "coc.preferences.extensionUpdateCheck": "never"
 }
