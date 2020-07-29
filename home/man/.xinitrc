@@ -5,8 +5,8 @@ xrandr --auto
 
 urxvtd --quiet --opendisplay --fork
 
-# ~/.config/compton.conf
-compton --daemon
+# ~/.config/picom.conf
+picom --daemon
 
 export GTK_IM_MODULE=xim
 export QT_IM_MODULE=xim
