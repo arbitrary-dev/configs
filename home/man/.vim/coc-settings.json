@@ -1,5 +1,6 @@
 {
   "list.source.grep.command": "ag",
+  "list.source.grep.useLiteral": false,
   "list.source.grep.args": ["-i"],
 
   "metals.enable": true,

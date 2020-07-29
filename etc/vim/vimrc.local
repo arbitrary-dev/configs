@@ -79,6 +79,8 @@ hi VertSplit cterm=none ctermfg=black ctermbg=darkgray
 hi LineNr ctermfg=darkgray
 set cursorline
 hi CursorLine cterm=none
+"map <leader>cl toggleCursorLine
+"hi CursorLine ctermbg=52
 hi CursorLineNr cterm=none ctermfg=black ctermbg=red
 "hi ModeMsg cterm=none ctermfg=223 ctermbg=brown
 "hi ErrorMsg ctermfg=yellow ctermbg=red

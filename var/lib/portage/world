@@ -19,7 +19,6 @@ app-misc/screenfetch
 app-office/gnumeric
 app-portage/genlop
 app-portage/gentoolkit
-app-portage/mirrorselect
 app-portage/repoman
 app-shells/gentoo-zsh-completions
 app-shells/zsh
@@ -38,7 +37,12 @@ dev-util/ccache
 dev-util/ctags
 dev-vcs/git
 gnome-base/libgnome-keyring
+media-fonts/arphicfonts
+media-fonts/droid
+media-fonts/ipamonafont
+media-fonts/liberation-fonts
 media-fonts/mplus-outline-fonts
+media-fonts/noto
 media-gfx/feh
 media-gfx/gimp
 media-gfx/graphviz
@@ -47,7 +51,6 @@ media-libs/mesa
 media-plugins/alsa-plugins
 media-sound/alsa-utils
 media-sound/bluez-alsa
-media-sound/lilypond
 media-sound/mpd
 media-sound/mpdscribble
 media-sound/ncmpcpp
@@ -61,8 +64,6 @@ net-misc/aria2
 net-misc/dhcpcd
 net-misc/ntp
 net-misc/youtube-dl
-net-p2p/bitcoin-cli::bitcoin
-net-p2p/bitcoind::bitcoin
 net-print/cups-windows
 net-vpn/openconnect
 net-wireless/bluez
@@ -71,8 +72,7 @@ sys-apps/hdparm
 sys-apps/lm-sensors
 sys-apps/smartmontools
 sys-apps/the_silver_searcher
-sys-cluster/kubectl
-sys-cluster/minikube
+sys-cluster/kubernetes
 sys-devel/binutils
 sys-devel/clang
 sys-devel/crossdev
@@ -86,12 +86,12 @@ sys-fs/fuse-exfat
 sys-kernel/buildkernel
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
+sys-power/acpid
 sys-power/acpilight
 sys-power/powertop
 sys-power/upower
 sys-process/lsof
 sys-process/parallel
-virtual/wine
 www-client/chromium
 x11-apps/mesa-progs
 x11-apps/xdpyinfo

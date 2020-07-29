@@ -66,14 +66,6 @@ start()
 	eend $? "Something failed in /opt/docker/tmp linking"
 	rc=$?
 
-	ebegin "Linking /home/man/.minikube/machines into /tmp/man/minikube"
-  mkdir -p /tmp/man/minikube \
-  && chown -R man:man /tmp/man \
-  && rm -rf /home/man/.minikube/machines \
-	&& ln -s /tmp/man/minikube /home/man/.minikube/machines
-	eend $? "Something failed in /home/man/.minikube/machines linking"
-	rc=$?
-
 	return $rc
 }
 

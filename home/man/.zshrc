@@ -16,7 +16,9 @@ alias -s md="$EDITOR"
 alias -s scala="$EDITOR"
 alias -s hs="$EDITOR"
 alias -s js="$EDITOR"
+alias -s ts="$EDITOR"
 alias -s yaml="$EDITOR"
+alias -s cpp="$EDITOR"
 
 alias -s mkv=mpv
 alias -s mp4=mpv
@@ -61,6 +63,9 @@ alias xb=xbacklight
 alias bat="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'time to' | sed -Ee 's/  +/ /g' -e 's/^ //'"
 alias feh="feh --auto-rotate --image-bg black -Z -."
 alias lp-a4="lp -o fit-to-page -o PageSize=A4 -o PageRegion=A4 -o PaperDimension=A4 -o ImageableArea=A4"
+
+alias rsx="redshift -x"
+rs() { redshift -PO ${1}00; }
 
 calc-music-checksums() {
   cksfv -c *.{flac,m4a,mp3} | grep -v '^;' | tee checksums.sfv
@@ -120,9 +125,16 @@ weather() {
 }
 
 alias btc=bluetoothctl
+alias btd="btc disconnect"
+
+btv() {
+  # Sets BT volume to 75%
+  # TODO use udev rule unstead
+  local ctl=`amixer -D bluealsa scontrols | grep -i a2dp | cut -d\' -f2`
+  amixer -D bluealsa set $ctl 75% > /dev/null
+}
+
 bt() {
-  # TODO set 75% volume for headset
-  # TODO enable BT if disabled
   local devs=`sed -En -e 's/^pcm\.(.+) .*/\1/p' -e 's/.*device "(.+)"/\1/p' ~/.asoundrc`
   local target=${1:+`echo $devs | grep -A1 "$1" | tail -1`}
   if [[ -z "$target" ]]; then
@@ -139,7 +151,7 @@ bt() {
   fi
   local name=${1:+`echo $devs | grep "$1"`}
   if btc show >/dev/null; then
-    btc connect "$target"
+    btc connect "$target" && btv
   else
     >&2 echo "No bluetooth controller available!"
     >&2 echo "Will try to unblock bluetooth..."
@@ -148,12 +160,12 @@ bt() {
       sleep 2
       >&2 echo "#$i attempt to connect '$name'..."
       if btc connect "$target"; then
+        btv
         >&2 echo $name
         return 0
       fi
     done
     >&2 echo "Unable to connect '$name'!"
-    # TODO
     >&2 echo "Try $hdi rebinding/rescanning:"
     >&2 ls -d /sys/bus/pci/drivers/?hci_hcd/0000:00:*
     return 1
@@ -297,6 +309,10 @@ alias docker-stop="sudo rc-service docker stop"
 sbt-ta() {
   sbt -Dsbt.supershell=false -Dsbt.color=true testAll 2>/dev/null \
   | \sed -En '/\[.*(info|error).*\]/p'
+}
+
+sbtv-to() {
+  sbt "$1 / Test / testOnly ${2:+*$2*} ${3:+-- -z \"$3\"}"
 }
 
 sbt-to() {

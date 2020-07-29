@@ -1,3 +1,18 @@
+# required by media-gfx/gimp
+app-text/poppler cairo
+
+# required by sys-auth/polkit
+sys-auth/consolekit policykit
+
+# required by gnome-base/gnome-keyring
+app-crypt/gcr gtk
+
+# required by (www-client/chromium-77.0.3865.120:0/0::local
+sys-libs/zlib minizip
+
+# Causes lid close to trigger sleep
+x11-base/xorg-server -elogind
+
 # Wine
 app-emulation/wine-vanilla -cups -udisks
 media-plugins/alsa-plugins abi_x86_32
@@ -31,3 +46,5 @@ media-gfx/imagemagick jpeg webp png
 media-gfx/feh exif
 x11-wm/awesome luajit
 app-emulation/libvirt virt-network
+media-fonts/noto -extra
+sys-cluster/kubernetes -kube-apiserver -kube-controller-manager -kube-proxy -kube-scheduler -kubeadm -kubelet

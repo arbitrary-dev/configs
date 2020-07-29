@@ -169,3 +169,5 @@ nnoremap <leader>mr :CocCommand metals.build-restart<CR>
 
 " Remove colorcolumn from coc-lists
 au FileType list setlocal cc=
+
+nnoremap <leader>h :CocCommand clangd.switchSourceHeader<CR>
