@@ -88,6 +88,7 @@
 <dead_ogonek> <dead_ogonek>      	: "˛"   ogonek # OGONEK
 <dead_iota> <space>              	: "ͺ"   U37a # GREEK YPOGEGRAMMENI
 <dead_iota> <dead_iota>          	: "ͺ"   U37a # GREEK YPOGEGRAMMENI
+<Multi_key> <minus> <minus> <space>	: "­"   U00ad # SOFT HYPHEN
 
 
 # ASCII characters that may be difficult to access
@@ -234,6 +235,14 @@
 <Multi_key> <equal> <Cyrillic_ES>	: "€"   EuroSign # EURO SIGN
 <Multi_key> <Cyrillic_IE> <equal>	: "€"   EuroSign # EURO SIGN
 <Multi_key> <equal> <Cyrillic_IE>	: "€"   EuroSign # EURO SIGN
+<Multi_key> <P> <equal>          	: "₽"   U20bd # ROUBLE SIGN
+<Multi_key> <p> <equal>          	: "₽"   U20bd # ROUBLE SIGN
+<Multi_key> <equal> <P>          	: "₽"   U20bd # ROUBLE SIGN
+<Multi_key> <equal> <p>          	: "₽"   U20bd # ROUBLE SIGN
+<Multi_key> <Cyrillic_ZE> <equal>	: "₽"   U20bd # ROUBLE SIGN
+<Multi_key> <Cyrillic_ze> <equal>	: "₽"   U20bd # ROUBLE SIGN
+<Multi_key> <equal> <Cyrillic_ZE>	: "₽"   U20bd # ROUBLE SIGN
+<Multi_key> <equal> <Cyrillic_ze>	: "₽"   U20bd # ROUBLE SIGN
 # "₭" U20ad KIP SIGN
 # "₮" U20ae TUGRIK SIGN
 # "₯" U20af DRACHMA SIGN
@@ -274,7 +283,8 @@
 <Multi_key> <dead_abovedot> <f> <s>	: "ẛ"   U1e9b # LATIN SMALL LETTER LONG S WITH DOT ABOVE
 
 # Dashes
-<Multi_key> <minus> <minus> 	: "–"   U2013 # EN DASH
+<Multi_key> <minus> <minus> <period> 	: "–"   U2013 # EN DASH
+<Multi_key> <minus> <minus> <minus> 	: "—"   U2014 # EM DASH
 
 # Musical alterations
 <Multi_key> <numbersign> <q>    	: "♩"   U2669 # QUARTER NOTE

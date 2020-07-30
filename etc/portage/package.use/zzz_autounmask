@@ -229,3 +229,16 @@ dev-libs/libpcre2 pcre16
 # required by @selected
 # required by @world (argument)
 >=app-text/poppler-0.74.0 cairo
+# required by dev-util/itstool-2.0.6-r1::gentoo[python_single_target_python3_6]
+# required by gnome-extra/yelp-xsl-3.32.1::gentoo
+# required by app-text/yelp-tools-3.32.2::gentoo
+# required by app-office/gnumeric-1.12.39-r1::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libxml2-2.9.9-r3 python icu
+# required by dev-qt/qtwebengine-5.12.3::gentoo
+# required by dev-python/PyQtWebEngine-5.13.2::gentoo
+# required by www-client/qutebrowser-1.8.3::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-libs/libvpx-1.7.0-r1 svc

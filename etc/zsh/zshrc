@@ -21,6 +21,9 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 
 source /etc/zsh/zprofile
+[[ $PATH != *distcc* ]] && export PATH="/usr/lib/distcc/bin:${PATH}"
+[[ $PATH != *ccache* ]] && export PATH="/usr/lib/ccache/bin:${PATH}"
+CCACHE_DIR="/home/.ccache"
 
 # history lookup using prefixes
 bindkey "^[[A" history-beginning-search-backward
@@ -44,10 +47,11 @@ alias xc='xclip -i -selection clipboard'
 alias xp='xclip -o -selection clipboard'
 
 alias vr="vim ~/.zshrc"
+alias svr="sudo vim /etc/zsh/zshrc"
 sr() { source /etc/zsh/zshrc; source ~/.zshrc; }
 
 cpv() { stdbuf -o0 cp -rnv "$@" | sed -u 's/.*->/->/'; }
-alias pr=perl-rename
+alias rn=perl-rename
 alias sed="sed -r"
 alias less="less -iSXFR"
 alias xs="xargs -I{}"
@@ -57,6 +61,29 @@ alias xs="xargs -I{}"
 x() { sed -n $1p $2; }
 esc=$(printf '\033')
 alias shorten-paths='sed -e "s|/.+/([^/]+/)|/**/\1|"'
+alias dmon="watch -n2 'DISTCC_DIR=/var/tmp/portage/.distcc distccmon-text'"
+
+my-sdiff() {
+  local S
+  for i in "$@"; do
+    [ "$i" = -s ] && S=1
+  done
+  sdiff -tw `tput cols` $@ \
+  | ([ $S ] && cat || sed -Ee "s/^(.+ \| .*|.+<| +> .*)$/${esc}[32m\1${esc}[0m/") \
+  | less
+}
+
+psw() {
+  su -c '
+  echo powersave > /sys/devices/system/cpu/cpu[01]/cpufreq/scaling_governor
+  echo "CPU downscaled"
+  # Network?
+  echo 1 > /sys/bus/pci/devices/0000:09:00.0/remove
+  rfkill block 2
+  echo "Bluetooth disabled"
+  powertop --auto-tune
+  '
+}
 
 # Git
 

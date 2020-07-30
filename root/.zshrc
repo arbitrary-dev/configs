@@ -1,4 +1,3 @@
-#[[ $PATH != *distcc* ]] && export PATH="/usr/lib/distcc/bin:${PATH}"
 export PS1=$'%{\e[0;30m\e[41m%} %1d %{\e[0m\e[0;31m%}%{\e[0m%} '
 export PATH=$PATH:/home/semyon/scripts
 
@@ -7,29 +6,29 @@ export PATH=$PATH:/home/semyon/scripts
 alias mnt="mount -ouser,utf8"
 alias sws="swapon --show=name,size,used"
 alias bt="for s in bluetooth bluealsa; do rc-service \$s start; done"
+
 alias ecurr="watch -ctn 30 genlop -c"
 alias ehist="genlop -it"
+alias emrg-home="PORTAGE_TMPDIR=/home/.portage/tmp emrg"
 
 # utilities
 
-xb() {
-  echo $((2**$1)) > /sys/class/backlight/intel_backlight/brightness
-}
-
-power-switch() {
-  echo powersave > /sys/devices/system/cpu/cpu[01]/cpufreq/scaling_governor
-  echo "CPU downscaled"
-  # Network?
-  echo 1 > /sys/bus/pci/devices/0000:09:00.0/remove
-  rfkill block 2
-  echo "Bluetooth disabled"
-  powertop --auto-tune
+emrg() {
+  emerge -avuDN @world
+  #emerge -quDN --keep-going @world \
+  #  --exclude qutebrowser \
+  #  --exclude compton
+  # 2>&1 >/tmp/emrg.log
 }
 
 eclean() {
   emerge --ask --depclean \
   && eclean-dist --deep --fetch-restricted \
   && rm -rf /var/tmp/portage
+}
+
+xb() {
+  echo $((2**$1)) > /sys/class/backlight/intel_backlight/brightness
 }
 
 upd-time() {
@@ -39,35 +38,11 @@ upd-time() {
 }
 
 esync() {
-  local emerge
-
   printf "Sync portage... "
-  emerge -q --sync &> /dev/null
-
-  if [[ $? = 0 ]]; then
-    emerge=1
-    echo "done."
-  else
-    echo "failed!"
-  fi
-
-  printf "Sync overlays... "
-  layman -qS &> /dev/null
-
-  if [[ $? = 0 ]]; then
-    emerge=1
-    echo "done."
-  else
-    echo "failed!"
-  fi
-
-  if [[ -n $emerge ]]; then
-    echo "Emerging..."
-    emerge -qauDN --keep-going @world
-  fi
+  emerge -q --sync &> /dev/null \
+  && echo "done" \
+  || echo "failed!"
 }
-
-alias emrg="emerge -quDN --keep-going @world"
 
 backup() {
   local user=/home/semyon

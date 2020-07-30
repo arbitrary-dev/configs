@@ -163,3 +163,15 @@ dev-python/cryptography ~x86
 # required by app-vim/gentoo-syntax-20181023::gentoo
 # required by app-editors/vim-core-8.0.1298::gentoo[-minimal]
 =dev-python/pygments-2.3.1 ~x86
+# required by @__auto_slot_operator_replace_installed__ (argument)
+=dev-libs/openssl-1.1.0l ~x86
+# required by net-libs/nodejs-13.9.0::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-libs/libuv-1.34.2 ~x86
+# required by @__auto_slot_operator_replace_installed__ (argument)
+=net-libs/nghttp2-1.40.0 ~x86
+# required by @__auto_slot_operator_replace_installed__ (argument)
+=net-libs/nodejs-13.8.0 ~x86
+# required by @__auto_slot_operator_replace_installed__ (argument)
+=net-libs/nodejs-13.9.0 ~x86

@@ -32,7 +32,7 @@ set path+=~/,/etc/vim,/etc/vim/files/colors,/etc/portage,/home/semyon/scripts
 set exrc
 set hidden
 set secure
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 "execute pathogen#infect()
 
