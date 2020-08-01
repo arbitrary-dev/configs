@@ -1,4 +1,0 @@
-# Fix packages for cross-compilation compatibility
->=sys-devel/binutils-2.33
->=sys-devel/gcc-9.3
->=sys-devel/distcc-3.4

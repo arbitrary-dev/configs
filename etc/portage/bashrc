@@ -1,0 +1,31 @@
+distcc-fix() {
+  cd /usr/lib/distcc/bin
+
+  cat <<EOF > i686-pc-linux-gnu-wrapper
+#!/bin/bash
+exec /usr/lib/distcc/bin/i686-pc-linux-gnu-g${0:$[-2]} "$@"
+EOF
+  chmod 755 i686-pc-linux-gnu-wrapper
+
+  for f in `ls | grep -vE 'clang|i686'`; do
+    rm $f
+    ln -s i686-pc-linux-gnu-wrapper $f
+  done
+
+  cat <<EOF > i686-pc-linux-gnu-clang-wrapper
+#!/bin/bash
+exec /usr/lib/distcc/bin/i686-pc-linux-gnu-$(basename ${0}) "$@"
+EOF
+  chmod 755 i686-pc-linux-gnu-clang-wrapper
+
+  for f in `ls clang*`; do
+    rm $f
+    ln -s i686-pc-linux-gnu-clang-wrapper $f
+  done
+}
+
+case ${CATEGORY}/${PN} in
+	sys-devel/distcc | sys-devel/gcc | sys-devel/clang)
+		[ "${EBUILD_PHASE}" == "postinst" ] && distcc-fix
+	;;
+esac
