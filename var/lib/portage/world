@@ -85,6 +85,7 @@ sys-fs/fuse
 sys-fs/fuse-exfat
 sys-kernel/buildkernel
 sys-kernel/gentoo-sources
+sys-kernel/gentoo-sources:4.19.129
 sys-kernel/linux-firmware
 sys-power/acpid
 sys-power/acpilight
