@@ -1,3 +1,6 @@
+# Because pre-built font could be not fully updated or miss some items
+media-fonts/noto-emoji buildfont
+
 # required by media-gfx/gimp
 app-text/poppler cairo
 

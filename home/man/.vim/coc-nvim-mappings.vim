@@ -59,7 +59,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gu :CocCommand metals.go-to-super-method<CR>
+nmap <silent> gu :CocCommand metals.goto-super-method<CR>
 
 " Use Ctrl+Q to show documentation in preview window.
 nnoremap <silent> <C-q> :call <SID>show_documentation()<CR>
@@ -166,6 +166,7 @@ nnoremap <silent> <space>tf :<C-u>CocCommand metals.revealInTreeView metalsBuild
 
 nnoremap <leader>mi :CocCommand metals.build-import<CR>
 nnoremap <leader>mr :CocCommand metals.build-restart<CR>
+nnoremap <leader>mc :CocCommand metals.compile-clean<CR>
 
 " Remove colorcolumn from coc-lists
 au FileType list setlocal cc=

@@ -28,6 +28,7 @@ alias mvv="rsync -rh --info=progress2 --remove-source-files"
 
 alias rn=perl-rename
 alias mc="make menuconfig"
+alias mo="make oldconfig"
 alias xs="xargs -I{}"
 alias ptop="sudo powertop"
 alias psw=powermode-switch
@@ -44,7 +45,10 @@ backup() {
     $name-$date.7z $*
 }
 
-alias bkernel="KERNEL_DIR=/tmp/buildkernel buildkernel --rebuild-external-modules"
+bkernel() {
+  mkdir -p $TMPDIR
+  KERNEL_DIR=/tmp/buildkernel buildkernel --rebuild-external-modules
+}
 
 my-sdiff() {
   local S

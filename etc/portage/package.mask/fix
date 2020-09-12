@@ -1,0 +1,11 @@
+>=net-vpn/openconnect-9
+>=sys-kernel/gentoo-sources-4.20
+>=x11-drivers/nvidia-driver-441
+>=dev-java/openjdk-11.1
+
+# Latest versions doesn't allow to detach in fullscreen
+# See: https://bugs.chromium.org/p/chromium/issues/detail?id=1047998
+>=www-client/chromium-78
+
+# Fix package to match the one on the netbook
+>=sys-devel/distcc-3.4

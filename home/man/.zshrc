@@ -1,8 +1,16 @@
+NPM_PACKAGES="$HOME/.npm-packages"
+
 export PS1='%B%F{green}'$PS1
 export PATH="\
-"~"/projects/scripts:\
-"~"/.local/bin:\
+$HOME/projects/scripts:\
+$HOME/.local/bin:\
+$NPM_PACKAGES/bin:\
 $PATH"
+
+export MANPATH="\
+$MANPATH:\
+$NPM_PACKAGES/share/man:\
+"
 
 export PATH=$PATH:~/.jenv/bin
 eval "$(jenv init -)"
@@ -64,11 +72,27 @@ alias bat="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'time t
 alias feh="feh --auto-rotate --image-bg black -Z -."
 alias lp-a4="lp -o fit-to-page -o PageSize=A4 -o PageRegion=A4 -o PaperDimension=A4 -o ImageableArea=A4"
 
+gen-passw() {
+  strings /dev/urandom \
+  | grep -oE '[a-zA-Z0-9.,/\'\''"]' \
+  | head -${1:-32} \
+  | tr -d '\n'
+  echo
+}
+
 alias rsx="redshift -x"
 rs() { redshift -PO ${1}00; }
 
 calc-music-checksums() {
   cksfv -c *.{flac,m4a,mp3} | grep -v '^;' | tee checksums.sfv
+}
+
+get-host-certificate() {
+  local host=$1
+  local port=${2:-443}
+  openssl s_client -servername $host -connect $host:$port \
+  < /dev/null 2> /dev/null \
+  | sed -n '/BEGIN/,/END/p'
 }
 
 _join() {
@@ -332,6 +356,10 @@ sbt-ito() {
   "$1 / IntegrationTest / testOnly ${2:+*$2*} ${3:+-- -z \"$3\"}" \
   2>/dev/null \
   | \sed -En '/\[.*(info|error).*\]/p'
+}
+
+sbtv-ito() {
+  sbt "$1 / IntegrationTest / testOnly ${2:+*$2*} ${3:+-- -z \"$3\"}"
 }
 
 jnote() {

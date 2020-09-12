@@ -4,11 +4,11 @@ git-fix-ownership() {
 
 esc=$(printf '\033')
 
-alias shorten-paths="perl -pE 's/(?<!\.\.)\/.+\/([^\/]+\/)/\/**\/\1/'"
+alias _shorten-paths="perl -pE 's/[^ ]+ -> //;s/(?<!\.\.)\/.+\/([^\/]+\/)/\/**\/\1/'"
 
 gst() {
   git status --short | \
-    shorten-paths | \
+    _shorten-paths | \
     sed -Ee "s/^(.)(.)/${esc}[32m\1${esc}[0m${esc}[31m\2${esc}[0m/"
 }
 
@@ -59,7 +59,7 @@ gtf() { gf --tags ${1:-origin} ${2:-master}; }
 
 alias gs="git show"
 alias gss='gs --stat --format=""'
-gsno() { git show --oneline --name-only $1 | shorten-paths; }
+gsno() { git show --oneline --name-only $1 | _shorten-paths; }
 
 alias gsh="git stash save --include-untracked --keep-index"
 alias gsha="git stash apply"
@@ -69,8 +69,8 @@ alias gshp="git stash pop"
 alias gshd="git stash drop"
 
 alias gdf="git diff"
-gdfno() { gdf --name-only $1 $2 | shorten-paths; }
-gdfno1() { gdf --name-only $1{^,} | shorten-paths; }
+gdfno() { gdf --name-only $1 $2 | _shorten-paths; }
+gdfno1() { gdf --name-only $1{^,} | _shorten-paths; }
 alias gdfc="gdf --cached"
 
 glg() {

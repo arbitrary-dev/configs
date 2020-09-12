@@ -43,6 +43,7 @@ media-fonts/ipamonafont
 media-fonts/liberation-fonts
 media-fonts/mplus-outline-fonts
 media-fonts/noto
+media-fonts/noto-emoji
 media-gfx/feh
 media-gfx/gimp
 media-gfx/graphviz
@@ -64,14 +65,17 @@ net-misc/aria2
 net-misc/dhcpcd
 net-misc/ntp
 net-misc/youtube-dl
+net-p2p/rtorrent
 net-print/cups-windows
 net-vpn/openconnect
+net-wireless/blueman
 net-wireless/bluez
 net-wireless/wpa_supplicant
 sys-apps/hdparm
 sys-apps/lm-sensors
 sys-apps/smartmontools
 sys-apps/the_silver_searcher
+sys-apps/yarn
 sys-cluster/kubernetes
 sys-devel/binutils
 sys-devel/clang

@@ -17,6 +17,8 @@ alias ecurr="watch -ctn 30 genlop -c"
 alias ehist="genlop -it"
 alias ecln="emerge --ask --depclean"
 alias eclnd="eclean-dist --deep --fetch-restricted"
+alias eadd="emerge --noreplace"
+alias emask="qlist -IC"
 
 esync() {
   ecln || return 1
@@ -32,4 +34,9 @@ esync() {
   fi
 
   emerge -avuDN @world
+}
+
+crossdev-netbook() {
+  crossdev --target i686-pc-linux-gnu \
+    --binutils '=2.33*' --gcc '=9.2*' --kernel '=5.4*' --libc '=2.30*'
 }

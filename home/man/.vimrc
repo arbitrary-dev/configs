@@ -6,9 +6,14 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'godlygeek/tabular'
 
+Plug 'tpope/vim-fugitive'
+map <silent> <leader>gb :Git blame<CR>
+map <silent> <leader>gd :Gdiff HEAD<CR>
+
 Plug 'scrooloose/nerdtree'
-map <leader>t :NERDTreeFind<CR>
+map <silent> <leader>t :NERDTreeFind<CR>
 let NERDTreeIgnore=['^target$[[dir]]']
+let g:NERDTreeQuitOnOpen = 1
 
 " Scala
 Plug 'derekwyatt/vim-scala'

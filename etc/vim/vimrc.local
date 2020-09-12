@@ -31,14 +31,14 @@ map =jl :%!python3 -c 'import json,sys; print(json.loads(sys.stdin.read()))'<CR>
 
 nnoremap <silent> <leader>. /^[<\|=>]\{7}.*$<CR>
 nnoremap <silent> <leader><leader> :nohlsearch<CR>
-nnoremap <leader>dt :diffthis<CR>
-nnoremap <leader>do :diffoff<CR>
-nnoremap <leader>dp :diffput<CR>
-nnoremap <leader>dg :diffget<CR>
-nnoremap <leader>w :set wrap!<CR>
-nnoremap <leader>bw :bp\|bw#<CR>
-" nnoremap <leader>f :windo set foldcolumn=0<CR>
-nnoremap <leader>fd :setl fdm=indent<CR>:let &l:fdl=indent('.')/&sw<CR>
+nnoremap <silent> <leader>dt :diffthis<CR>
+nnoremap <silent> <leader>do :diffoff<CR>
+nnoremap <silent> <leader>dp :diffput<CR>
+nnoremap <silent> <leader>dg :diffget<CR>
+nnoremap <silent> <leader>w :set wrap!<CR>
+nnoremap <silent> <leader>bw :bp\|bw#<CR>
+" nnoremap <silent> <leader>f :windo set foldcolumn=0<CR>
+nnoremap <silent> <leader>fd :setl fdm=indent<CR>:let &l:fdl=indent('.')/&sw<CR>
 
 
 " trailing spaces highlighting
@@ -65,7 +65,7 @@ filetype plugin indent on
 
 " Colors
 
-"hi ColorColumn ctermbg=178
+hi ColorColumn ctermbg=52
 hi clear Search
 hi Search cterm=inverse
 hi Visual ctermfg=black ctermbg=red
@@ -79,8 +79,14 @@ hi VertSplit cterm=none ctermfg=black ctermbg=darkgray
 hi LineNr ctermfg=darkgray
 set cursorline
 hi CursorLine cterm=none
-"map <leader>cl toggleCursorLine
-"hi CursorLine ctermbg=52
+map <silent> <leader>cl :call ToggleCursorLine()<CR>
+function ToggleCursorLine()
+  if match(execute('hi CursorLine'), 'ctermbg') >= 0
+    hi CursorLine ctermbg=none
+  else
+    hi CursorLine ctermbg=52
+  endif
+endfunction
 hi CursorLineNr cterm=none ctermfg=black ctermbg=red
 "hi ModeMsg cterm=none ctermfg=223 ctermbg=brown
 "hi ErrorMsg ctermfg=yellow ctermbg=red
