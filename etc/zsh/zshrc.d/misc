@@ -18,10 +18,11 @@ alias xp="xclip -selection clipboard -o"
 alias ecurr="watch -ctn 30 genlop -c"
 alias ehist="genlop -it"
 
-alias busage="btrfs filesystem usage"
-alias bdu="btrfs fi du"
-alias bdf="btrfs fi df"
-alias bcomp="sudo compsize"
+alias bfs-usage="btrfs filesystem usage"
+alias bfs-du="btrfs fi du"
+alias bfs-df="btrfs fi df"
+alias bfs-comp="sudo compsize"
+alias bfs-defrag="btrfs filesystem defragment -r -clzo"
 
 alias cpv="rsync -rh --info=progress2"
 alias mvv="rsync -rh --info=progress2 --remove-source-files"
@@ -38,16 +39,13 @@ alias du="du -h"
 bc() { command bc -l <<< "$*"; }
 dc() { date --date "$*"; }
 
+alias epoch-seconds="date +%s"
+
 backup() {
   local date=`date +%Y-%m-%d`
   local name=`basename ${*[-1]}`
   7z a -mhe=on -mhc=on -m0=lzma2 -mx=9 -ms=128f512m -v4g -p \
     $name-$date.7z $*
-}
-
-bkernel() {
-  mkdir -p $TMPDIR
-  KERNEL_DIR=/tmp/buildkernel buildkernel --rebuild-external-modules
 }
 
 my-sdiff() {

@@ -10,9 +10,6 @@ sys-auth/consolekit policykit
 # required by gnome-base/gnome-keyring
 app-crypt/gcr gtk
 
-# required by (www-client/chromium-77.0.3865.120:0/0::local
-sys-libs/zlib minizip
-
 # Causes lid close to trigger sleep
 x11-base/xorg-server -elogind
 
@@ -30,11 +27,13 @@ app-misc/jq oniguruma
 app-i18n/mozc ibus
 media-fonts/mplus-outline-fonts ipafont
 
-# Required for Chromium
-net-libs/nodejs icu
-
 # For clipboard support in X
 app-editors/vim X
+
+# As of 85.0.4183.102_p1:
+# New vaapi code depends heavily on libvpx-1.9, see #43
+# Consider disabling system-libvpx USE flag if using vaapi
+www-client/ungoogled-chromium hangouts optimize-thinlto optimize-webui -system-libvpx system-openjpeg thinlto vaapi vdpau
 
 net-misc/aria2 bittorrent
 media-sound/pulseaudio -bluetooth

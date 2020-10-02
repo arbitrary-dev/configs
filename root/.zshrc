@@ -10,7 +10,16 @@ alias p1="patch -p1"
 
 alias regen-manifest="repoman manifest"
 
-alias emrg="emerge -quDN --keep-going @world"
+alias bkernel="KERNEL_DIR=/tmp/buildkernel buildkernel --rebuild-external-modules"
+
+emrg() {
+  if (( $# )); then
+    emerge "${@}"
+  else
+    emerge -quDN --keep-going @world
+  fi
+}
+
 alias emrgc="FEATURES=ccache emrg"
 emrg-preserved-rebuild() { emerge ${1:--a} @preserved-rebuild; }
 alias ecurr="watch -ctn 30 genlop -c"
@@ -25,7 +34,7 @@ esync() {
 
   local sync_log="/tmp/.emaint.log"
 
-  printf "Syncing... "
+  printf "\nSyncing... "
   if emaint sync -a > $sync_log; then
     echo "done"
   else
@@ -40,3 +49,5 @@ crossdev-netbook() {
   crossdev --target i686-pc-linux-gnu \
     --binutils '=2.33*' --gcc '=9.2*' --kernel '=5.4*' --libc '=2.30*'
 }
+
+alias docker-clean="docker system prune --volumes"

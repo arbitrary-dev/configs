@@ -46,7 +46,7 @@ au FileType *
   \ if &ft == 'diff' |
     \ match Error /\(^+.\{-}\)\@<=\s\+$/ |
   \ else |
-    \ match Error /\s\+$/ |
+    \ 2match Error /\s\+$/ |
   \ endif
 
 " Find syntax highlight group under cursor

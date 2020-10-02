@@ -5,7 +5,7 @@
 
   "metals.enable": true,
   "metals.javaHome": "/usr/lib64/openjdk-11",
-  "metals.serverVersion": "0.9.3",
+  "metals.serverVersion": "0.9.4",
 
   "languageserver": {
     "haskell": {

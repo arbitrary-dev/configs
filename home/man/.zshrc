@@ -71,6 +71,7 @@ alias xb=xbacklight
 alias bat="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'time to' | sed -Ee 's/  +/ /g' -e 's/^ //'"
 alias feh="feh --auto-rotate --image-bg black -Z -."
 alias lp-a4="lp -o fit-to-page -o PageSize=A4 -o PageRegion=A4 -o PaperDimension=A4 -o ImageableArea=A4"
+alias ag-todos="ag '(// |/?\* |)(TODO|FIXME)( [a-z].*|)$'"
 
 gen-passw() {
   strings /dev/urandom \
