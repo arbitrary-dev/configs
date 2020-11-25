@@ -1,5 +1,3 @@
 www-client/qutebrowser ~x86
 
-# required by www-client/qutebrowser-1.7.0::gentoo
-# required by qutebrowser (argument)
-=dev-python/pypeg2-2.15.2 ~x86
+=dev-python/pypeg2-2.15.2-r1 ~x86

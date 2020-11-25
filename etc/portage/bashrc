@@ -1,9 +1,9 @@
-distcc-fix() {
+distcc_fix() {
   cd /usr/lib/distcc/bin
 
   cat <<EOF > i686-pc-linux-gnu-wrapper
 #!/bin/bash
-exec /usr/lib/distcc/bin/i686-pc-linux-gnu-g${0:$[-2]} "$@"
+exec /usr/lib/distcc/bin/i686-pc-linux-gnu-g\${0:\$[-2]} "\$@"
 EOF
   chmod 755 i686-pc-linux-gnu-wrapper
 
@@ -14,7 +14,7 @@ EOF
 
   cat <<EOF > i686-pc-linux-gnu-clang-wrapper
 #!/bin/bash
-exec /usr/lib/distcc/bin/i686-pc-linux-gnu-$(basename ${0}) "$@"
+exec /usr/lib/distcc/bin/i686-pc-linux-gnu-\$(basename \${0}) "\$@"
 EOF
   chmod 755 i686-pc-linux-gnu-clang-wrapper
 
@@ -26,6 +26,6 @@ EOF
 
 case ${CATEGORY}/${PN} in
 	sys-devel/distcc | sys-devel/gcc | sys-devel/clang)
-		[ "${EBUILD_PHASE}" == "postinst" ] && distcc-fix
+		[ "${EBUILD_PHASE}" == "pkg_postinst" ] && distcc_fix
 	;;
 esac

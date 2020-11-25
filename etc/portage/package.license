@@ -1,7 +1,12 @@
-games-roguelike/dwarf-fortress free-noncomm
+# Required for `xorg-x11 fonts`
+media-fonts/font-bh-type1 bh-luxi
+media-fonts/font-bh-ttf bh-luxi
 
-# required by media-video/ffmpeg-3.2.4::gentoo[fdk]
-# required by ffmpeg (argument)
->=media-libs/fdk-aac-0.1.5 FraunhoferFDK
-# required by dev-java/oracle-jdk-bin (argument)
->=dev-java/oracle-jdk-bin-1.8.0.112 Oracle-BCLA-JavaSE
+games-roguelike/dwarf-fortress free-noncomm
+media-libs/fdk-aac FraunhoferFDK
+dev-java/oracle-jdk-bin Oracle-BCLA-JavaSE
+app-arch/p7zip unRAR
+sys-kernel/linux-firmware linux-firmware @BINARY-REDISTRIBUTABLE
+sys-kernel/gentoo-sources freedist linux-firmware
+media-fonts/freefonts freedist free-noncomm all-rights-reserved
+media-fonts/corefonts MSttfEULA

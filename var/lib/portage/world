@@ -1,9 +1,11 @@
+=sys-kernel/gentoo-sources-4.9*
 =sys-kernel/gentoo-sources-4.9.34
 app-admin/sudo
 app-admin/testdisk
 app-arch/p7zip
 app-benchmarks/stress
 app-editors/vim
+app-misc/screen
 app-misc/screenfetch
 app-office/gnumeric
 app-portage/eix
@@ -17,6 +19,7 @@ app-text/djview
 app-text/mupdf
 dev-perl/rename
 dev-util/ccache
+dev-util/cmake
 dev-vcs/git-lfs
 games-emulation/dosbox
 games-roguelike/dwarf-fortress
@@ -31,6 +34,7 @@ media-gfx/feh
 media-gfx/gimp
 media-gfx/gphoto2
 media-gfx/scrot
+media-libs/alsa-lib
 media-sound/bluez-alsa
 media-sound/lilypond
 media-sound/mpd
@@ -43,7 +47,6 @@ net-im/bitlbee
 net-irc/irssi
 net-libs/nodejs
 net-misc/dhcpcd
-net-misc/freerdp
 net-misc/netifrc
 net-misc/ntp
 net-misc/openssh
@@ -57,9 +60,8 @@ sys-apps/the_silver_searcher
 sys-apps/usbutils
 sys-boot/grub
 sys-devel/binutils
-sys-devel/crossdev
+sys-devel/clang
 sys-devel/distcc
-sys-devel/gcc
 sys-devel/gdb
 sys-fs/dosfstools
 sys-fs/go-mtpfs
@@ -79,8 +81,8 @@ x11-apps/mesa-progs
 x11-apps/xfontsel
 x11-base/xorg-x11
 x11-drivers/xf86-video-intel
-x11-misc/compton
 x11-misc/gbdfed
+x11-misc/picom
 x11-misc/redshift
 x11-misc/xclip
 x11-plugins/vicious
