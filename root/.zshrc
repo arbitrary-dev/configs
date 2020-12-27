@@ -10,7 +10,14 @@ alias p1="patch -p1"
 
 alias regen-manifest="repoman manifest"
 
-alias bkernel="KERNEL_DIR=/tmp/buildkernel buildkernel --rebuild-external-modules"
+alias mc="make menuconfig"
+alias mo="make oldconfig"
+
+bkernel() {
+  ccache-enable
+  KERNEL_DIR=/tmp/buildkernel \
+  buildkernel --rebuild-external-modules
+}
 
 emrg() {
   if (( $# )); then

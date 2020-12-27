@@ -50,3 +50,4 @@ x11-wm/awesome luajit
 app-emulation/libvirt virt-network
 media-fonts/noto -extra
 sys-cluster/kubernetes -kube-apiserver -kube-controller-manager -kube-proxy -kube-scheduler -kubeadm -kubelet
+sys-kernel/buildkernel -plymouth

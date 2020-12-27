@@ -1,5 +1,5 @@
 >=net-vpn/openconnect-9
->=sys-kernel/gentoo-sources-4.20
+>=sys-kernel/gentoo-sources-5.5
 >=x11-drivers/nvidia-driver-441
 >=dev-java/openjdk-11.1
 
