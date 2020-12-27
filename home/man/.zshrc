@@ -71,7 +71,9 @@ alias xb=xbacklight
 alias bat="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'time to' | sed -Ee 's/  +/ /g' -e 's/^ //'"
 alias feh="feh --auto-rotate --image-bg black -Z -."
 alias lp-a4="lp -o fit-to-page -o PageSize=A4 -o PageRegion=A4 -o PaperDimension=A4 -o ImageableArea=A4"
-alias ag-todos="ag '(// |/?\* |)(TODO|FIXME)( [a-z].*|)$'"
+alias ag-todos="ag '(((//|/?\*|#) )|\*\*|)\b(TODO|FIXME)\b(?!(:|.*INT-\d)).*$'"
+alias vi="vim -u /etc/vim/vimrc"
+alias top="top -o %CPU"
 
 gen-passw() {
   strings /dev/urandom \
@@ -155,8 +157,10 @@ alias btd="btc disconnect"
 btv() {
   # Sets BT volume to 75%
   # TODO use udev rule unstead
-  local ctl=`amixer -D bluealsa scontrols | grep -i a2dp | cut -d\' -f2`
-  amixer -D bluealsa set $ctl 75% > /dev/null
+  if amixer -D bluealsa >/dev/null; then
+    local ctl=`amixer -D bluealsa scontrols | grep -i a2dp | cut -d\' -f2`
+    amixer -D bluealsa set $ctl 75% > /dev/null
+  fi
 }
 
 bt() {
@@ -191,8 +195,22 @@ bt() {
       fi
     done
     >&2 echo "Unable to connect '$name'!"
-    >&2 echo "Try $hdi rebinding/rescanning:"
-    >&2 ls -d /sys/bus/pci/drivers/?hci_hcd/0000:00:*
+
+    if tty -s; then
+      read -k "a?Try rebinding/rescanning pci device for bluetooth? "
+      echo
+      [[ "$a" != y ]] && return 1
+      local dev=(/sys/bus/pci/drivers/?hci_hcd/0000:00:*)
+      su -c '
+        echo ${dev##*/} > ${dev%/*}/unbind
+        sleep 1
+        echo ${dev##*/} > ${dev%/*}/bind
+        sleep 1
+        echo 1 > $dev/rescan
+      '
+      echo 'Done, try again!'
+    fi
+
     return 1
   fi
 }
@@ -386,37 +404,41 @@ fi
 
 # Scala Metals
 
-#_check-tmpdir() {
-#  if [[ ! -w "$TMPDIR" ]]; then
-#    echo "No writable TMPDIR specified!"
-#    return 1
-#  fi
-#}
-#
-#_push-metals-tmpfs() {
-#  _check-tmpdir || return 1
-#  local project=`basename $PWD`
-#  local target="$TMPDIR/.bloop/$project"
-#  [[ -d "$target" ]] && echo "$target already exists" && return 1
-#  mkdir -p "$TMPDIR/.bloop"
-#  [[ -d .bloop ]] && mv .bloop $target || mkdir $target
-#  ln -s $target .bloop \
-#  && sbt clean \
-#  && echo "Pushed to $target"
-#}
-#
-#_pop-metals-tmpfs() {
-#  _check-tmpdir || return 1
-#  local project=`basename $PWD`
-#  local target="$TMPDIR/.bloop/$project"
-#  [[ ! -d "$target" ]] && echo "Nothing to pop at $target" && return 1
-#  rm .bloop \
-#  && mv $target .bloop \
-#  && echo "Popped from $target"
-#}
-#
-#metals() {
-#  _push-metals-tmpfs
-#  vim "${@:-build.sbt}"
-#  _pop-metals-tmpfs
-#}
+_check-tmpdir() {
+  if [[ ! -w "$TMPDIR" ]]; then
+    echo "No writable TMPDIR specified!"
+    return 1
+  fi
+}
+
+_push-metals-tmpfs() {
+  _check-tmpdir || return 1
+  local project=`basename $PWD`
+  local target="$TMPDIR/.bloop/$project"
+  [[ -d "$target" ]] && echo "$target already exists" && return 0
+  mkdir -p "$TMPDIR/.bloop"
+  if [[ -d .bloop ]]; then
+    mv .bloop $target \
+    || return 1
+  else
+    mkdir $target
+  fi
+  ln -s $target .bloop \
+  && echo "Pushed to $target"
+}
+
+_pop-metals-tmpfs() {
+  _check-tmpdir || return 1
+  local project=`basename $PWD`
+  local target="$TMPDIR/.bloop/$project"
+  [[ ! -d "$target" ]] && echo "Nothing to pop at $target" && return 1
+  rm .bloop \
+  && mv $target .bloop \
+  && echo "Popped from $target"
+}
+
+metals() {
+  _push-metals-tmpfs \
+  && vim "${@:-build.sbt}" \
+  && _pop-metals-tmpfs
+}

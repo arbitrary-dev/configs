@@ -92,8 +92,8 @@ augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+"xmap <leader>a  <Plug>(coc-codeaction-selected)
+"nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current line.
 nmap <leader>ac  <Plug>(coc-codeaction)
@@ -144,7 +144,7 @@ nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Search CWD files
 nnoremap <silent> <space>f  :<C-u>CocList files<cr>
 " Search MRU (most recently used) files
-nnoremap <silent> <space>r  :<C-u>CocList mru<cr>
+nnoremap <silent> <space>r  :<C-u>CocList --no-sort mru<cr>
 " Grep workspace
 nnoremap <silent> <space>g  :<C-u>CocList grep<cr>
 cabbrev gr <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'CocList<space>grep' : 'gr')<CR>
@@ -167,8 +167,10 @@ nnoremap <silent> <space>tf :<C-u>CocCommand metals.revealInTreeView metalsBuild
 nnoremap <leader>mi :CocCommand metals.build-import<CR>
 nnoremap <leader>mr :CocCommand metals.build-restart<CR>
 nnoremap <leader>mc :CocCommand metals.compile-clean<CR>
+nnoremap <leader>oi :CocCommand editor.action.organizeImport<CR>
 
 " Remove colorcolumn from coc-lists
 au FileType list setlocal cc=
 
 nnoremap <leader>h :CocCommand clangd.switchSourceHeader<CR>
+nnoremap <leader>at :CocList grep \\b(TODO\|FIXME)\\b(?!(:\|.*INT-\d))<CR>

@@ -1,5 +1,8 @@
 EDITOR=vim
 
+# Fixes newline issues in terminal with %'s
+stty sane
+
 alias vr="$EDITOR ~/.zshrc"
 alias svr="sudo $EDITOR /etc/zsh/zshrc.d/misc"
 

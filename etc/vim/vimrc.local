@@ -40,6 +40,10 @@ nnoremap <silent> <leader>bw :bp\|bw#<CR>
 " nnoremap <silent> <leader>f :windo set foldcolumn=0<CR>
 nnoremap <silent> <leader>fd :setl fdm=indent<CR>:let &l:fdl=indent('.')/&sw<CR>
 
+" Prevents opening of the folds during }{ navigation
+" https://github.com/vim/vim/issues/7134
+set foldopen-=block
+
 
 " trailing spaces highlighting
 au FileType *

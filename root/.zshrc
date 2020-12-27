@@ -54,7 +54,7 @@ esync() {
 
 crossdev-netbook() {
   crossdev --target i686-pc-linux-gnu \
-    --binutils '=2.33*' --gcc '=9.2*' --kernel '=5.4*' --libc '=2.30*'
+    --binutils '=2.34*' --gcc '=9.3*' --kernel '=5.4*' --libc '=2.32*'
 }
 
 alias docker-clean="docker system prune --volumes"

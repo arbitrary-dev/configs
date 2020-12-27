@@ -253,6 +253,8 @@ root.buttons(gears.table.join(
 -- {{{ Key bindings
 globalkeys = gears.table.join(
 
+    awful.key({ modkey }, "i", function() awful.spawn("invert") end),
+
     awful.key({}, "Print",
       function()
         awful.spawn.easy_async(

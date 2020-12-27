@@ -1,11 +1,9 @@
 {
   "list.source.grep.command": "ag",
   "list.source.grep.useLiteral": false,
-  "list.source.grep.args": ["-i"],
 
   "metals.enable": true,
   "metals.javaHome": "/usr/lib64/openjdk-11",
-  "metals.serverVersion": "0.9.4",
 
   "languageserver": {
     "haskell": {

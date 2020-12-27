@@ -40,7 +40,7 @@ alias grvtc="grvt --continue"
 alias grvta="grvt --abort"
 alias gbs="git branch -a --format='%(refname:short) %(color:red)%(authordate:relative)' --list *$MY_NAME*"
 alias gbi="git bisect"
-alias grm="git rm"
+alias grm="git rm --cached"
 alias gsub="git submodule"
 
 gls() { git ls-tree --full-tree -r HEAD | cut -f2; }
