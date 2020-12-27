@@ -52,7 +52,10 @@ media-sound/bluez-alsa
 media-sound/mpd
 media-sound/mpdscribble
 media-sound/ncmpcpp
+media-sound/paprefs
+media-sound/pavucontrol
 media-sound/pulseaudio
+media-sound/pulseaudio-modules-bt
 media-video/ffmpeg
 media-video/mpv
 net-fs/samba

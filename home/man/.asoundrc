@@ -1,7 +1,10 @@
-#pcm.!default {
-#  type plug
-#  slave.pcm "bt_sennheiser"
-#}
+pcm.!default {
+    type pulse
+}
+
+ctl.!default {
+    type pulse
+}
 
 pcm.bt_sennheiser {
   type plug
