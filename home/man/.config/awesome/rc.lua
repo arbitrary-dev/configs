@@ -253,6 +253,9 @@ root.buttons(gears.table.join(
 -- {{{ Key bindings
 globalkeys = gears.table.join(
 
+    awful.key({ modkey, "Control" }, "a", function() awful.spawn("pavucontrol") end),
+    awful.key({ modkey, "Control" }, "b", function() awful.spawn("blueman-manager") end),
+
     awful.key({ modkey }, "i", function() awful.spawn("invert") end),
 
     awful.key({}, "Print",

@@ -55,11 +55,9 @@ media-gfx/inkscape
 media-libs/mesa
 media-plugins/alsa-plugins
 media-sound/alsa-utils
-media-sound/bluez-alsa
 media-sound/mpd
 media-sound/mpdscribble
 media-sound/ncmpcpp
-media-sound/paprefs
 media-sound/pavucontrol
 media-sound/pulseaudio
 media-sound/pulseaudio-modules-bt
@@ -76,7 +74,6 @@ net-p2p/rtorrent
 net-print/cups-windows
 net-vpn/openconnect
 net-wireless/blueman
-net-wireless/bluez
 net-wireless/wpa_supplicant
 sys-apps/hdparm
 sys-apps/lm-sensors

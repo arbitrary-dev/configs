@@ -442,3 +442,14 @@ metals() {
   && vim "${@:-build.sbt}" \
   && _pop-metals-tmpfs
 }
+
+smb-start() {
+  mkdir -p $TMPDIR/samba
+  sudo chown nobody $TMPDIR/samba
+  sudo chmod g+w $TMPDIR/samba
+  sudo rc-service samba start
+}
+
+smb-stop() {
+  sudo rc-service samba stop
+}
