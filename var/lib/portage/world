@@ -1,5 +1,4 @@
-=sys-kernel/gentoo-sources-4.9*
-=sys-kernel/gentoo-sources-4.9.34
+=sys-kernel/gentoo-sources-4.9.246
 app-admin/sudo
 app-admin/testdisk
 app-arch/p7zip
