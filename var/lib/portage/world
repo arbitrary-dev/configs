@@ -4,6 +4,7 @@ app-admin/testdisk
 app-arch/p7zip
 app-benchmarks/stress
 app-editors/vim
+app-eselect/eselect-repository
 app-misc/screen
 app-misc/screenfetch
 app-office/gnumeric

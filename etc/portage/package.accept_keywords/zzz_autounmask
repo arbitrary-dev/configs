@@ -1,6 +1,5 @@
 =games-roguelike/nethack-3.6.1 ~x86
 =games-roguelike/dwarf-fortress-0.44.12 ~x86
-app-portage/layman ~x86
 sys-apps/portage ~x86
 net-misc/youtube-dl ~x86
 =x11-misc/compton-9999 **
@@ -146,13 +145,6 @@ app-shells/zsh-completions ~x86
 
 # required by dev-python/pyopenssl-17.5.0::gentoo
 # required by dev-python/ssl-fetch-0.4::gentoo[python_targets_python2_7]
-# required by app-portage/layman-2.4.2-r1::gentoo
-# required by @selected
-# required by @world (argument)
-# required by dev-python/pyopenssl-17.5.0::gentoo
-# required by dev-python/requests-2.21.0-r1::gentoo[ssl]
-# required by dev-python/ssl-fetch-0.4::gentoo
-# required by app-portage/layman-2.4.2-r1::gentoo
 # required by @selected
 # required by @world (argument)
 dev-python/cryptography ~x86
