@@ -1,30 +1,53 @@
 export PS1=$'%{\e[0;30m\e[41m%} %1d %{\e[0m\e[0;31m%}%{\e[0m%} '
 export PATH=$PATH:/home/semyon/scripts
 
-# aliases
-
 alias mnt="mount -ouser,utf8"
 alias sws="swapon --show=name,size,used"
-alias bt="for s in bluetooth bluealsa; do rc-service \$s start; done"
 
-alias ecurr="watch -ctn 30 genlop -c"
-alias ehist="genlop -it"
-alias emrg-home="PORTAGE_TMPDIR=/home/.portage/tmp emrg"
+# Usage: p1 <patchfile
+alias p1="patch -p1"
 
-# utilities
+alias regen-manifest="repoman manifest"
+
+alias mc="make menuconfig"
+alias mo="make oldconfig"
 
 emrg() {
-  emerge -avuDN @world
-  #emerge -quDN --keep-going @world \
-  #  --exclude qutebrowser \
-  #  --exclude compton
-  # 2>&1 >/tmp/emrg.log
+  if (( $#* )); then
+    emerge "$@"
+  else
+    emerge -quDN --keep-going @world
+  fi
 }
 
-eclean() {
-  emerge --ask --depclean \
-  && eclean-dist --deep --fetch-restricted \
-  && rm -rf /var/tmp/portage
+alias emrg-c="FEATURES=ccache emrg"
+alias emrg-d="FEATURES=distcc MAKEOPTS='-j25 -l2' emrg"
+alias emrg-h="PORTAGE_TMPDIR=/home/.portage-tmpdir emrg"
+alias emrg-hc="PORTAGE_TMPDIR=/home/.portage-tmpdir emrg-c"
+alias emrg-hd="PORTAGE_TMPDIR=/home/.portage-tmpdir emrg-d"
+
+emrg-preserved-rebuild() { emerge ${1:--a} @preserved-rebuild; }
+alias ecurr="watch -ctn 30 genlop -c"
+alias ehist="genlop -it"
+alias eadd="emerge --noreplace"
+
+alias ecln="emerge --ask --depclean"
+alias eclnd="eclean-dist --deep --fetch-restricted"
+
+esync() {
+  ecln || return 1
+
+  local sync_log="/tmp/.emaint.log"
+
+  printf "Syncing... "
+  if emaint sync -a > $sync_log; then
+    echo "done"
+  else
+    echo "FAILED $sync_log"
+    return 1
+  fi
+
+  emerge -avuDN @world
 }
 
 xb() {
@@ -35,13 +58,6 @@ upd-time() {
   echo "Before: " $(date) && \
   rc-service ntp-client start && \
   echo "After: " $(date)
-}
-
-esync() {
-  printf "Sync portage... "
-  emerge -q --sync &> /dev/null \
-  && echo "done" \
-  || echo "failed!"
 }
 
 backup() {

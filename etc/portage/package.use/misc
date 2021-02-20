@@ -1,22 +1,5 @@
-games-roguelike/nethack -X
-x11-misc/compton -drm -opengl -pcre
-media-sound/bluez-alsa hcitop
-media-sound/ncmpcpp taglib outputs
-mail-client/mutt gpg imap pop sasl smtp tokyocabinet -berkdb -gdbm
-dev-util/cmake -qt5 -ncurses
-media-fonts/mplus-outline-fonts ipafont
-x11-terms/rxvt-unicode iso14755 -vanilla alt-font-width -mousewheel wcwidth xft unicode3
-dev-games/ogre double-precision examples ois tools cg
-media-sound/mpd libmpdclient
-net-misc/freerdp smartcard
-media-libs/freetype utils
-x11-base/xorg-server udev
-app-arch/p7zip rar
-sys-kernel/linux-firmware savedconfig
-media-video/mplayer aalib fbcon libcaca mad samba theora faad x264 xvid -dvd -dvdnav
-#app-emulation/wine -run-exes -realtime -perl -nls -mp3 -mono -ncurses s3tc osmesa v4l xcomposite staging
-media-video/mpv -luajit -quvi libcaca
-sys-auth/polkit elogind
+# required by app-text/texlive-core-2020
+media-libs/harfbuzz icu
 
 sys-devel/llvm LLVM_TARGETS: -* X86
 sys-devel/clang LLVM_TARGETS: -* X86
@@ -40,3 +23,24 @@ x11-wm/awesome dbus
 # Required for kernels older than 4.11.
 # Bugs #669994, #672856
 dev-qt/qtcore old-kernel
+
+games-roguelike/nethack -X
+x11-misc/compton -drm -opengl -pcre
+media-sound/bluez-alsa hcitop
+media-sound/ncmpcpp taglib outputs
+mail-client/mutt gpg imap pop sasl smtp tokyocabinet -berkdb -gdbm
+dev-util/cmake -qt5 -ncurses
+media-fonts/mplus-outline-fonts ipafont
+x11-terms/rxvt-unicode iso14755 -vanilla alt-font-width -mousewheel wcwidth xft unicode3
+dev-games/ogre double-precision examples ois tools cg
+media-sound/mpd libmpdclient
+net-misc/freerdp smartcard
+media-libs/freetype utils
+x11-base/xorg-server udev
+app-arch/p7zip rar
+sys-kernel/linux-firmware savedconfig
+media-video/mplayer aalib fbcon libcaca mad samba theora faad x264 xvid -dvd -dvdnav
+#app-emulation/wine -run-exes -realtime -perl -nls -mp3 -mono -ncurses s3tc osmesa v4l xcomposite staging
+media-video/mpv -luajit -quvi libcaca
+sys-auth/polkit elogind
+

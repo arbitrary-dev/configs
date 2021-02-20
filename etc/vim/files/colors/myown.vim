@@ -47,7 +47,7 @@ hi link VertSplit StatusLineNC
 set cursorline
 hi LineNr ctermfg=8 ctermbg=0
 hi CursorLine cterm=none
-hi CursorLineNr ctermfg=11 ctermbg=0
+hi CursorLineNr cterm=none ctermfg=11 ctermbg=0
 
 hi DiffAdd cterm=none ctermfg=0 ctermbg=2
 hi DiffDelete cterm=none ctermfg=0 ctermbg=8

@@ -17,6 +17,8 @@ app-shells/zsh-completions
 app-text/antiword
 app-text/djview
 app-text/mupdf
+app-text/pastebinit
+dev-libs/libaio
 dev-perl/rename
 dev-util/ccache
 dev-util/cmake

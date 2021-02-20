@@ -1,0 +1,92 @@
+alias git-reset-tree="git read-tree --reset -u HEAD"
+alias git-fix-owner="cd /; git ls-tree -r HEAD home/semyon --name-only \
+  | xargs chown semyon:semyon"
+
+git-config-user() {
+  git config user.name $GITHUB_USER
+  git config user.email $GITHUB_EMAIL
+}
+
+git-config-sparse-checkout() {
+  git config core.sparseCheckout true
+  vim .git/info/sparse-checkout
+  git-reset-tree
+}
+
+gst() {
+  git status --short | \
+  shorten-paths | \
+  sed -e "s/^(.)(.)/${esc}[32m\1${esc}[0m${esc}[31m\2${esc}[0m/"
+}
+
+grr() {
+  git branch -r | \
+  sed -e "/$MY_NAME|((master|develop)$)/d" | \
+  xargs -L1 git branch -rd
+}
+
+gbl() {
+  local out=$(git blame --abbrev=6 -s -L ${@:1})
+  local n=$( \
+    echo $out | \
+    sed -ne "s/[^)]*) ( *)[^ ].*/\1/p" | \
+    awk '{print length}' | \
+    sort -g | \
+    head -n1
+  )
+
+  echo $out | \
+  sed -e "s_^([0-9a-z]+) ([0-9]+)) ( {0,$n})_${esc}[32m\1 ${esc}[34m\2${esc}[0m _" | \
+  less -iSXFR
+}
+
+alias ga="git add"
+alias gb="git branch"
+alias gco="git co"
+alias gcp="git cp"
+alias grst="git reset"
+alias gt="git tag"
+alias gbs="git branch -a --format='%(refname:short) %(color:red)%(authordate:relative)' --list *$MY_NAME*"
+alias gbi="git bisect"
+alias gls="git ls"
+alias grm="git rm --cached"
+
+alias gp="git push"
+alias gf="git fetch"
+alias gpl="git pull"
+
+alias gs="git show"
+gsno() { git show-no $1 | shorten-paths; }
+
+alias gsh="git stash save --keep-index"
+alias gsha="git stash apply"
+alias gshs="git stash show -p"
+alias gshl="git stash list"
+alias gshp="git stash pop"
+alias gshd="git stash drop"
+
+alias gdf="git diff"
+gdfno() { gdf --name-only $1 $2 | shorten-paths; }
+gdfno1() { gdf --name-only $1{^,} | shorten-paths; }
+alias gdfc="gdf --cached"
+
+alias glg="git lg"
+alias glgo="git lgo"
+alias glg10="git lg -10"
+alias glgo10="git lgo -10"
+
+alias gc="git commit"
+alias gcf="git cf"
+alias gcaf="git caf"
+alias gcm="git cm"
+alias gcam="git cam"
+
+alias gr="git rebase"
+alias gri="git ri"
+alias grc="git rc"
+alias gra="git rebase --abort"
+
+alias gm="git merge"
+alias gmff="git merge --ff-only"
+alias gma="git merge --abort"
+alias gmt="git mergetool"

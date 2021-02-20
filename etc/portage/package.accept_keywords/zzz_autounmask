@@ -5,7 +5,6 @@ net-misc/youtube-dl ~x86
 =x11-misc/compton-9999 **
 media-sound/bluez-alsa ~x86
 net-wireless/bluez ~x86
-media-video/ffmpeg ~x86
 media-gfx/wkhtmltopdf ~x86
 x11-drivers/xf86-input-evdev ~x86
 dev-lang/scala ~x86
@@ -13,11 +12,11 @@ dev-lang/scala ~x86
 media-fonts/mplus-outline-fonts ~x86
 x11-drivers/xf86-input-synaptics ~x86
 
+# required by git-lfs (argument)
+=dev-vcs/git-lfs-2.6.1 **
+
 # To resolve circular dependencies with dev-python/six
 dev-python/setuptools ~x86
-
-x11-wm/awesome ~x86
-x11-plugins/vicious ~x86
 
 # required by gbdfed (argument)
 =x11-misc/gbdfed-1.6 ~x86
@@ -76,8 +75,6 @@ app-emulation/wine ~x86
 # required by @selected
 # required by @world (argument)
 x11-libs/libdrm ~x86
-# required by mpv (argument)
-media-video/mpv ~x86
 # required by media-libs/mesa-11.1.0::gentoo[vaapi]
 # required by app-emulation/wine-1.7.55::gentoo[osmesa]
 # required by @selected
@@ -112,11 +109,6 @@ media-video/mpv ~x86
 =sys-devel/clang-3.6.2-r100 ~x86
 # required by zsh-completions (argument)
 app-shells/zsh-completions ~x86
-# required by x11-libs/xcb-util-cursor-0.1.3-r1::gentoo
-# required by x11-wm/awesome-3.5.9::gentoo
-# required by @selected
-# required by @world (argument)
-=x11-proto/xproto-7.0.31 ~x86
 # required by x11-base/xorg-server-1.19.1::gentoo[xorg]
 # required by x11-drivers/xf86-input-evdev-2.10.3::gentoo
 # required by @__auto_slot_operator_replace_installed__ (argument)
@@ -127,11 +119,6 @@ app-shells/zsh-completions ~x86
 # required by x11-drivers/xf86-input-evdev-2.10.3::gentoo
 # required by x11-base/xorg-drivers-1.19::gentoo[input_devices_evdev]
 =x11-libs/libXfont2-2.0.1 ~x86
-# required by media-video/mpv-0.23.0-r1::gentoo
-# required by @selected
-# required by @world (argument)
-=media-video/ffmpeg-3.2.4 ~x86
-
 # required by media-libs/mesa-17.1.0_rc4::gentoo[-video_cards_i965,video_cards_intel,-video_cards_i915]
 # required by media-libs/libepoxy-1.4.1::gentoo
 # required by x11-libs/gtk+-3.22.12::gentoo
@@ -139,16 +126,11 @@ app-shells/zsh-completions ~x86
 # required by @selected
 # required by @world (argument)
 =x11-libs/libdrm-2.4.80 ~x86
-
-# required by git-lfs (argument)
-=dev-vcs/git-lfs-2.6.1 **
-
 # required by dev-python/pyopenssl-17.5.0::gentoo
 # required by dev-python/ssl-fetch-0.4::gentoo[python_targets_python2_7]
 # required by @selected
 # required by @world (argument)
 dev-python/cryptography ~x86
-
 # required by dev-python/docutils-0.14::gentoo
 # required by dev-util/ctags-20190331::gentoo
 # required by app-editors/vim-8.0.1298::gentoo[-minimal]
@@ -167,3 +149,5 @@ dev-python/cryptography ~x86
 =net-libs/nodejs-13.8.0 ~x86
 # required by @__auto_slot_operator_replace_installed__ (argument)
 =net-libs/nodejs-13.9.0 ~x86
+# required by dev-util/ragel-7.0.3
+=dev-util/colm-0.14.6 ~x86

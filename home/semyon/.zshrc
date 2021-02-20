@@ -6,7 +6,8 @@ stty sane
 
 stty -ixon
 
-[[ $(tty) = "/dev/tty1" ]] && exec startx
+[[ $(tty) = "/dev/tty1" ]] \
+&& exec startx -- vt1
 
 # aliases
 
@@ -17,6 +18,9 @@ alias qmarks="vim ~/.config/qutebrowser/quickmarks"
 alias vd=vimdiff
 alias yta="youtube-dl -f 'bestaudio[ext=m4a]'"
 alias feh="feh --auto-rotate --geometry 640x480"
+
+alias m=memo
+alias me="memo --edit"
 
 alias mnt-phone="go-mtpfs /mnt/phone &"
 alias mnt-usb="mount /mnt/usb"

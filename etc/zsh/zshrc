@@ -21,9 +21,17 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 
 source /etc/zsh/zprofile
-[[ $PATH != *distcc* ]] && export PATH="/usr/lib/distcc/bin:${PATH}"
-[[ $PATH != *ccache* ]] && export PATH="/usr/lib/ccache/bin:${PATH}"
-CCACHE_DIR="/home/.ccache"
+source /etc/zsh/zshrc.d/*
+
+setup-distcc() {
+  [[ $PATH != *distcc* ]] \
+  && export PATH="/usr/lib/distcc/bin:${PATH}"
+}
+
+setup-ccache() {
+  [[ $PATH != *ccache* ]] && export PATH="/usr/lib/ccache/bin:$PATH"
+  export CCACHE_DIR="/home/.ccache"
+}
 
 # history lookup using prefixes
 bindkey "^[[A" history-beginning-search-backward
@@ -46,6 +54,9 @@ alias -s jpg="feh -F"
 alias xc='xclip -i -selection clipboard'
 alias xp='xclip -o -selection clipboard'
 
+alias du='du -h'
+alias df='df -h'
+
 alias vr="vim ~/.zshrc"
 alias svr="sudo vim /etc/zsh/zshrc"
 sr() { source /etc/zsh/zshrc; source ~/.zshrc; }
@@ -55,6 +66,9 @@ alias rn=perl-rename
 alias sed="sed -r"
 alias less="less -iSXFR"
 alias xs="xargs -I{}"
+alias watch-ccache="CCACHE_DIR=/home/.ccache watch -d -n 30 ccache --show-stats"
+alias distcc-mon="DISTCC_DIR=/var/tmp/portage/.distcc distccmon-text 3"
+alias distcc-mon-h="DISTCC_DIR=/home/.portage/tmp/portage/.distcc distccmon-text 3"
 
 # utilities
 
@@ -62,6 +76,7 @@ x() { sed -n $1p $2; }
 esc=$(printf '\033')
 alias shorten-paths='sed -e "s|/.+/([^/]+/)|/**/\1|"'
 alias dmon="watch -n2 'DISTCC_DIR=/var/tmp/portage/.distcc distccmon-text'"
+alias bt-restart="for s in bluetooth bluealsa; do sudo rc-service \$s start; done"
 
 my-sdiff() {
   local S
@@ -75,106 +90,20 @@ my-sdiff() {
 
 psw() {
   su -c '
-  echo powersave > /sys/devices/system/cpu/cpu[01]/cpufreq/scaling_governor
-  echo "CPU downscaled"
-  # Network?
-  echo 1 > /sys/bus/pci/devices/0000:09:00.0/remove
-  rfkill block 2
-  echo "Bluetooth disabled"
-  powertop --auto-tune
+  g=`cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor`
+  if [[ $g = perf* ]]; then
+    echo powersave > /sys/devices/system/cpu/cpu[01]/cpufreq/scaling_governor
+    echo "CPU downscaled"
+    # Network?
+    echo 1 > /sys/bus/pci/devices/0000:09:00.0/remove
+    rfkill block 2
+    echo "Bluetooth disabled"
+    powertop --auto-tune
+  else
+    echo performance > /sys/devices/system/cpu/cpu[01]/cpufreq/scaling_governor
+    echo "CPU upscaled"
+    rfkill unblock 2
+    echo "Bluetooth enabled"
+  fi
   '
 }
-
-# Git
-
-alias git-reset-tree="git read-tree --reset -u HEAD"
-alias git-fix-owner="cd /; git ls-tree -r HEAD home/semyon --name-only \
-  | xargs chown semyon:semyon"
-
-git-config-user() {
-  git config user.name $GITHUB_USER
-  git config user.email $GITHUB_EMAIL
-}
-
-git-config-sparse-checkout() {
-  git config core.sparseCheckout true
-  vim .git/info/sparse-checkout
-  git-reset-tree
-}
-
-gst() {
-  git status --short | \
-  shorten-paths | \
-  sed -e "s/^(.)(.)/${esc}[32m\1${esc}[0m${esc}[31m\2${esc}[0m/"
-}
-
-grr() {
-  git branch -r | \
-  sed -e "/$MY_NAME|((master|develop)$)/d" | \
-  xargs -L1 git branch -rd
-}
-
-gbl() {
-  local out=$(git blame --abbrev=6 -s -L ${@:1})
-  local n=$( \
-    echo $out | \
-    sed -ne "s/[^)]*) ( *)[^ ].*/\1/p" | \
-    awk '{print length}' | \
-    sort -g | \
-    head -n1
-  )
-
-  echo $out | \
-  sed -e "s_^([0-9a-z]+) ([0-9]+)) ( {0,$n})_${esc}[32m\1 ${esc}[34m\2${esc}[0m _" | \
-  less -iSXFR
-}
-
-alias ga="git add"
-alias gb="git branch"
-alias gco="git co"
-alias gcp="git cp"
-alias grst="git reset"
-alias gt="git tag"
-alias gbs="git branch -a --format='%(refname:short) %(color:red)%(authordate:relative)' --list *$MY_NAME*"
-alias gbi="git bisect"
-alias gls="git ls"
-
-alias gp="git push"
-alias gf="git fetch"
-alias gpl="git pull"
-
-alias gs="git show"
-gsno() { git show-no $1 | shorten-paths; }
-
-alias gsh="git stash save --keep-index"
-alias gsha="git stash apply"
-alias gshs="git stash show -p"
-alias gshl="git stash list"
-alias gshp="git stash pop"
-alias gshd="git stash drop"
-
-alias gdf="git diff"
-gdfno() { gdf --name-only $1 $2 | shorten-paths; }
-gdfno1() { gdf --name-only $1{^,} | shorten-paths; }
-alias gdfc="gdf --cached"
-
-alias glg="git lg"
-alias glgo="git lgo"
-alias glg10="git lg -10"
-alias glgo10="git lgo -10"
-
-alias gc="git commit"
-alias gcf="git cf"
-alias gcaf="git caf"
-alias gcm="git cm"
-alias gcam="git cam"
-
-alias gr="git rebase"
-alias gri="git ri"
-alias grc="git rc"
-alias gra="git rebase --abort"
-
-alias gm="git merge"
-alias gmff="git merge --ff-only"
-alias gma="git merge --abort"
-alias gmt="git mergetool"
