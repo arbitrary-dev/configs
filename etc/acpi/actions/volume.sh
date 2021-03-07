@@ -3,12 +3,11 @@
 #HANDLE="`amixer -D bluealsa | grep A2DP | cut -d\' -f2`"
 #DEVICE="${HANDLE:+bluealsa}"
 
-HANDLE="${HANDLE:-Master}"
-DEVICE="${DEVICE:-pulse}"
-USER=man
-
-case "$1" in
-  *up)   su $USER -c "amixer -D '$DEVICE' -q -M set '$HANDLE' playback 5%+" ;;
-  *down) su $USER -c "amixer -D '$DEVICE' -q -M set '$HANDLE' playback 5%-" ;;
-  *mute) su $USER -c "amixer -D '$DEVICE' -q set '$HANDLE' playback toggle" ;;
+case "$2" in
+  VOLUP) export PULSE_RUNTIME_PATH=/run/user/1000/pulse/
+         su man -c "amixer -q -M set Master playback 5%+" ;;
+  VOLDN) export PULSE_RUNTIME_PATH=/run/user/1000/pulse/
+         su man -c "amixer -q -M set Master playback 5%-" ;;
+  MUTE)  export PULSE_RUNTIME_PATH="/run/user/1000/pulse/"
+         su man -c "amixer -q set Master playback toggle" ;;
 esac
