@@ -1,7 +1,6 @@
 >=net-vpn/openconnect-9
 >=sys-kernel/gentoo-sources-5.5
 >=x11-drivers/nvidia-drivers-456
->=dev-java/openjdk-11.1
 >=dev-lang/python-3.9
 
 # Fix package to match the one on the netbook

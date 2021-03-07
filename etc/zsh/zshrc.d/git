@@ -1,4 +1,5 @@
 git-fix-ownership() {
+  # TODO only files under Git
   chown -R $1:$1 /home/$1 /tmp/$1
 }
 
@@ -50,8 +51,22 @@ alias git-update-tree="git read-tree -m -u HEAD"
 
 alias gp="git push"
 alias gf="git fetch"
-gfco() { gf origin $1 && gco origin/$1; }
 alias gpl="git pull"
+
+gfco() {
+  local ref=("$1")
+
+  [[ "$ref" =~ '^INT-[0-9]+$' ]] \
+  && ref=(`git remote show origin | grep -o "\S*$ref\S*"`)
+
+  if (( ${#ref} > 1 )); then
+    echo "Which one exactly?"
+    for r in $ref; do echo $r; done
+  else
+    gf origin $ref \
+    && gco origin/$ref
+  fi
+}
 
 alias gt="git tag"
 gtr() { git ls-remote --tags ${1:-origin}; }
@@ -74,12 +89,17 @@ gdfno1() { gdf --name-only $1{^,} | _shorten-paths; }
 alias gdfc="gdf --cached"
 
 glg() {
-  git lg $* 2>/dev/null
-  [[ $? == 1 ]] && git log --graph --abbrev-commit --decorate --date=format:'%m-%d-%Y %H:%M' \
+  local query="--all"
+  [[ $1 =~ "INT-[0-9]*" ]] && query="--grep=$1"
+
+  # 'lg' is a local alias to customize indentation per project
+  git lg $query 2>/dev/null
+
+  # Fallback to default
+  [[ $? == 1 ]] && git log $query --graph --abbrev-commit --decorate --date=format:'%m-%d-%Y %H:%M' \
 --format=format:'%C(cyan)%h%C(reset) %C(red)%ad (%ar)%C(reset)%C(green)%d%C(reset)%n'\
-'        %C(reset)%s %C(red)%an%+N' --exclude refs/stash --all $*
+'        %C(reset)%s %C(red)%an%+N' --exclude refs/stash
 }
-alias glg10="glg -10"
 alias gl-all="git log --reflog"
 
 alias gc="git commit"

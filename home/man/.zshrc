@@ -2,6 +2,7 @@ NPM_PACKAGES="$HOME/.npm-packages"
 
 export PS1='%B%F{green}'$PS1
 export PATH="\
+/opt/sbt-1.4.5/bin:\
 $HOME/projects/scripts:\
 $HOME/.local/bin:\
 $NPM_PACKAGES/bin:\
@@ -41,6 +42,8 @@ alias -s JPG=feh
 alias -s jpeg=feh
 alias -s png=feh
 
+alias hanako-fm="mpv https://musicbird.leanstream.co/JCB069-MP3"
+
 alias yt=youtube-dl
 alias yta="youtube-dl -f bestaudio[ext=m4a]"
 alias ytv="youtube-dl -f bestvideo+bestaudio"
@@ -66,6 +69,7 @@ yts() {
 }
 
 alias m=memo
+alias me="memo --edit"
 alias sf=screenfetch
 alias xb=xbacklight
 alias bat="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'time to' | sed -Ee 's/  +/ /g' -e 's/^ //'"
@@ -74,6 +78,10 @@ alias lp-a4="lp -o fit-to-page -o PageSize=A4 -o PageRegion=A4 -o PaperDimension
 alias ag-todos="ag '(((//|/?\*|#) )|\*\*|)\b(TODO|FIXME)\b(?!(:|.*INT-\d)).*$'"
 alias vi="vim -u /etc/vim/vimrc"
 alias top="top -o %CPU"
+alias shtd="echo 'Shutdown enqueued...'; sudo shutdown -h"
+
+alias ssha='eval "`ssh-agent -s`"'
+alias sshk='ssh-agent -k'
 
 gen-passw() {
   strings /dev/urandom \
@@ -109,9 +117,9 @@ ls-files() {
   find $* -type f | sed -E "s!($joined)/!!" | sort
 }
 
-alias wine32="WINEPREFIX=~/.wine-x32 wine"
-alias winecfg32="WINEPREFIX=~/.wine-x32 winecfg"
-alias winetricks32="WINEPREFIX=~/.wine-x32 winetricks"
+alias wine32="WINEARCH=win32 WINEPREFIX=~/.wine32 wine"
+alias winecfg32="WINEARCH=win32 WINEPREFIX=~/.wine32 winecfg"
+alias winetricks32="WINEARCH=win32 WINEPREFIX=~/.wine32 winetricks"
 
 alias am=alsamixer
 alias am-bt="alsamixer -D bluealsa"
@@ -200,8 +208,8 @@ bt() {
       read -k "a?Try rebinding/rescanning pci device for bluetooth? "
       echo
       [[ "$a" != y ]] && return 1
-      local dev=(/sys/bus/pci/drivers/?hci_hcd/0000:00:*)
       su -c '
+        dev=(/sys/bus/pci/drivers/?hci_hcd/0000:00:*)
         echo ${dev##*/} > ${dev%/*}/unbind
         sleep 1
         echo ${dev##*/} > ${dev%/*}/bind
@@ -215,10 +223,18 @@ bt() {
   fi
 }
 
-alias nc=ncmpcpp
-alias nc-remote="nc -c ~/.ncmpcpp/config-remote"
-alias mpd-remote="sudo CFGFILE=/etc/mpd-remote.conf rc-service mpd restart"
-alias mpd-restart="sudo rc-service mpd restart"
+nc() {
+  pgrep mpd >/dev/null || mpd
+  ncmpcpp
+}
+mpdr() {
+  mpd --kill 2> /dev/null
+  mpd /etc/mpd-remote.conf
+}
+ncr() {
+  pgrep mpd >/dev/null || mpdr
+  nc -c ~/.ncmpcpp/config-remote
+}
 
 discogs() {
   local s="$@"
@@ -335,13 +351,12 @@ umnt() {
 # Phone
 
 mnt-phone() {
-  sudo mkdir -p /mnt/phone
-  sudo chown $USER:$USER /mnt/phone
-  go-mtpfs /mnt/phone &
+  mkdir -p $TMPDIR/mtp
+  mtpfs $TMPDIR/mtp
 }
 umnt-phone() {
-  fusermount -u /mnt/phone
-  sudo rm -r /mnt/phone
+  fusermount -u $TMPDIR/mtp
+  rm -d $TMPDIR/mtp
 }
 
 # Work
@@ -350,7 +365,9 @@ alias docker-start="sudo rc-service docker start"
 alias docker-stop="sudo rc-service docker stop"
 
 sbt-ta() {
-  sbt -Dsbt.supershell=false -Dsbt.color=true testAll 2>/dev/null \
+  sbt -Dsbt.supershell=false -Dsbt.color=true \
+    testAll \
+    2>/dev/null \
   | \sed -En '/\[.*(info|error).*\]/p'
 }
 
@@ -438,9 +455,19 @@ _pop-metals-tmpfs() {
 }
 
 metals() {
-  _push-metals-tmpfs \
-  && vim "${@:-build.sbt}" \
-  && _pop-metals-tmpfs
+  local file=${1:-build.sbt}
+  if [[ -n "$1" && ! -f "${file%:*}" ]]; then
+    file=(**/"$1".scala)
+  fi
+  if [ -f "${file%:*}" ]; then
+    if _push-metals-tmpfs; then
+      vim "$file"
+      sleep 1
+      _pop-metals-tmpfs
+    fi
+  else
+    echo "Unable to find: $file"
+  fi
 }
 
 smb-start() {

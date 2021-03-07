@@ -3,7 +3,8 @@
   "list.source.grep.useLiteral": false,
 
   "metals.enable": true,
-  "metals.javaHome": "/usr/lib64/openjdk-11",
+  //"metals.javaHome": "/usr/lib64/openjdk-8",
+  "metals.javaHome": "/usr/lib64/openjdk-15",
 
   "languageserver": {
     "haskell": {

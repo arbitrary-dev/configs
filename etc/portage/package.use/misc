@@ -39,7 +39,7 @@ net-misc/aria2 bittorrent
 media-sound/ncmpcpp outputs taglib
 app-emulation/docker btrfs
 media-sound/mpd -network
-media-video/ffmpeg chromium fdk vaapi vdpau vorbis vpx webp x264 xvid openssl
+media-video/ffmpeg libass chromium fdk vaapi vdpau vorbis vpx webp x264 xvid openssl
 media-gfx/gimp -alsa
 dev-java/openjdk source
 x11-terms/rxvt-unicode xft 256-color

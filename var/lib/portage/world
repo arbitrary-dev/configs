@@ -11,6 +11,7 @@ app-emulation/docker
 app-emulation/docker-compose
 app-emulation/libvirt
 app-emulation/qemu
+app-emulation/wine-vanilla
 app-emulation/winetricks
 app-eselect/eselect-repository
 app-i18n/ibus-table-others
@@ -31,11 +32,14 @@ cross-i686-pc-linux-gnu/glibc
 cross-i686-pc-linux-gnu/linux-headers
 dev-haskell/stack-bin
 dev-java/openjdk:11
+dev-java/openjdk:15
 dev-java/openjdk:8
 dev-libs/opensc
 dev-lua/luarocks
 dev-perl/rename
+dev-python/natsort
 dev-python/pip
+dev-python/wxpython
 dev-util/ccache
 dev-util/ctags
 dev-vcs/git
@@ -56,7 +60,6 @@ media-libs/mesa
 media-plugins/alsa-plugins
 media-sound/alsa-utils
 media-sound/mpd
-media-sound/mpdscribble
 media-sound/ncmpcpp
 media-sound/pavucontrol
 media-sound/pulseaudio
@@ -92,6 +95,7 @@ sys-fs/dosfstools
 sys-fs/exfat-utils
 sys-fs/fuse
 sys-fs/fuse-exfat
+sys-fs/mtpfs
 sys-kernel/buildkernel
 sys-kernel/gentoo-sources
 sys-kernel/gentoo-sources:5.4.80-r1

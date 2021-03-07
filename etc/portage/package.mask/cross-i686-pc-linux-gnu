@@ -1,0 +1,4 @@
+>=cross-i686-pc-linux-gnu/binutils-9999
+>=cross-i686-pc-linux-gnu/gcc-9999
+>=cross-i686-pc-linux-gnu/linux-headers-9999
+>=cross-i686-pc-linux-gnu/glibc-9999
