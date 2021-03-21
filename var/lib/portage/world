@@ -98,7 +98,7 @@ sys-fs/fuse-exfat
 sys-fs/mtpfs
 sys-kernel/buildkernel
 sys-kernel/gentoo-sources
-sys-kernel/gentoo-sources:5.4.80-r1
+sys-kernel/gentoo-sources:5.4.97
 sys-kernel/linux-firmware
 sys-power/acpid
 sys-power/acpilight
