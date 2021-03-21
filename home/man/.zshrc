@@ -480,3 +480,18 @@ smb-start() {
 smb-stop() {
   sudo rc-service samba stop
 }
+
+rec-screen() {
+  local adev=`pactl list short sources | grep -Eo '\b\S+\.monitor\b' | tail -1`
+  echo $adev
+  pactl set-source-mute $adev false
+  echo "Source unmuted."
+  pactl set-source-volume $adev 100%
+  echo "Volume set to 100%."
+
+  # TODO utilize xrectsel
+  ffmpeg -y -f x11grab -draw_mouse 0 -show_region 1 -video_size 800x600 \
+    -framerate 25 -i :0.0+1000,400 \
+    -f pulse -i $adev -ac 1 \
+    $TMPDIR/output.mkv
+}

@@ -72,8 +72,24 @@ alias gt="git tag"
 gtr() { git ls-remote --tags ${1:-origin}; }
 gtf() { gf --tags ${1:-origin} ${2:-master}; }
 
-alias gs="git show"
-alias gss='gs --stat --format=""'
+_diff_opts=(
+  --irreversible-delete
+  --ignore-all-space
+  --word-diff=color
+  --word-diff-regex='\b[$A-Za-z0-9_]+\b|\S'
+)
+
+_recolor_diff() {
+  sed -Ee "s/${esc}\[3[12]/\0;7/g" \
+       -e "s/deleted file mode [0-9]{6}/${esc}[31;7m\0${esc}[0m/"
+}
+
+gs() {
+  git show "$@" "${_diff_opts[@]}" \
+  | _recolor_diff \
+  | less
+}
+alias gss='git show --stat --format=""'
 gsno() { git show --oneline --name-only $1 | _shorten-paths; }
 
 alias gsh="git stash save --include-untracked --keep-index"
@@ -83,7 +99,11 @@ alias gshl="git stash list"
 alias gshp="git stash pop"
 alias gshd="git stash drop"
 
-alias gdf="git diff"
+gdf() {
+  git diff "$@" "${_diff_opts[@]}" \
+  | _recolor_diff \
+  | less
+}
 gdfno() { gdf --name-only $1 $2 | _shorten-paths; }
 gdfno1() { gdf --name-only $1{^,} | _shorten-paths; }
 alias gdfc="gdf --cached"
