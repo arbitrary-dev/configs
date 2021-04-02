@@ -45,12 +45,17 @@ dev-util/ctags
 dev-vcs/git
 kde-apps/kdenlive
 media-fonts/arphicfonts
+media-fonts/dejavu
 media-fonts/droid
+media-fonts/fira-code
+media-fonts/hack
 media-fonts/ipamonafont
 media-fonts/liberation-fonts
 media-fonts/mplus-outline-fonts
 media-fonts/noto
 media-fonts/noto-emoji
+media-fonts/source-pro
+media-fonts/ubuntu-font-family
 media-gfx/feh
 media-gfx/gimp
 media-gfx/graphviz
