@@ -339,6 +339,7 @@ umnt() {
   [[ "$from" != /mnt/* ]] && from="/mnt/$from"
   mount | grep -q "$from" && [[ "$PWD" = "$from"* ]] && cd ~
   local dev=`mount | grep $from | cut -d\  -f1 | sed 's/[0-9]\+$//'`
+  sync
   sudo sh -c "umount '$from' && rm -d '$from' && echo '$from unmounted'"
   if (( ! `mount | grep -c $dev` )) && whence -p eject-device >/dev/null; then
     read -k "a?No more mounts for $dev, eject it? "
@@ -461,9 +462,10 @@ metals() {
   fi
   if [ -f "${file%:*}" ]; then
     if _push-metals-tmpfs; then
-      vim "$file"
-      sleep 1
-      _pop-metals-tmpfs
+      if vim "$file"; then
+        sleep 1
+        _pop-metals-tmpfs
+      fi
     fi
   else
     echo "Unable to find: $file"
@@ -484,14 +486,21 @@ smb-stop() {
 rec-screen() {
   local adev=`pactl list short sources | grep -Eo '\b\S+\.monitor\b' | tail -1`
   echo $adev
+
   pactl set-source-mute $adev false
   echo "Source unmuted."
   pactl set-source-volume $adev 100%
   echo "Volume set to 100%."
+
+  xset s off -dpms
+  echo "Screen saver turned off."
 
   # TODO utilize xrectsel
   ffmpeg -y -f x11grab -draw_mouse 0 -show_region 1 -video_size 800x600 \
     -framerate 25 -i :0.0+1000,400 \
     -f pulse -i $adev -ac 1 \
     $TMPDIR/output.mkv
+
+  xset s on +dpms
+  echo "Screen saver turned on."
 }

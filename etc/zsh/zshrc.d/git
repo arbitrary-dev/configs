@@ -85,7 +85,7 @@ _recolor_diff() {
 }
 
 gs() {
-  git show "$@" "${_diff_opts[@]}" \
+  git show "${_diff_opts[@]}" "$@" \
   | _recolor_diff \
   | less
 }
@@ -100,7 +100,7 @@ alias gshp="git stash pop"
 alias gshd="git stash drop"
 
 gdf() {
-  git diff "$@" "${_diff_opts[@]}" \
+  git diff "${_diff_opts[@]}" "$@" \
   | _recolor_diff \
   | less
 }

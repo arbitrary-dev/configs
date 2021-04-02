@@ -14,7 +14,8 @@ sys-auth/consolekit policykit
 app-crypt/gcr gtk
 
 # Wine
-app-emulation/wine-vanilla -cups -udisks
+app-emulation/wine-vanilla -cups -udisks vulkan vkd3d osmesa gstreamer
+media-plugins/gst-plugins-meta ogg
 media-plugins/alsa-plugins abi_x86_32
 # for bluez-alsa to compile
 sys-libs/readline abi_x86_32
@@ -50,3 +51,4 @@ app-emulation/libvirt virt-network
 media-fonts/noto -extra
 sys-cluster/kubernetes -kube-apiserver -kube-controller-manager -kube-proxy -kube-scheduler -kubeadm -kubelet
 sys-kernel/buildkernel -plymouth
+app-text/mupdf -opengl -javascript -ssl

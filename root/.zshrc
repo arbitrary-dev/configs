@@ -15,6 +15,7 @@ alias mo="make oldconfig"
 
 bkernel() {
   ccache-enable
+  TMPDIR= \
   KERNEL_DIR=/tmp/buildkernel \
   buildkernel --rebuild-external-modules
 }
@@ -23,7 +24,7 @@ emrg() {
   if (( $# )); then
     emerge "${@}"
   else
-    emerge -quDN --keep-going @world
+    emerge -avuDN --keep-going @world
   fi
 }
 
@@ -58,3 +59,19 @@ crossdev-netbook() {
 }
 
 alias docker-clean="docker system prune --volumes"
+
+mnt-portage() {
+  local t="/var/tmp/portage"
+  if [ -d $t ]; then
+      if read -q "?Remove $t? "; then
+        echo
+        rm -rfv $t
+      else
+        echo
+      fi
+  fi
+
+  mkdir -p $t
+  mount -v $t
+}
+alias umnt-portage="umount -v /var/tmp/portage"

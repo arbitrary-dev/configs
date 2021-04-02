@@ -66,6 +66,7 @@ media-sound/pulseaudio
 media-sound/pulseaudio-modules-bt
 media-video/ffmpeg
 media-video/mpv
+net-dns/openresolv
 net-fs/samba
 net-im/zoom::gentoo
 net-irc/irssi
@@ -90,6 +91,7 @@ sys-devel/clang
 sys-devel/crossdev
 sys-devel/distcc
 sys-devel/gcc
+sys-firmware/intel-microcode
 sys-fs/compsize
 sys-fs/dosfstools
 sys-fs/exfat-utils
