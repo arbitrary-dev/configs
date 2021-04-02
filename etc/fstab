@@ -6,9 +6,9 @@
 /dev/mapper/vg1-home /home ext4  defaults,noatime,discard                   0 2
 /dev/mapper/vg1-opt  /opt  btrfs defaults,noatime,discard,compress=lzo,ssd  0 0
 
-# tmpfs /var/tmp         tmpfs size=3G,rw,nosuid,noatime,nodev,mode=1777 0 0
-# tmpfs /var/tmp/portage tmpfs size=3G,uid=portage,gid=portage,mode=775,noatime 0 0
-tmpfs /tmp             tmpfs size=3G,rw,nosuid,noatime,nodev,mode=1777        0 0
-# tmpfs /opt/docker/tmp  tmpfs size=3G,rw,nosuid,noatime,nodev,mode=0700        0 0
+tmpfs /var/tmp/portage tmpfs noauto,size=10G,uid=portage,gid=portage,mode=775,noatime 0 0
+
+/dev/zram0 swap swap pri=16383 0 0
+/dev/zram1 /tmp ext4 defaults  0 0
 
 /dev/mapper/azaza /mnt/azaza  btrfs defaults,noatime,compress-force=zlib:9 0 0
