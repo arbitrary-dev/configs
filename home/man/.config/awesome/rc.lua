@@ -333,7 +333,7 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey, "Control" }, "r", function () awful.spawn('sudo reboot') end,
+    awful.key({ modkey, "Control" }, "r", function () awful.spawn('sudo shutdown -r now') end,
               {description = "reboot the system", group = "awesome"}),
     awful.key({ modkey, "Control" }, "l", function () awful.spawn('slimlock') end,
               {description = "lock screen", group = "awesome"}),
