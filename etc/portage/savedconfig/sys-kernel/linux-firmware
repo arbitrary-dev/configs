@@ -1,5 +1,5 @@
 # Intel graphics
-i915/kbl_guc_ver9_39.bin
+i915/kbl_guc_33.0.0.bin
 i915/kbl_dmc_ver1_04.bin
 i915/kbl_huc_ver02_00_1810.bin
 
@@ -9,3 +9,11 @@ intel/ibt-17-16-1.ddc
 
 # Wi-Fi
 iwlwifi-9000-pu-b0-jf-b0-38.ucode
+iwlwifi-9000-pu-b0-jf-b0-39.ucode
+iwlwifi-9000-pu-b0-jf-b0-40.ucode
+iwlwifi-9000-pu-b0-jf-b0-41.ucode
+iwlwifi-9000-pu-b0-jf-b0-42.ucode
+iwlwifi-9000-pu-b0-jf-b0-43.ucode
+iwlwifi-9000-pu-b0-jf-b0-44.ucode
+iwlwifi-9000-pu-b0-jf-b0-45.ucode
+iwlwifi-9000-pu-b0-jf-b0-46.ucode

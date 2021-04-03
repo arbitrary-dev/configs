@@ -14,10 +14,16 @@ alias mc="make menuconfig"
 alias mo="make oldconfig"
 
 bkernel() {
+  local flags=()
+  if read -q "?Rebuild external modules? "; then
+    flags+="--rebuild-external-modules"
+  fi
+  echo
+
   ccache-enable
   TMPDIR= \
   KERNEL_DIR=/tmp/buildkernel \
-  buildkernel --rebuild-external-modules
+  buildkernel "${flags[@]}"
 }
 
 emrg() {
