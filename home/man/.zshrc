@@ -76,12 +76,20 @@ alias bat="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'time t
 alias feh="feh --auto-rotate --image-bg black -Z -."
 alias lp-a4="lp -o fit-to-page -o PageSize=A4 -o PageRegion=A4 -o PaperDimension=A4 -o ImageableArea=A4"
 alias ag-todos="ag '(((//|/?\*|#) )|\*\*|)\b(TODO|FIXME)\b(?!(:|.*INT-\d)).*$'"
-alias vi="vim -u /etc/vim/vimrc"
 alias top="top -o %CPU"
 alias shtd="echo 'Shutdown enqueued...'; sudo shutdown -h"
 
 alias ssha='eval "`ssh-agent -s`"'
 alias sshk='ssh-agent -k'
+
+vi() {
+  if (( $# == 1 )); then
+    arr=(${(s/:/)@})
+    vim +${arr[-1]} -u /etc/vim/vimrc "${arr[1,-2]}"
+  else
+    vim -u /etc/vim/vimrc "$@"
+  fi
+}
 
 gen-passw() {
   strings /dev/urandom \

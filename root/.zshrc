@@ -34,7 +34,7 @@ emrg() {
   fi
 }
 
-alias emrgc="FEATURES=ccache emrg"
+alias emrg-c="FEATURES=ccache emrg"
 emrg-preserved-rebuild() { emerge ${1:--a} @preserved-rebuild; }
 alias ecurr="watch -ctn 30 genlop -c"
 alias ehist="genlop -it"
@@ -66,18 +66,30 @@ crossdev-netbook() {
 
 alias docker-clean="docker system prune --volumes"
 
-mnt-portage() {
-  local t="/var/tmp/portage"
-  if [ -d $t ]; then
-      if read -q "?Remove $t? "; then
-        echo
-        rm -rfv $t
-      else
-        echo
-      fi
+resize-tmp() {
+  local size="3.0G"
+  [ `df --output=size /tmp | tail -1` != "$size" ] \
+  && size=${1:-10g}
+  if mount -o remount,size=${size} /tmp; then
+    echo "Size of /tmp is set to: $size"
+  fi
+}
+
+efi-sign() {
+  [[ -z ${SECUREBOOTKEY} && -z ${SECUREBOOTCERT} ]] \
+  && eval "$(grep ^SECUREBOOT `which buildkernel`)"
+
+  if [[ -z ${SECUREBOOTKEY} || -z ${SECUREBOOTCERT} ]]; then
+    echo "Please specify SECUREBOOTKEY and SECUREBOOTCERT env vars."
+    return 1
   fi
 
-  mkdir -p $t
-  mount -v $t
+  local in="$1"
+  local out="$in.signed"
+
+  if sbsign --key "${SECUREBOOTKEY}" --cert "${SECUREBOOTCERT}" \
+            --output "$out" \
+            "$in"; then
+    echo "Signed: $out"
+  fi
 }
-alias umnt-portage="umount -v /var/tmp/portage"

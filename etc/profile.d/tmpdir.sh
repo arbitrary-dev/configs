@@ -7,7 +7,6 @@ if [ $USER ]; then
 fi
 
 mkdir /tmp/var 2> /dev/null \
-&& chmod 1777 /tmp/var \
 && rm -rf /var/tmp \
 && ln -s /tmp/var /var/tmp
 

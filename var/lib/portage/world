@@ -17,8 +17,8 @@ app-eselect/eselect-repository
 app-i18n/ibus-table-others
 app-i18n/mozc
 app-misc/jq
+app-misc/neofetch
 app-misc/screen
-app-misc/screenfetch
 app-office/gnumeric
 app-portage/genlop
 app-portage/gentoolkit
@@ -84,6 +84,7 @@ net-print/cups-windows
 net-vpn/openconnect
 net-wireless/blueman
 net-wireless/wpa_supplicant
+sys-apps/fwupd
 sys-apps/hdparm
 sys-apps/lm-sensors
 sys-apps/pcsc-lite
@@ -96,7 +97,6 @@ sys-devel/clang
 sys-devel/crossdev
 sys-devel/distcc
 sys-devel/gcc
-sys-firmware/intel-microcode
 sys-fs/compsize
 sys-fs/dosfstools
 sys-fs/exfat-utils
