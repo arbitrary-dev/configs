@@ -56,3 +56,4 @@ sys-cluster/kubernetes -kube-apiserver -kube-controller-manager -kube-proxy -kub
 sys-kernel/buildkernel -plymouth
 app-text/mupdf -opengl -javascript -ssl
 sys-apps/fwupd nvme synaptics thunderbolt uefi
+net-misc/curl telnet

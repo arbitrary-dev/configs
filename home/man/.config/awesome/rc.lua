@@ -121,7 +121,11 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- {{{ Wibar
 -- Create a textclock widget
 os.setlocale("ja_JP.UTF-8")
-mytextclock = wibox.widget.textclock(" %b%-d日「%a」%R ")
+mytextclock = wibox.widget.textclock("%b%-d日「%a」%R ")
+if true then
+  local cal = awful.widget.calendar_popup.month({ long_weekdays = true })
+  cal:attach(mytextclock, 'tr')
+end
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -204,18 +208,94 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
 
-    local ok, power = pcall(require, "power_widget")
-    if not ok then -- fix "attempt to call field 'new' (a nil value)" error
-      local gears = require("gears")
-      local table = table
+    local vicious = require("vicious")
 
-      -- Reverse package.path so that our enum.lua is found before LGI's
-      local paths = gears.string.split(package.path, ';')
-      package.path = table.concat(gears.table.reverse(paths), ';')
+    -- Battery
 
-      package.loaded.enum = nil -- "Unload" LGI's enum
+    bat_widget = wibox.widget.textbox()
+    if true then
+      bat_tooltip = awful.tooltip({ objects = { bat_widget },})
+      vicious.register(
+        bat_widget,
+        vicious.widgets.bat,
+        function(widget, args)
+          bat_tooltip:set_text(
+            ('%s%s'):format(
+              args[1]:gsub('↯', 'Full')
+                     :gsub('⌁', 'Whatever!')
+                     :gsub('-', 'Discharging')
+                     :gsub('+', 'Charging'),
+              args[3] == 'N/A' and '' or ' in ' .. args[3]
+            )
+          )
+          return ('<span size="large">電</span>「%s%%」'):format(
+                  args[2])
+        end,
+        61,
+        "BAT0"
+      )
+    end
 
-      power = require("power_widget") -- Try again
+    -- Memory widget
+
+    function mg(mem)
+      if mem >= 1000 then
+        mem = math.floor(mem/102.4+0.5) / 10 .. 'G'
+      else
+        mem = mem .. 'M'
+      end
+      return mem
+    end
+
+    function to_m(bytes)
+      return math.floor(bytes / 1024^2 + 0.5)
+    end
+
+    mem_widget = wibox.widget.textbox()
+    if true then
+      local mem_tooltip = awful.tooltip({ objects = { mem_widget },})
+      vicious.cache(vicious.widgets.mem)
+      vicious.register(
+        mem_widget,
+        vicious.widgets.mem,
+        function (widget, args)
+          mem = mg(args[2])
+
+          swap = args[6]
+          if swap > 64 then
+            swap = ' + ' .. mg(swap)
+
+            for line in io.lines("/sys/block/zram0/mm_stat") do
+              zram = {}
+              i = 1
+              for v in line:gmatch('%d+') do
+                zram[i] = tonumber(v)
+                i = i + 1
+              end
+
+              zused = zram[3]
+              zorig = zram[1]
+              zcomp = math.floor((zorig - zram[2])/zorig*100+0.5)
+              ztotl = zram[4]
+
+              mem_tooltip:set_text((
+                'Zram stats:\n%s original\n%s of %s used%s'
+              ):format(
+                mg(to_m(zorig)),
+                mg(to_m(zused)),
+                mg(to_m(ztotl)),
+                zcomp <= 0 and '' or ' (' .. zcomp .. '% compression)'
+              ))
+            end
+          else
+            swap = ''
+            mem_tooltip:set_text("Have a nice day!")
+          end
+
+          return ("<span size='large'>腦</span>「" .. mem .. swap .. "」")
+        end,
+        7
+      )
     end
 
     -- Create the wibox
@@ -232,9 +312,11 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            power,
-            wibox.widget.systray(),
+            wibox.widget.textbox('   '),
+            --mykeyboardlayout,
+            mem_widget,
+            bat_widget,
+            --wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
         },
@@ -616,4 +698,4 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
--- vim: et ts=4 sts=4 sw=4
+-- vim: et ts=2 sts=2 sw=2

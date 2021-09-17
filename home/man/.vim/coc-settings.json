@@ -4,29 +4,18 @@
 
   "metals.enable": true,
   //"metals.javaHome": "/usr/lib64/openjdk-8",
-  //"metals.javaHome": "/usr/lib64/openjdk-11",
-  "metals.javaHome": "/usr/lib64/openjdk-15",
+  "metals.javaHome": "/usr/lib64/openjdk-11",
+  //"metals.javaHome": "/usr/lib64/openjdk-16",
+  "metals.showImplicitConversionsAndClasses": true,
+  "metals.showImplicitArguments": true,
 
   "languageserver": {
     "haskell": {
       "enable": true,
-      "command": "hie-wrapper",
+      "command": "haskell-language-server-wrapper",
       "args": ["--lsp"],
-      "rootPatterns": [
-        "stack.yaml",
-        "cabal.config",
-        "package.yaml"
-      ],
-      "filetypes": [
-        "hs",
-        "lhs",
-        "haskell"
-      ],
-      "initializationOptions": {
-        "languageServerHaskell": {
-          "hlintOn": true
-        }
-      }
+      "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
+      "filetypes": ["haskell", "lhaskell"]
     }
   },
 
@@ -46,5 +35,6 @@
   "diagnostic.infoSign":    "I",
   "diagnostic.hintSign":    "H",
 
+  "coc.preferences.promptInput": false,
   "coc.preferences.extensionUpdateCheck": "never"
 }

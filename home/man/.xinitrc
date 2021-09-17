@@ -16,7 +16,7 @@ ibus-daemon -drx
 # Decreases touchpad sensitivity (was 30)
 synclient FingerHigh=52
 
-# Required for power_widget to work (Awesome WM)
-eval `luarocks path --bin`
+# See: ~/.xbindkeysrc
+xbindkeys
 
-exec awesome
+exec dbus-launch --autolaunch=$(cat /var/lib/dbus/machine-id) awesome
