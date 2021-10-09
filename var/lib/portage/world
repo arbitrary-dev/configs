@@ -1,4 +1,5 @@
 =sys-kernel/gentoo-sources-5.4.92
+app-admin/stow
 app-admin/sudo
 app-admin/testdisk
 app-arch/p7zip
@@ -40,7 +41,6 @@ media-libs/alsa-lib
 media-sound/bluez-alsa
 media-sound/lilypond
 media-sound/mpd
-media-sound/mpdscribble
 media-sound/ncmpcpp
 media-video/ffmpeg
 media-video/mpv
@@ -66,6 +66,7 @@ sys-devel/clang
 sys-devel/distcc
 sys-devel/gdb
 sys-fs/dosfstools
+sys-fs/f2fs-tools
 sys-fs/go-mtpfs
 sys-kernel/genkernel
 sys-kernel/gentoo-sources

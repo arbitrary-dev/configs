@@ -43,4 +43,3 @@ media-video/mplayer aalib fbcon libcaca mad samba theora faad x264 xvid -dvd -dv
 #app-emulation/wine -run-exes -realtime -perl -nls -mp3 -mono -ncurses s3tc osmesa v4l xcomposite staging
 media-video/mpv -luajit -quvi libcaca
 sys-auth/polkit elogind
-

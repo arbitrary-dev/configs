@@ -1,1 +1,2 @@
+# For packages hogging up the memory
 MAKEOPTS="-j2"
