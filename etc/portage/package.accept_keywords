@@ -1,0 +1,13 @@
+# *-bin only needed for initial merge
+dev-java/openjdk-bin:17 ~amd64
+dev-java/openjdk:17 ~amd64
+
+gui-libs/greetd ~amd64
+gui-apps/tuigreet ~amd64
+
+gui-apps/gammastep::alxu ~amd64
+gui-apps/wev::guru ~amd64
+www-client/ungoogled-chromium::pf4public ~amd64
+lxde-base/lxappearance ~amd64
+dev-python/pyotp ~amd64
+dev-libs/bemenu ~amd64

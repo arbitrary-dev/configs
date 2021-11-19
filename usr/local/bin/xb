@@ -1,0 +1,13 @@
+#!/bin/sh
+DEV=(/sys/class/backlight/*)
+DEV=${DEV[0]}
+echo "Using: $DEV"
+MAX=`cat $DEV/max_brightness` || exit 1
+
+if (( $1 > $MAX )); then
+  echo "$1 exceeds max allowed ($MAX)"
+  exit 1
+fi
+
+sudo sh -c "echo $1 > $DEV/brightness" || exit 1
+echo "Brightness updated."
