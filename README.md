@@ -1,4 +1,4 @@
-config
-======
+configs
+=======
 
-Configs separated in several branches per each system.
+Configs separated in several branches per system.
