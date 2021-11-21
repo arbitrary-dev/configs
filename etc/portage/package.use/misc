@@ -19,3 +19,5 @@ media-libs/mesa X
 media-libs/libglvnd X
 x11-libs/libva X
 dev-qt/qtgui eglfs
+sys-kernel/linux-firmware savedconfig
+sys-kernel/gentoo-sources experimental

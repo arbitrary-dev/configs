@@ -11,3 +11,4 @@ www-client/ungoogled-chromium::pf4public ~amd64
 lxde-base/lxappearance ~amd64
 dev-python/pyotp ~amd64
 dev-libs/bemenu ~amd64
+=sys-kernel/gentoo-sources-5.15* ~amd64

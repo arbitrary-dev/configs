@@ -221,7 +221,7 @@ set $ps1 Print
 set $ps2 Control+Print
 set $ps3 Alt+Print
 set $ps4 Alt+Control+Print
- 
+
 bindsym $ps1 exec grim - | wl-copy
 bindsym $ps2 exec grim -g "$(slurp)" - | wl-copy
 bindsym $ps3 exec grim $(xdg-user-dir PICTURES)/ps_$(date +"%Y%m%d%H%M%S").png
@@ -248,6 +248,7 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
+for_window [app_id="Alacritty"] floating enable
 for_window [title="Save File" app_id="chromium-browser"] floating enable
 for_window [title="Picture in picture"] floating enable, sticky enable
 bindsym $mod+s sticky toggle
