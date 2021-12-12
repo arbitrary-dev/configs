@@ -20,6 +20,7 @@ app-i18n/mozc
 app-misc/jq
 app-misc/neofetch
 app-misc/screen
+app-misc/yq
 app-office/gnumeric
 app-portage/genlop
 app-portage/gentoolkit
@@ -34,9 +35,7 @@ cross-i686-pc-linux-gnu/glibc
 cross-i686-pc-linux-gnu/linux-headers
 dev-haskell/stack-bin
 dev-java/openjdk:11
-dev-java/openjdk:15
 dev-java/openjdk:8
-dev-java/openjdk::alxu
 dev-libs/opensc
 dev-lua/luarocks
 dev-perl/rename
@@ -46,8 +45,8 @@ dev-python/pip
 dev-python/wxpython
 dev-util/ccache
 dev-util/ctags
-dev-util/nvidia-cuda-toolkit
 dev-vcs/git
+dev-vcs/git-lfs
 kde-apps/kdenlive
 media-fonts/arphicfonts
 media-fonts/dejavu
@@ -78,7 +77,9 @@ media-sound/pulseaudio-modules-bt
 media-video/ffmpeg
 media-video/mpv
 net-dns/openresolv
+net-fs/cifs-utils
 net-fs/samba
+net-im/toxic
 net-im/zoom::gentoo
 net-irc/irssi
 net-misc/aria2
@@ -91,15 +92,18 @@ net-misc/youtube-dl
 net-p2p/rtorrent
 net-print/cups-windows
 net-vpn/openconnect
+net-vpn/pan-globalprotect-okta::arbitrary-dev
 net-wireless/blueman
 net-wireless/wpa_supplicant
 sys-apps/fwupd
 sys-apps/hdparm
 sys-apps/lm-sensors
 sys-apps/pcsc-lite
+sys-apps/portage
 sys-apps/smartmontools
 sys-apps/the_silver_searcher
 sys-apps/yarn
+sys-boot/bmaptools
 sys-cluster/kubectl
 sys-devel/binutils
 sys-devel/clang

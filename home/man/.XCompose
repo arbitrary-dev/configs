@@ -1,5 +1,7 @@
 # /usr/share/X11/locale/en_US.UTF-8/Compose
+# After update: `ibus restart`
 
+<Multi_key> <asterisk> <asterisk> : "†"
 <Multi_key> <plus> <plus> : "🕇"
 <Multi_key> <o> <o> : "°"
 <Multi_key> <t> <m> : "™"

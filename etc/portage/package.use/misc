@@ -9,6 +9,7 @@ media-fonts/noto-emoji buildfont
 
 # required by media-gfx/gimp
 app-text/poppler cairo
+media-gfx/gimp webp
 
 # required by sys-auth/polkit
 sys-auth/consolekit policykit
@@ -55,5 +56,6 @@ media-fonts/noto -extra
 sys-cluster/kubernetes -kube-apiserver -kube-controller-manager -kube-proxy -kube-scheduler -kubeadm -kubelet
 sys-kernel/buildkernel -plymouth
 app-text/mupdf -opengl -javascript -ssl
-sys-apps/fwupd nvme synaptics thunderbolt uefi
+sys-apps/fwupd nvme synaptics thunderbolt uefi gnutls
 net-misc/curl telnet
+app-office/libreoffice-bin PYTHON_SINGLE_TARGET: python3_9

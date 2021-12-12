@@ -5,7 +5,6 @@
   "metals.enable": true,
   //"metals.javaHome": "/usr/lib64/openjdk-8",
   "metals.javaHome": "/usr/lib64/openjdk-11",
-  //"metals.javaHome": "/usr/lib64/openjdk-16",
   "metals.showImplicitConversionsAndClasses": true,
   "metals.showImplicitArguments": true,
 

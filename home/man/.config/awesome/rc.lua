@@ -616,6 +616,7 @@ awful.rules.rules = {
 
         name = {
           "Event Tester",  -- xev.
+          "Picture in picture", -- Chromium
         },
         role = {
           "AlarmWindow",  -- Thunderbird's calendar.
