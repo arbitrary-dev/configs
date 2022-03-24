@@ -42,7 +42,7 @@ www-client/ungoogled-chromium hangouts optimize-thinlto optimize-webui -system-l
 
 net-misc/aria2 bittorrent
 media-sound/ncmpcpp outputs taglib
-app-emulation/docker btrfs
+app-containers/docker btrfs
 media-sound/mpd -network
 media-video/ffmpeg libass chromium fdk vaapi vdpau vorbis vpx webp x264 xvid openssl
 media-gfx/gimp -alsa
