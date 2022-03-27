@@ -1,5 +1,4 @@
 >=net-vpn/openconnect-8.11
->=sys-kernel/gentoo-sources-5.5
 
 # Fix package to match the one on the netbook
 >=sys-devel/distcc-3.4
