@@ -1,3 +1,6 @@
+# Depends on X otherwise
+media-video/mpv -vdpau -xv
+
 # If installed without harfbuzz support - may lead to minor font rendering problems,
 # see bug 712374.
 media-libs/freetype harfbuzz
@@ -5,8 +8,6 @@ media-libs/freetype harfbuzz
 # New vaapi code depends heavily on libvpx-1.9, see #43
 # Consider disabling system-libvpx USE flag if using vaapi
 www-client/ungoogled-chromium::pf4public optimize-thinlto thinlto optimize-webui system-openjpeg hangouts
-# https://github.com/PF4Public/gentoo-overlay/issues/110
-www-client/ungoogled-chromium::pf4public -vdpau
 # The following REQUIRED_USE flag constraints are unsatisfied:
 #     wayland? ( gles2 )
 media-libs/libsdl2 gles2
@@ -15,9 +16,27 @@ gui-apps/gammastep drm
 app-arch/p7zip -pch -wxwidgets
 media-audio/pulseaudio native-headset ofono-headset
 
+# gimp <2.99.2 requires X
+gui-wm/sway X
+net-im/toxic X
 media-libs/mesa X
 media-libs/libglvnd X
 x11-libs/libva X
 dev-qt/qtgui eglfs
+app-i18n/ibus X
+
+media-sound/ncmpcpp lto taglib
+media-sound/mpd faad libmpdclient libsamplerate opus sqlite wavpack -udisks
+media-sound/mpd upnp expat nfs samba
+
 sys-kernel/linux-firmware savedconfig
 sys-kernel/gentoo-sources experimental
+
+media-fonts/noto cjk
+app-i18n/mozc ibus
+
+media-gfx/gimp webp
+sys-apps/debianutils -installkernel
+sys-apps/fwupd uefi gnutls
+app-misc/recoll -qt5 -spell
+sys-devel/distcc -gtk

@@ -18,6 +18,8 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
+# TODO: try alacritty + fzf
+#       https://github.com/swaywm/sway/issues/1367#issuecomment-495306710
 set $menu bemenu-run | xargs swaymsg exec --
 
 ### Output configuration
@@ -136,12 +138,12 @@ input type:keyboard {
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
     bindsym $mod+Shift+s splith
-    bindcode $mod+124 splitv
+    bindcode $mod+Alt+s splitv
 
     # Switch the current container between different layout styles
-    #bindsym $mod+s layout stacking
-    #bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    bindsym $mod+Alt+s layout stacking
+    bindsym $mod+Alt+t layout tabbed
+    bindsym $mod+Alt+p layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
@@ -250,8 +252,10 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 for_window [app_id="Alacritty"] floating enable
 for_window [title="Save File" app_id="chromium-browser"] floating enable
+for_window [app_id="mpv"] floating enable
+for_window [app_id="pavucontrol"] floating enable
 for_window [title="Picture in picture"] floating enable, sticky enable
-bindsym $mod+s sticky toggle
+bindsym $mod+t sticky toggle
 
 bindsym $mod+Ctrl+s exec loginctl suspend-then-hibernate
 bindsym $mod+Ctrl+h exec loginctl hibernate

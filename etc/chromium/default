@@ -7,4 +7,5 @@
 # Options to pass to ungoogled-chromium.
 # See https://github.com/Eloston/ungoogled-chromium#features for additional
 # command-line switches.
-CHROMIUM_FLAGS="--enable-features=VaapiVideoDecoder -enable-features=UseOzonePlatform -ozone-platform=wayland"
+
+CHROMIUM_FLAGS="--disable-sharing-hub --hide-sidepanel-button --enable-features=VaapiVideoDecoder -enable-features=UseOzonePlatform -ozone-platform=wayland"
