@@ -1,1 +1,1 @@
-PORTAGE_TMPDIR="/var/tmp/portage_no-tmpfs"
+PORTAGE_TMPDIR="/opt/.portage_no-tmpfs"
