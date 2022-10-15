@@ -258,11 +258,16 @@ bindcode $mod+94 exec /home/dolf/.local/bin/mpd-toggle
 bindcode $mod+$alt+94 exec mpc next
 bindcode $mod+Shift+94 exec mpc prev
 
+# swaymsg -t get_tree | jq . | vim -
 for_window [app_id="Alacritty"] floating enable
-for_window [title="Save File" app_id="chromium-browser"] floating enable
 for_window [app_id="mpv"] floating enable
 for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="blueman-manager"] floating enable
+
 for_window [title="Picture in picture"] floating enable, sticky enable
+for_window [title="DevTools.*" app_id="chromium-browser"] floating enable
+for_window [title="Save File" app_id="chromium-browser"] floating enable
+
 bindsym $mod+t sticky toggle
 
 bindsym $mod+Ctrl+s exec loginctl suspend-then-hibernate
