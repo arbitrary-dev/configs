@@ -8,7 +8,7 @@
 # See https://github.com/Eloston/ungoogled-chromium#features for additional
 # command-line switches.
 
-CHROMIUM_FLAGS="-enable-features=UseOzonePlatform -ozone-platform=wayland"
+CHROMIUM_FLAGS="--enable-features=UseOzonePlatform --ozone-platform=wayland"
 CHROMIUM_FLAGS="--enable-features=VaapiVideoDecoder --disable-features=UseChromeOSDirectVideoDecoder ${CHROMIUM_FLAGS}"
 CHROMIUM_FLAGS="--disable-sharing-hub --hide-sidepanel-button ${CHROMIUM_FLAGS}"
 CHROMIUM_FLAGS="--remove-tabsearch-button --scroll-tabs=never --tab-hover-cards=none ${CHROMIUM_FLAGS}"
