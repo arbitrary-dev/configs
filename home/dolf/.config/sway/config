@@ -6,7 +6,8 @@
 
 ### Variables
 #
-# Logo key. Use Mod1 for Alt.
+set $alt Mod1
+# Logo key.
 set $mod Mod4
 # Home row direction keys, like vim
 set $left h
@@ -199,9 +200,11 @@ mode "resize" {
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
+    height 22
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
+    # Pango workaround is needed to offset ♪ in status.sh
+    pango_markup enabled
+
     status_command ~/.config/sway/status.sh
 
     colors {
@@ -249,6 +252,11 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# According to `wev`: sym: less, utf8: '<', key: 94
+bindcode $mod+94 exec /home/dolf/.local/bin/mpd-toggle
+bindcode $mod+$alt+94 exec mpc next
+bindcode $mod+Shift+94 exec mpc prev
 
 for_window [app_id="Alacritty"] floating enable
 for_window [title="Save File" app_id="chromium-browser"] floating enable
