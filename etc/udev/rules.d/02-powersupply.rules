@@ -1,0 +1,3 @@
+SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_STATUS}=="Charging", RUN+="/usr/local/bin/psw schedutil"
+SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_STATUS}=="Unknown", RUN+="/usr/local/bin/psw schedutil"
+SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_STATUS}=="Discharging", RUN+="/usr/local/bin/psw powersave"
