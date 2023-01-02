@@ -40,6 +40,10 @@ app-editors/vim X
 # Consider disabling system-libvpx USE flag if using vaapi
 www-client/ungoogled-chromium hangouts optimize-thinlto optimize-webui -system-libvpx system-openjpeg thinlto vaapi vdpau
 
+# buildkernel: Error: Caught signal - exiting
+# ERROR: Binary /sbin/lvm could not be found
+sys-fs/lvm2 lvm
+
 net-misc/aria2 bittorrent
 media-sound/ncmpcpp outputs taglib
 app-containers/docker btrfs
