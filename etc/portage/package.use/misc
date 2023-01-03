@@ -39,7 +39,7 @@ media-gfx/gimp -alsa
 dev-java/openjdk source
 x11-terms/rxvt-unicode xft 256-color
 media-gfx/imagemagick jpeg webp png
-media-gfx/feh exif
+media-gfx/feh exif inotify
 x11-wm/awesome luajit
 app-emulation/libvirt virt-network
 media-fonts/noto -extra
