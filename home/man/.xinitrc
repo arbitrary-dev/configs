@@ -1,6 +1,6 @@
 [ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
 
-xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --setprovideroutputsource NVIDIA-G0 modesetting
 xrandr --auto
 
 urxvtd --quiet --opendisplay --fork

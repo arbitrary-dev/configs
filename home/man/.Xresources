@@ -1,1 +1,10 @@
 #include ".config/urxvt.conf"
+
+! Laptop monitor
+Xft.dpi: 96
+
+! LG monitor
+!Xft.dpi: 120
+
+Xft.antialias: true
+Xft.hinting: true
