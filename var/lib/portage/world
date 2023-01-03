@@ -40,7 +40,6 @@ media-gfx/feh
 media-gfx/gimp
 media-gfx/graphviz
 media-gfx/imagemagick
-media-gfx/inkscape
 media-sound/mpd
 media-sound/ncmpcpp
 media-sound/pavucontrol
@@ -52,7 +51,6 @@ mpv-plugin/mpv-mpris
 net-dns/openresolv
 net-fs/cifs-utils
 net-fs/samba
-net-im/zoom::gentoo
 net-irc/irssi
 net-misc/curl
 net-misc/dhcpcd

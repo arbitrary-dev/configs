@@ -17,14 +17,6 @@ sys-auth/consolekit policykit
 # required by gnome-base/gnome-keyring
 app-crypt/gcr gtk
 
-# Wine
-app-emulation/wine-vanilla -cups -udisks vulkan vkd3d osmesa gstreamer
-media-plugins/gst-plugins-meta ogg
-media-plugins/alsa-plugins abi_x86_32
-# for bluez-alsa to compile
-sys-libs/readline abi_x86_32
-media-sound/bluez-alsa abi_x86_32
-
 # RegEx support for Jq
 app-misc/jq oniguruma
 
@@ -59,4 +51,3 @@ sys-kernel/buildkernel -plymouth
 app-text/mupdf -opengl -javascript -ssl
 sys-apps/fwupd nvme synaptics thunderbolt uefi gnutls
 net-misc/curl telnet
-app-office/libreoffice-bin PYTHON_SINGLE_TARGET: python3_9
