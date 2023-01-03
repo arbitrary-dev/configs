@@ -7,6 +7,7 @@
 /dev/mapper/vg1-opt  /opt  btrfs defaults,noatime,discard,compress=lzo,ssd  0 0
 
 tmpfs /tmp tmpfs size=3G,rw,nosuid,noatime,nodev,mode=1777 0 0
+tmpfs /var/tmp/portage tmpfs size=16G,uid=portage,gid=portage,mode=775,nosuid,noatime,nodev 0 0
 
 /dev/zram0 swap swap pri=16383 0 0
 
