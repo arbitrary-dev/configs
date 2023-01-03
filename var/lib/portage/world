@@ -9,13 +9,14 @@ app-crypt/efitools
 app-editors/vim
 app-eselect/eselect-repository
 app-i18n/mozc
+app-misc/gcal
 app-misc/jq
 app-misc/neofetch
 app-misc/screen
 app-misc/yq
 app-portage/genlop
 app-portage/gentoolkit
-app-portage/repoman
+app-portage/mirrorselect
 app-shells/gentoo-zsh-completions
 app-shells/zsh
 app-shells/zsh-completions
@@ -47,6 +48,7 @@ media-sound/playerctl
 media-sound/pulseaudio
 media-sound/pulseaudio-modules-bt
 media-video/mpv
+mpv-plugin/mpv-mpris
 net-dns/openresolv
 net-fs/cifs-utils
 net-fs/samba
@@ -69,6 +71,7 @@ sys-apps/hdparm
 sys-apps/lm-sensors
 sys-apps/ripgrep
 sys-apps/smartmontools
+sys-apps/usbutils
 sys-cluster/kubectl
 sys-fs/compsize
 sys-fs/dosfstools
@@ -87,6 +90,7 @@ sys-power/thermald
 sys-process/lsof
 sys-process/parallel
 www-client/ungoogled-chromium
+x11-apps/mesa-progs
 x11-apps/xev
 x11-apps/xrandr
 x11-base/xorg-server

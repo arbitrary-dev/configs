@@ -35,10 +35,7 @@ media-fonts/mplus-outline-fonts ipafont
 # For clipboard support in X
 app-editors/vim X
 
-# As of 85.0.4183.102_p1:
-# New vaapi code depends heavily on libvpx-1.9, see #43
-# Consider disabling system-libvpx USE flag if using vaapi
-www-client/ungoogled-chromium hangouts optimize-thinlto optimize-webui -system-libvpx system-openjpeg thinlto vaapi vdpau
+www-client/ungoogled-chromium hangouts optimize-thinlto optimize-webui system-openjpeg thinlto vaapi vdpau
 
 # buildkernel: Error: Caught signal - exiting
 # ERROR: Binary /sbin/lvm could not be found

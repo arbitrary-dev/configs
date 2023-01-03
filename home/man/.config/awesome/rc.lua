@@ -582,6 +582,8 @@ root.keys(globalkeys)
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
+--
+-- Use `xprop` to get info on client window.
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
@@ -617,6 +619,7 @@ awful.rules.rules = {
         name = {
           "Event Tester",  -- xev.
           "Picture in picture", -- Chromium
+          "Bluetooth Devices",
         },
         role = {
           "AlarmWindow",  -- Thunderbird's calendar.
