@@ -4,6 +4,8 @@
   "list.source.grep.useLiteral": false,
 
   "metals.enable": true,
+  // TODO https://github.com/scalameta/coc-metals/issues/416
+  //"metals.serverVersion": "0.11.5",
   //"metals.javaHome": "/usr/lib64/openjdk-8",
   "metals.javaHome": "/usr/lib64/openjdk-11",
   "metals.showImplicitConversionsAndClasses": true,
