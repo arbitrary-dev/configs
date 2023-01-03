@@ -1,9 +1,6 @@
 media-fonts/source-pro cjk
 media-fonts/source-han-sans l10n_ja
 
-# bluetooth is replaced by media-sound/pulseaudio-modules-bt
-media-sound/pulseaudio -bluetooth
-
 # Because pre-built font could be not fully updated or miss some items
 media-fonts/noto-emoji buildfont
 
