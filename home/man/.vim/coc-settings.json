@@ -1,5 +1,6 @@
 {
-  "list.source.grep.command": "ag",
+  "list.source.grep.command": "rg",
+  "list.source.grep.args": ["--pcre2"],
   "list.source.grep.useLiteral": false,
 
   "metals.enable": true,
