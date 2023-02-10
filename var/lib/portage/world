@@ -6,7 +6,9 @@ app-arch/p7zip
 app-containers/docker
 app-containers/docker-compose
 app-crypt/efitools
+app-editors/neovim
 app-editors/vim
+app-emulation/qemu
 app-eselect/eselect-repository
 app-i18n/mozc
 app-misc/gcal
