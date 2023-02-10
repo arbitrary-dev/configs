@@ -24,7 +24,10 @@ media-fonts/mplus-outline-fonts ipafont
 # For clipboard support in X
 app-editors/vim X
 
-www-client/ungoogled-chromium hangouts optimize-thinlto optimize-webui system-openjpeg thinlto vaapi vdpau
+www-client/ungoogled-chromium hangouts optimize-webui system-openjpeg vaapi vdpau
+www-client/ungoogled-chromium optimize-thinlto pgo thinlto
+# https://github.com/PF4Public/gentoo-overlay/issues/197
+#www-client/ungoogled-chromium -optimize-thinlto -thinlto -clang
 
 # buildkernel: Error: Caught signal - exiting
 # ERROR: Binary /sbin/lvm could not be found
