@@ -79,7 +79,7 @@ sys-fs/fuse-exfat
 sys-fs/mtpfs
 sys-kernel/buildkernel
 sys-kernel/gentoo-sources
-sys-kernel/gentoo-sources:5.15.94
+sys-kernel/gentoo-sources:5.15.102
 sys-kernel/linux-firmware
 sys-power/acpid
 sys-power/intel-undervolt
