@@ -26,7 +26,7 @@ set $menu bemenu-run | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/pics/_misc/krupps-factory.png fill
+output * bg ~/Pictures/_misc/krupps-factory.png fill
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 output eDP-1 scale 2
@@ -229,8 +229,8 @@ set $ps4 Alt+Control+Print
 
 bindsym $ps1 exec grim - | wl-copy
 bindsym $ps2 exec grim -g "$(slurp)" - | wl-copy
-bindsym $ps3 exec grim $(xdg-user-dir PICTURES)/ps_$(date +"%Y%m%d%H%M%S").png
-bindsym $ps4 exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/ps_$(date +"%Y%m%d%H%M%S").png
+bindsym $ps3 exec grim /tmp/screenshot_$(date +"%Y-%m-%d_%H%M%S").png
+bindsym $ps4 exec grim -g "$(slurp)" /tmp/areashot_$(date +"%Y-%m-%d_%H%M%S").png
 
 #
 # https://github.com/swaywm/sway/wiki/GTK-3-settings-on-Wayland
@@ -258,7 +258,7 @@ bindcode $mod+94 exec /home/dolf/.local/bin/mpd-toggle
 bindcode $mod+$alt+94 exec mpc next
 bindcode $mod+Shift+94 exec mpc prev
 
-# swaymsg -t get_tree | jq . | vim -
+# swaymsg -t get_tree | jq . | vim +':set fdm=indent' -
 for_window [app_id="Alacritty"] floating enable
 for_window [app_id="mpv"] floating enable
 for_window [app_id="pavucontrol"] floating enable
@@ -267,6 +267,7 @@ for_window [app_id="blueman-manager"] floating enable
 for_window [title="Picture in picture"] floating enable, sticky enable
 for_window [title="DevTools.*" app_id="chromium-browser"] floating enable
 for_window [title="Save File" app_id="chromium-browser"] floating enable
+for_window [title="Open Files" app_id="chromium-browser"] floating enable
 
 bindsym $mod+t sticky toggle
 

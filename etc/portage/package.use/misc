@@ -1,3 +1,6 @@
+# For Metals to navigate to
+dev-java/openjdk source
+
 # Depends on X otherwise
 media-video/mpv -vdpau -xv
 
@@ -22,13 +25,15 @@ gui-wm/sway X
 net-im/toxic X
 media-libs/mesa X
 media-libs/libglvnd X
-x11-libs/libva X
+media-libs/libva X
 dev-qt/qtgui eglfs
 app-i18n/ibus X
+# required by x11-libs/gtk+-2.24.33:2/2 ?
+x11-libs/cairo X aqua
+dev-cpp/cairomm X
 
 media-sound/ncmpcpp lto taglib
 media-sound/mpd faad libmpdclient libsamplerate opus sqlite wavpack -udisks
-media-sound/mpd upnp expat nfs samba
 
 sys-kernel/linux-firmware savedconfig
 sys-kernel/gentoo-sources experimental
@@ -36,8 +41,20 @@ sys-kernel/gentoo-sources experimental
 media-fonts/noto cjk
 app-i18n/mozc ibus
 
+virtual/wine -abi_x86_32
+app-emulation/wine-vanilla -abi_x86_32
+app-emulation/wine-vanilla -cups -gecko -gstreamer -mingw -mono -udev -udisks -usb X -vkd3d -sdl -unwind
+
+# grep ^LVM /etc/genkernel.conf
+# LVM="yes"
+sys-fs/lvm2 lvm
+
 media-gfx/gimp webp
 sys-apps/debianutils -installkernel
 sys-apps/fwupd uefi gnutls
 app-misc/recoll -qt5 -spell
 sys-devel/distcc -gtk
+app-editors/vim -gpm -sound
+media-video/mpv -opengl
+app-text/mupdf -ssl
+sys-apps/fwupd nvme synaptics

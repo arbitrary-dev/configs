@@ -76,7 +76,6 @@ sys-boot/efibootmgr
 sys-devel/crossdev
 sys-devel/distcc
 sys-devel/multilib-gcc-wrapper
-sys-fs/android-file-transfer-linux
 sys-fs/btrfs-progs
 sys-fs/compsize
 sys-fs/dosfstools
