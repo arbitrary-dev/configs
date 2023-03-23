@@ -5,7 +5,7 @@
 #export TZ='Etc/UTC'
 
 # Options to pass to ungoogled-chromium.
-# See https://github.com/Eloston/ungoogled-chromium#features for additional
+# See https://github.com/ungoogled-software/ungoogled-chromium#feature-overview for additional
 # command-line switches.
 
 CHROMIUM_FLAGS="--enable-features=UseOzonePlatform --ozone-platform=wayland"
