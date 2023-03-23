@@ -5,6 +5,9 @@ dev-java/openjdk:17 ~amd64
 gui-libs/greetd ~amd64
 gui-apps/tuigreet ~amd64
 
+media-sound/mpd-mpris::guru ~amd64
+mpv-plugin/mpv-mpris::guru ~amd64
+
 gui-apps/gammastep::alxu ~amd64
 gui-apps/wev::guru ~amd64
 lxde-base/lxappearance ~amd64
