@@ -24,17 +24,21 @@ while true; do
   note='<span rise="-2pt">𝅘𝅥𝅮</span>'
   MUSIC=
   if pgrep mpd >/dev/null && (mpc | fgrep -q '[playing]'); then
-    MUSIC=`mpc -f "[$note [%artist% - ]%title% $note]" | grep 𝅘𝅥𝅮`
+    # Get metadata from MPD
+    MUSIC=`mpc -f "[[%artist% - ]%title%]" | head -1`
     if [ -z "$MUSIC" ]; then
       file=`mpc -f '[%file%]' | head -1`
-      MUSIC="$note "`basename "$file"`" $note"
+      MUSIC=`basename "$file"`
     fi
+  fi
+  if [ -n "$MUSIC" ]; then
     # Trim to 64 chars.
-    MUSIC=`printf "$MUSIC" | sed -E "s_($note) (.{64}).+ ($note)_\1 \2… \3_"`
-    MUSIC=`printf "$MUSIC" | sed -E "s_[ ,.\!?({]+(… $note)_\1_"`
+    MUSIC=`sed -E 's_(.{64}).+_\1…_' <<< "$MUSIC"`
+    MUSIC=`sed -E 's_[ ,.\!?({]+(…)$_\1_' <<< "$MUSIC"`
     # Address &'s.
-    MUSIC="$(printf "$MUSIC" | sed -E "s/&/&amp;/g")"
-    [ ! -z "$MUSIC" ] && MUSIC="$MUSIC  "
+    MUSIC=`sed -E 's/&/&amp;/g' <<< "$MUSIC"`
+    # Add final notes
+    MUSIC="$note $MUSIC $note  "
   fi
 
   echo "$MUSIC$BATTERY$CPU$MEMORY$DATETIME "
