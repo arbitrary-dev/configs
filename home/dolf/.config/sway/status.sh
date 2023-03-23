@@ -30,6 +30,20 @@ while true; do
       file=`mpc -f '[%file%]' | head -1`
       MUSIC=`basename "$file"`
     fi
+  else
+    # Get metadata from PulseAudio
+    MUSIC=`
+      pacmd list-sink-inputs \
+      | awk -F\" '
+        /state: RUNNING/ { is_playing = 1 }
+        is_playing && /media.name = / {
+          gsub(" - mpv$", "", $2)
+          gsub("^Playback$", "", $2) # chromium
+          print $2
+          exit
+        }
+      '
+    `
   fi
   if [ -n "$MUSIC" ]; then
     # Trim to 64 chars.
