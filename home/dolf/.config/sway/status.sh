@@ -1,7 +1,13 @@
 #!/bin/sh
 
 while true; do
-  CPU=`cut -d\  -f1 /proc/loadavg`'  '
+  CPU=`cut -d\  -f1 /proc/loadavg`
+  CPU+=' '`
+    sed -e s/schedutil/sched/  \
+        -e s/powersave/psave/  \
+        -e s/performance/perf/ \
+      /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+  `'  '
 
   MEMORY=`
     free --human \
