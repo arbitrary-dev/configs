@@ -15,6 +15,7 @@ while true; do
     # Get metadata from PulseAudio
     MUSIC=`
       pacmd list-sink-inputs \
+      | sed 's/\\\"/\&quot;/g' \
       | awk -F\" '
         /state: RUNNING/ { is_playing = 1 }
         is_playing && /media.name = / {
@@ -25,6 +26,8 @@ while true; do
         }
       '
     `
+    # Return escaped quotes back (were needed for the AWK script)
+    MUSIC=`sed 's/&quot;/"/g' <<< "$MUSIC"`
   fi
   if [ -n "$MUSIC" ]; then
     # Trim to 64 chars.
