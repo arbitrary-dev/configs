@@ -1,1 +1,2 @@
-KERNEL=="zram0", SUBSYSTEM=="block", DRIVER=="", ACTION=="add", ATTR{disksize}=="0", ATTR{comp_algorithm}="lz4hc", ATTR{mem_limit}="1625M", ATTR{disksize}="4875M", RUN+="/sbin/mkswap $env{DEVNAME}"
+# 517M because other 1108M (8%) of RAM will be handled by zswap
+KERNEL=="zram0", SUBSYSTEM=="block", DRIVER=="", ACTION=="add", ATTR{disksize}=="0", ATTR{comp_algorithm}="zstd", ATTR{mem_limit}="517M", ATTR{disksize}="2048M", RUN+="/sbin/mkswap $env{DEVNAME}"
