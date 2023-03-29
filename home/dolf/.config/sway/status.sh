@@ -58,10 +58,33 @@ while true; do
   `'  '
 
   MEMORY=`
-    free --human \
-    | awk '{print $3}' \
-    | sed -nE "s/(.+[GM])i/\1/p" \
-    | awk '{if (NR==1) printf "%s ",$0; else printf "(%s) ",$0}'`' '
+    awk '
+      /^MemTotal:/ { total = $2 }
+      /^MemAvailable:/ { avail = $2 }
+      total && avail {
+        memory = (total - avail) / 1024
+        if (memory < 1024) { printf "%dM", memory }
+        else { printf "%.2gG", memory / 1024 }
+        exit
+      }
+    ' /proc/meminfo
+  `
+  # Swap + Zswap
+  MEMORY+=`
+    awk '
+      /^SwapTotal:/ { swap_total = $2 }
+      /^SwapFree:/ { swap_free = $2 }
+      /^Zswapped:/ { zswap = $2 }
+      swap_total && swap_free && zswap != "" {
+        memory = (swap_total - swap_free + zswap) / 1024
+        # Show swap if 16+ Mb
+        if (memory > 16 && memory < 1024) { printf " (%dM)", memory }
+        else { printf " (%.2gG)", memory / 1024 }
+        exit
+      }
+    ' /proc/meminfo
+  `
+  MEMORY+='  '
 
   DATETIME=`date +'%Y-%m-%d %H:%M'`
 
