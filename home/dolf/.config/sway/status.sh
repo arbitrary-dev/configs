@@ -77,9 +77,11 @@ while true; do
       /^Zswapped:/ { zswap = $2 }
       swap_total && swap_free && zswap != "" {
         memory = (swap_total - swap_free + zswap) / 1024
-        # Show swap if 16+ Mb
-        if (memory > 16 && memory < 1024) { printf " (%dM)", memory }
-        else { printf " (%.2gG)", memory / 1024 }
+        # Show swap only if it is 64+ Mb
+        if (memory >= 64) {
+          if (memory < 1024) { printf " (%dM)", memory }
+          else { printf " (%.2gG)", memory / 1024 }
+        }
         exit
       }
     ' /proc/meminfo
