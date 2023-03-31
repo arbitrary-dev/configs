@@ -10,3 +10,5 @@ PARTLABEL=swap		swap	swap	sw		0 0
 
 tmpfs	/var/tmp/portage	tmpfs	size=3G,uid=portage,gid=portage,mode=775,noatime,nosuid,nodev	0 0
 tmpfs	/tmp			tmpfs	size=3G,noatime	0 0
+
+UUID=7438-0F1E /mnt/usb vfat noauto,rw,user 0 0
