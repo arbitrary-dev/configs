@@ -63,7 +63,8 @@ while true; do
       /^MemAvailable:/ { avail = $2 }
       total && avail {
         memory = (total - avail) / 1024
-        if (memory < 1024) { printf "%dM", memory }
+        if (memory < 1000) { printf "%dM", memory }
+        else if (memory < 1024) { printf "1G" }
         else { printf "%.2gG", memory / 1024 }
         exit
       }
@@ -79,7 +80,8 @@ while true; do
         memory = (swap_total - swap_free + zswap) / 1024
         # Show swap only if it is 64+ Mb
         if (memory >= 64) {
-          if (memory < 1024) { printf " (%dM)", memory }
+          if (memory < 1000) { printf " (%dM)", memory }
+          else if (memory < 1024) { printf "1G" }
           else { printf " (%.2gG)", memory / 1024 }
         }
         exit
