@@ -11,7 +11,10 @@ media-libs/freetype harfbuzz
 # New vaapi code depends heavily on libvpx-1.9, see #43
 # Consider disabling system-libvpx USE flag if using vaapi
 www-client/ungoogled-chromium optimize-webui system-openjpeg hangouts
-www-client/ungoogled-chromium clang optimize-thinlto thinlto pgo
+www-client/ungoogled-chromium clang optimize-thinlto thinlto
+# Requires clang-16+
+# https://github.com/PF4Public/gentoo-overlay/issues/214
+#www-client/ungoogled-chromium pgo
 # The following REQUIRED_USE flag constraints are unsatisfied:
 #     wayland? ( gles2 )
 media-libs/libsdl2 gles2

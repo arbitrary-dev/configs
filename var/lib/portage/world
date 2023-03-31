@@ -90,6 +90,6 @@ sys-power/powertop
 sys-power/upower
 sys-process/parallel
 virtual/wine
-www-client/ungoogled-chromium::arbitrary-dev
+www-client/ungoogled-chromium
 x11-misc/xdg-user-dirs
 x11-terms/alacritty
