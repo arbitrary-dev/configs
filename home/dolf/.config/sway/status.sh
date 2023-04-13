@@ -71,19 +71,19 @@ while true; do
       }
     ' /proc/meminfo
   `
-  # Swap + Zswap
+  # Swap
   MEMORY+=`
     awk '
       /^SwapTotal:/ { swap_total = $2 }
       /^SwapFree:/ { swap_free = $2 }
-      /^Zswapped:/ { zswap = $2 }
-      swap_total && swap_free && zswap != "" {
-        memory = (swap_total - swap_free + zswap) / 1024
+      # Zswapped seems to be included in the above metric
+      swap_total && swap_free {
+        used = (swap_total - swap_free) / 1024
         # Show swap only if it is 64+ Mb
-        if (memory >= 64) {
-          if (memory < 1000) { printf " (%dM)", memory }
-          else if (memory < 1024) { printf "1G" }
-          else { printf " (%.2gG)", memory / 1024 }
+        if (used >= 64) {
+          if (used < 1000) { printf " (%dM)", used }
+          else if (used < 1024) { printf "1G" }
+          else { printf " (%.2gG)", used / 1024 }
         }
         exit
       }
