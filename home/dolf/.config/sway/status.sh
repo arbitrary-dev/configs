@@ -20,7 +20,8 @@ while true; do
         /state: RUNNING/ { is_playing = 1 }
         is_playing && /media.name = / {
           gsub(" - mpv$", "", $2)
-          gsub("^Playback$", "", $2) # chromium
+          gsub("^(ALSA |)Playback$", "", $2) # chromium
+          gsub("^Simultaneous output on .+", "", $2) # some random apps
           print $2
           exit
         }
