@@ -1,1 +1,0 @@
-KERNEL=="zram0", SUBSYSTEM=="block", DRIVER=="", ACTION=="add", ATTR{disksize}=="0", ATTR{comp_algorithm}="lz4hc", ATTR{mem_limit}="8G", ATTR{disksize}="16G", RUN+="/sbin/mkswap $env{DEVNAME}"
