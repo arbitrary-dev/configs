@@ -25,7 +25,9 @@ media-fonts/mplus-outline-fonts ipafont
 app-editors/vim X
 
 www-client/ungoogled-chromium hangouts optimize-webui system-openjpeg vaapi vdpau
-www-client/ungoogled-chromium optimize-thinlto pgo thinlto
+www-client/ungoogled-chromium optimize-thinlto thinlto
+# https://github.com/PF4Public/gentoo-overlay/issues/214
+#www-client/ungoogled-chromium pgo
 # https://github.com/PF4Public/gentoo-overlay/issues/197
 #www-client/ungoogled-chromium -optimize-thinlto -thinlto -clang
 
