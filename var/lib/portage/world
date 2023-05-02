@@ -72,6 +72,7 @@ sys-kernel/genkernel
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
 sys-libs/ncurses
+sys-kernel/gentoo-sources-5.4.236
 sys-power/acpid
 sys-power/powertop
 sys-power/suspend
