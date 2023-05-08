@@ -17,6 +17,16 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local xrandr = require("xrandr")
 
+function is_dir(path)
+    local f = path .. "/"
+    local ok, err, code = os.rename(f, f)
+    if not ok and code == 13 then
+        -- Permission denied, but it exists
+        return true
+    end
+    return ok, err
+end
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -122,7 +132,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- {{{ Wibar
 -- Create a textclock widget
 os.setlocale("ja_JP.UTF-8")
-mytextclock = wibox.widget.textclock("%b%-d日「%a」%R ")
+mytextclock = wibox.widget.textclock("%B%-d日「%a」%R ")
 if true then
   local cal = awful.widget.calendar_popup.month({ long_weekdays = true })
   cal:attach(mytextclock, 'tr')
@@ -211,6 +221,30 @@ awful.screen.connect_for_each_screen(function(s)
 
     local vicious = require("vicious")
 
+    -- Music
+
+    music_widget = wibox.widget.textbox()
+    if true then
+      vicious.register(
+        music_widget,
+        function()
+          awful.spawn.easy_async("get-music", function(stdout, stderr, reason, exit_code)
+            song = stdout:gsub("\n", "")
+            if song == "" then
+              music_widget:set_text("")
+            else
+              music_widget:set_markup_silently(
+                "<span size='large'>楽</span><span rise='2pt'>「 "
+                ..  song .. " 」</span> "
+              )
+            end
+          end)
+        end,
+        nil,
+        5
+      )
+    end
+
     -- Battery
 
     bat_widget = wibox.widget.textbox()
@@ -229,7 +263,7 @@ awful.screen.connect_for_each_screen(function(s)
               args[3] == 'N/A' and '' or ' in ' .. args[3]
             )
           )
-          return ('<span size="large">電</span>「%s%%」'):format(
+          return ("<span size='large'>電</span><span rise='2pt'>「%s%%」</span> "):format(
                   args[2])
         end,
         61,
@@ -265,35 +299,15 @@ awful.screen.connect_for_each_screen(function(s)
           swap = args[6]
           if swap > 64 then
             swap = ' + ' .. mg(swap)
-
-            for line in io.lines("/sys/block/zram0/mm_stat") do
-              zram = {}
-              i = 1
-              for v in line:gmatch('%d+') do
-                zram[i] = tonumber(v)
-                i = i + 1
-              end
-
-              zused = zram[3]
-              zorig = zram[1]
-              zcomp = math.floor((zorig - zram[2])/zorig*100+0.5)
-              ztotl = zram[4]
-
-              mem_tooltip:set_text((
-                'Zram stats:\n%s original\n%s of %s used%s'
-              ):format(
-                mg(to_m(zorig)),
-                mg(to_m(zused)),
-                mg(to_m(ztotl)),
-                zcomp <= 0 and '' or ' (' .. zcomp .. '% compression)'
-              ))
-            end
+            awful.spawn.easy_async("meminfo", function(stdout, stderr, reason, exit_code)
+              mem_tooltip:set_text(stdout)
+            end)
           else
             swap = ''
             mem_tooltip:set_text("Have a nice day!")
           end
 
-          return ("<span size='large'>腦</span>「" .. mem .. swap .. "」")
+          return ("<span size='large'>腦</span><span rise='2pt'>「" .. mem .. swap .. "」</span> ")
         end,
         7
       )
@@ -315,6 +329,7 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.textbox('   '),
             --mykeyboardlayout,
+            music_widget,
             mem_widget,
             bat_widget,
             --wibox.widget.systray(),

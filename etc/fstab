@@ -9,6 +9,12 @@
 tmpfs /tmp tmpfs size=3G,rw,nosuid,noatime,nodev,mode=1777 0 0
 tmpfs /var/tmp/portage tmpfs size=16G,uid=portage,gid=portage,mode=775,nosuid,noatime,nodev 0 0
 
-/dev/zram0 swap swap pri=16383 0 0
+# Abandoned in favor of Zswap
+#/dev/zram0 swap swap pri=16383 0 0
+
+# TODO lvcreate -C y -L 22G VolGroup -n swap; rm /home/.swapfile
+#      22G with 3x compression ratio ≈6G (20% of what's allowed for Zswap)
+#
+# Currently mounted by 'swapfile' init service.
 
 /dev/mapper/azaza /mnt/azaza  btrfs defaults,noatime,compress-force=zlib:9 0 0

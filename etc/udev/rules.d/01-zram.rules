@@ -1,1 +1,2 @@
-KERNEL=="zram0", SUBSYSTEM=="block", DRIVER=="", ACTION=="add", ATTR{disksize}=="0", ATTR{comp_algorithm}="zstd", ATTR{mem_limit}="3G", ATTR{disksize}="12G", RUN+="/sbin/mkswap $env{DEVNAME}"
+# Something strange happening when interoperating with Zswap
+#KERNEL=="zram0", SUBSYSTEM=="block", DRIVER=="", ACTION=="add", ATTR{disksize}=="0", ATTR{comp_algorithm}="zstd", ATTR{mem_limit}="3G", ATTR{disksize}="12G", RUN+="/sbin/mkswap $env{DEVNAME}"
