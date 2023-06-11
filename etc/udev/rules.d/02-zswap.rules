@@ -1,3 +1,2 @@
-# Utilize only 1108M (8%) of RAM.
-# Other 517M will be handled by zram (zstd).
-KERNEL=="zswap", SUBSYSTEM=="module", DRIVER=="", ATTR{parameters/max_pool_percent}="8"
+# Let it be default 20%.
+#KERNEL=="zswap", SUBSYSTEM=="module", DRIVER=="", ATTR{parameters/max_pool_percent}="8"

@@ -1,7 +1,6 @@
 PARTLABEL=boot		/boot		vfat		noauto,noatime	1 2
 
 PARTLABEL=swap		swap	swap	sw		0 0
-/dev/zram0		swap	swap	pri=16383	0 0
 
 /dev/vg0/root		/		ext4		discard,noatime		0 1
 /dev/vg0/home		/home		ext4		discard,noatime		0 0
