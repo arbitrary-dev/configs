@@ -23,6 +23,10 @@ set $term alacritty
 #       https://github.com/swaywm/sway/issues/1367#issuecomment-495306710
 set $menu bemenu-run | xargs swaymsg exec --
 
+set $inner_gaps 20
+gaps inner $inner_gaps
+gaps outer -5
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -148,6 +152,8 @@ input type:keyboard {
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
+
+    bindsym $mod+m gaps inner current toggle $inner_gaps
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Ctrl+space floating toggle
