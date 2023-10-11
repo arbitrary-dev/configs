@@ -1,5 +1,4 @@
 */*::crossdev
-*/*::alxu
 */*::pf4public
 */*::guru
 
