@@ -83,7 +83,7 @@ while true; do
         # Show swap only if it is 64+ Mb
         if (used >= 64) {
           if (used < 1000) { printf " (%dM)", used }
-          else if (used < 1024) { printf "1G" }
+          else if (used < 1024) { printf " (1G)" }
           else { printf " (%.2gG)", used / 1024 }
         }
         exit
