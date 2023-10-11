@@ -139,7 +139,7 @@ input type:keyboard {
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
     bindsym $mod+Shift+s splith
-    bindcode $mod+Alt+s splitv
+    bindcode $mod+s splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+Alt+s layout stacking

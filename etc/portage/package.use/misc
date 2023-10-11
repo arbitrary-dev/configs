@@ -8,13 +8,6 @@ media-video/mpv -vdpau -xv
 # see bug 712374.
 media-libs/freetype harfbuzz
 
-# New vaapi code depends heavily on libvpx-1.9, see #43
-# Consider disabling system-libvpx USE flag if using vaapi
-www-client/ungoogled-chromium optimize-webui system-openjpeg hangouts
-www-client/ungoogled-chromium clang optimize-thinlto thinlto
-# Requires clang-16+
-# https://github.com/PF4Public/gentoo-overlay/issues/214
-#www-client/ungoogled-chromium pgo
 # The following REQUIRED_USE flag constraints are unsatisfied:
 #     wayland? ( gles2 )
 media-libs/libsdl2 gles2
@@ -34,6 +27,7 @@ app-i18n/ibus X
 # required by x11-libs/gtk+-2.24.33:2/2 ?
 x11-libs/cairo X aqua
 dev-cpp/cairomm X
+media-gfx/fontforge gtk
 
 media-sound/ncmpcpp lto taglib
 media-sound/mpd faad libmpdclient libsamplerate opus sqlite wavpack -udisks
@@ -52,6 +46,17 @@ app-emulation/wine-vanilla -cups -gecko -gstreamer -mingw -mono -udev -udisks -u
 # LVM="yes"
 sys-fs/lvm2 lvm
 
+sci-astronomy/stellarium -nls -scripting -xlsx
+sci-astronomy/calcmysky qt5
+
+# New vaapi code depends heavily on libvpx-1.9, see #43
+# Consider disabling system-libvpx USE flag if using vaapi
+www-client/ungoogled-chromium optimize-webui system-openjpeg hangouts
+www-client/ungoogled-chromium clang optimize-thinlto thinlto
+# Requires clang-17+
+# https://github.com/PF4Public/gentoo-overlay/issues/214
+#www-client/ungoogled-chromium pgo
+
 media-gfx/gimp webp
 sys-apps/debianutils -installkernel
 sys-apps/fwupd uefi gnutls
@@ -61,3 +66,7 @@ app-editors/vim -gpm -sound
 media-video/mpv -opengl
 app-text/mupdf -ssl
 sys-apps/fwupd nvme synaptics
+media-libs/vips jpeg2k jpegxl
+sys-devel/gcc lto pgo graphite
+media-gfx/feh curl
+media-video/ffmpeg opus vpx
