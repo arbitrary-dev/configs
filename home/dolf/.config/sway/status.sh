@@ -6,11 +6,10 @@ while true; do
   MUSIC=
   if pgrep mpd >/dev/null && (mpc | fgrep -q '[playing]'); then
     # Get metadata from MPD
-    MUSIC=`mpc -f "[[%artist% - ]%title%]" | head -1`
-    if [ -z "$MUSIC" ]; then
-      file=`mpc -f '[%file%]' | head -1`
-      MUSIC=`basename "$file"`
-    fi
+    MUSIC=`mpc -f "[[%artist% - ]%title%]|[%file%]" current`
+    # Crop filenames
+    [[ "$MUSIC" =~ \.[0-9a-zA-Z]{3,4}$ ]] \
+    && MUSIC=`basename "$MUSIC"`
   else
     # Get metadata from PulseAudio
     MUSIC=`
@@ -20,7 +19,7 @@ while true; do
         /state: RUNNING/ { is_playing = 1 }
         is_playing && /media.name = / {
           gsub(" - mpv$", "", $2)
-          gsub("^(ALSA |)Playback$", "", $2) # chromium
+          gsub("^(ALSA |)Playback|My Pulse Output$", "", $2) # chromium
           gsub("^Simultaneous output on .+", "", $2) # some random apps
           print $2
           exit
@@ -36,6 +35,8 @@ while true; do
     MUSIC=`sed -E 's_[ ,.\!?({]+(…)$_\1_' <<< "$MUSIC"`
     # Address &'s.
     MUSIC=`sed -E 's/&/&amp;/g' <<< "$MUSIC"`
+    # Remove emojis
+    #MUSIC=`perl -CS -pe 's/ ?\p{Emoji}//g' <<< "$MUSIC"`
     # Add final notes
     MUSIC="$note $MUSIC $note  "
   fi
