@@ -1,5 +1,3 @@
 */*::crossdev
 */*::pf4public
 */*::guru
-
-<sys-kernel/gentoo-sources-6.2

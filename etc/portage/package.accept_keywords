@@ -8,9 +8,12 @@ gui-apps/tuigreet ~amd64
 media-sound/mpd-mpris::guru ~amd64
 mpv-plugin/mpv-mpris::guru ~amd64
 
+dev-cpp/highway ~amd64
+media-libs/vips ~amd64
+
+dev-python/python-lsp-server ~amd64
 gui-apps/wev::guru ~amd64
 lxde-base/lxappearance ~amd64
 dev-python/pyotp ~amd64
 dev-libs/bemenu ~amd64
-<sys-kernel/gentoo-sources-6.6 ~amd64
-media-libs/vips ~amd64
+sci-mathematics/lean ~amd64

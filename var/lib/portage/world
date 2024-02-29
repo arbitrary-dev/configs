@@ -27,6 +27,7 @@ dev-java/openjdk:8
 dev-libs/bemenu
 dev-libs/light
 dev-perl/rename
+dev-python/python-lsp-server
 dev-util/ccache
 dev-vcs/git
 gui-apps/grim
@@ -70,6 +71,7 @@ net-p2p/rtorrent
 net-wireless/blueman
 net-wireless/wpa_supplicant
 sci-astronomy/stellarium
+sci-mathematics/lean
 sys-apps/fwupd
 sys-apps/hdparm
 sys-apps/ripgrep
@@ -78,10 +80,12 @@ sys-boot/efibootmgr
 sys-devel/crossdev
 sys-devel/distcc
 sys-devel/multilib-gcc-wrapper
+sys-fs/android-file-transfer-linux
 sys-fs/btrfs-progs
 sys-fs/compsize
 sys-fs/dosfstools
 sys-fs/lvm2
+sys-fs/mtpfs
 sys-fs/ntfs3g
 sys-kernel/genkernel
 sys-kernel/gentoo-sources

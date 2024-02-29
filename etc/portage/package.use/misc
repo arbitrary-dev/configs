@@ -16,6 +16,7 @@ gui-apps/gammastep drm
 app-arch/p7zip -pch -wxwidgets
 media-audio/pulseaudio native-headset ofono-headset
 
+media-gfx/gimp webp -alsa
 # gimp <2.99.2 requires X
 gui-wm/sway X
 net-im/toxic X
@@ -57,7 +58,7 @@ www-client/ungoogled-chromium clang optimize-thinlto thinlto
 # https://github.com/PF4Public/gentoo-overlay/issues/214
 #www-client/ungoogled-chromium pgo
 
-media-gfx/gimp webp
+dev-python/python-lsp-server all-plugins
 sys-apps/debianutils -installkernel
 sys-apps/fwupd uefi gnutls
 app-misc/recoll -qt5 -spell
@@ -69,4 +70,4 @@ sys-apps/fwupd nvme synaptics
 media-libs/vips jpeg2k jpegxl
 sys-devel/gcc lto pgo graphite
 media-gfx/feh curl
-media-video/ffmpeg opus vpx
+media-video/ffmpeg amr amrenc opus vpx
