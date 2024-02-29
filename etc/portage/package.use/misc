@@ -25,6 +25,9 @@ media-libs/libglvnd X
 media-libs/libva X
 dev-qt/qtgui eglfs
 app-i18n/ibus X
+# app-i18n/ibus-1.5.29 fails to build without gtk:4 +X
+# https://bugs.gentoo.org/921671#c10
+gui-libs/gtk:4 X
 # required by x11-libs/gtk+-2.24.33:2/2 ?
 x11-libs/cairo X aqua
 dev-cpp/cairomm X
