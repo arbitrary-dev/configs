@@ -85,7 +85,7 @@ sys-fs/lvm2
 sys-fs/ntfs3g
 sys-kernel/genkernel
 sys-kernel/gentoo-sources
-sys-kernel/gentoo-sources:6.5.6
+sys-kernel/gentoo-sources:6.6.13
 sys-kernel/linux-firmware
 sys-power/acpid
 sys-power/powertop
