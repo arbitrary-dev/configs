@@ -19,7 +19,9 @@ while true; do
         /state: RUNNING/ { is_playing = 1 }
         is_playing && /media.name = / {
           gsub(" - mpv$", "", $2)
-          gsub("^(ALSA |)Playback|My Pulse Output$", "", $2) # chromium
+          gsub(" [([](Official|OFFICIAL|Full|FULL).+", "", $2)
+          gsub("^(ALSA |)Playback|My Pulse Output|qemu$", "", $2)
+          gsub("-[a-zA-Z0-9_-]{11}\..{3}$", "", $2)  # youtube
           gsub("^Simultaneous output on .+", "", $2) # some random apps
           print $2
           exit
@@ -30,12 +32,17 @@ while true; do
     MUSIC=`sed 's/&quot;/"/g' <<< "$MUSIC"`
   fi
   if [ -n "$MUSIC" ]; then
+    # Reduce spaces
+    MUSIC=`sed -E 's/(\s)\s+/ /g' <<< "$MUSIC"`
     # Trim to 64 chars.
     MUSIC=`sed -E 's_(.{64}).+_\1…_' <<< "$MUSIC"`
     MUSIC=`sed -E 's_[ ,.\!?({]+(…)$_\1_' <<< "$MUSIC"`
     # Address &'s.
     MUSIC=`sed -E 's/&/&amp;/g' <<< "$MUSIC"`
     # Remove emojis
+    # Issues:
+    # 1. Removes digits as well
+    # 2. Results in some non-printable char as leftover
     #MUSIC=`perl -CS -pe 's/ ?\p{Emoji}//g' <<< "$MUSIC"`
     # Add final notes
     MUSIC="$note $MUSIC $note  "
