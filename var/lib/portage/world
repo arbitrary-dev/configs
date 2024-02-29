@@ -38,6 +38,7 @@ gui-apps/tuigreet
 gui-apps/wev
 gui-apps/wl-clipboard
 gui-libs/display-manager-init
+gui-libs/xdg-desktop-portal-wlr
 gui-wm/sway
 media-fonts/hack
 media-fonts/liberation-fonts

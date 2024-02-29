@@ -55,11 +55,13 @@ sci-astronomy/calcmysky qt5
 
 # New vaapi code depends heavily on libvpx-1.9, see #43
 # Consider disabling system-libvpx USE flag if using vaapi
-www-client/ungoogled-chromium optimize-webui system-openjpeg hangouts
+www-client/ungoogled-chromium optimize-webui system-openjpeg
 www-client/ungoogled-chromium clang optimize-thinlto thinlto
 # Requires clang-17+
 # https://github.com/PF4Public/gentoo-overlay/issues/214
 #www-client/ungoogled-chromium pgo
+# For screen sharing
+www-client/ungoogled-chromium hangouts screencast
 
 dev-python/python-lsp-server all-plugins
 sys-apps/debianutils -installkernel

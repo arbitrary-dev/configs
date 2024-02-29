@@ -1,3 +1,9 @@
+# To solve screen casting in ungoogled-chromium:
+# https://wiki.gentoo.org/wiki/PipeWire#Wayland_.2F_Sway_.2F_Window_Managers
+exec gentoo-pipewire-launcher &
+# https://github.com/emersion/xdg-desktop-portal-wlr/wiki/%22It-doesn't-work%22-Troubleshooting-Checklist#issues-in-void-linux
+exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
 # Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
