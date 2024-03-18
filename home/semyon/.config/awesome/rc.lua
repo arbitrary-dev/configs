@@ -163,33 +163,56 @@ vicious.register(
 
 batwidget = wibox.widget.textbox()
 vicious.register(
-	batwidget,
-	vicious.widgets.bat,
-	function (widget, args)
-		local i = { '⮒', '⮏', '⮐', '⮑', '⮍', '⮎' }
+    batwidget,
+    vicious.widgets.bat,
+    function (widget, args)
+        local i = { '⮒', '⮏', '⮐', '⮑', '⮍', '⮎' }
         local is_discharging = args[1] == "-"
         local is_charging = args[1] == "+"
-		local ico =
-			is_discharging and i[ math.ceil(args[2]/25) + 1 ]
-			or is_charging and "<span color='#0f0'>" .. i[1] .. "</span>"
-			or i[6]
+        local icon =
+            is_discharging and i[ math.ceil(args[2]/25) + 1 ]
+            or is_charging and i[1]
+            or i[6]
 
-		if ico == i[6] then
-			return ico
-		end
+        if icon == i[6] then
+            return icon
+        end
 
-		local status =
-			is_charging and "#0f0"
-			or args[2] > 75 and beautiful.fg_normal
-			or args[2] > 25 and "yellow"
-			or "red"
+        local color =
+            is_charging and "#0f0"
+            or args[2] > 75 and beautiful.fg_normal
+            or args[2] > 25 and "yellow"
+            or "red"
 
-		return ico .. " <span color='" ..
-		       status ..
-		       "'>" .. args[2] .. "%</span>"
-	end,
-	61,
-	"BAT1" )
+        local charge = " " .. args[2] .. "%"
+
+        local time
+        if is_charging or is_discharging then
+            for a, b in string.gmatch(args[3], "(%d+):(%d+)") do
+                local h = tonumber(a)
+                local m = tonumber(b)
+                if h > 1 then
+                    time = h .. "h"
+                elseif h > 0 then
+                    time = math.floor(10 * (60 * h + m) / 60 + 0.5) / 10 .. "h"
+                    time = time:gsub("%.0", "")
+                elseif m > 1 then
+                    time = m .. "m"
+                end
+                if time then
+                    time = " ~" .. time
+                end
+            end
+        end
+        time = time or ""
+
+        return
+            "<span color='" ..  color ..  "'>" .. icon .. charge .. "</span>"
+            .. time
+    end,
+    61,
+    "BAT1"
+)
 
 -- Wi-Fi
 
