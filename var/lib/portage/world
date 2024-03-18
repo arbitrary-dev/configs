@@ -78,7 +78,7 @@ sys-power/powertop
 sys-power/suspend
 sys-power/upower
 sys-process/parallel
-www-client/qutebrowser
+www-client/ungoogled-chromium-bin
 www-client/w3m
 x11-apps/igt-gpu-tools
 x11-apps/mesa-progs

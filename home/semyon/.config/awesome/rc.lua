@@ -670,7 +670,7 @@ awful.rules.rules = {
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
 
-	{ rule = { instance = "qutebrowser" },
+	{ rule = { instance = "chromium" },
 	  properties = { tag = "web",
                      maximized = true } },
     { rule = { class = "Gnumeric" },
