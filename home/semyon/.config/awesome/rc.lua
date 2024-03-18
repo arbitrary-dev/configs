@@ -135,14 +135,27 @@ vicious.register(
 	memwidget,
 	vicious.widgets.mem,
 	function (widget, args)
-		status =
-			args[1] < 30 and beautiful.fg_normal
-			or args[1] <= 70 and "yellow"
-			or "red"
+        function sfx(mb)
+            return
+                mb < 1024 and mb .. "M"
+                or (math.floor(mb*10/1024+0.5)/10) .. "G"
+        end
 
-		return "⭦ <span color='"
-			   .. status .. "'>"
-			   .. args[2] .. "MB</span>"
+        icon = "⭦"
+
+        ram_usage = args[1]
+        ram = " " .. sfx(args[2])
+
+        swap = args[6] > 4 and " +" .. sfx(args[6]) or ""
+
+        color =
+            ram_usage < 30 and beautiful.fg_normal
+            or ram_usage <= 70 and "yellow"
+            or "red"
+
+		return
+            "<span color='" .. color .."'>" .. icon .. ram .. "</span>"
+            .. swap
 	end,
 	11 )
 
