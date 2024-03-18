@@ -252,7 +252,7 @@ vicious.register(
 	vicious.widgets.volume,
 	function ( widget, args )
 		local v = { '⮝', '⮞', '⮟', '⮧' }
-		if args[1] == 0 or args[2] == "♩" then
+		if args[1] == 0 or args[2] == "🔈" then
 			return v[1]
 		end
 		return v[math.ceil(args[1]*3/100)+1] .. " " .. args[1] .. "%"
