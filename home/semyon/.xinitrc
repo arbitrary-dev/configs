@@ -3,4 +3,5 @@
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 urxvtd --quiet --opendisplay --fork
 xset +fp ~/.fonts
+xautolock &
 exec awesome

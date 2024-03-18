@@ -1,3 +1,6 @@
+Xautolock.time:   7
+Xautolock.locker: lock
+
 URxvt.font: -benis-lemon-mono-medium-R-normal--10-110-75-75-P-50-ISO10646-1
 URxvt.boldFont: -benis-lemon-mono-medium-R-normal--10-110-75-75-P-50-ISO10646-1
 URxvt.italicFont: -benis-lemon-mono-medium-R-normal--10-110-75-75-P-50-ISO10646-1

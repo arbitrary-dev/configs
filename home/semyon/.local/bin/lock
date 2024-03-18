@@ -1,0 +1,51 @@
+#!/bin/sh
+
+i3lock \
+\
+-c      "00000000"                    \
+--image ~/pics/wallpaper/fug-lock.jpg \
+\
+--indicator      \
+--radius     45  \
+--ring-width 2.5 \
+\
+--clock                          \
+--date-str   "%b %d, %A"         \
+--date-font  "benis lemon"       \
+--date-size  10                  \
+--date-color "AAAAAA"            \
+--date-pos   "w/2:h/2"           \
+--time-font  "benis lemon\-mono" \
+--time-size  10                  \
+--time-color "AAAAAA"            \
+--time-pos   "w/2:h/2+12"        \
+\
+--modif-size  10            \
+--modif-color "AAAAAA"      \
+--modif-pos   "w/2:h/2+15"  \
+\
+--verif-text  "卐"          \
+--verif-font  "benis lemon" \
+--verif-size  10            \
+--verif-color "F7BC7A"      \
+--verif-pos   "w/2:h/2+3"   \
+\
+--wrong-text  "Error"       \
+--wrong-font  "benis lemon" \
+--wrong-size  10            \
+--wrong-color "FF4422"      \
+--wrong-pos   "w/2:h/2+3"   \
+\
+--noinput-text "Cleared"   \
+--status-pos   "w/2:h/2+3" \
+\
+--inside-color      "000000"   \
+--insidewrong-color "000000"   \
+--insidever-color   "000000"   \
+--line-color        "00000000" \
+--ring-color        "444444"   \
+--ringwrong-color   "FF4422"   \
+--ringver-color     "F7BC7A"   \
+--keyhl-color       "F7BC7A"   \
+--bshl-color        "FF4422"   \
+

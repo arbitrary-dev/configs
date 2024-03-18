@@ -1,0 +1,24 @@
+Modifier string disappears later on and overlaps with time string.
+
+--- a/i3lock.c
++++ b/i3lock.c
+
+@@ -522,7 +522,6 @@ static void finish_input(void) {
+ static void clear_auth_wrong(EV_P_ ev_timer *w, int revents) {
+     DEBUG("clearing auth wrong\n");
+     auth_state = STATE_AUTH_IDLE;
+-    redraw_screen();
+ 
+     /* Clear modifier string. */
+     if (modifier_string != NULL) {
+
+@@ -530,6 +529,9 @@ static void clear_auth_wrong(EV_P_ ev_timer *w, int revents) {
+         modifier_string = NULL;
+     }
+ 
++    // Should be after changes to modifier string
++    redraw_screen();
++
+     /* Now free this timeout. */
+     STOP_TIMER(clear_auth_wrong_timeout);
+ 

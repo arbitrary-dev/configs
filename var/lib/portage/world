@@ -86,8 +86,10 @@ x11-apps/xfontsel
 x11-base/xorg-x11
 x11-drivers/xf86-video-intel
 x11-misc/gbdfed
+x11-misc/i3lock-color
 x11-misc/picom
 x11-misc/redshift
+x11-misc/xautolock
 x11-misc/xclip
 x11-plugins/vicious
 x11-terms/rxvt-unicode
