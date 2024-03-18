@@ -1,10 +1,10 @@
 include "/usr/share/themes/QtCurve/gtk-2.0/gtkrc"
 
 style "user-font" {
-	font-name: "benis uushi"
+	font_name = "uushi"
 }
 
 widget_class "*" style "user-font"
 
-gtk-font-name = "benis uushi"
-gtk-theme-name = "qtcurve"
+gtk-font-name = "uushi"
+#gtk-theme-name = "qtcurve"

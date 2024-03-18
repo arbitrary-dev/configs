@@ -14,22 +14,22 @@
 # <fs>			<mountpoint>	<type>		<opts>		<dump/pass>
 
 # NOTE: If your BOOT partition is ReiserFS, add the notail option to opts.
-/dev/sda2		/boot		ext2		noauto,noatime	0 2
-/dev/sda4		/		ext4		noatime		0 1
-/dev/sda5		/usr		ext4		noatime		0 2
-/dev/sda6		/usr/local	ext4		noatime		0 2
-/dev/sda7		/var		ext4		noatime		0 2
-/dev/sda8		/var/log	ext4		noatime		0 2
-/dev/sda10		/home		ext4		noatime		0 2
+/dev/sda2  /boot      ext2  noauto,noatime 0 2
+/dev/sda4  /          ext4  noatime        0 1
+/dev/sda5  /usr       ext4  noatime        0 2
+/dev/sda6  /usr/local ext4  noatime        0 2
+/dev/sda7  /var       ext4  noatime        0 2
+/dev/sda8  /var/log   ext4  noatime        0 2
+#/dev/sda9 /tmp       ext4  noatime        0 2
+/dev/sda10 /home      ext4  noatime        0 2
 
 # resume device
 /dev/sda3 none swap sw 0 0
 
-tmpfs /tmp tmpfs size=1G,noatime,exec 0 0
+/home/.swapfile swap swap pri=8192  0 0
 
-/dev/zram0 swap swap pri=16383 0 0
+tmpfs /tmp             tmpfs size=1G,noatime,exec 0 0
+tmpfs /var/tmp/portage tmpfs size=1G,rw,nosuid,noatime,nodev,mode=775,uid=portage,gid=portage 0 0
 
-#/dev/sda9		/tmp		ext4		noatime		0 2
-#//192.168.0.2/share	/mnt/share	cifs		user=yonigger,file_mode=0666,dir_mode=0777,defaults,noperm 0 0
-/dev/sdb1 /mnt/usb  auto  user,utf8  0 0
-/dev/sdb3 /mnt/music  auto  user,utf8  0 0
+UUID=de8253f9-cf1b-47bd-a2ff-af415c5bebac /mnt/usb f2fs noauto,rw,user 0 0
+UUID=60CE5AF9CE5AC746 /mnt/music auto noauto,user,utf8 0 0

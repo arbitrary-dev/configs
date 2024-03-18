@@ -1,3 +1,6 @@
+! Call this after update:
+! xrdb ~/.Xresources
+
 Xautolock.time:   7
 Xautolock.locker: lock
 
@@ -8,7 +11,7 @@ URxvt.boldItalicFont: -benis-lemon-mono-medium-R-normal--10-110-75-75-P-50-ISO10
 URxvt.skipBuiltinGlyphs: true
 URxvt.scrollBar: false
 URxvt.borderColor: #000000
-URxvt.internalBorder: 7
+URxvt.internalBorder: 5
 
 ! --- ~/.Xresources ------------------------------------------------------------
 ! ------------------------------------------------------------------------------

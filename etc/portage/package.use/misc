@@ -14,22 +14,23 @@ sys-libs/ncurses tinfo
 dev-util/boost-build python
 
 media-video/ffmpeg x264 x265 vpx fdk
-# required by net-misc/youtube-viewer-3.2.8::gentoo
-media-video/ffmpeg openssl
+media-video/ffmpeg CPU_FLAGS_X86: sse3 mmxext
 
 # dbus needed to receive keyboard events on volume up and down
 x11-wm/awesome dbus
 
-# Required for kernels older than 4.11.
-# Bugs #669994, #672856
-dev-qt/qtcore old-kernel
+media-video/mpv -luajit -quvi
+# libplacebo brings on vulkan & spirv shaders stuff
+media-video/mpv -libplacebo
 
+app-i18n/mozc ibus
+dev-build/cmake -qt5 -ncurses
+dev-python/python-lsp-server all-plugins
 games-roguelike/nethack -X
 x11-misc/compton -drm -opengl -pcre
 media-sound/bluez-alsa hcitop
 media-sound/ncmpcpp taglib outputs
 mail-client/mutt gpg imap pop sasl smtp tokyocabinet -berkdb -gdbm
-dev-util/cmake -qt5 -ncurses
 media-fonts/mplus-outline-fonts ipafont
 x11-terms/rxvt-unicode iso14755 -vanilla alt-font-width -mousewheel wcwidth xft unicode3
 dev-games/ogre double-precision examples ois tools cg
@@ -38,8 +39,6 @@ net-misc/freerdp smartcard
 media-libs/freetype utils
 x11-base/xorg-server udev
 app-arch/p7zip rar
-sys-kernel/linux-firmware savedconfig
-media-video/mplayer aalib fbcon libcaca mad samba theora faad x264 xvid -dvd -dvdnav
 #app-emulation/wine -run-exes -realtime -perl -nls -mp3 -mono -ncurses s3tc osmesa v4l xcomposite staging
-media-video/mpv -luajit -quvi libcaca
 sys-auth/polkit elogind
+sys-kernel/linux-firmware savedconfig

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# When called by Udev, $USER is absent and event vars are present instead.
+if [[ -n "$USER" && "$USER" != "root" ]]; then
+  echo "Should be called from root!"
+  exit 1
+fi
+
+# Starting async subshell in case called from Udev,
+# to not hang event processing.
+(
+  USER=`users | cut -d\  -f1`
+
+  # Needed for up-to-date battery status
+  [ "$1" == "batwidget" ] && sleep 1
+
+  DISPLAY=:0.0 su $USER -c "
+    echo 'vicious.force({$1})' | awesome-client
+  "
+) &

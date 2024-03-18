@@ -3,10 +3,11 @@ media-fonts/font-bh-type1 bh-luxi
 media-fonts/font-bh-ttf bh-luxi
 
 games-roguelike/dwarf-fortress free-noncomm
+games-rpg/freedink-data OAL-1.0.1
 media-libs/fdk-aac FraunhoferFDK
 dev-java/oracle-jdk-bin Oracle-BCLA-JavaSE
 app-arch/p7zip unRAR
-sys-kernel/linux-firmware linux-firmware @BINARY-REDISTRIBUTABLE
-sys-kernel/gentoo-sources freedist linux-firmware
+sys-kernel/gentoo-sources freedist
 media-fonts/freefonts freedist free-noncomm all-rights-reserved
 media-fonts/corefonts MSttfEULA
+sys-kernel/linux-firmware linux-fw-redistributable

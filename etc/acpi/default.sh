@@ -6,6 +6,7 @@ device=$2
 id=$3
 value=$4
 user=semyon
+user_id=`id -u $user`
 
 log_unhandled() {
   logger "ACPI event unhandled: $*"
@@ -15,40 +16,41 @@ case "$group" in
   button)
     case "$action" in
       wlan)
-        wl=/etc/init.d/net.wlp5s0b1
-        if [[ $($wl status | sed -r "s/.*?: //") == "stopped" ]]; then
-          $wl start
+        if rfkill --output SOFT | grep -q "\bblocked\b"; then
+          rfkill unblock all
+          awesome-notify "Radio unblocked"
+        elif pgrep bluetoothd && bluetoothctl info | grep -q "Connected: yes"; then
+          # Block wifi only if there's a BT device connected.
+          rfkill block wifi
+          awesome-notify "Wi-Fi blocked"
         else
-          $wl stop
+          rfkill block all
+          awesome-notify "Radio blocked"
         fi
         ;;
       power)
-        if [[ "$device" == "PBTN" ]]; then
-          /etc/acpi/actions/powerbtn.sh
-        fi
-        ;;
       sleep)
-        # needed to handle event just once
-        if [[ "$device" == "SBTN" ]]; then
-          s2ram
-        fi
+        # handled by elogind
         ;;
       battery)
         if [[ "$device" == "BAT" ]]; then
-          s2disk
+          loginctl hibernate
         fi
         ;;
       volumeup)
         amixer -q -M set Master playback 5%+
-        DISPLAY=:0.0 su $user -c "echo 'vicious.force({volwidget})' | awesome-client"
+        vicious-force volwidget
         ;;
       volumedown)
         amixer -q -M set Master playback 5%-
-        DISPLAY=:0.0 su $user -c "echo 'vicious.force({volwidget})' | awesome-client"
+        vicious-force volwidget
         ;;
       mute)
-        amixer -q set Master playback toggle
-        DISPLAY=:0.0 su $user -c "echo 'vicious.force({volwidget})' | awesome-client"
+        DISPLAY=:0.0 \
+        su $user -c "
+          XDG_RUNTIME_DIR=/run/user/$user_id pactl set-sink-mute @DEFAULT_SINK@ toggle
+        "
+        vicious-force volwidget
         ;;
       *) log_unhandled $* ;;
     esac

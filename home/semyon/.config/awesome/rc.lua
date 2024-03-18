@@ -48,9 +48,11 @@ end
 beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvtc -g 83x25"
+terminal = "urxvtc -g 85x28"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
+
+reboot = "loginctl reboot"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -106,10 +108,11 @@ myawesomemenu = {
    { "quit", function() awesome.quit() end}
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
-                                  }
-                        })
+mymainmenu = awful.menu({ items = {
+    { "awesome", myawesomemenu, beautiful.awesome_icon },
+    { "terminal", terminal },
+    { "reboot", reboot }
+} })
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
@@ -132,9 +135,9 @@ separator = wibox.widget.textbox(sep_markup, false)
 
 memwidget = wibox.widget.textbox()
 vicious.register(
-	memwidget,
-	vicious.widgets.mem,
-	function (widget, args)
+    memwidget,
+    vicious.widgets.mem,
+    function (widget, args)
         function sfx(mb)
             return
                 mb < 1024 and mb .. "M"
@@ -153,11 +156,11 @@ vicious.register(
             or ram_usage <= 70 and "yellow"
             or "red"
 
-		return
+        return
             "<span color='" .. color .."'>" .. icon .. ram .. "</span>"
             .. swap
-	end,
-	11 )
+    end,
+    11 )
 
 -- Create a battery status widget
 
@@ -218,47 +221,47 @@ vicious.register(
 
 wifiwidget = wibox.widget.textbox()
 vicious.register(
-	wifiwidget,
-	vicious.widgets.wifi,
-	function ( widget, args )
-		local linp = args["{linp}"]
-		local ssid = args["{ssid}"]
+    wifiwidget,
+    vicious.widgets.wifi,
+    function ( widget, args )
+        local linp = args["{linp}"]
+        local ssid = args["{ssid}"]
 
-		if linp == 0 and ssid == "N/A" then
-			return ""
-		end
+        if linp == 0 and ssid == "N/A" then
+            return ""
+        end
 
-		local signal = ""
-		local s = { '⮢', '⮣', '⮤', '⮥', '⮦' }
+        local signal = ""
+        local s = { '⮢', '⮣', '⮤', '⮥', '⮦' }
 
-		for i = 0, 3 do
-			if linp > i * 25 then
-				signal = signal .. s[i+2]
-			else
-				signal = signal .. s[1]
-			end
-		end
+        for i = 0, 3 do
+            if linp > i * 25 then
+                signal = signal .. s[i+2]
+            else
+                signal = signal .. s[1]
+            end
+        end
 
-		return "⮡" .. signal .. " " .. ssid .. sep_markup
-	end,
-	13,
-	"wlp5s0b1" )
+        return "⮡" .. signal .. " " .. ssid .. sep_markup
+    end,
+    13,
+    "wlp5s0b1" )
 
 -- Volume
 
 volwidget = wibox.widget.textbox()
 vicious.register(
-	volwidget,
-	vicious.widgets.volume,
-	function ( widget, args )
-		local v = { '⮝', '⮞', '⮟', '⮧' }
-		if args[1] == 0 or args[2] == "🔈" then
-			return v[1]
-		end
-		return v[math.ceil(args[1]*3/100)+1] .. " " .. args[1] .. "%"
-	end,
-	3,
-	"Master" )
+    volwidget,
+    vicious.widgets.volume,
+    function ( widget, args )
+        local v = { '⮝', '⮞', '⮟', '⮧' }
+        if args[1] == 0 or args[2] == "🔈" then
+            return v[1]
+        end
+        return v[math.ceil(args[1]*3/100)+1] .. " " .. args[1] .. "%"
+    end,
+    3,
+    "Master" )
 vicious.unregister(volwidget, true)
 
 -- Create a textclock widget
@@ -341,7 +344,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "misc", "work", "web", "im" }, s, awful.layout.layouts[1])
+    awful.tag({ "work", "web", "im", "misc" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -372,9 +375,9 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist(
-		s,
-		awful.widget.tasklist.filter.minimizedcurrenttags,
-		tasklist_buttons,
+        s,
+        awful.widget.tasklist.filter.minimizedcurrenttags,
+        tasklist_buttons,
         nil,
         function(w, buttons, label, data, objects)
             common.list_update(w, buttons, label, data, objects)
@@ -433,13 +436,13 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-	awful.key({ modkey }, "i", function() awful.spawn("invert") end),
-	awful.key({}, "Print", function() awful.spawn(
-		"scrot -q 80 /tmp/semyon/screen_%Y-%m-%d.png" ) end),
-	awful.key({ "Mod4"}, "Print", function() awful.spawn(
-		"scrot -u -q 80 /tmp/semyon/client_%Y-%m-%d.png" ) end),
-	awful.key({ "Mod1"}, "Print", function() awful.spawn(
-		"scrot -s -q 80 /tmp/semyon/area_%Y-%m-%d.png" ) end),
+    awful.key({ modkey }, "i", function() awful.spawn("invert") end),
+    awful.key({}, "Print", function() awful.spawn(
+        "scrot -q 80 /tmp/screen_%Y-%m-%d.png" ) end),
+    awful.key({ "Mod4"}, "Print", function() awful.spawn(
+        "scrot -u -q 80 /tmp/client_%Y-%m-%d.png" ) end),
+    awful.key({ "Mod1"}, "Print", function() awful.spawn(
+        "scrot -s -q 80 /tmp/area_%Y-%m-%d.png" ) end),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -486,9 +489,11 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey, "Control" }, "l", function() awful.spawn("lock") end),
+    awful.key({ modkey, "Control" }, "r", function () awful.spawn(reboot) end,
+              {description = "reboot", group = "launcher"}),
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey, "Control" }, "r", awesome.restart,
+    awful.key({ modkey, "Shift" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
@@ -706,13 +711,13 @@ awful.rules.rules = {
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
 
-	{ rule = { instance = "chromium" },
-	  properties = { tag = "web",
+    { rule = { instance = "chromium" },
+      properties = { tag = "web",
                      maximized = true } },
     { rule = { class = "Gnumeric" },
       properties = { maximized = true } },
-	{ rule = { instance = "urxvt" },
-	  properties = { size_hints_honor = false }},
+    { rule = { instance = "urxvt" },
+      properties = { size_hints_honor = false }},
 }
 -- }}}
 

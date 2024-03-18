@@ -4,7 +4,7 @@
 
 theme = {}
 
-theme.font          = "benis uushi"
+theme.font          = "uushi"
 
 theme.bg_normal     = "#444444"
 theme.bg_focus      = "#f7bc7a"
@@ -22,6 +22,9 @@ theme.border_width  = 2
 theme.border_normal = theme.bg_normal
 theme.border_focus  = theme.bg_focus
 theme.border_marked = "#91231c"
+
+theme.notification_bg = theme.bg_focus
+theme.notification_fg = theme.fg_focus
 
 theme.shade = "#333333"
 theme.sep_pad = 7
@@ -85,7 +88,7 @@ theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/defau
 theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
 
 -- theme.wallpapers_dir = "~/pics/wp"
-theme.wallpaper = "~/pics/wallpaper/fug.jpg"
+theme.wallpaper = "~/pics/wallpaper/fug-reverse.jpg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"
